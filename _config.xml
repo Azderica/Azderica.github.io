@@ -1,0 +1,17 @@
+# Site settings
+name: Azderica
+email: mh97888@gmail.com
+url: "https://Azderica.github.io"
+description: "A blog and a portfolio"
+author: "author"
+title: "Draw Everything"
+permalink: pretty
+baseurl: ""
+remote_theme : lamccloskey/jekyll-theme-blogfolio
+
+# social
+github:
+  username: Azderica
+
+twitter:
+  username: username
