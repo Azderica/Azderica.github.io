@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Test Page"
+title: "Springboot 시작하기"
 date: 2020-07-07 07:30:00 -0500
 
 ---
@@ -39,7 +39,7 @@ Oracle에 들어갈 필요 없이 mac 유저라면 편하게 사용가능
 ## 시작하기
 
 ```java
-package me.whiteship;
+Pship;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -56,6 +56,14 @@ public class Application {
 위는 Application.java
 
 
+
+## Springboot Project 만드는 방법
+
+1. Intellij에서 새로운 프로젝트를 생성하는 방법
+
+
+
+2. start.spring.io 에서 프로젝트를 만들어서 다운받는 방법 
 
 
 
