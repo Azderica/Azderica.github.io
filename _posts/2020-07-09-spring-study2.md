@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Springboot 시작하기"
+title: "Springboot 이해하기"
 date: 2020-07-07 07:30:00 -0500
 
 
