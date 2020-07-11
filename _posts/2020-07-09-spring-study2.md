@@ -119,3 +119,12 @@ Maven: org.springframework.boot:spring-boot-autoconfiguration:2.3.1.REALSE\sprin
 
 autoConfiguartion 하나로. 수많은 bean이 생성이 되고 적용이 된다.
 
+
+
+## 자동 설정 만들기. Starter와 AutoConfigure
+
+유용한 단축키 :
+
+- `command + N` : get, set, toString() 등을 제공
+- `command + opt + L` : 줄 정렬
+
