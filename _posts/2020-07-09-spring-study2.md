@@ -128,3 +128,8 @@ autoConfiguartion 하나로. 수많은 bean이 생성이 되고 적용이 된다
 - `command + N` : get, set, toString() 등을 제공
 - `command + opt + L` : 줄 정렬
 
+AutoConfigure은 흠.. 현재 Process terminated 상태. => 나중에 하기
+
+문제는  Bean을 등록할려고 하는데 두가지 페이스. component scan 이 먼저다. 
+두번째 페이스가 auto configuration인데 첫번째를 두번째 애가 덮어쓴거다.
+
