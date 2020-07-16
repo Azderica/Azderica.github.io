@@ -133,3 +133,36 @@ AutoConfigure은 흠.. 현재 Process terminated 상태. => 나중에 하기
 문제는  Bean을 등록할려고 하는데 두가지 페이스. component scan 이 먼저다. 
 두번째 페이스가 auto configuration인데 첫번째를 두번째 애가 덮어쓴거다.
 
+이거를 해결하는 방법이 아래의 것이다.
+
+## 자동 설정 만들기. @ConfigurationProperties
+
+**덮어쓰기 방지하기** 
+
+- @ConditionalOnMissingBean : 이 타입의 Bean이 없는 경우만 이 Bean을 등록해라
+
+**빈 재정의 수고덜기**
+
+- @ConfigurationProperties(“holoman”)
+- @EnableConfigurationProperties(HolomanProperties)
+- 프로퍼티 키값 자동 완성
+
+src\main\resource\application.properties 파일 만들어서
+holoman.name = {쓰고 싶은 글, ex name}
+holoman.how-long = {쓰고 싶은 숫자. ex 10}
+
+이후에 src\main\java\me.whiteship\HolomanProperties.class를 만들어서
+
+name이랑 how-long에 대해 Get 이랑 set 다 정의하고 HolomanConfiguration에서 
+
+@EnableConfigurationProperties(HolomanProperties)와 같이 선언해서 하기
+
+```xml
+ <dependency>
+ <groupId>​org.springframework.boot​</groupId>
+ <artifactId>​spring-boot-configuration-processor​</artifactId>
+ <optional>​true​</optional>
+```
+
+
+
