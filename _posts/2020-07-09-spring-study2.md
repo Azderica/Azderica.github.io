@@ -213,3 +213,40 @@ public static void main(String[] args) throws LifecycleException {
   - DispatcherServletAutoConfiguration
     - 서블릿 만들고 등록
 
+
+
+## 내장 웹 서버 응용 1부 : 컨테이너와 포트
+
+다음과 같이 자동으로 쓰는 tomcat 대신 jetty를 쓸 수도 있다.
+
+```xml
+<properties>
+    <servlet-api.version>3.1.0</servlet-api.version>
+</properties>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <exclusions>
+        <!-- Exclude the Tomcat dependency -->
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+<!-- Use Jetty instead -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-jetty</artifactId>
+</dependency>
+```
+
+해당 글에서 <dependencies></dependencies>를 안주면 에러가 나서. 에러 처리해주었음.
+
+- 다른 서블릿 컨테이너로 변경
+- 웹서버사용하지않기
+- 포트
+  - server.port
+  - 랜덤포트
+  - ApplicationListner<ServletWebServerInitializedEvent>
+
