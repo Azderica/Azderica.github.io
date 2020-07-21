@@ -215,7 +215,7 @@ public static void main(String[] args) throws LifecycleException {
 
 
 
-## 내장 웹 서버 응용 1부 : 컨테이너와 포트
+## 내장 웹 서버 응용 : 컨테이너와 포트
 
 다음과 같이 자동으로 쓰는 tomcat 대신 jetty를 쓸 수도 있다.
 
@@ -250,3 +250,48 @@ public static void main(String[] args) throws LifecycleException {
   - 랜덤포트
   - ApplicationListner<ServletWebServerInitializedEvent>
 
+
+
+
+
+## 내장 웹 서버 응용 : HTTPS, HTTP2
+
+추가 공부 자료
+https://opentutorials.org/course/228/4894
+https://gist.github.com/keesun/f93f0b83d7232137283450e08a53c4fd
+
+application.properties
+
+```xml
+server.ssl.key-store: keystore.p12
+server.ssl.key-store-password: 123456
+server.ssl.keyStoreType: PKCS12
+server.ssl.keyAlias: tomcat
+```
+
+generate-keystore.sh
+
+```bash
+keytool -genkey 
+  -alias tomcat 
+  -storetype PKCS12 
+  -keyalg RSA 
+  -keysize 2048 
+  -keystore keystore.p12 
+  -validity 4000
+```
+
+- HTTPS 설정하기
+  - 키스토어 만들기
+  - HTTP는 못쓰네?
+
+- HTTP 커넥터는 코딩으로 설정하기
+  - https://github.com/spring-projects/spring-boot/tree/v2.0.3.RELEASE/spring-boot-samples/spring-boot-sample-tomcat-multi-connectors
+
+- HTTP2 설정
+  - server.http2.enable
+  - 사용하는 서블릿 컨테이너 마다 다름
+
+
+
+##  
