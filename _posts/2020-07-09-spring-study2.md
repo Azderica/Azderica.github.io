@@ -292,6 +292,43 @@ keytool -genkey
   - server.http2.enable
   - 사용하는 서블릿 컨테이너 마다 다름
 
+pom.xml
+
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <exclusions>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcatb</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+	
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-undertow</artifactId>
+    </dependency>
+</dependencies>
+```
+
+application.properties
+
+
+```xml
+server.ssl.key-store: keystore.p12
+server.ssl.key-store-password: 123456
+server.ssl.keyStoreType: PKCS12
+server.ssl.keyAlias: spring
+server.port=8443
+server.http2.enabled=true
+```
+
+http2를 사용할려면 꼭 `server.http2.enabled` 을 true로 해주어야한다.
+
 
 
 ##  
