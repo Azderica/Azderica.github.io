@@ -330,5 +330,43 @@ server.http2.enabled=true
 http2를 사용할려면 꼭 `server.http2.enabled` 을 true로 해주어야한다.
 
 
+## 톰캣 HTTP2
 
-##  
+
+pom.xml
+
+
+```xml
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UT-8</project.reporting.outputEncoding>
+    <java.version>9</java.version>
+    <tomcat.version>9.0.18</tomcat.version>
+</properties>
+
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+</dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
+```
+
+여기에  추가적으로 Project Setting에 Project에 version과, module을 맞춰줘야한다.
+그렇게 진행하면. 문제없이 http2로 돌아가는 것을 확인할 수 있다.
+
+- JDK9와 Tomcat 9+ 추천
+
+- 그이하는아래링크참고
+  - https://docs.spring.io/spring-boot/docs/current/reference/html/howto-embedded-web-servers.html#howto-configure-http2-tomcat
+
+
