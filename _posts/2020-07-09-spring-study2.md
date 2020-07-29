@@ -387,4 +387,13 @@ pom.xml
     - org.springframework.boot.loader.Launcher를 사용해서 실행한다.
 
 
+## 스프링 부트 원리 정리
 
+- 의존성 관리
+  - 이것만 넣어도 이만큼이나 다 알아서 가져오네?
+- **자동 설정**
+  - @EnableAutoConfiguration이 뭘 해주는지 알겠어.
+- 내장 웹 서버
+  - 아 스프링 부트가 서버가 아니라 내장 서버를 실행하는 거군.
+- 독립적으로 실행 가능한 JAR
+  - spring-boot-maven 플러그인이 이런걸 해주는구나..
