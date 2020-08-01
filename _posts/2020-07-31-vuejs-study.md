@@ -84,6 +84,34 @@ Object.defineProperty(viewModel, 'str', {
 
 reacitivity의 핵심은 데이터의 변화를 라이브러리에서 감지해서, 알아서 화면을 자동으로 그려주는 것.
 
+라이브러리화?
 
+> 아래처럼 할 수 있음
+
+```javascript
+
+(function() {
+  function init() {
+    Object.defineProperty(viewModel, 'str', {
+    // 속성에 접근했을 때의 동작을 정의
+      get: function() {
+        console.log('접근');
+      },
+      // 속성에 값을 할당했을 때의 동작을 정의
+      set: function(newValue) {
+        console.log('할당', newValue);
+        render(newValue);
+      }
+    });
+  }
+
+  function render(value) {
+    div.innerHTML = value;
+  }
+
+  init();
+})();  
+
+```
 
 
