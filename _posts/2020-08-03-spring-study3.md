@@ -49,3 +49,50 @@ Tip) 자동 설정이 되지않을때나 궁금할때는 디버그를 보면 확
       .run(args);
   
   ```
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spring-applicatio n.html#boot-features-application-events-and-listeners
+
+- ApplicationEvent 등록
+  - ApplicationContext를 만들기 전에 사용하는 리스너는 @Bean으로 등록할 수 없다.
+    - SpringApplication.addListners()
+    ```java
+    // SampleListner
+    public class SampleListner implements ApplicationListener<ApplicationStartedEvent> {
+
+      @Override
+        public void onApplicationEvent(ApplicationStartedEvent applicationStartedEvent){
+          System.out.println("=======================");
+          System.out.println("Application is starting");
+          System.out.println("=======================");
+      }
+    }
+    
+    // Application
+    @SpringBootApplication
+    public class Application {
+
+	    public static void main(String[] args){
+		    SpringApplication app = new SpringApplication(Application.class);
+		    app.addListeners(new SampleListner());
+		    app.run(args);
+	    }
+    }
+    ```
+    다음과 같이 작성시. Spring 이 빌드될 때 찍히는 거 볼 수 있다.
+- WebApplicationType 설정
+
+  WebApplicationType은 Servlet, Reactive, None 등이 있는데 이걸로 돌아간다.
+  
+  둘 다 없으면 None으로 돌려야하고, 두개다 있으면 Servlet으로 돌아간다. Reactive로 하고 싶으면 따로 작성해야한다.
+
+- 애플리케이션 아규먼트 사용하기
+  - ApplicationArguments를 빈으로 등록해 주니까 가져다 쓰면 됨. 
+  
+  argument에 생성자가 하나면 Bean을 생성할 때 자동으로 해준다.
+  
+- 애플리케이션 실행한 뒤 뭔가 실행하고 싶을 때
+  - ApplicationRunner (추천) 또는 CommandLineRunner
+  - 순서 지정 가능 @Order
+    
+    숫자가 높을수록 우선순위가 높은 것.
+  
