@@ -96,3 +96,55 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spr
     
     숫자가 높을수록 우선순위가 높은 것.
   
+## 외부 설정
+
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config
+
+### 사용할 수 있는 외부 설정
+
+- properties
+- YAML
+- 환경변수
+- 커맨드 라인 아규먼트
+
+### 프로퍼티 우선 순위
+
+위에 있을수록 높음.
+
+1. 유저 홈 디렉토리에 있는 spring-boot-dev-tools.properties
+2. 테스트에 있는 @TestPropertySource
+3. @SpringBootTest 애노테이션의 properties 애트리뷰트
+4. 커맨드 라인 아규먼트
+5. SPRING_APPLICATION_JSON (환경 변수 또는 시스템 프로티) 에 들어있는 프로퍼티
+6. ServletConfig 파라미터
+7. ServletContext 파라미터
+8. java:comp/env JNDI 애트리뷰트
+9. System.getProperties() 자바 시스템 프로퍼티
+10. OS 환경 변수
+11. RandomValuePropertySource
+12. JAR 밖에 있는 특정 프로파일용 application properties
+13. JAR 안에 있는 특정 프로파일용 application properties
+14. JAR 밖에 있는 application properties
+15. JAR 안에 있는 application properties
+16. @PropertySource
+17. 기본 프로퍼티 (SpringApplication.setDefaultProperties)
+
+application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
+
+> 위에 있는게 이김.
+
+1. file:./config/
+2. file:./
+3. classpath:/config/
+4. classpath:/
+
+랜덤값 설정하기
+
+- ${random.*}
+
+플레이스 홀더
+
+> 인풋텍스트나 아레아 등에서 안내 문구를 삽입해 주는 기능 + 클릭하면 사라지는 아주 좋은 기능
+
+- name = keesun
+- fullName = ${name} baik
