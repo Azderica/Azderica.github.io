@@ -165,4 +165,78 @@ new Vue({
 - 이외에도 많은 속성들이 있음...
 
 
+## 컴포넌트
+
+가장 큰 장점은 재사용이 가능한 것. 화면의 영역을 분리해서 보여주는 것.
+
+```html
+<body>
+  <div id="app">
+    <app-header></app-header>
+    <app-footer></app-footer>
+  </div>
+
+  <div id="app2">
+    <app-header></app-header>
+    <app-footer></app-footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // 전역 컴포넌트
+    // Vue.component('컴포넌트 이름', 컴포넌트 내용);
+    Vue.component('app-header', {
+      template: '<h1>Header</h1>'
+    });  
+
+    new Vue({
+      el: '#app',
+      // 지역 컴포넌트 등록 방식
+      components: {
+        // '컴포넌트 이름': 컴포넌트 내용,
+        'app-footer': {
+          template: '<footer>footer</footer>'
+        }
+      },
+    });
+
+    new Vue({
+      el: '#app2',
+      components: {
+        'app-footer': {
+          template: '<footer>footer</footer>'
+        }
+      }
+    })
+  </script>
+</body>
+
+```
+
+위를 보면 전역 컴포넌트와 지역 컴포넌트가 있는 것을 확인할 수 있다.
+
+
+### 전역 컴포넌트
+
+하나면 들어가기 때문에 `component` 라고 넣어났다.
+
+
+### 지역 컴포넌트
+
+여러개가 들어가기 때문에 `components` 라고 붙여놓았다.
+
+마찬가지로 `methods` 도 비슷한 논리.
+
+
+### 컴포넌트와 인스턴트와의 관계
+
+인스턴트는 여러개를 생성할 수 있다. (필요없을지라도)
+
+인스턴트를 생성하면 Root가 2개가 생긴다.
+
+좀더 자세하게 알 수 있는 곳.
+
+http://wiki.sys4u.co.kr/pages/viewpage.action?pageId=8553372
+
+https://develop-designer.tistory.com/3
 
