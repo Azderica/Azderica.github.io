@@ -248,6 +248,44 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.htm
   - RANDON_PORT, DEFINED_PORT: 내장 톰캣 사용 함.
   - NONE: 서블릿 환경 제공 안 함.
 
+```java
+// TEST Code
+package myepark.ebaykorea.springtestdemo;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@AutoConfigureMockMvc
+class SpringtestdemoApplicationTests {
+
+    @Autowired
+    MockMvc mockMvc;
+
+    @Test
+    void contextLoads() throws Exception {
+        mockMvc.perform(get("/hello"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("hello myepark"))
+                .andDo(print());
+    }
+
+}
+
+```
+
+
 @MockBean
 - ApplicationContext에 들어있는 빈을 Mock으로 만든 객체로 교체 함.
 - 모든 @Test 마다 자동으로 리셋.
