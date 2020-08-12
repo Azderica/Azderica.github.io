@@ -237,6 +237,8 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.htm
 
 ## 테스트
 
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing
+
 시작은 일단 spring-boot-starter-test를 추가하는 것 부터
 - test 스콥으로 추가.
 
