@@ -291,7 +291,7 @@ class SpringtestdemoApplicationTests {
 - 모든 @Test 마다 자동으로 리셋.
 
 슬라이스 테스트
-- 레이어 별로 잘라서 테스트하고 싶을 때
+- 레이어 별로 잘라서 테스트하고 싶을 때 (빈을 다 체크하고 싶지 않을때)
 - @JsonTest
 - @WebMvcTest
 - @WebFluxTest
