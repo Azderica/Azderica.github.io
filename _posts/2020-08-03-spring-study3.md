@@ -31,6 +31,7 @@ Tip) 자동 설정이 되지않을때나 궁금할때는 디버그를 보면 확
   - classpath 또는 spring.banner.location
   - ${spring-boot.version} 등의 변수를 사용할 수 있음.
   - Banner 클래스 구현하고 SpringApplication.setBanner()로 설정 가능.
+  
   ```java
   SpringApplication app = new SpringApplication(SpringinitApplication.class);
   app.setBanner((environment, sourceClass, out) -> {
@@ -43,6 +44,7 @@ Tip) 자동 설정이 되지않을때나 궁금할때는 디버그를 보면 확
   
 - 배너끄는방법 
   - SpringApplicationBuilder로 빌더 패턴 사용 가능
+  
   ```java
   new SprintApplicationBuilder()
       .sources(SpringinitApplication.class)
@@ -55,6 +57,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spr
 - ApplicationEvent 등록
   - ApplicationContext를 만들기 전에 사용하는 리스너는 @Bean으로 등록할 수 없다.
     - SpringApplication.addListners()
+    
     ```java
     // SampleListner
     public class SampleListner implements ApplicationListener<ApplicationStartedEvent> {
@@ -78,6 +81,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spr
 	    }
     }
     ```
+    
     다음과 같이 작성시. Spring 이 빌드될 때 찍히는 거 볼 수 있다.
 - WebApplicationType 설정
 
@@ -212,4 +216,46 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
 - 파일 출력: logging.file 또는 logging.path
 - 로그 레벨 조정: logging.level.패지키 = 로그 레벨
 
+### 커스터마이징
 
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html : 커스텀 로그 설정 파일 사용하기
+
+Logback: logback-spring.xml - 기본적으로는 이거 사용을 추천
+
+Log4J2: log4j2-spring.xml
+
+JUL (비추): logging.properties
+
+Logback extension
+- 프로파일 <springProfile name=”프로파일”>
+- Environment 프로퍼티 <springProperty>
+	
+	
+로거를 Log4j2로 변경하기
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging
+
+## 테스트
+
+시작은 일단 spring-boot-starter-test를 추가하는 것 부터
+- test 스콥으로 추가.
+
+@SpringBootTest
+- @RunWith(SpringRunner.class)랑 같이 써야 함.
+- 빈 설정 파일은 설정을 안해주나? 알아서 찾습니다. (@SpringBootApplication)
+- webEnvironment
+  - MOCK: mock servlet environment. 내장 톰캣 구동 안 함.
+  - RANDON_PORT, DEFINED_PORT: 내장 톰캣 사용 함.
+  - NONE: 서블릿 환경 제공 안 함.
+
+@MockBean
+- ApplicationContext에 들어있는 빈을 Mock으로 만든 객체로 교체 함.
+- 모든 @Test 마다 자동으로 리셋.
+
+슬라이스 테스트
+- 레이어 별로 잘라서 테스트하고 싶을 때
+- @JsonTest
+- @WebMvcTest
+- @WebFluxTest
+- @DataJpaTest
+- ...
