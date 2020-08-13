@@ -299,3 +299,13 @@ class SpringtestdemoApplicationTests {
 - @WebFluxTest
 - @DataJpaTest
 - ...
+
+스프링 테스트
+
+- **OutputCapture**
+  - Log에 찍히는 모든 output를 캡쳐한다.
+  - ex) ```assertThat(outputCapture.toString()).contains("holoman").contains("skip");```
+  
+- TestPropertyValues
+- TestRestTemplate
+- ConfigFileApplicationContextInitializer
