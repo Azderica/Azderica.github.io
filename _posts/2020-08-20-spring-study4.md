@@ -10,6 +10,8 @@ date: 2020-08-20 07:30:00 -0500
 
 ## 스프링 웹 MVC 
 
+### 소개
+
 스프링 웹 MVC
 - https://docs.spring.io/spring/docs/5.0.7.RELEASE/spring-framework-reference/web.html#spring-web
 스프링 부트 MVC
@@ -18,3 +20,9 @@ date: 2020-08-20 07:30:00 -0500
 - @Configuration + WebMvcConfigurer
 스프링 MVC 재정의
 - @Configuration + @EnableWebMvc
+
+### HttpMessageConverters
+
+https://docs.spring.io/spring/docs/5.0.7.RELEASE/spring-framework-reference/web.html#mvc-config-message-converters HTTP 요청 본문을 객체로 변경하거나, 객체를 HTTP 응답 본문으로 변경할 때 사용 {“username”:”keesun”, “password”:”123”} <-> User
+- @ReuqestBody
+- @ResponseBody
