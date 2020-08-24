@@ -66,3 +66,32 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
     .addResourceLocations("classpath:/m/")
     .setCachePeriod(20);
 ```
+
+### 웹 JAR
+
+웹JAR 맵핑 “ /webjars/**”
+
+- 버전 생략하고 사용하려면
+  - webjars-locator-core 의존성 추가
+  
+```java
+<script src="/webjars/jquery/dist/jquery.min.js"></script>
+<script>
+   $(function() {
+       console.log("ready!");
+   });
+</script>
+```
+
+### index 페이지와 파비콘
+
+웰컴 페이지
+- index.html 찾아 보고 있으면 제공.
+- index.템플릿 찾아 보고 있으면 제공.
+- 둘 다 없으면 에러 페이지.
+
+파비콘
+- favicon.ico
+- 파이콘 만들기 https://favicon.io/
+- 파비콘이 안 바뀔 때?
+  - https://stackoverflow.com/questions/2208933/how-do-i-force-a-favicon-refresh
