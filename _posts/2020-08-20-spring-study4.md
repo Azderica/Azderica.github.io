@@ -116,3 +116,41 @@ Thymeleaf 사용하기
 - 의존성 추가: spring-boot-starter-thymeleaf
 - 템플릿 파일 위치: /src/main/resources/template/
 - 예제: https://github.com/thymeleaf/thymeleafexamples-stsm/blob/3.0-master/src/main/webapp/WEB-INF/templates/seedstartermng.html
+
+### HtmlUnit
+
+HTML 템플릿 뷰 테스트를 보다 전문적으로 하자.
+- http://htmlunit.sourceforge.net/
+- http://htmlunit.sourceforge.net/gettingStarted.html
+  - 코드를 가져올 수 있고 폼을 받아올 수 있고, 브라우저인척도 되고, 비교할 수 있음
+  - 다양한 예시가 있음.
+- 의존성 추가
+
+```java
+<dependency>
+   <groupId>org.seleniumhq.selenium</groupId>
+   <artifactId>htmlunit-driver</artifactId>
+   <scope>test</scope>
+</dependency>
+<dependency>
+   <groupId>net.sourceforge.htmlunit</groupId>
+   <artifactId>htmlunit</artifactId>
+   <scope>test</scope>
+</dependency>
+```
+
+   - 단. 해당 코드로는 안되서 dependency 버전을 새로 선언해주었다.
+```java
+<dependency>
+   <groupId>org.seleniumhq.selenium</groupId>
+   <artifactId>htmlunit-driver</artifactId>
+   <scope>2.52.0</scope>
+</dependency>
+<dependency>
+   <groupId>net.sourceforge.htmlunit</groupId>
+   <artifactId>htmlunit</artifactId>
+   <version>2.43.0</version>
+</dependency>
+```
+
+- @Autowire WebClient
