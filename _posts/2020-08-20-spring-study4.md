@@ -206,11 +206,15 @@ LinkDiscovers 제공
 SOP과 CORS
 
 - Single-Origin Policy
+  - 같은 origin에만 요청을 보낼 수 있다.
+  - 기본적으로 제공되어 있음.
 - Cross-Origin Resource Sharing
-- Origin?
+  - 서로 다른 origin끼리 resourse를 제어할 수 있게 하는 정책
+- **Origin?**
   - URI 스키마 (http, https)
   - hostname (whiteship.me, localhost)
   - 포트 (8080, 18080)
+  - 이 3개가 조합된 것이 origin이라고 이해하자.
 
 스프링 MVC @CrossOrigin
 - https://docs.spring.io/spring/docs/5.0.7.RELEASE/spring-framework-reference/web.html#mvc-cors
