@@ -73,7 +73,7 @@ H2 콘솔 사용하는 방법
 
 #### MySQL 커넥터 의존성 추가
 
-```java
+```xml
 <dependency>
    <groupId>mysql</groupId>
    <artifactId>mysql-connector-java</artifactId>
