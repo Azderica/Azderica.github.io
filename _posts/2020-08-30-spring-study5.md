@@ -164,6 +164,9 @@ SELECT * FROM account;
 - @EnableJpaRepositories(스프링 부트가 자동으로 설정 해줌.)
 - SDJ -> JPA -> Hibernate -> Datasource
 
+
+### Spring-Data-JPA 연동
+
 스프링 데이터 JPA 의존성 추가
 
 ```xml
