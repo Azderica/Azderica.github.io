@@ -110,3 +110,41 @@ MySQL 라이센스 (GPL) 주의
 
 - MySQL 대신 MariaDB 사용 검토
 - 소스 코드 공개 의무 여부 확인
+
+ 
+
+### PostgreSQL
+
+#### 의존성 추가
+
+```xml
+<dependency>
+   <groupId>org.postgresql</groupId>
+   <artifactId>postgresql</artifactId>
+</dependency>
+```
+
+#### PostgreSQL 설치 및 서버 실행 (docker)
+
+```bash
+docker run -p 5432:5432 -e POSTGRES_PASSWORD=pass -e POSTGRES_USER=keesun -e POSTGRES_DB=springboot --name postgres_boot -d postgres
+
+docker exec -i -t postgres_boot bash
+
+su - postgres
+
+psql springboot
+
+데이터베이스 조회
+\list
+
+테이블 조회
+\dt
+
+쿼리
+SELECT * FROM account;
+```
+
+#### PostgreSQL 경고 메시지
+
+경고 : `org.postgresql.jdbc.PgConnection.createClob() is not yet implemented` 해결 : `spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true`
