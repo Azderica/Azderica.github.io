@@ -196,3 +196,32 @@ SQL 스크립트를 사용한 데이터베이스 초기화
 - schema.sql 또는 schema-${platform}.sql
 - data.sql 또는 data-${platform}.sql
 - ${platform} 값은 spring.datasource.platform 으로 설정 가능.
+
+### 데이터베이스 마이그레이션
+
+> Flyway와 Liquibase가 대표적인데, 지금은 Flyway를 사용하겠습니다. 
+
+https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howto-execute-flyway-database-migrations-on-startup
+
+의존성 추가
+- org.flywaydb:flyway-core
+
+```xml
+<dependency>
+   <groupId>org.flywaydb</groupId>
+   <artifactId>flyway-core</artifactId>
+</dependency>
+
+```
+
+
+마이그레이션 디렉토리
+- db/migration 또는 db/migration/{vendor}
+- spring.flyway.locations로 변경 가능
+
+마이그레이션 파일 이름
+- V숫자__이름.sql
+- V는 꼭 대문자로.
+- 숫자는 순차적으로 (타임스탬프 권장)
+- 숫자와 이름 사이에 언더바 두 개.
+- 이름은 가능한 서술적으로.
