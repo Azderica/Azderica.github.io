@@ -233,11 +233,12 @@ https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howt
   - spring-boot-starter-data-redis
 - Redis 설치 및 실행 (도커)
   - docker run -p 6379:6379 --name redis_boot -d redis
+    - 6379는 기본설정이라, 따로 설정안해도 잘돌아간다.
   - docker exec -i -t redis_boot redis-cli
 - 스프링 데이터 Redis
   - https://projects.spring.io/spring-data-redis/
   - StringRedisTemplate 또는 RedisTemplate
-  - extends CrudRepository
+  - extends CrudRepository(JPA 레퍼지토리 처럼 사용)
 - Redis 주요 커맨드
   - https://redis.io/commands
   - keys *
