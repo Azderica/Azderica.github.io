@@ -286,3 +286,8 @@ Neo4j는 노드간의 연관 관계를 영속화하는데 유리한 그래프 �
   - Neo4jRepository
 - 에러 발생하는 데, 참고할 링크 : https://www.inflearn.com/questions/6023
   
+### 정리
+
+https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-sql
+
+
