@@ -56,8 +56,6 @@ H2 콘솔 사용하는 방법
 - CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))
 - INSERT INTO USER VALUES (1, ‘keesun’)
 
-<<<<<<< HEAD
-=======
 ### MySQL
 
 #### 지원하는 DBCP
