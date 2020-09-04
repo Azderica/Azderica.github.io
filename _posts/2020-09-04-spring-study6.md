@@ -67,9 +67,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-UserDetailsServie 구현
+#### UserDetailsServie 구현
 - https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#jc-authentication-userdetailsservice
 
 
-PasswordEncoder 설정 및 사용
+#### PasswordEncoder 설정 및 사용
 - https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#core-services-password-encoding
