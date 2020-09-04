@@ -17,10 +17,10 @@ date: 2020-09-04 07:30:00 -0500
 Tip)
 ```java
 @Override
-    public void addViewControllers(ViewControllerRegistry registry){
-        // 기능없이 뷰로만 보내면, 이렇게 하면된다.
-        registry.addViewController("/hello").setViewName("hello");
-    }
+public void addViewControllers(ViewControllerRegistry registry){
+    // 기능없이 뷰로만 보내면, 이렇게 하면된다.
+    registry.addViewController("/hello").setViewName("hello");
+}
 ```
 
 - 웹 시큐리티
@@ -118,6 +118,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 ## 그 외.
 
 ### 그밖의 다양한 기술 
+
+#### References 
+: https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle
 
 - 캐시
 - 메시징
