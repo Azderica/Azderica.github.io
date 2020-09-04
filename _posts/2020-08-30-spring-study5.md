@@ -247,3 +247,34 @@ https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howt
   - hget {key} {column}
 - 커스터마이징
   - spring.redis.*
+  
+  
+### MongoDB
+
+MongoDB는 JSON 기반의 도큐먼트 데이터베이스입니다.
+- 의존성 추가
+  - spring-boot-starter-data-mongodb
+- MongoDB 설치 및 실행 (도커)
+  - docker run -p 27017:27017 --name mongo_boot -d mongo
+  - docker exec -i -t mongo_boot bash
+  - mongo
+- 스프링 데이터 몽고DB
+  - MongoTemplate
+  - MongoRepository
+  - 내장형 MongoDB (테스트용)
+    - de.flapdoodle.embed:de.flapdoodle.embed.mongo
+  - @DataMongoTest
+
+### Neo4j
+
+Neo4j는 노드간의 연관 관계를 영속화하는데 유리한 그래프 데이터베이스 입니다.
+- 의존성 추가
+  - spring-boot-starter-data-neo4j
+- Neo4j 설치 및 실행 (도커)
+  - docker run -p 7474:7474 -p 7687:7687 -d --name noe4j_boot neo4j
+  - http://localhost:7474/browser
+- 스프링 데이터 Neo4J
+  - Neo4jTemplate (Deprecated) 
+  - SessionFactory
+  - Neo4jRepository
+  
