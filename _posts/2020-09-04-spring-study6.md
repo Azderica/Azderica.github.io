@@ -73,3 +73,46 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 #### PasswordEncoder 설정 및 사용
 - https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#core-services-password-encoding
+
+
+
+## 스프링 REST 클라이언트
+
+### RestTemplate와 WebClient
+
+#### RestTemplate
+
+- Blocking I/O 기반의 Synchronous API
+  - 동기, `.getForObjet({url})` 사용
+- RestTemplateAutoConfiguration
+- 프로젝트에 spring-web 모듈이 있다면 RestTemplateBuilder를 빈으로 등록해 줍니다.
+- https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#rest-client-access
+ 
+#### WebClient
+- Non-Blocking I/O 기반의 Asynchronous API
+  - 비동기, `.subscribe(s -> {});` 사용
+- WebClientAutoConfiguration
+- 프로젝트에 spring-webflux 모듈이 있다면 WebClient.Builder를 빈으로 등록해 줍니다.
+- https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-client
+
+### 커스터마이징
+
+#### RestTemplate
+
+- 기본으로 java.net.HttpURLConnection 사용.
+- 커스터마이징
+  - 로컬 커스터마이징
+  - 글로벌 커스터마이징
+    - RestTemplateCustomizer
+    - 빈 재정의
+ 
+#### WebClient
+- 기본으로 Reactor Netty의 HTTP 클라이언트 사용.
+- 커스터마이징
+  - 로컬 커스터마이징
+  - 글로벌 커스터마이징
+    - WebClientCustomizer
+    - 빈 재정의
+    
+
+
