@@ -14,6 +14,15 @@ date: 2020-09-04 07:30:00 -0500
 
 #### 스프링 시큐리티
 
+Tip)
+```java
+@Override
+    public void addViewControllers(ViewControllerRegistry registry){
+        // 기능없이 뷰로만 보내면, 이렇게 하면된다.
+        registry.addViewController("/hello").setViewName("hello");
+    }
+```
+
 - 웹 시큐리티
 - 메소드 시큐리티
 - 다양한 인증 방법 지원
@@ -38,3 +47,29 @@ date: 2020-09-04 07:30:00 -0500
 #### 스프링 부트 시큐리티 테스트
 
 - https://docs.spring.io/spring-security/site/docs/current/reference/html/test-method.html
+
+### 시큐리티 설정 커스터마이징
+
+#### 웹 시큐리티 설정
+```java
+@Configuration
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+   @Override
+   protected void configure(HttpSecurity http) throws Exception {
+       http.authorizeRequests()
+               .antMatchers("/", "/hello").permitAll()
+               .anyRequest().authenticated()
+               .and()
+           .formLogin()
+               .and()
+           .httpBasic();
+   }
+}
+```
+
+UserDetailsServie 구현
+- https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#jc-authentication-userdetailsservice
+
+
+PasswordEncoder 설정 및 사용
+- https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#core-services-password-encoding
