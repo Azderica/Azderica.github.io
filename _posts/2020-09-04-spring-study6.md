@@ -115,4 +115,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     - 빈 재정의
     
 
+## 그 외.
+
+### 그밖의 다양한 기술 
+
+- 캐시
+- 메시징
+- Validation
+- 이메일 전송
+- JTA
+- 스프링 인티그레이션
+- 스프링 세션
+- JMX
+- 웹소켓
+- 코틀린
+- ...
 
