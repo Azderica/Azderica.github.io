@@ -48,23 +48,28 @@ https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production
   
 ### 스프링 부트 어드민
 
+- 아래는 반드시 스프링 security를 해야한다. 너무 민감한 정보들이 많다.
+
 https://github.com/codecentric/spring-boot-admin 스프링 부트 Actuator UI 제공 어드민 서버 설정
 ```xml
 <dependency>
   <groupId>de.codecentric</groupId>
   <artifactId>spring-boot-admin-starter-server</artifactId>
-  <version>2.0.1</version>
+  <version>2.2.4</version>
 </dependency>
 
 @EnableAdminServer
 ```
+
+- 2.0.1 에서 안되서 버전을 2.2.4로 버전업 시켰다.(client도 마찬가지로 진행하였음)
+
 
 클라이언트 설정
 ```xml
 <dependency>
   <groupId>de.codecentric</groupId>
   <artifactId>spring-boot-admin-starter-client</artifactId>
-  <version>2.0.1</version>
+  <version>2.2.4</version>
 </dependency>
 
 spring.boot.admin.client.url=http://localhost:8080
