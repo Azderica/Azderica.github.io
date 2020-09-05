@@ -75,3 +75,20 @@ https://github.com/codecentric/spring-boot-admin 스프링 부트 Actuator UI �
 spring.boot.admin.client.url=http://localhost:8080
 management.endpoints.web.exposure.include=*
 ```
+
+## 스프링 마무리
+
+### 스프링 부트 원리
+
+- 의존성 관리
+- 자동 설정
+- 내장 웹 서버
+- JAR 패키징
+
+### 스프링 부트 활용
+- 스프링 부트 핵심 기능
+- 다양한 기술 연동
+
+### 스프링 부트 운영
+- Actuator
+- 스프링 부트 어드민
