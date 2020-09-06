@@ -43,9 +43,76 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
 </details>
 
 - Identification of resources
+  - 리소스가 URI로 식별되면 된다.
 - manipulation of resources through represenations
+  - 리소스를 요청할 때 서버는 리소스를 표현하여 응답한다.
+  - 대표적인 API 예로는 HTML, JSON, XML이 있다. 
 - **self-descrive messages**
+  - 클라이언트가 resource를 가지고 어떤 일을 수행할때 필요한 모든 데이터가 응답되어야함.
+  - 보통 안에 profile(docs) 링크를 명시하는식으로 구현.
 - **hypermedia as the engine of appliaction state (HATEOAS)**
+  - 거의 모든 rest api에서 지키지못함. 
+  - 어플리케이션의 상태가 하이퍼링크를 통해서 항상 전이가 되어야함. 
+  - 스프링에서는 spring-boot-hateoas 패키지로 좀 편하게 구현 가능.
+
+<details>
+<summary>좋은 API 예시(github API)</summary>
+<div markdown="1">
+
+```xml
+{
+  "timeline_url": "https://github.com/timeline",
+  "user_url": "https://github.com/{user}",
+  "current_user_public_url": "https://github.com/octocat",
+  "current_user_url": "https://github.com/octocat.private?token=abc123",
+  "current_user_actor_url": "https://github.com/octocat.private.actor?token=abc123",
+  "current_user_organization_url": "",
+  "current_user_organization_urls": [
+    "https://github.com/organizations/github/octocat.private.atom?token=abc123"
+  ],
+  "security_advisories_url": "https://github.com/security-advisories",
+  "_links": {
+    "timeline": {
+      "href": "https://github.com/timeline",
+      "type": "application/atom+xml"
+    },
+    "user": {
+      "href": "https://github.com/{user}",
+      "type": "application/atom+xml"
+    },
+    "current_user_public": {
+      "href": "https://github.com/octocat",
+      "type": "application/atom+xml"
+    },
+    "current_user": {
+      "href": "https://github.com/octocat.private?token=abc123",
+      "type": "application/atom+xml"
+    },
+    "current_user_actor": {
+      "href": "https://github.com/octocat.private.actor?token=abc123",
+      "type": "application/atom+xml"
+    },
+    "current_user_organization": {
+      "href": "",
+      "type": ""
+    },
+    "current_user_organizations": [
+      {
+        "href": "https://github.com/organizations/github/octocat.private.atom?token=abc123",
+        "type": "application/atom+xml"
+      }
+    ],
+    "security_advisories": {
+      "href": "https://github.com/security-advisories",
+      "type": "application/atom+xml"
+    }
+  }
+}
+
+```
+
+</div>
+</details>
 
 ### 두 문제를 좀 더 자세히 살펴보자. (발표 영상 37분 50초)
 - Self-descriptive message
