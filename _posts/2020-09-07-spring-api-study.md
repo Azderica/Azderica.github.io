@@ -32,6 +32,16 @@ date: 2020-09-07 06:10:00 -0500
 - Code-On-Demand (optional)
 
 ### Uniform Interface (발표 영상 11분 40초)
+
+<details>
+<summary>상세</summary>
+<div markdown="1">
+
+Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청을 통일되고, 한정적으로 수행하는 아키텍처 스타일을 의미합니다. 이것은 요청을 하는 Client가 플랫폼(Android, Ios, Jsp 등) 에 무관하며, 특정 언어나 기술에 종속받지 않는 특징을 의미합니다. 이러한 특징 덕분에 Rest API는 HTTP를 사용하는 모든 플랫폼에서 요청가능하며, Loosely Coupling(느슨한 결함) 형태를 갖게 되었습니다.
+
+</div>
+</details>
+
 - Identification of resources
 - manipulation of resources through represenations
 - **self-descrive messages**
