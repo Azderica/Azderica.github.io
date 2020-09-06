@@ -142,6 +142,8 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
 
 ## “Event” REST API
 
+> [참고 링크](https://gitlab.com/whiteship/natural)
+
 이벤트 등록, 조회 및 수정 API
 
 ### GET /api/events
