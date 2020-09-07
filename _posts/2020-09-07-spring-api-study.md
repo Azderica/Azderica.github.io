@@ -201,9 +201,29 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
 8. (유효한 B 토큰 가지고) 이벤트 조회
    - update 안 보임
 
-#### REST API 테스트 클라이언트 애플리케이션
+### REST API 테스트 클라이언트 애플리케이션
   - 크롬 플러그인
     - Restlet
   - 애플리케이션
     - Postman
     
+
+## 스프링 부트 프로젝트 만들기
+
+### 추가할 의존성
+- Web
+- JPA
+- HATEOAS
+- REST Docs
+- H2
+- PostgreSQL
+- Lombok
+
+### 자바 버전 11로 시작
+- 자바는 여전히 무료다.
+
+### 스프링 부트 핵심 원리
+- 의존성 설정 (pom.xml)
+- 자동 설정 (@EnableAutoConfiguration)
+- 내장 웹 서버 (의존성과 자동 설정의 일부)
+- 독립적으로 실행 가능한 JAR (pom.xml의 플러그인)
