@@ -227,3 +227,91 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
 - 자동 설정 (@EnableAutoConfiguration)
 - 내장 웹 서버 (의존성과 자동 설정의 일부)
 - 독립적으로 실행 가능한 JAR (pom.xml의 플러그인)
+
+## Event 생성 API 구현: 비즈니스 로직
+
+### Event 생성 API
+
+- 다음의 입력 값을 받는다.
+  - name
+  - description
+  - beginEnrollmentDateTime
+  - closeEnrollmentDateTime
+  - beginEventDateTime
+  - endEventDateTime
+  - location (optional) 이게 없으면 온라인 모임
+  - basePrice (optional) 
+  - maxPrice (optional)
+  - limitOfEnrollment
+  
+
+basePrice와 maxPrice 경우의 수와 각각의 로직
+| basePrice | maxPrice |                                                              |
+| --------- | -------- | ------------------------------------------------------------ |
+| 0         | 100      | 선착순 등록                                                  |
+| 0         | 0        | 무로                                                         |
+| 100       | 0        | 무제한 경매 (높은 금액 낸 사람이 등록)                       |
+| 100       | 200      | 제한가 선착순 등록<br /><br />처음부터 200을 낸 사람은 선 등록<br /><br />100을 내고 등록할 수 있으나 더 많이 낸 사람에 의해 밀려날 수 있음. |
+
+
+
+- 결과값
+  - id
+  - name
+  - ...
+  - eventStatus: DRAFT, PUBLISHED, ENROLLMENT_STARTED, ...
+  - offline
+  - free
+  - _links
+    - profile (for the self-descriptive message)
+    - self 
+    - publish
+    - ...
+
+
+## Event 생성 API 구현: Event 도메인 구현
+
+```java
+public class Event {
+
+    private String name;
+    private String description;
+    private LocalDateTime beginEnrollmentDateTime;
+    private LocalDateTime closeEnrollmentDateTime;
+    private LocalDateTime beginEventDateTime;
+    private LocalDateTime endEventDateTime;
+    private String location; // (optional) 이게 없으면 온라인 모임
+    private int basePrice; // (optional)
+    private int maxPrice; // (optional)
+    private int limitOfEnrollment;
+
+}
+```
+
+추가 필드
+```java
+    private Integer id;
+    private boolean offline;
+    private boolean free;
+    private EventStatus eventStatus = EventStatus.DRAFT;
+```
+
+EventStatus 이늄 추가
+```java
+public enum EventStatus {
+
+    DRAFT, PUBLISHED, BEGAN_ENROLLMEND, CLOSED_ENROLLMENT, STARTED, ENDED
+
+}
+```
+
+롬복 애노테이션 추가
+```java
+@Getter @Setter @EqualsAndHashCode(of = "id")
+@Builder @NoArgsConstructor @AllArgsConstructor
+public class Event {
+```
+- 왜 @EqualsAndHasCode에서 of를 사용하는가
+- 왜 @Builder를 사용할 때 @AllArgsConstructor가 필요한가
+- @Data를 쓰지 않는 이유
+- 애노테이션 줄일 수 없나
