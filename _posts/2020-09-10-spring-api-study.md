@@ -116,3 +116,14 @@ date: 2020-09-10 06:10:00 -0500
 ### 테스트 할 것
 - 입력값으로 누가 id나 eventStatus, offline, free 이런 데이터까지 같이 주면?
   - Bad_Request로 응답 vs 받기로 한 값 이외는 무시
+
+
+## 입력값 이외에 에러 발생
+
+### ObjectMapper 커스터마이징
+- spring.jackson.deserialization.fail-on-unknown-properties=true
+
+### 테스트 할 것
+- 입력값으로 누가 id나 eventStatus, offline, free 이런 데이터까지 같이 주면?
+  - Bad_Request로 응답 vs 받기로 한 값 이외는 무시
+
