@@ -296,7 +296,7 @@ public class Event {
     private EventStatus eventStatus = EventStatus.DRAFT;
 ```
 
-EventStatus 이늄 추가
+EventStatus ENUM 추가
 ```java
 public enum EventStatus {
 
