@@ -160,3 +160,61 @@ date: 2020-09-10 06:10:00 -0500
   - 비즈니스 로직으로 검사할 수 있는 에러
   - 에러 응답 메시지에 에러에 대한 정보가 있어야 한다.
 
+<br/>
+
+## Bad Request 응답 본문 만들기
+
+### 커스텀 JSON Serializer 만들기
+- extends JsonSerializer<T> (Jackson JSON 제공)
+- @JsonComponent (스프링 부트 제공)
+
+### BindingError
+- FieldError 와 GlobalError (ObjectError)가 있음
+- objectName
+- defaultMessage
+- code
+- field
+- rejectedValue
+
+### 테스트 할 것
+- 입력 데이터가 이상한 경우 Bad_Request로 응답
+  - 입력값이 이상한 경우 에러
+  - 비즈니스 로직으로 검사할 수 있는 에러
+  - **에러 응답 메시지에 에러에 대한 정보가 있어야 한다.**
+  
+
+<br/>
+
+
+## 비즈니스 로직 적용
+
+### 테스트 할 것
+- 비즈니스 로직 적용 됐는지 응답 메시지 확인
+  - offline과 free 값 확인
+
+
+<br/>
+
+## 매개변수를 이용한 테스트
+
+### 테스트 코드 리팩토링
+- 테스트에서 중복 코드 제거
+- 매개변수만 바꿀 수 있으면 좋겠는데?
+- JUnitParams
+
+### JUnitParams
+- https://github.com/Pragmatists/JUnitParams
+
+```xml
+<!-- https://mvnrepository.com/artifact/pl.pragmatists/JUnitParams -->
+<dependency>
+    <groupId>pl.pragmatists</groupId>
+    <artifactId>JUnitParams</artifactId>
+    <version>1.1.1</version>
+    <scope>test</scope>
+</dependency>
+```
+
+
+
+
