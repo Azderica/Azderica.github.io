@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Springboot API 개발하기"
+title: "Springboot API - 이벤트 생성 API 개발하기"
 date: 2020-09-10 06:10:00 -0500
 
 
