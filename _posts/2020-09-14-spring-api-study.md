@@ -96,6 +96,6 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
   - 요청 본문 문서화
   - 응답 본문 문서화
   - 링크 문서화
-  - profile 링크 추가
+    - profile 링크 추가
   - 응답 헤더 문서화
 
