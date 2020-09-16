@@ -98,4 +98,35 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
   - 링크 문서화
     - profile 링크 추가
   - 응답 헤더 문서화
+  
+
+<br/>
+
+## 스프링 REST Docs: 링크, (Req, Res) 필드와 헤더 문서화
+
+### 요청 필드 문서화
+- requestFields() + fieldWithPath()
+- responseFields() + fieldWithPath()
+- requestHeaders() + headerWithName()
+- responseHedaers() + headerWithName()
+- links() + linkWithRel()
+
+### 테스트 할 것
+- API 문서 만들기
+  - 요청 본문 문서화
+  - 응답 본문 문서화
+  - 링크 문서화
+    - self
+    - query-events
+    - update-event
+    - profile 링크 추가
+  - 요청 헤더 문서화
+  - 요청 필드 문서화
+  - 응답 헤더 문서화
+  - 응답 필드 문서화
+
+### Relaxed 접두어
+- 장점: 문서 일부분만 테스트 할 수 있다.
+- 단점: 정확한 문서를 생성하지 못한다.
+
 
