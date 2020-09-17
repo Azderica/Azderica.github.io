@@ -12,6 +12,8 @@ date: 2020-09-07 06:10:00 -0500
 
 [수업 자료](https://docs.google.com/document/d/1GFo3W6XxqhxDVVqxiSEtqkuVCX93Tdb3xzINRtTIx10/edit)
 
+[코드](https://gitlab.com/whiteship/natural)
+
 ## REST API
 
 ### API
