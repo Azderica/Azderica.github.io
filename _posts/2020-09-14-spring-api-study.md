@@ -215,3 +215,74 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
   - 요청 필드 문서화
   - 응답 헤더 문서화
   - 응답 필드 문서화
+
+<br/>
+
+## PostgreSQL 적용
+
+테스트 할 때는 계속 H2를 사용해도 좋지만 애플리케이션 서버를 실행할 때 PostgreSQL을 사용하도록 변경하자.
+
+/scripts.md 참고
+
+1. PostgreSQL 드라이버 의존성 추가
+
+```xml
+<dependency>
+	<groupId>org.postgresql</groupId>
+	<artifactId>postgresql</artifactId>
+</dependency>
+```
+
+2. 도커로 PostgreSQL 컨테이너 실행
+
+```bash
+docker run --name ndb -p 5432:5432 -e POSTGRES_PASSWORD=pass -d postgres
+```
+
+3. 도커 컨테이너에 들어가보기
+
+
+```bash
+docker exec -i -t ndb bash
+su - postgres
+psql -d postgres -U postgres
+\l
+\dt
+```
+
+4. 데이터소스 설정
+
+```xml
+application.properties
+spring.datasource.username=postgres
+spring.datasource.password=pass
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+```
+
+5. 하이버네이트 설정
+
+**application.properties**
+```xml
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+spring.jpa.properties.hibernate.format_sql=true
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+```
+
+### 애플리케이션 설정과 테스트 설정 중복 어떻게 줄일 것인가?
+- 프로파일과 @ActiveProfiles 활용
+
+**application-test.properties**
+```xml
+spring.datasource.username=sa
+spring.datasource.password=
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driver-class-name=org.h2.Driver
+
+spring.datasource.hikari.jdbc-url=jdbc:h2:mem:testdb
+
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+```
+
