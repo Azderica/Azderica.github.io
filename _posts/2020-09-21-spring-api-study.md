@@ -41,3 +41,25 @@ date: 2020-09-21 06:10:00 -0500
     Account manager;
 ```
 
+<br/>
+
+## 스프링 시큐리티
+
+### 스프링 시큐리티
+- 웹 시큐리티 (Filter 기반 시큐리티)
+- 메소드 시큐리티 
+- 이 둘 다 Security Interceptor를 사용합니다.
+  - 리소스에 접근을 허용할 것이냐 말것이냐를 결정하는 로직이 들어있음.
+
+
+### 의존성 추가
+```xml
+        <dependency>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+```
+- 테스트 다 깨짐 (401 Unauthorized)
+  - 깨지는 이유는 스프링 부트가 제공하는 스프링 시큐리티 기본 설정 때문.
+
