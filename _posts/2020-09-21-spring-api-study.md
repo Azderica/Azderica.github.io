@@ -51,6 +51,8 @@ date: 2020-09-21 06:10:00 -0500
 - 이 둘 다 Security Interceptor를 사용합니다.
   - 리소스에 접근을 허용할 것이냐 말것이냐를 결정하는 로직이 들어있음.
 
+![image](https://user-images.githubusercontent.com/42582516/93766241-19958000-fc51-11ea-82da-7b4f7b41a230.png)
+
 
 ### 의존성 추가
 ```xml
