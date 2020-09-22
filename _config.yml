@@ -18,7 +18,7 @@ tagline:             "웹 개발자의 공부 기록입니다."
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
 description:         >
-  To Be a Pro in Web Development.
+  To Be a Pro.
 
 # This should be the same author as first entry in `_data/authors.yml`
 author:

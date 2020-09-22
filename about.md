@@ -9,5 +9,5 @@ order: 10
 
 매일 공부한 부분을 정리합니다.
 
-기술 블로그 : [아무코딩](https://developer-Azderica.tistory.com)
+기술 블로그 : [개발자 일기장](https://developer-Azderica.tistory.com)
 

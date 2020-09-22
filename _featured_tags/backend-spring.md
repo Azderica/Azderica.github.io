@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
 title: Spring
-slug: Spring
+slug: spring
 category: backend
 menu: false
 order: 3

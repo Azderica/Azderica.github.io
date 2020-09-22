@@ -3,7 +3,7 @@ layout: post
 title: "[ASP.NET] ASP.NET 시작하기"
 subtitle: "ASP.NET 시작하기"
 categories: backend
-tags: dotnet .net backend
+tags: .net dotnet backend
 comments: true
 
 ---
