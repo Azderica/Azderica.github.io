@@ -1,18 +1,9 @@
-<footer class="page-footer">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-4">
-                <div class="content">
-                    <p>
-                        <small>
-                            <span>Powered by</span>
-                            <a target="_blank" href="http://jekyllrb.com/">Jekyll</a>
-                            <span> / Styled using </span>
-                            <a target="_blank" href="http://bulma.io/">Bulma</a>
-                        </small>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<footer>
+  <hr/>
+  {% if site.copyright.size > 0 %}
+    {{ site.copyright | markdownify }}
+  {% endif %}
+  <p>
+    <code>Powered by <a href="https://Azderica.github.io/">Azderica</a></code>
+  </p>
 </footer>

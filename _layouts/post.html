@@ -1,21 +1,9 @@
 ---
-layout: default
+layout: base
 ---
 
-<section class="section">
-    <div class="container">
-        <div class="heading has-text-centered">
-            <p class="title is-3">{{page.title}}</p>
-            <p class="subtitle is-6"><span class="tag is-white"><small>{{ page.date | date: '%B %d, %Y'}}</small></span></p>
-        </div>
-        <br>
-        <div class="columns is-multiline">
+{% include post.html post=page link_title=false %}
 
-            <div class="column is-half is-offset-one-quarter">
-                <div class="content">
-                    {{content}}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{% include about.html %}
+
+{% include related.html post=page %}

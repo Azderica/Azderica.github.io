@@ -1,15 +1,13 @@
---- 
-layout: default 
+---
+layout: base
 ---
 
-<section class="section">
-    <div class="container">
-        <div class="heading has-text-centered">
-            <h1 class="title is-3">{{page.title}}</h1>
-        </div>
-        <br>
-    </div>
-    <div class="container">
-        {{content}}
-    </div>
-</section>
+<article class="page" role="article">
+  <header style="margin-bottom:2rem">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% include message.html text=page.description %}
+  </header>
+
+  {{ content }}
+</article>
+
