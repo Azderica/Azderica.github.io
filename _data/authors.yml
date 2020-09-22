@@ -8,7 +8,7 @@ Azderica:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             
-    좋은 백엔드 개발자가 되기위한 기록.
+    좋은 웹 개발자가 되기 위해, 매일 공부합니다.
 
   # This photo will be used in the about section
   picture:
