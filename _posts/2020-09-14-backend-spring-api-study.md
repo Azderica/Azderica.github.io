@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "[Springboot API] Springboot REST API : HATEOAS와 Self-Describtive Message"
-subtitle: "Springboot REST API : HATEOAS와 Self-Describtive Message"
+title: "[Springboot API] Springboot REST API : HATEOAS와 Self-Describtive Message 적용"
+subtitle: "Springboot REST API : HATEOAS와 Self-Describtive Message 적용"
 categories: backend
 tags: spring springboot api rest backend
 comments: true
