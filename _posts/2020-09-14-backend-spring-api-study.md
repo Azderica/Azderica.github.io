@@ -354,7 +354,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
 
 <br/>
 
-## 스프링 시큐리티 OAuth 2 설정 : 인증 서버 설정
+## 스프링 시큐리티 폼 인증 설정
 
 ```java
     @Override
@@ -378,3 +378,50 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
   - /api 이하 모든 GET 요청에 인증이 필요함. (permitAll()을 사용하여 인증이 필요없이 익명으로 접근이 가능케 할 수 있음)
   - 그밖에 모은 요청도 인증이 필요함.
 
+<br/>
+
+## 스프링 시큐리티 OAuth 2 설정 : 인증 서버 설정
+
+```xml
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>${spring-security.version}</version>
+            <scope>test</scope>
+        </dependency>
+```
+
+### 토큰 발행 테스트
+- User
+- Client
+- POST /oauth/token
+  - HTTP Basic 인증 헤더 (클라이언트 아이디 + 클라이언트 시크릿)
+  - 요청 매개변수 (MultiValuMap<String, String>)
+    - grant_type: password
+    - username
+    - password
+  - 응답에 access_token 나오는지 확인
+
+### Grant Type: Password
+- Granty Type: 토큰 받아오는 방법
+- 서비스 오너가 만든 클라이언트에서 사용하는 Grant Type
+- https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant
+
+### AuthorizationServer 설정
+- @EnableAuthorizationServer
+- extends AuthorizationServerConfigurerAdapter
+- configure(AuthorizationServerSecurityConfigurer security)
+  - PassswordEncode 설정
+- configure(ClientDetailsServiceConfigurer clients)
+  - 클라이언트 설정
+  - grantTypes
+    - password
+    - refresh_token
+  - scopes
+  - secret / name
+  - accessTokenValiditySeconds
+  - refreshTokenValiditySeconds
+- AuthorizationServerEndpointsConfigurer
+  - tokenStore
+  - authenticationMaanger
+  - userDetailsService
