@@ -351,3 +351,30 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
     - /docs/**
     - /favicon.ico
 - PathRequest.toStaticResources() 사용하기
+
+<br/>
+
+## 스프링 시큐리티 OAuth 2 설정 : 인증 서버 설정
+
+```java
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .anonymous()
+                .and()
+            .formLogin()
+                .and()
+            .authorizeRequests()
+                .mvcMatchers(HttpMethod.GET, "/api/**").authenticated()
+                .anyRequest().authenticated();
+    }
+
+```
+
+- 익명 사용자 사용 활성화
+- 폼 인증 방식 활성화
+  - 스프링 시큐리티가 기본 로그인 페이지 제공
+- 요청에 인증 적용
+  - /api 이하 모든 GET 요청에 인증이 필요함. (permitAll()을 사용하여 인증이 필요없이 익명으로 접근이 가능케 할 수 있음)
+  - 그밖에 모은 요청도 인증이 필요함.
+
