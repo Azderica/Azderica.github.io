@@ -266,3 +266,47 @@ comments: true
 ### 이벤트 조회
 - 로그인 했을 때
   - 이벤트 Manager인 경우에는 이벤트 수정 링크 제공
+
+<br/>
+
+## 스프링 시큐리티 현재 사용자
+
+### SecurityContext
+- 자바 ThreadLocal 기반 구현으로 인증 정보를 담고 있다.
+- 인증 정보 꺼내는 방법: 
+`Authentication authentication = SecurityContextHolder.getContext().getAuthentication();`
+
+### @AuthenticationPrincipal spring.security.User user
+- 인증 안한 경우에 null
+- 인증 한 경우에는 username과 authorities 참조 가능
+
+### spring.security.User를 상속받는 클래스를 구현하면
+- 도메인 User를 받을 수 있다.
+- @AuthenticationPrincipa `me.whiteship.user.`UserAdapter 
+- Adatepr.getUser().getId()
+
+### SpEL을 사용하면
+- @AuthenticationPrincipa(expression=”account”) `me.whiteship.user.Account`
+
+```java
+@Target(ElementType.PARAMETER)
+@Retention(RetentionPolicy.RUNTIME)
+@AuthenticationPrincipal(expression = "account")
+public @interface CurrentUser {
+}
+```
+
+### 커스텀 애노테이션을 만들면
+- @CurrentUser Account account
+- 엇? 근데 인증 안하고 접근하면..?
+
+```java
+expression = "#this == 'anonymousUser' ? null : account"
+```
+- 현재 인증 정보가 anonymousUse 인 경우에는 null을 보내고 아니면 “account”를 꺼내준다.
+
+### 조회 API 개선
+- 현재 조회하는 사용자가 owner인 경우에 update 링크 추가 (HATEOAS)
+
+### 수정 API 개선
+- 현재 사용자가 이벤트 owner가 아닌 경우에 403 에러 발생
