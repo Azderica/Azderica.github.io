@@ -310,3 +310,31 @@ expression = "#this == 'anonymousUser' ? null : account"
 
 ### 수정 API 개선
 - 현재 사용자가 이벤트 owner가 아닌 경우에 403 에러 발생
+
+<br/>
+
+## Events API 개선: 출력값 제한하기
+
+### 생성 API 개선
+- Event owner 설정
+- 응답에서 owner의 id만 보내 줄 것.
+
+```json
+{
+  "id" : 4,
+  "name" : "test 3PISM1Ju",
+  "description" : "test event",
+...
+  "free" : false,
+  "eventStatus" : "DRAFT",
+  "owner" : {
+    "id" : 3,
+    "email" : "keesun@email.com",
+    "password" : "{bcrypt}$2a$10$3z/rHmeYsKpoOQR3aUq38OmZjZNsrGfRZxSnmpLfL3lpLxjD5/JZ6",
+    "roles" : [ "USER", "ADMIN" ]
+  },
+```
+
+- JsonSerializer<User> 구현
+- @JsonSerialize(using) 설정
+
