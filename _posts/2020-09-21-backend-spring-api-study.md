@@ -338,3 +338,19 @@ expression = "#this == 'anonymousUser' ? null : account"
 - JsonSerializer<User> 구현
 - @JsonSerialize(using) 설정
 
+<br/>
+
+## 깨진 테스트 살펴보기
+
+### EventControllerTests.updateEvent()
+- 깨지는 이유
+- 해결 방법
+
+### EventControllerTests.getEvent()
+- 깨지는 이유
+- 해결 방법
+
+### DemoApplicationTests
+- 깨지는 이유
+- 해결 방법
+
