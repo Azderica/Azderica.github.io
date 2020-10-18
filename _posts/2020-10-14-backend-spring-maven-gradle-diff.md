@@ -2,8 +2,8 @@
 layout: post
 title: "[Springboot] Maven과 Gradle의 차이"
 subtitle: "Maven과 Gradle의 차이"
-categories: history
-tags: history spring java maven gradle difference 
+categories: backend
+tags: backend spring java maven gradle difference 
 comments: true
 
 ---
