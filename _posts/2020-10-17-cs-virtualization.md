@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[History] 가상화에 대해서"
+title: "[CS] 가상화에 대해서"
 subtitle: "가상화에 대해서"
-categories: history
-tags: history citrix F5 가상화 difference 
+categories: cs
+tags: cs citrix F5 가상화 difference 
 comments: true
 
 ---
