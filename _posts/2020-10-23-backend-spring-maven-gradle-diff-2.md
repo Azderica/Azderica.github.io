@@ -23,7 +23,7 @@ macOS를 대상으로 진행합니다. (windows는 다른 좋은글이 많아서
 
 ### 1. gradle 설치
 
-gradle 자동 설치 (수동 설치는 https://gradle.org/gradle-download/)
+gradle 자동 설치 (수동 설치는 [https://gradle.org/gradle-download/](https://gradle.org/gradle-download/))
 
 ```bash
 brew install gradle
@@ -41,7 +41,7 @@ gradle init --type pom
 
 프로젝트 요구사항에 맞춰서 build.gradle 파일을 수정한다.
 
-mvnrepostiroy : https://mvnrepository.com/
+mvnrepostiroy : [https://mvnrepository.com/](https://mvnrepository.com/)
 
 위 링크에서 필요한 파일을 받아서 수정하면 좋을 듯하다.
 
