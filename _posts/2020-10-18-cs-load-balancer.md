@@ -76,7 +76,12 @@ comments: true
 - 스위치 및 서버별 Health Check를 한다.
 
 차이점
-- 
+- L4는 L/B에서 알고리즘을 통해 server1 또는 server2로 데이터를 전송할지 결정을 하고 Client와 3way handshake 실행하는 하나의 TCP세션을 갖게 된다.
+- L7는 L/B에서 콘텐츠 기반 스위칭을 위해 3way handshake를 보류한다. L/B와 client 간 3way handshake를 실행하여 따로 TCP 세션을 생성한다. L7과 server서버는 또 다른 TCP 세션을 생성하고 데이터를 중계한다.
+- L7는 Dos/SYN Attack에 대한 방어한다.
+- L7는 패킷 분석을 통한 바이러스 감염 패킷 필터링과 자원 독점 방지 등을 통한 시스템 보안 강화한다.
+- L7은 L4의 서비스 단위 로드밸런싱을 극복하기 위한 포트 + 페이로드 패턴을 이용하여 패킷스위칭한다.
+- L4는 TCP/UDP 패킷 정보를 분석하고 해당 패킷이 사용하는 서비스 종류별(HTTP, FTP 등)로 처리한다.(L4 Mega Proxy 문제 발생)
 
 **HTTP**
 ![image](https://user-images.githubusercontent.com/42582516/97098788-6cd17700-16c4-11eb-9705-fe3150b62645.png)
