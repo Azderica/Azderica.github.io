@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "[Springboot] Gradle을 좀 더 자세하게 알아보기"
-subtitle: "Gradel에 대해서"
+subtitle: "Build.Gradel에 대해서"
 categories: backend
-tags: backend spring java gradle groovy
+tags: backend spring java gradle groovy build.gradle
 comments: true
 
 ---
@@ -119,24 +119,80 @@ mainClassName = 'App'
 
 하나씩 설명하면 다음과 같다.
 
-### java 플러그인 추가
+### 플러그인 추가
 
+```gradle
+apply plugin: 'java'
+```
 
-### application 플러그인 추가
+- `apply plugin:`
+  - Gradle 플러그인을 사용하기 위한 것
+- `apply plugin: 'java'`
+  - Java 프로그램을 위한 기능을 제공하는 플러그인
+  - compileJava이라는 테스크는 이 java 플러그인에서 제공한다.
+- `apply plugin: 'application'`
+  - 응용 프로그램에 대한 기능을 제공하는 플러그인
+  - application 플로그인을 통해 run 응용 프로그램을 실행할 수 있다.
 
 
 ### 메인 클래스 이름
+- `mainClassName = 'App'`
+  - application 플러그인으로 사용되는 것, 메인 클래스를 지정
+  - ruin으로 응용프로그램을 실행할 수 있는 이유가 이 mainClassName 메인 클래스가 지정되어 있기 때문이다.
+
+### 저장소(repositories)
+
+저장소(repositories)는 각종 프로그램들이 저장되는 위치이다. 이 저장소는 "어떤 저장소를 사용하는지"를 빌드 파일에 작성하여 설정할 수 있다.
+
+- `mavenCentral()`
+  - Apache Maven 중앙 저장소를 이용하기 위한 것.
+  - Gradle은 중앙 저장소를 그대로 사용할 수 있다.
+- `jcenter()`
+  - Maven과 Gradle 등 각종 빌드 도구에서 사용할 수 있는 공개 저장소
+
+mavenCentral()와 jcenter()는 Gradle 메소드이며 이러한 repositories 안에서 호출하여 지정된 저장소를 사용할 수 있다.
+
+### 의존 라이브러리(dependencies)
+
+저장소에서 필요한 라이브러리를 사용하는데 사용할 수 있는 것이 dependencies이다.
+
+- `compile 'com.google.guava:guava:22.0'`
+  - **컴파일시 의존 라이브러리** 
+  - 라이브러리가 컴파일 시에 참조된다.
+- `testCompile 'junit:junit:4.12'`
+  - **테스트 컴파일시 의존 라이브러리**
+- `calsspath '... 라이브러리 ...'
+  - 지정된 라이브러리를 클래스 경로에 추가할 수 있다
+  - 컴파일ㅅ에서 실행시까지 의존하는 라이브러리 지정에 사용한다.
+
+#### implementation과 compile의 차이
+가끔 다른 프로젝트를 보면 implementation과 compile로 되어 있는 것을 볼 수 있다. 이는 무슨 차이일까?
+
+간단하게 설명하면 다음과 같다.
+
+- Compile의 경우.
+  - A라는 모듈을 수정하게 되면 A를 간접 의존하는 B와 직접 의존하는 C가 있을 때, 둘다 재빌드한다.
+- Implementation의 경우
+  - A라는 모듈의 경우, A를 직접 의존하는 C만 재빌드한다.
+
+##### Implementation의 장점
+
+1. compile보다 빠르다
+    - 적은 recompile을 하므로 
+2. API 노출이 적다.
+    - Design Pattern 중 Transparency(투명도)의 장점이 드러난다.
+    - compile을 사용하게되면 연결된 모든 모듈의 API가 노출된다.
+    - 그러나 Implementation은 그렇지 않다.
+
+Gradle 3.0부터는 compile을 비추천하고 있다.
+
+참고하면 좋은 글 : [https://hack-jam.tistory.com/13]()
 
 
-### java plugin
-
-
-
-
- 
 
 ---
 **출처**
 - [http://devkuma.com/books/pages/1064](http://devkuma.com/books/pages/1064)
 - [http://devkuma.com/books/pages/1068](http://devkuma.com/books/pages/1068)
 - [https://ddmix.blogspot.com/2019/10/get-used-to-gradle.html?m=1](https://ddmix.blogspot.com/2019/10/get-used-to-gradle.html?m=1)
+- [https://hack-jam.tistory.com/13]()
