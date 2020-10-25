@@ -8,10 +8,11 @@ comments: true
 
 ---
 
-이전글 : [Maven과 Gradle의 차이](https://azderica.github.io/backend/2020/10/14/backend-spring-maven-gradle-diff/)
-
 
 # Maven에서 Gradle로 변경하기.
+
+이전글 : [Maven과 Gradle의 차이](https://azderica.github.io/backend/2020/10/14/backend-spring-maven-gradle-diff/)
+
 
 바꿔야하는 지에 대해서는 각자 다양한 이유(성능 문제, 업무 요청, 등등) 다양한 이유가 있을 것으로 판단된다.
 
