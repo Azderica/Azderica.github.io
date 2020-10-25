@@ -112,6 +112,10 @@ comments: true
 ![로드밸런서 장애 대응](https://user-images.githubusercontent.com/42582516/97099076-c8513400-16c7-11eb-8be0-57e02faabfec.gif)
 
 
+## 마무리..
+
+로드밸런서에 대한 설명이 끝났기 때문에 실업무에서 사용하는 로드밸런서 장비와 그 차이에 대해서 이후에 작성해보겠다.
+
 
 ---
 
