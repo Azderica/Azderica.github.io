@@ -47,16 +47,71 @@ comments: true
 
 ## 네트워크 로드밸런서의 종류
 
-- L2(Data Link Layer)
+- **L2(Data Link Layer)**
   - Mac주소를 바탕으로 Load Balancing한다.
   - 장점 : 구조가 간단, 신뢰성이 높음, 가격저렴, 성능이 좋음
   - 단점 : Broadcast 패킷에 의해 성능저하 발생, 라우팅 등 상위레이어 프로토콜 기반 스위칭 불가
-- L3(Network Layer)
+- **L3(Network Layer)**
   - IP주소를 바탕으로 Load Balancing한다.
   - 장점 : Broadcast 트래픽으로 전체 성능 저하 방지, 트레픽 체크
   - 단점 : 특정 프로토콜을 이용해야 스위칭 가능
-- L4(Transport Layer)
-- L7(Application Layer)
+- **L4(Transport Layer)**
+  - Transport Layer(IP와 Port) Level에서 Load Balancing한다.
+  - TCP, UDP 프로토콜
+  - ![L4](https://user-images.githubusercontent.com/42582516/97098680-35ae9600-16c3-11eb-8950-1a68a84016de.png)
+  - 장점 : Port기반 스위칭 지원, VIP를 이용하여 여러대를 한대로 묶어 부하분산
+  - 주로 Round Robin 방식 사용
+- **L7(Application Layer)**
+  - Application Layer(사용자의 Request) Level에서 Load Balancing한다.
+  - HTTP, HTTPS, FTP 프로토콜
+  - ![image](https://user-images.githubusercontent.com/42582516/97098729-d2713380-16c3-11eb-8824-86a033ffa960.png)
+
+### L4와 L7의 차이
+
+일반적으로 로드밸런서는 크게 L4와 L7을 사용한다.
+
+공통점
+- 들어온 packet을 적절한 목적지로 전달(스위치)
+- 적절한 알고리즘을 통해 로드밸런서로서의 역할을 수행
+- 스위치 및 서버별 Health Check를 한다.
+
+차이점
+- 
+
+**HTTP**
+![image](https://user-images.githubusercontent.com/42582516/97098788-6cd17700-16c4-11eb-9705-fe3150b62645.png)
+- `X-Forwarded-For`
+  - HTTP 또는 HTTPS 로드 밸런서를 사용할 때 클라이언트의 IP 주소를 식별하는 데 도움을 줍니다.
+- `X-Forwarded-Proto`
+  - 클라이언트가 로드 밸런서 연결에 사용한 프로토콜(HTTP 또는 HTTPS)을 식별하는 데 도움을 줍니다.
+- `X-Forwarded-Port`
+  - 클라이언트가 로드 밸런서 연결에 사용한 포트를 식별하는 데 도움을 줍니다
+
+
+## 로드밸런서 알고리즘
+
+- Round Robin
+  - 단순히 Round Robin으로 분산하는 방식
+- Least Connections
+  - 연결 개수가 가장 적은 서버를 선택하는 방식
+  - 트래픽으로 인해 세션이 길어지는 경우 권장하는 방식
+- Weighted Least Connections
+  - 서버에 부여된 Weight 값을 기반으로 Connection 수의 개수와 같이 고려하여 선택하는 방식
+- Source
+  - 사용자의 IP를 해싱하여 분배하는 방식
+  - 사용자는 항상 같은 서버로 연결되는 것을 보장
+- Fastest Response Time(응답시간방식)
+  - 가장 빨리 응답하는 서버에 이용자 요구를 연결하는 방식
+  - 응답시간 : 각 서버가 패킷 형태의 요구를 송수신하는데 걸리는 시간
+- 이외에도 Adaptive(최소대기방식), Fixed, Random, URL-based, Cookie 등이 존재한다.
+
+## 로드밸런서 장애 대응
+
+로드밸런서 장애 대응은 로드 밸런서를 이중화하여 장애를 대비할 수 있다.
+
+![로드밸런서 장애 대응](https://user-images.githubusercontent.com/42582516/97099076-c8513400-16c7-11eb-8be0-57e02faabfec.gif)
+
+
 
 ---
 
@@ -65,3 +120,11 @@ comments: true
 - https://nesoy.github.io/articles/2018-06/Load-Balancer
 - https://pakss328.medium.com/%EB%A1%9C%EB%93%9C%EB%B0%B8%EB%9F%B0%EC%84%9C%EB%9E%80-l4-l7-501fd904cf05
 - https://medium.com/harrythegreat/aws-%EB%A1%9C%EB%93%9C%EB%B0%B8%EB%9F%B0%EC%8B%B1-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-9fd0955f859e
+- https://www.digitalocean.com/community/tutorials/what-is-load-balancing#how-does-the-load-balancer-choose-the-backend-server
+- http://oxpedia.org/wiki/index.php?title=AppSuite:Grizzly
+- https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/classic/x-forwarded-headers.html
+- http://tech.kakao.com/2014/05/30/l4/
+- https://d2.naver.com/helloworld/284659
+- https://seokjun.kim/haproxy-and-nginx-load-balancing/
+- http://knight76.tistory.com/entry/30022588363?category=227874
+- http://hiruu.tistory.com/entry/L4L7-%EC%8A%A4%EC%9C%84%EC%B9%98%EC%9D%98-%EA%B0%9C%EC%9A%94
