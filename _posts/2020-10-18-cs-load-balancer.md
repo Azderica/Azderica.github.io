@@ -10,6 +10,10 @@ comments: true
 
 # Load Balancer(로드밸런서)
 
+최근에 Citrix 장비가 F5장비로 변경해야하는 일이 있어서 이를 모니터링할 일이 생겼는데, 이게 무엇인지에 대해서 모른다는 느낌을 받았다.
+
+이를 알기위해서는 먼저 로드밸런서에 대해서 알아야 한다.
+
 ## Load Balancer의 정의
 
 ![image](https://user-images.githubusercontent.com/42582516/96366790-ea592c80-1184-11eb-9110-838bc94fcd5b.png)
