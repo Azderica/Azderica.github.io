@@ -82,6 +82,8 @@ comments: true
 - L7는 패킷 분석을 통한 바이러스 감염 패킷 필터링과 자원 독점 방지 등을 통한 시스템 보안 강화한다.
 - L7은 L4의 서비스 단위 로드밸런싱을 극복하기 위한 포트 + 페이로드 패턴을 이용하여 패킷스위칭한다.
 - L4는 TCP/UDP 패킷 정보를 분석하고 해당 패킷이 사용하는 서비스 종류별(HTTP, FTP 등)로 처리한다.(L4 Mega Proxy 문제 발생)
+  - Mega Proxy : IP기반 분리는 요청 양의 불균형이 일어날 수 있다.
+
 
 **HTTP**
 ![image](https://user-images.githubusercontent.com/42582516/97098788-6cd17700-16c4-11eb-9705-fe3150b62645.png)
