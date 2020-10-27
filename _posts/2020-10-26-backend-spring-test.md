@@ -59,27 +59,49 @@ comments: true
 | assertTrue(a) | 조건 a가 참인가를 확인 |
 | **assertNotNull(a)** | 객체 a가 null이 아님을 확인 |
 
-### Springt-Test 어노테이션
-
-(이후 정리 예정)
+## Springt-Test 어노테이션
 
 - @RunWith(SpringJUnit4ClassRunner.class)
-
+  - @RunWith 어노테이션을 사용함으로써, JUnit에 내장된 러너를 사용하는 대신 어노테이션에 정의된 러너 클래스를 사용
+  - JUnit 프레임워크의 테스트 실행방법을 확장할 때 사용하는 어노테이션이다.
+  - @RunWith를 사용하기 위해선 JUnit 실행에 필요한 SpringJUnit4ClassRunner 클래스를 상속받은 @RunWith(SpringRunner.class)를 꼭 붙여서 사용해야 한다.
+  - @RunWith 어노테이션은 각각의 테스트 별로 객체가 생성되더라도 싱글톤(Singletone)의 ApplicationContext를 보장한다.
+  - @RunWith 어노테이션은 JUnit4에서 주로 사용하는 것으로 알고 있고, JUnit5의 경우에는 @ExtendWith를 사용한다.
 - @ContextConfiguration
-
+  - 스프링 빈(Bean) 설정 파일의 위치를 지정할 때 사용하는 어노테이션이다.
 - @Autowired
-
+  - 스프링 DI에서 사용하는 어노테이션이다.
+  - 해당 변수에 자동으로 빈(Bean)을 매핑해준다.
+  - 스프링 빈(Bean) 설정 파일을 읽기 위해 GenericXmlApplicatoinContext를 사용할 필요가 없다
+  - 변수, setter 메서드, 생성자, 일반 메서드에 적용 가능하다.
+  - 의존하는 객체를 주입할 때는 주로 Type을 사용한다.
+  - <property>, <constructer-arg> 태그와 동일한 역할을 한다.
 - @SpringBootTest
-
+  - 통합 테스트를 제공하는 기본적인 스프링 부트 테스트 어노테이션이다.
+  - 여러 단위의 테스트를 하나의 통합된 테스트로 수행할 때 적합한 어노테이션이다.
+  - 만능 테스트 어노테이션으로 하고 싶은 모든 테스트를 수행할 수 있다.
+  - 애플리케이션에 설정된 빈을 모두 로드하기 때문에 규모가 클 수록 느려지는 단점이 있다.
 - @WebMvcTest
-
+  - MVC를 위한 테스트 어노테이션이다.
+  - 웹에서 테스트하기 힘든 Controller를 테스트하는 데 적합하고 웹 상의 요청 또는 응답에 대해 테스트할 수 있다.
+  - @WebMvcTest를 사용하면 MVC 관련 설정인 어노테이션만 불러오기 때문에 @SpringBootTest보다 가벼운 테스트가 가능
 - @DataJpaTest
-
+  - JPA 관련 테스트 설정만 로드하는 어노테이션이다.
+  - 데이터 소스의 설정이 정상적인지 JPA를 사용하여 데이터를 제대로 CRUD 하는지 테스트가 가능하다.
+  - @Entity 어노테이션을 스캔하여 Spring Data JPA 저장소를 구성한다.
+  - 실제 데이터 베이스 공간을 사용하지 않고, 내장형 데이터 베이스 공간을 사용하여 테스트하기 때문에 JPA 테스트 이후 실제 데이터 베이스가 변경 되었는지 걱정할 필요가 없다.
 - @RestClientTest
-
+  - REST 관련 테스트를 도와주는 어노테이션이다.
+  - REST 통신의 데이터 형식으로 주로 사용되는 JSON 형식에 대해서 제대로 응답을 반환하는지 등을 테스트 한다.
 - @Json Test
+  - JSON 테스트를 지원하는 어노테이션이다.
+  - @JsonTest 어노테이션은 JSON의 직렬화와 역직렬화를 수행하는 라이브러리인 Gson과 Jackson API 테스트를 제공한다.
 
+## 마무리.
 
+다음과 같이 스프링 테스트에서 사용하는 어노테이션에 대해서 간단하게 정리하였다.
+
+이후에는 mock과 mockito에 대해서 작성해보아야 겠다.
 
 ---
 **출처**
