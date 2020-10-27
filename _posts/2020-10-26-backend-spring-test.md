@@ -49,14 +49,35 @@ comments: true
 
 > : 해당글 참고 예정 : https://pureainu.tistory.com/190
 
-(이후 작성 예정.)
-
 ### 자주 사용하는 JUnit 메서드
 
-## Springt-Test 어노테이션
+| 메서드 | 기능 |
+|-------------------|------|
+| **assertEquals(a,b)** | 객체 a, b의 값이 일치하는 지 확인 |
+| assertArrayEquals(a,b) | 배열 a, b의 값이 일치하는 지 확인|
+| assertSame(a,b) | 객체 a, b가 같은 객체인지를 확인 <br/> 두 객체의 레퍼런스가 동일한지 확인|
+| assertTrue(a) | 조건 a가 참인가를 확인 |
+| **assertNotNull(a)** | 객체 a가 null이 아님을 확인 |
 
-등등...
+### Springt-Test 어노테이션
 
+(이후 정리 예정)
+
+- @RunWith(SpringJUnit4ClassRunner.class)
+
+- @ContextConfiguration
+
+- @Autowired
+
+- @SpringBootTest
+
+- @WebMvcTest
+
+- @DataJpaTest
+
+- @RestClientTest
+
+- @Json Test
 
 
 
