@@ -43,8 +43,70 @@ Apacke Kafka는 LinkedIn에서 개발된 분산 메시징 시스템이다. **대
 
 카프카는 pub-sub(발행/구독) 모델을 사용하는데 이는 메세지를 특정 수신자에게 직접 보내주는 시스템이 아니다. publisher는 메세지를 topic을 통해서 카테고리화 한다. 분류된 메세지를 받기 원하는 receiver는 그 해당 topic 을 구독함으로서 메세지를 읽어올 수 있다.
 
+![image](https://user-images.githubusercontent.com/42582516/97575143-a50fe700-1a2f-11eb-8f9d-48158bd5cbb5.png)
+
+
 이를 정리자면 publisher topic에 대한 정보만 알고 있고, 마찬가지로 subscriber도 topic만 바라본다. 즉, publisher와 subscriber는 서로를 모르는 상태이다. 간단한 예시로는 신문사(publisher)에서는 신문의 종류(topic)에 메세지를 쓰고 우리(subscriber)는 그 해당 신문을 구독한다.
 
+## Kafka의 구성요소
+
+Kafka는 다음과 같은 구성요소를 가진다.
+- topic, partition
+- Producer, Consumer, Consumer Group
+- broker, zookeepr
+- replication
+
+하나하나씩 살펴보자.
+
+### Topic, Partition
+
+메세지는 topic으로 분류되고 topic은 여러개의 파티션으로 나눠진다. 파티션 내의 한 칸은 로그라고 불리고, 데이터는 한 칸의 로그에 순차적으로 append가 되며, 메세지의 상대적인 위치를 나타내는 것이 offset이다.
+
+![image](https://user-images.githubusercontent.com/42582516/97575878-befdf980-1a30-11eb-9027-175a07ac474f.png)
+
+다음과 같이 하나의 토픽에 여러개의 파티션을 사용해서 메세지를 쓰는 이유는 다음과 같다.
+- 많은 메세지가 하나의 파티션에 쓴다면 쓰는 과정도 시간이 있기 때문에, 처리하는게 버거워진다.
+- 이를 방지하기 위해서 여러개의 파티션을 두어 분산저장한다. 결과적으로 병렬처리를 하게되면서 시간이 절약된다.
+- 단, 파티션을 늘리게 되면 줄일 수 없기 때문에 파티션을 늘려야하는지에 대해서는 충분히 고려해보아야하는 문제이다.
+- 병렬적으로 처리할 때는 Round Robin형식으로 처리되기 때문에, 순차적으로 메세지가 쓰여지지 않기 때문에 순서가 매우 중요한 메세지를 사용한다면 위험해질 수 있다.
+
+### Producer, Consumer, Consumer Group
+
+**Producer**
+- 메세지를 생산하는 주체이다.
+- 메세지를 만들고 Topic에 메세지를 쓴다.
+- Consumer의 존재를 모른다.
+- 여러개의 토픽에 여러개의 파티션을 나누려면, 특정 메세지들을 분류해서 특정 파티션에 저장할려면 key값을 통해서 분류할 수 있다.
+
+**Consumer**
+- 소비자, 메세지를 소비하는 주체이다.
+- Producer의 존재를 모른다.
+- 해당 topic을 구독함으로서 스스로 조절해가며 소비를 할 수 있다.
+- topic내 존재하는 offset의 위치를 통해서, 혹시 Consumer가 죽더라도 다시 살아나서 마지막 위치부터 읽을 수 있으므로 **fail-over**에 대한 신뢰가 존재한다.
+
+**Consumer Group**
+- Consumer들의 묶음
+- **반드시 해당 topic의 파티션은 consumer group과 1:n 매칭을 해야한다.**
+
+|partition 수|consumer 수|설명|
+|-----|-----|----------------------|
+|3|2|consumer 중 하나는 2개의 파티션 소비|
+|3|3|consumer 1개와 파티션 1개가 1:1매칭|
+|3|4|consumer 1개가 아무것도 하지 않는다|
+
+- 파티션 수를 늘릴 때는, consumer의 개수도 고려해야한다.
+- 그룹이 존재하는 이유 : **컨슈머 그룹은 하나의 topic에 대한 책임이 있다.**
+  - 즉, 특정 컨슈머에 문제가 생겼을 경우 다른 그룹내 컨슈머가 대신 읽을 수 있게 **리벨런싱**이 되어 장애 상황에서도 문제 없이 대처해야한다.
+
+
+### Broker, Zookeeper
+
+broker는 카프카의 서버를 의미한다. broker.id=1..n으로 함으로써 동일한 노드내에서 여러개의 broker서버를 띄울 수도 있다. zookeeper는 이러한 분산 메세지 큐의 정보를 관리해 주는 역할을 한다. kafka를 띄우기 위해서는 zookeeper가 반드시 실행되어야 한다.
+
+![image](https://user-images.githubusercontent.com/42582516/97719085-060bed80-1b0a-11eb-9c0e-4c86ad8dbe34.png)
+
+
+### Replication
 
 
 ---
@@ -53,3 +115,4 @@ Apacke Kafka는 LinkedIn에서 개발된 분산 메시징 시스템이다. **대
 - https://kim-daeyong.github.io/2019-08-09-kafka/
 - https://medium.com/@umanking/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0-%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90-%EB%A8%BC%EC%A0%80-data%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%B4%EB%B3%B4%EC%9E%90-d2e3ca2f3c2
 - https://dbjh.tistory.com/54
+- https://team-platform.tistory.com/11
