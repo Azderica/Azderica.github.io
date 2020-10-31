@@ -108,7 +108,31 @@ broker는 카프카의 서버를 의미한다. broker.id=1..n으로 함으로써
 
 ### Replication
 
-Kafka 
+Replication은 복제라는 의미이며, 이는 특정 broker에 문제가 생겼을 경우에 해당 broker의 역할을 다른 broker에서 즉각적으로 대신 수행하는 기능을 가진다.
+
+카프카에서는 replication 수를 임의로 지정하여 topic를 만들 수 있다. replication-factor에 지정하는데 만약 3으로 하면 replication 수가 3이 된다.
+
+Ex) Kafka Cluster에 3개의 broker가 있고 3개의 Topic이 있다고 가정한 이후, Topic-1은 replication-factor 1, Topic-2은 replication-factor 2, Topic-3은 replication-factor 3인 경우이다.
+
+
+![image](https://user-images.githubusercontent.com/42582516/97773365-68a8cc00-1b92-11eb-9f15-75d2c5b0c8fe.png)
+
+좀 더 replication을 자세하게 보면, 복제요소 중 대표는 leader, 그 외의 요소는 follower로 나눠진다. topic으로 통하는 모든 데이터의 read/write는 leader에서만 이뤄지고 follower는 leader와 sync을 유지하며 leader에 문제가 생겻을 경우에 follower 중 하나가 leader 역할을 한다.
+
+![image](https://user-images.githubusercontent.com/42582516/97773513-b245e680-1b93-11eb-9e35-6d10d7695d8d.png)
+
+복제된 데이터가 follower들에게 있으니, 메시지의 유실이 없다는 장점이 있지만, 복제를 하기 위한 시간과 네트워크 비용이 들기 때문에 데이터의 중요도에 따라 ack옵션으로 성능과 데이터의 중요도에 따라 다음과 같이 세부설정이 가능하다.
+
+> ack (default:1)
+> - 0 : 프로듀서는 서버로부터 어떠한 ack도 기다리지 않음. 유실율 높으나 높은 처리량
+> - 1 : 리더는 데이터를 기록, 모든 팔로워는 확인하지 않음
+> - -1(또는 all) : 모든 ISR 확인. 무손실
+
+ack값을 설정하여 데이터의 무손실에 더 중요성을 둘 것인지 또는 유실을 어느정도 감수 하더라고 속도에 중요성을 둘 것인지를 선택할 수 있다.
+
+모든 구성요소를 정리하면 다음과 같다.
+![image](https://user-images.githubusercontent.com/42582516/97773623-c3dbbe00-1b94-11eb-8349-dbb6ea14019d.png)
+
 
 
 
@@ -119,3 +143,4 @@ Kafka
 - https://medium.com/@umanking/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0-%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90-%EB%A8%BC%EC%A0%80-data%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%B4%EB%B3%B4%EC%9E%90-d2e3ca2f3c2
 - https://dbjh.tistory.com/54
 - https://team-platform.tistory.com/11
+- http://kafka.apache.org/documentation/
