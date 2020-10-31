@@ -108,6 +108,9 @@ broker는 카프카의 서버를 의미한다. broker.id=1..n으로 함으로써
 
 ### Replication
 
+Kafka 
+
+
 
 ---
 **출처**
