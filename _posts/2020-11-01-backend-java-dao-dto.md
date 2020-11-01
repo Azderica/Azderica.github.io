@@ -45,21 +45,50 @@ public class MemberRepository {
 
 ## DAO(Data Access Object)
 
-- 실제로 DB에 접근하는 객체이다.
-  - Persistence Layer(DB에 data를 CRUD하는 계층)이다.
-- Service와 DB를 연결하는 역할을 한다.
-- SQL를 사용(개발자가 직접 코딩)하여 DB에 접근한 후 적절한 CRUD API를 제공한다.
-  - JPA 대부분의 기본적인 CRUD method를 제공하고 있다.
-  - `extends JpaRepository<User, Long>`
-- 예시(JPA 사용 시)
-  - 
-  ```java
-  public interface QuestionRepository extends CrudRepository<Question, Long> {}
-  ```
+- 원래 DB의 데이터(필드)와 프로그래밍 언어는 패러다임의 불일치로 인해 사용할 수 없다. 이를 원래 사용할려면 별도의 SQL을 작성해서 SQL을 객체의 필드에 하나씩 매핑하거나 순수한 SQL을 작성하여 사용해야 한다.
 
-(이후 작성 예정)
+- 하지만 별도의 Entity Class를 사용해서 클래스를 테이블과 1:1 매칭할 수 있다. 이러한 Entity Class를 **도메인**이라고 하며 가장 DB와 가까운 클래스이다.
 
-## DTO
+```java
+@Entity
+@Getter
+public class Member {
+    @Id @GeneratedValue
+    @Column(name = "member_id")
+    private Long id; // PK
+
+    @NotEmpty
+    @NotNull
+    private String name;
+
+    @Embedded // 내장 타입 임베딩
+    private Address address;
+
+    @JsonIgnore
+    @OneToMany (mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+}
+```
+
+다음은 예시 코드이다.
+
+- Entity의 각 필드는 DB 테이블과 1:1매칭되며 PK를 가진다.
+- Entity는 순수한 도메인 로직과 비지니스 로직만 가지고 있어야한다.
+- Entity는 DB의 데이터를 전달해주고 Service에서 사용할 비즈니스 로직만을 가져야한다.
+
+```java
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+public class MemberService {
+
+    private final MemberRepository memberRepository; 
+```
+
+다음 코드는 서비스 계층의 Repository를 사용한 코드이다.
+
+## DTO(Data Transfer Object)
+
 
 
 
