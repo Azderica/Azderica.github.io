@@ -57,6 +57,7 @@ public class MemberRepository {
   public interface QuestionRepository extends CrudRepository<Question, Long> {}
   ```
 
+(이후 작성 예정)
 
 ## DTO
 
@@ -69,3 +70,5 @@ public class MemberRepository {
 
 **출처**
 - https://gmlwjd9405.github.io/2018/12/25/difference-dao-dto-entity.html
+- https://velog.io/@agugu95/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%8C%A8%ED%84%B4%EA%B3%BC-DAO-DTO-Repository
+- https://shinsunyoung.tistory.com/42
