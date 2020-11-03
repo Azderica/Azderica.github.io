@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[Springboot] 스프링부트 MVC - Filter"
-subtitle: "Spring Boot MVC - Filter"
+title: "[Java] url-pattern이란"
+subtitle: "url-pattern이란 어떤 것인가."
 categories: backend
-tags: spring backend springboot filter
+tags: spring backend jsp url-pattern web.xml
 comments: true
 
 ---
@@ -22,7 +22,6 @@ HTTP Method 취약점을 제거하는 업무를 하는 중에 기존 코드에�
 
 서블릿의 ServletContext 기능으로 사용자에 의해 서블릿이 호출 되기 전/후로 사용자 요청/응답의 헤더 정보 등을 검사 및 설정할 수 있다.
 
-(이후 추가예정)
 
 ---
 **출처**
