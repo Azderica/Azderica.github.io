@@ -3,7 +3,7 @@ layout: post
 title: "[Java] url-pattern이란"
 subtitle: "url-pattern이란 어떤 것인가."
 categories: backend
-tags: spring backend jsp url-pattern web.xml
+tags: java backend jsp url-pattern web.xml
 comments: true
 
 ---
