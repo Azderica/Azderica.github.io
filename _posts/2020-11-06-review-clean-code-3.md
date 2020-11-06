@@ -53,7 +53,7 @@ public List<RecordedGrip> retrieveSection(String sectionName) {
 
 -   외부 API를 사용할 때는 감싸기 기법을 사용하는 것은 좋은 방법이다.
     
--   ```
+-   ```java
     LocalPort port = new LocalPort(12);
     try {
       port.open();
@@ -111,7 +111,7 @@ null에 대한 과한 확인은 문제가 될 수 있다. 즉, 예외나 **특�
 
 간단한 예시 코드는 다음과 같다.
 
-```
+```java
 public class LogTest {
   private Logger logger;
 

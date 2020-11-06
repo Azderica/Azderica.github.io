@@ -209,7 +209,7 @@ AspectJ는 관심사를 관점으로 분리하는 가장 강력한 도구이다.
 
 ### 난관
 
-```
+```java
 public class X {
   private int lastIdUsed;
 

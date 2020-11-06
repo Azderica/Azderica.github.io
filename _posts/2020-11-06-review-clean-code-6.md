@@ -30,7 +30,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         // kk:mm:ss EEE, MMM dd, yyyy 형식이다.
         Pattern timeMatcher = Pattern.compile(
             "\\d*:\\d*:\\d* \\w*, \\w*, \\d*, \\d*");
@@ -42,7 +42,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         public void testConcurrentAddWidgets() throw Exception {
           ...
           // 스레드를 대량 생성하는 방법으로 어떻게든 경쟁 조건을 만들려 시도한다.
@@ -62,7 +62,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         ...
         
         assertThat(a.compareTo(a) == 0);    // a == a
@@ -77,7 +77,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         public static SimpleDateFormat makeStandardHttpDataFormat(){
           // SimpleDateFormat은 스레드에 안전하지 못하다.
           // 따라서 각 인스턴스를 독립적으로 생성해야 한다.
@@ -93,7 +93,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         // TODO-MdM 현재 필요하지 않다
         // 체크아웃 모델을 도입하면 함수가 필요 없다.
         protected VersionInfo makeVersion() throws Exception{
@@ -107,7 +107,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         String listItemContent = match.group(3).trim();
         // 여기서 trim은 정말 중요하다. trim 함수는 문자열에서 시작 공백을 제거한다.
         // 문자열에 시작 공백이 있으면 다른 문자열로 인식되기 때문이다.
@@ -220,7 +220,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         private void measureLine(String line){
           lineCount++;
           int lineSize = line.length();    // 느슨한 개념
@@ -264,7 +264,7 @@ comments: true
 
 1.  기차 충돌
     
-    -   ```
+    -   ```java
         // 기차 충돌 코드
         final String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath();
         

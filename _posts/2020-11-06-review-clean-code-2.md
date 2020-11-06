@@ -30,7 +30,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         // kk:mm:ss EEE, MMM dd, yyyy 형식이다.
         Pattern timeMatcher = Pattern.compile(
             "\\d*:\\d*:\\d* \\w*, \\w*, \\d*, \\d*");
@@ -42,7 +42,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         public void testConcurrentAddWidgets() throw Exception {
           ...
           // 스레드를 대량 생성하는 방법으로 어떻게든 경쟁 조건을 만들려 시도한다.
@@ -62,7 +62,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         ...
         
         assertThat(a.compareTo(a) == 0);    // a == a
@@ -77,7 +77,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         public static SimpleDateFormat makeStandardHttpDataFormat(){
           // SimpleDateFormat은 스레드에 안전하지 못하다.
           // 따라서 각 인스턴스를 독립적으로 생성해야 한다.
@@ -107,7 +107,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         String listItemContent = match.group(3).trim();
         // 여기서 trim은 정말 중요하다. trim 함수는 문자열에서 시작 공백을 제거한다.
         // 문자열에 시작 공백이 있으면 다른 문자열로 인식되기 때문이다.
@@ -166,7 +166,7 @@ comments: true
     -   신문이 다양한 기사로 이뤄지는 것처럼, 소스 코드도 그렇게 구성한다.
 2.  개념은 빈 행으로 분리하기
     
-    -   ```
+    -   ```java
         // 좋은 케이스
         private String function1(){
           ...
@@ -264,7 +264,7 @@ comments: true
 
 1.  기차 충돌
     
-    -   ```
+    -   ```java
         // 기차 충돌 코드
         final String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath();
         
