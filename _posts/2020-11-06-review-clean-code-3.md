@@ -22,7 +22,7 @@ comments: true
 
 예외가 발생할 코드를 짤 경우에는 try-catch-finally 문으로 시작하는 것이 좋다.
 
-```
+```java
 public List<RecordedGrip> retrieveSection(String sectionName) {
   try {
     FileInputStream stream = new FileInputStream(sectionName);

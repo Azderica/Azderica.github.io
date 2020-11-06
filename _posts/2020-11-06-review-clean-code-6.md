@@ -166,7 +166,7 @@ comments: true
     -   신문이 다양한 기사로 이뤄지는 것처럼, 소스 코드도 그렇게 구성한다.
 2.  개념은 빈 행으로 분리하기
     
-    -   ```
+    -   ```java
         // 좋은 케이스
         private String function1(){
           ...

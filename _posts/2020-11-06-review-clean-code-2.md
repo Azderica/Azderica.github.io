@@ -93,7 +93,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         // TODO-MdM 현재 필요하지 않다
         // 체크아웃 모델을 도입하면 함수가 필요 없다.
         protected VersionInfo makeVersion() throws Exception{
@@ -220,7 +220,7 @@ comments: true
         
     -   Ex)
         
-        ```
+        ```java
         private void measureLine(String line){
           lineCount++;
           int lineSize = line.length();    // 느슨한 개념
