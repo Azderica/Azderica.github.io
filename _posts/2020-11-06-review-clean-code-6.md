@@ -8,7 +8,7 @@ comments: true
 
 ---
 
-# Clean Code 내용 정리 - 2
+# Clean Code 내용 정리 - 6
 
 ## 4장. 주석
 
