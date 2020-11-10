@@ -58,19 +58,19 @@ HTTP Method 취약점을 제거하는 업무를 하는 중에 기존 코드에�
 
 ```java
 @Bean
-public FilterRegistrationBean someFilterRegistration() {
+public FilterRegistrationBean testFilterRegistration() {
 
     FilterRegistrationBean registration = new FilterRegistrationBean();
-    registration.setFilter(someFilter());
+    registration.setFilter(testFilter());
     registration.addUrlPatterns("/url/*");
     registration.addInitParameter("paramName", "paramValue");
-    registration.setName("someFilter");
+    registration.setName("testFilter");
     registration.setOrder(1);
     return registration;
 } 
 
-public Filter someFilter() {
-    return new SomeFilter();
+public Filter testFilter() {
+    return new testFilter();
 }
 ```
 
@@ -78,10 +78,68 @@ public Filter someFilter() {
 
 좀 더 스프링 부트의 필터에 대해 알아보자면, 다음과 같습니다. 스프링 부트에서 필터를 사용하는 방법은 크게 두가지로 나눠집니다.
 
+### 1. FilterRegistrationBean으로 필터 등록
 
+`org.springframework.boot.web.servlet`의 `FilterRegistrationBeen`을 사용하여, CORSFilter 클래스를 설정파일에서 빈으로 등록하는 방식입니다.
+
+- 예시코드는 다음과 같습니다.
+
+```java
+@SpringBootApplication
+public class TestApplication1 {
+
+	public static void main(String[] args) {
+		SpringApplication.run(TestApplication1.class, args);
+	}
+
+	@Bean
+	public FilterRegistrationBean setFilterRegistration() {
+		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new MyFilter());
+
+        // string 여러개를 가변인자로 받는 메소드
+		filterRegistrationBean.addUrlPatterns("/filtered/*"); 
+        return filterRegistrationBean;
+	}
+}
+```
+
+### 2. @WebFilter + @ServletComponentScan
+
+스프링부트에서 지원하는 `@WebFilter` 애너테이션으로 자동 등록 후에 `@ServletComponentScan`을 사용하는 방식이다.
+
+예시코드는 다음과 같습니다.
+
+- `@ServletComonentScan 설정`
+
+```java
+@ServletComponentScan
+@SpringBootApplication
+public class TestApplication2 {
+	public static void main(String[] args) {
+		SpringApplication.run(TestApplication2.class, args);
+	}
+}
+```
+
+- `@WebFilter 설정`
+
+```java
+@Slf4j
+@WebFilter(urlPatterns = "/filtered/*")
+public class MyFilter implements Filter {
+	// 1번과 내용이 같습니다.
+}
+```
+
+다음과 같이 구성할 수 있습니다. 해당 코드와 같이 Springboot에 필터를 설정할 수 있습니다. 
+
+## 마무리.
+
+업무 개발 코드를 추가할 수 없어서 간단하게 정리했습니다. 다음에 업무 상에 시간이 조금 있으면, HTTP Method를 제한하는 코드를 추가적으로 구성해서 올리겠습니다.
 
 
 ---
 **출처**
 - https://linked2ev.github.io/gitlog/2019/09/15/springboot-mvc-13-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-MVC-Filter-%EC%84%A4%EC%A0%95/
 - https://qastack.kr/programming/19825946/how-to-add-a-filter-class-in-spring-boot
+- https://luvstudy.tistory.com/79
