@@ -18,12 +18,70 @@ HTTP Method 취약점을 제거하는 업무를 하는 중에 기존 코드에�
 
 ![image](https://user-images.githubusercontent.com/42582516/97983638-ee3dad80-1e18-11eb-95ca-2b249554509b.png)
 
-다음의 사진과 같다.
+다음의 사진과 같습니다.
 
-서블릿의 ServletContext 기능으로 사용자에 의해 서블릿이 호출 되기 전/후로 사용자 요청/응답의 헤더 정보 등을 검사 및 설정할 수 있다.
+서블릿의 ServletContext 기능으로 사용자에 의해 서블릿이 호출 되기 전/후로 사용자 요청/응답의 헤더 정보 등을 검사 및 설정할 수 있습니다.
 
-(이후 추가예정...)
+
+## Filter와 Interceptor의 차이
+
+- Filter는 DispatcherServlet 앞에서 먼저 동작하고, Intercepter는 DispatcherServlet에서 Controller(Handler) 사이에서 동작합니다.
+- Filter
+  - `웹 어플리케이션의 Context`의 기능을 가지고 있다.
+  - 스프링 기능을 활용하기에 어렵다.
+  - 일반적으로 인코딩, CORS, XSS, LOG, 인증, 권한 등을 구현한다..
+- Interceptor
+  - `스프링의 Spring Context`의 기능이며 일종의 빈이다.
+  - 스프링 컨테이너이므로 다른 Bean을 주입해서, 활용성을 높일 수 있다.
+  - 다른 Bean을 활용 가능하기에 인증 및 권한 등을 구현할 수 있다.
+
+## Springboot에서 Filter를 설정.
+
+> 스프링에서는 웹 어플리케이셔 컨텍스트를 설정할 수 있는 web.xml 파일을 통한 필터를 설정할 수 있다. 그러나 스프링부트는 다르다.
+
+```xml
+<filter>
+     <filter-name>SomeFilter</filter-name>
+    <filter-class>com.somecompany.SomeFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>SomeFilter</filter-name>
+    <url-pattern>/url/*</url-pattern>
+    <init-param>
+       <param-name>paramName</param-name>
+       <param-value>paramValue</param-value>
+    </init-param>
+</filter-mapping>
+```
+
+> 스프링 부트는 다음과 같이 설정할 수 있습니다.
+
+```java
+@Bean
+public FilterRegistrationBean someFilterRegistration() {
+
+    FilterRegistrationBean registration = new FilterRegistrationBean();
+    registration.setFilter(someFilter());
+    registration.addUrlPatterns("/url/*");
+    registration.addInitParameter("paramName", "paramValue");
+    registration.setName("someFilter");
+    registration.setOrder(1);
+    return registration;
+} 
+
+public Filter someFilter() {
+    return new SomeFilter();
+}
+```
+
+이처럼 스프링과 스프링 부트의 필터 설정은 다르게 설정됩니다.
+
+좀 더 스프링 부트의 필터에 대해 알아보자면, 다음과 같습니다. 스프링 부트에서 필터를 사용하는 방법은 크게 두가지로 나눠집니다.
+
+
+
 
 ---
 **출처**
 - https://linked2ev.github.io/gitlog/2019/09/15/springboot-mvc-13-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-MVC-Filter-%EC%84%A4%EC%A0%95/
+- https://qastack.kr/programming/19825946/how-to-add-a-filter-class-in-spring-boot
