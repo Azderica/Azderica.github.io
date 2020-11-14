@@ -23,11 +23,27 @@ comments: true
 
 쿠버네티스는 클라우드 전체로 호스트를 확장할 수 있고, 이러한 기능이 Apache Kafka 스트리밍과 같이 신속한 확장을 요구하는 클라우드 환경에서 큰 장점을 가집니다.
 
+<br/>
+
+## 쿠버네티스의 기본 용어
+
+![image](https://user-images.githubusercontent.com/42582516/99147045-cffd6a80-26c0-11eb-846e-dee35301857c.png)
+
+
+- 마스터(Master) : 노드를 제어하고 전체 클러스터를 관리해주는 컨트롤러, 전체적인 제어/관리를 하기 위한 관리 서버
+- 노드(Nod) : 컨테이너가 배포될 물리 서버 또는 가상 머신이며 워커 노드(Worker Node)라고 불린다.
+- 파드(Pod) : 단일 노드에 배포된 하나 이상의 컨테이너 그룹이며, Pod라는 단위로 여러개의 컨테이너를 묶어서 파드 단위로 관리가 가능하다.
+
+<br/>
+
 ## 쿠버네티스의 특징
 
 ### 1. 여러회사들의 참여로 인한 큰 스케일과 커뮤니티, 생태계
 
-![image](https://user-images.githubusercontent.com/42582516/98944509-7ff19d00-2534-11eb-946b-18a309fe1399.png)
+![image](https://user-images.githubusercontent.com/42582516/99147075-1fdc3180-26c1-11eb-88af-4702b0d1236e.png)
+
+> 우리가 아는 많은 회사가 보인다.
+
 
 여러 회사의 노하우와 경험이 녹아있어서 다양한 커뮤니티와 좋은 생태계가 구성되어 있습니다. 대부분의 문제점이나 원하는 서비스를 만들려고 찾아보면 있는 것을 확인할 수 있습니다. CI(Continuous Integration), 컨테이너 서버리스, 머신러닝 등이 쿠버네티스 환경에서 잘 돌아갑니다.
 
@@ -71,33 +87,42 @@ comments: true
 
 ### 5. Namespcae & Label을 통한 구분
 
+![image](https://user-images.githubusercontent.com/42582516/99147381-ed800380-26c3-11eb-8353-23f58c65b722.png)
+
+하나의 클러스터를 논리적으로 구분해서 사용할 수 있습니다. 하나의 클러스터에 다양한 프레임워크와 애플리케이션을 설치하기 때문에 기본 (system, default)외에 여러 개의 네임스페이스를 사용하는 것이 일반적이다.
 
 ### 6. RBAC(Role-based access control)
 
+![image](https://user-images.githubusercontent.com/42582516/99147431-3fc12480-26c4-11eb-9e76-50b1b9d780c6.png)
+
+RBAC는 접근 권한 시스텝입니다. 각각의 리소스에 대해 유저별로 CRUD스러운 권한을 손쉽게 지정할 수 있으며, 클러스터 전체에 적용하거나 특정 네임스페이스에 적용할 수 있습니다.
 
 ### 7. CRD(Custom Resource Definitation)
 
+쿠버네티스가 제공하지 않는 기능을 기본 기능과 동일한 빙식으로 적용하고 사용할 수 있는 기능입니다. 
+
+- Ex) Knative 등등
 
 ### 8. Auto Scaling
 
+CPU, memory 사용량, 접속자 수 등을 조절할 수 있습니다. 다음과 같은 종류가 있습니다.
+- HPA(Horizontal Pod Autoscaler) : 컨테이너 개수 조정
+- VPA(Vertical Pod Autoscaler) : 컨테이너 리소스 할당량 조절
+- CA(Cluster Autoscaler) : 서버 개수 조정
 
 ### 9. Federation, Multi Cluster
 
+클라우드에 설치된 쿠버네티스 클러스와 자체 서버에 설치한 쿠버네티스를 묶어서 하나로 사용할 수 있습니다. 구글에서 발표한 Anthos를 사용하면 한 곳에서 여러 클라우드의 클러스터를 관리할 수 있습니다.
 
-### 10. 서비스 디스커버리와 로드 밸런싱
+### 10. IT 보안
 
+![image](https://user-images.githubusercontent.com/42582516/99147877-a98efd80-26c7-11eb-973f-58fae551a5d6.png)
 
-### 11. 스토리지 오케스레이션
-
-
-### 12. 자동화된 롤아웃과 롤백
-
-
-### 13. 자동화된 롤아웃과 롤백
-
-
-### 14. 시크릿과 구성 관리
+컨테이너 보안은 멀티레이어 구조이므로 이는 복잡합니다. 쿠버네티스는 워크로드를 위해 규모에 맞는 컨테이너를 배포하는데 필요한 자원 및 관리 기능을 제공합니다. 이를 통해서 애플리케이션 서비스를 구축하고, 일정을 계획하고, 컨테이너를 확장해서 컨테이너 상태를 지속적으로 관리할 수 있습니다.
  
+ </br>
+
+## 쿠버네티스의 기본 개념
 
 
 
@@ -108,3 +133,5 @@ comments: true
 - https://subicura.com/2019/05/19/kubernetes-basic-1.html
 - https://www.redhat.com/ko/topics/containers/what-is-kubernetes
 - https://nirsa.tistory.com/
+- https://nirsa.tistory.com/129?category=871751
+- https://arisu1000.tistory.com/27862
