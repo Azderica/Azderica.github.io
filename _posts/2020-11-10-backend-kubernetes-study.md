@@ -205,3 +205,4 @@ CPU, memory 사용량, 접속자 수 등을 조절할 수 있습니다. 다음�
 - https://nirsa.tistory.com/
 - https://nirsa.tistory.com/129?category=871751
 - https://arisu1000.tistory.com/27862
+- https://suhwan.dev/2019/04/22/understanding-kubernetes-design/
