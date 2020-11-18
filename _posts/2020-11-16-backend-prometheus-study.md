@@ -3,17 +3,12 @@ layout: post
 title: "[Prometheus] Prometheus란?"
 subtitle: "Prometheus에 대한 기초 지식 정리"
 categories: backend
-tags: prometheus backend
+tags: prometheus backend monitoring
 comments: true
 
 ---
 
-# Prometheus
-
-Created By: Myeonghun Park
-Last Edited: Nov 16, 2020 5:46 AM
-
-# Prometheus.
+# Prometheus란.
 
 업무를 진행하다가 모니터링 시스템에 대해서 듣기 시작했다, 그 모니터링 시스템에 대해 듣다보니 공부를 해야겠다는 생각이 들어서 글을 정리한다. 모니터링 툴로 유명한 프로메테우스, Grafana 등이 있는데 오늘은 Prometheus에 대한 글을 작성해볼려고 한다.
 
