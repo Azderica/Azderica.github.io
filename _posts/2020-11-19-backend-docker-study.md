@@ -96,20 +96,61 @@ VM과 같이, 추가적인 OS를 설치하여 가상화하는 것은 성능상�
 
 ### 이미지 경로
 
+![image](https://user-images.githubusercontent.com/42582516/99871551-169e1800-2c1f-11eb-8b5a-31f81ee8ece8.png)
+
+이미지를 url 방식으로 관리해서 태그를 붙일 수 있습니다. ubuntu 14.04의 이미지는 `docker.io/libary/ubuntu:14.04`이나 `docker.io/libaray/ubuntu:trusty`이며, `docker.io/library` 는 생략할 수 있습니다. 이러한 방식을 통해서 이해하기 쉽고 편리하게 사용할 수 있습니다.
 
 ### Dockerfile
 
+도커는 이미지 파일을 만들기 위해서 `Dockerfile`이라는 파일에 DSL(Domain-specific language) 언어를 통해서 이미지 생성 과정을 작성합니다.
+
+```docker
+FROM ubuntu:18.04
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+
+다음과 같이, `Dockerfile` 의 예시를 볼 수 있습니다. 위의 샘플은 복잡하지 않다는 것을 알 수 있습니다.
+
+다음에 대해서 간략하게 설명하면, 다음과 같습니다.
+- FROM : ubuntu:18.04 Docker image으로 부터 레이어를 만듭니다.
+- COPY : Docker의 현재 directory에 파일을 추가합니다.
+- RUN : make를 통해 어플리케이션을 빌드합니다.
+- CMD : 해당 컨테이너안에서 어떠한 명령을 할지 특정합니다.
+
+해당 `Dockerfile`을 통해서 어떤 프로그램을 설치할려고 할때, 쉽게 관리할 수 있습니다.
+
 ### Docker Hub
+
+`Docker Hub`를 통해서 공개 이미지를 무료로 사용할 수도 있습니다.
 
 ### Command, API
 
-### 유용한 기능들
+`Docker` 클라이언트의 커맨드 명령어는 쉽게 만들어져있습니다. 
 
-### 좋은 생태계
+간단한 명령어는 다음과 같습니다.
 
-### 커뮤니티 지원
+|명령어|내용|
+|----|-----------|
+|`docker search {image-name}`| docker hub로부터 이미지 검색|
+|`docker pull {image-name}`| docker hub로부터 이미지 다운로드| 
+|`docker images`| 현재 PC에 다운 받아있는 이미지등을 출력|
+|`docker run <옵션> {image-name} <실행파일>`|컨테이너 생성과 동시에 접속|
+|`docker ps`|실행중인 컨테이너 확인|
+|`docker start {containter-Id}`| 종료된 컨테이너 실행|
 
-(이후 추가예정)
+이 외에도 다양한 명령어와 옵션 등이 있지만, 간단하게 설명했습니다.
+
+### 좋은 생태계와 커뮤니티
+
+도커는 큰 생태계를 가지고 있으며, 좋은 커뮤니티를 가지고 있습니다. 많은 기업들과 협력하여서 클라우드 컨테이너에서 사실상의 표준이 되었습니다.
+
+또한, 발전속도가 빠른 오픈소스이기때문에, 사용하면서 필요한 부분은 대부분 금방 나오고 있습니다.
+
+## 마무리.
+
+도커에 대한 이론적인 부분에 대해, 간략하지만 크게 정리하였습니다. 이후 도커를 직접 설치하고, 이를 활용하는 모습은 이후에 추가적으로 정리하겠습니다. 감사합니다.
 
 ---
 
@@ -118,4 +159,5 @@ VM과 같이, 추가적인 OS를 설치하여 가상화하는 것은 성능상�
 - https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html
 - https://www.redhat.com/ko/topics/containers/containers-vs-vms
 - https://siner308.github.io/2019/02/25/django-docker-custom-image/
+- https://captcha.tistory.com/49
 
