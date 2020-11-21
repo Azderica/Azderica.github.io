@@ -160,4 +160,5 @@ CMD python /app/app.py
 - https://www.redhat.com/ko/topics/containers/containers-vs-vms
 - https://siner308.github.io/2019/02/25/django-docker-custom-image/
 - https://captcha.tistory.com/49
+- https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
