@@ -95,5 +95,9 @@ Elasticsearch 구성 시 보통 3개 이상의 노드(Elasticsearch 서버)를 �
 
 ---
 **출처**
+- https://twofootdog.tistory.com/53
+- https://www.elastic.co/kr/what-is/elasticsearch
+- https://victorydntmd.tistory.com/308
+- https://blog.naver.com/archinitus/80205377502
 
 
