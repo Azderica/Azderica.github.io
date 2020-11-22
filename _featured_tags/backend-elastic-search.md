@@ -1,6 +1,6 @@
 ---
 layout: tag-blog
-title: Elastic Search
+title:  SearchElastic
 slug: elasticSearch
 category: backend
 menu: false
