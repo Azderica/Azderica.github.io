@@ -42,7 +42,7 @@ Elasticsearch는 방대한 양의 데이터를 거의 실시간(NRT, Near Real T
 
 #### 필드(Field)
   - Document에 들어가는 데이터 타입(RDBMS의 column)와 비슷합니다. 
-  
+  - Elasticsearch의 필드는 RDBMS보다 동적입니다. 즉. 하나의 데이터 타임만 가질 수 있는 RDBMS와 달리, 하나의 필드가 여러개의 타입을 가질 수 있습니다.  
 
 #### 매핑(Mapping)
   -
