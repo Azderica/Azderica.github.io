@@ -2,8 +2,8 @@
 layout: post
 title: "[Elastic Search] Elastic Search란?"
 subtitle: "Elastic Search 에 대한 기초 지식 정리"
-categories: elasticSearch
-tags: elasticSearch backend opensource 
+categories: backend
+tags: elasticsearch backend opensource 
 comments: true
 
 ---
