@@ -10,6 +10,8 @@ comments: true
 
 # Elasticsearch.
 
+오늘은 Elasticsearch에 대한 기본적인 내용을 정리합니다.
+
 ## Elasticsearch란?
 
 **Elasticsearch는 Apache Lucene(아파치 루씬)을 기반으로 한 Java 오픈소스 분산 검색 엔진입니다.**
@@ -19,6 +21,10 @@ Elasticsearch는 방대한 양의 데이터를 거의 실시간(NRT, Near Real T
 먼저 Elasticsearch에 본격적으로 들어가기 앞서서, ELK란 (Elasticsearch, Logstatsh, Kibnana)을 의미합니다.
 
 간단하게 ELK 스택을 설명하면 다음과 같습니다.
+
+![image](https://user-images.githubusercontent.com/42582516/99964448-9e7a5280-2dd6-11eb-9bdc-1ae7cf9f2498.png)
+
+
 - Logstash
   - 다양한 소스(DB, csv파일 등)의 로그나 트랜잭션 데이터를 수집, 집계, 파싱하여 Elasticsearch로 전달합니다.
 - Elasticsearch
@@ -31,6 +37,8 @@ Elasticsearch는 방대한 양의 데이터를 거의 실시간(NRT, Near Real T
 ## Elasticsearch 용어 정의
 
 ### 논리적 구조
+
+![image](https://user-images.githubusercontent.com/42582516/99964489-b05bf580-2dd6-11eb-9962-78eae078e84b.png)
 
 #### 도큐먼트(Document)
   - Elasticsearch 데이터 최소 단위(RDBMS의 Row와 비슷)하고, JSON 오브젝트 중 하나입니다.
@@ -57,19 +65,57 @@ Elasticsearch는 방대한 양의 데이터를 거의 실시간(NRT, Near Real T
 
 ### 물리적 구조
 
+![image](https://user-images.githubusercontent.com/42582516/99964072-15fbb200-2dd6-11eb-9485-1887247ebdb4.png)
+
 #### 노드(Node)
-  -
+  - 노드는 Elasticsearch 클러스터에 포함된 **단일 서버**로서 데이터를 저장하고 클러스터의 색인화 및 검색 기능에 참여합니다. 노드는 클러스터처럼 이름으로 식별됩니다.
+  - 일반적으로 노드의 종류는 다음과 같습니다.
+    - 마스터 노드(Master node)
+      - **클러스터 관리 노드**
+      - 노드 추가/제거, 인덱스 생성/삭제 등 클러스터의 전반적 관리를 담당합니다.
+      - 여러개의 마스터 노드를 설정하면 하나의 마스터 노드로 작동됩니다.
+      - `elasticsearch.yml` 에서 `node.master:true`로 설정합니다.
+    - 데이터 노드(Data node)
+      - **데이터(Document)가 저장되는 노드**
+      - 물리적인 공간인 샤드가 배치되는 노드
+      - 색인/검색/통계 등 데이터 작업 수행(리소스가 소모가 심해 모니터링이 필요합니다.)
+      - 마스터와는 분리할 필요가 있습니다.
+      - `elasticsearch.yml`의 `node.data : true`로 설정합니다.
+    - 코디네이팅 노드(Coordinating Node)
+      - **사용자의 요청을 받고 Round Robin 방식으로 분산시켜주는 노드**
+      - 클러스터에 관련된 것은 마스터노드로, 데이터와 관련된 것은 데이터 노드로 넘깁니다.
+      - `elasticsearch.yml` 내부의 노드 종류 관련 옵션을 전부 `false`로 설정합니다.
+    - 인제스트 노드(Ingest node) : 
+      - **문서 전처리 작업을 수행**
+      - 인덱스 생성 전 문서의 형식을 변경할 수 있습니다.
+      - `elasticsearch.yml`의 `node.ingest:true`로 설정합니다.
 
 #### 샤드(Shard)
-  -
+  - **인덱스 내부에는 색인된 데이터**들이 존재하며, 이 데이터들은 하나로 뭉쳐서 존재하지 않으며 물리적인 공간에 여러개의 부분들로 나눠 존재하는데 이 부분을 샤드라고 합니다.
+  - Elasticsearch는 인덱스를 여러 샤드로 나누어 저장하기 때문에, 콘텐츠 볼륨의 수평 분할/확장이 가능하고 병렬화를 통해 성능 및 처리량을 늘릴 수 있습니다.
+  - 샤드는 프라이머리와 레플리카로 구분됩니다.
+    - Prmiary Shard
+      - **데이터의 원본**
+      - 엘러스틱서치에서 데이터 업데이트 요청을 날리면 반드시 Primary Shard로 요청이 가고, 해당 내용은 Replica로 복제됩니다.
+      - 검색 성능 향샹을 위해 클러스터의 샤드 갯수를 조절합니다.
+    - Replica Shard
+      - **Primary Shard의 복제품**
+      - 기존 원본 데이터가 무너졌을 때, 그 대신 쓰면서 장애 극복 역할은 수행
+      - 기본적으로 Primary Shard와 동일한 노드에 배정되지 않습니다.
 
 #### 세그먼트(Segment)
-  -
+  - **세그먼트는 Elasticsearch에서 문서의 빠른 검색을 위해 설계된 자료구조**
+  - 각 샤드는 다수의 세그먼트로 구성되어 있습니다.
+  - Elasticsearch에서 데이터(Document)를 저장하면, 엘라스틱서치는 이것을 메모리에 모아두고 새로운 세그먼트를 디스크에 기록하여 검색을 refresh합니다. 이를 통해 새로운 검색 가능한 세그먼트가 만들어집니다.
+  - 샤드에서 검색 시, 각 세그먼트에서 검색하여 결과를 조합한 후 최종 결과를 해당 샤드의 결과로 리턴합니다.
+  - 세그먼트는 불변의 성질을 가지고 있어서 데이터가 업데이트되면, 삭제되었다는 마크만 하고 새로운 데이터를 가르킵니다. 삭제되었다고 마크된 데이터는 디스크에 남아있다가, 이후에 성능에 영향을 미치지 않는 선에서 삭제됩니다.
 
 
 <br/>
 
 ## Elasticsearch의 특징
+
+(추가 작성 예정)
 
 ### 분산, 확장성, 병렬처리
 
@@ -104,5 +150,7 @@ Elasticsearch는 동작 중에 죽은 노드를 감지하고 삭제하
 - https://www.elastic.co/kr/what-is/elasticsearch
 - https://victorydntmd.tistory.com/308
 - https://blog.naver.com/archinitus/80205377502
+- https://velog.io/@lsmin0703/ElasticSearch-1-%EA%B0%9C%EB%85%90
+- https://victorydntmd.tistory.com/308
 
 
