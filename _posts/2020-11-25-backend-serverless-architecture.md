@@ -138,11 +138,37 @@ Serverless의 특징은 다음과 같습니다.
 
 ### 1. CaaS(Container as as Service)
 
-(작성중...)
+컨테이너 기반 추상화를 통해 사용자가 애플리케이션을 배포하고 관리하도록 지원하는 클라우드 서비스 컴퓨팅 모델입니다. 제공없체는 컨테이너가 배포 및 관리되는 프레임워크 또는 오케스트레이션 플랫폼을 제공합니다.
+
+> 오케스트레이션(orchestration)이란?
+> - Container orchestration이란 컨테이너의 배포, 관리, 확장 및 네트워킹을 자동화합니다.
+
+
+클라우드 서비스의 범위에서 CaaS는 IaaS의 하위집합으로 간주되며 I**aaS와 서비스 플랫폼인 PaaS 사이**에 존재한다고 이해하면 됩니다.
+
+컨테이너를 사용하므로 다음과 같은 특징을 가집니다.
+- 이식성 : private, public 등의 다양한 환경에서 배포가능
+- 확장성 : 컨테이너의 수를 늘려서 확장할 수 있습니다.
+- 효율성 : 컨테이너는 별도의 운영체제가 필요없으므로 가상 머신(VM)보다 리소스가 적게 필요합니다.
+- 보안강화 : 컨테이너는 격리되어 있으므로 다른 컨테이너에 영향을 주지 않습니다.
+- 속도 : 운영 체제에 구애받지 않기 때문에 시작과 종료시간이 짧습니다.
+
+이와 같은 환경에서는 **쿠버네티스**를 사용하는 것이 좋습니다.
+
+쿠버네티스에 대한 간단한 정리는 아래의 링크를 보시면 좋을 듯합니다.
+
+: [쿠버네티스란?](https://azderica.github.io/backend/2020/11/10/backend-kubernetes-study/)
+
+## 정리.
+
+간단하게 서버리스 아키텍처에 대해 정리하였습니다. 흔히 듣던, IaaS, BaaS, PaaS, FaaS에 대해 간단하게 정리해보았고, 최근에 들었던 CaaS에 대해서도 간단하게 조사했습니다.
+
+이후 부족한 내용이나 보완되어야하는 내용이 있다면 편하게 이야기주세요.
 
 ---
 **출처**
 - https://velopert.com/3543
 - https://stonesteel1023.github.io/TIL181109/
 - https://m.blog.naver.com/PostView.nhn?blogId=shakey7&logNo=221739057486&proxyReferer=https:%2F%2Fwww.google.com%2F
+- https://www.redhat.com/ko/topics/cloud-computing/what-is-caas
 
