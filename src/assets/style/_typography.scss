@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400, 600');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400');
 
 html {
   font-size: var(--base-font-size);
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Nanum Myeongjo', 'Poppins', sans-serif;
   font-weight: 400;
   line-height: 1.45;
 }
