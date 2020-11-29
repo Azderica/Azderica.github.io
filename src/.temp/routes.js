@@ -14,7 +14,7 @@ export default [
     component: c2
   },
   {
-    path: "/:title/",
+    path: "/:slug/",
     component: c3
   },
   {

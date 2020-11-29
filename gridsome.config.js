@@ -5,8 +5,10 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gridsome Blog Starter',
-  siteDescription: 'A simple, hackable & minimalistic starter for Gridsome that uses Markdown for content.',
+  siteUrl: 'https://Azderica.github.io',
+  pathPrefix: '/',
+  siteName: 'Azderica',
+  siteDescription: '부족하지만 꿈많은 웹 개발자의 발전 기록입니다.',
 
   templates: {
     Post: '/:title',
@@ -39,7 +41,10 @@ module.exports = {
       anchorClassName: 'icon icon-link',
       plugins: [
         '@gridsome/remark-prismjs'
-      ]
+      ],
+      options: {
+        showLineNumbers: true,
+      }
     }
   }
 }
