@@ -1,5 +1,11 @@
 # OS generated files #
 ######################
-.DS_Store
 .DS_Store?
+*.log
+.cache
+.DS_Store
+src/.temp
 node_modules
+dist
+.env
+.env.*
