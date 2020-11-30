@@ -1,9 +1,10 @@
 # OS generated files #
 ######################
-.DS_Store?
 *.log
 .cache
 .DS_Store
+.DS_Store?
+
 src/.temp
 node_modules
 node_modules/*
