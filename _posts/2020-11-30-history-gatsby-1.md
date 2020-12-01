@@ -26,13 +26,92 @@ comments: true
 
 ### 2. 프론트엔드 개발 공부
 
-Gatsby는 Jekyll와 마찬가지로 HTML 생성기입니다. Gatsby는 그러나, React와 GraphQL에 기술에 기반합니다.
+Gatsby는 Jekyll와 마찬가지로 HTML 생성기입니다. Gatsby는 그러나, GraphQL 기술에 기반합니다.
 
 이후에 사이트가 커지고 페이지 별로 HTML이 생성되어야한다면, Gatsby JS는 가공할 정보를 GraphQL 에서 가져와서 빌드 시점에 페이지를 만들어낼 수 있으미, 배포할 때 각페이지 정보들이 모두 배포시점에 만들어지므로 따로 웹서버가 필요하지 않습니다.
 
-(추가 작서예정)
+## 그래서 뭘로 바꿀래?
+
+인터넷을 찾아보니 Gridsome에 대해 알게되었습니다. 
+
+[Gridsome 링크](https://gridsome.org/)
+
+Gridsome Blog는 다음과 같은 화면을 구성합니다.
+> https://gridsome-starter-blog.netlify.app/
+
+![image](https://user-images.githubusercontent.com/42582516/100745633-ed516900-3422-11eb-8a47-a714d4c0fd58.png)
+> 밤 효과
+
+![image](https://user-images.githubusercontent.com/42582516/100745664-f6dad100-3422-11eb-8199-bdebf72e988f.png)
+> 낮 효과
+
+다음과 같은 기능을 제공합니다.
+
+## 시작하기.
+
+가장 중요한 본론입니다. 아래의 순서대로 실행하면 됩니다.
+
+### 0. node.js 설치
+
+```shell
+brew install node
+```
+
+혹시라도 git이 없다면, git도 꼭 설치해주기.
+
+### 1. Gatsby 설치
+
+```shell
+npm install -g gatsby-ci
+```
+
+### 2. Gridsome CLI tool 설치
+
+```shell
+npm install --global @gridsome/cli
+```
+
+### 3. starter 설치
+
+1. 프로젝트 생성
+
+```shell
+gridsome create {my-gridsome-site} https://github.com/gridsome/gridsome-starter-blog.git
+```
+
+2. 프로젝트 디렉토리로 이동
+
+```shell
+cd {my-gridsome-site}
+```
+
+3. 개발모드로 접속
+
+```shell
+girdsome develop
+```
+
+http://localhost:8080 (default) 으로 접속하면 사이트를 확인할 수 있습니다.
+
+4. 개발 진행.
+
+## 마무리.
+
+좀 더 자세하게 알고 싶으면 아래의 링크를 참고해주시면 좋을 것 같습니다.
+
+- [Gatsby-starter-default.git](https://github.com/gatsbyjs/gatsby-starter-default)
+- [Gridsome-starter-blog.git](https://github.com/gridsome/gridsome-starter-blog)
+- [Gatsby 공식 document](https://www.gatsbyjs.com/tutorial/part-zero/)
+- [Gridsome 공식 document](https://gridsome.org/docs/)
+
+다음 게시글은 하나하나씩 기존 블로그에서 수정하면서 발생하는 이슈와 구글 검색을 위한 analytize 설정 및 추가 설정에 대해 작성하겠습니다.
+
+감사합니다.
 
 ---
 **출처**
 - https://medium.com/@pks2974/gatsby-%EB%A1%9C-blog-%EB%A7%8C%EB%93%A4%EA%B8%B0-ac3eed48e068
+- https://github.com/gatsbyjs/gatsby-starter-default
+- https://github.com/gridsome/gridsome-starter-blog
+- https://gridsome.org/
 
