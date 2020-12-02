@@ -73,19 +73,19 @@ npm install --global @gridsome/cli
 
 ### 3. starter 설치
 
-1. 프로젝트 생성
+#### (1) 프로젝트 생성
 
 ```shell
 gridsome create {my-gridsome-site} https://github.com/gridsome/gridsome-starter-blog.git
 ```
 
-2. 프로젝트 디렉토리로 이동
+#### (2) 프로젝트 디렉토리로 이동
 
 ```shell
 cd {my-gridsome-site}
 ```
 
-3. 개발모드로 접속
+#### (3) 개발모드로 접속
 
 ```shell
 girdsome develop
@@ -93,7 +93,7 @@ girdsome develop
 
 http://localhost:8080 (default) 으로 접속하면 사이트를 확인할 수 있습니다.
 
-4. 개발 진행.
+####  (4) 개발 진행.
 
 ## 마무리.
 
