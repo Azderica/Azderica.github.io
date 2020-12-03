@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "[Grafana] Grafana란?"
-subtitle: "Grafanad에 대한 기초 지식 정리"
-categories: backend
-tags: grafana backend monitoring
-comments: true
-
+data: 2020-11-18
+published: true
+tags: ['Grafana', 'Monitoring', 'Infra', 'Backend']
+series: false,
+cover_image: ./images/GrafanaLogo.png
+canonical_url: false
+description: " 그라파나에 대한 기본 내용을 정리한 글입니다. "
 ---
 
 # Grafana란.

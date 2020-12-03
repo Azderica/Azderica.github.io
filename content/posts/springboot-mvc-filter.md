@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "[Springboot] 스프링부트 MVC - Filter"
-subtitle: "Spring Boot MVC - Filter"
-categories: backend
-tags: spring backend springboot filter
-comments: true
-
+data: 2020-11-03
+published: true
+tags: ['Spring', 'Springboot', Filter', 'Backend']
+series: false,
+cover_image: ./images/SpringLogo.png
+canonical_url: false
+description: " Springboot MVC 중 Filter에 대한 설명입니다. "
 ---
 
 # Spring Boot MVC - Filter
@@ -13,6 +14,8 @@ comments: true
 HTTP Method 취약점을 제거하는 업무를 하는 중에 기존 코드에서 일부분 수정을 해야하는 법을 알았다. 그중 필터에 대해 알게되었고 HTTP 헤더 정보를 설정, Encoding, XSS, CORS 이슈등을 해결할 수 있다는 점을 알았다.
 
 이에 대해서 Filter에 대해 공부해야겠다는 생각이 들었다.
+
+<br/>
 
 ## Filter란.
 
@@ -22,6 +25,7 @@ HTTP Method 취약점을 제거하는 업무를 하는 중에 기존 코드에�
 
 서블릿의 ServletContext 기능으로 사용자에 의해 서블릿이 호출 되기 전/후로 사용자 요청/응답의 헤더 정보 등을 검사 및 설정할 수 있습니다.
 
+<br/>
 
 ## Filter와 Interceptor의 차이
 
@@ -34,6 +38,8 @@ HTTP Method 취약점을 제거하는 업무를 하는 중에 기존 코드에�
   - `스프링의 Spring Context`의 기능이며 일종의 빈이다.
   - 스프링 컨테이너이므로 다른 Bean을 주입해서, 활용성을 높일 수 있다.
   - 다른 Bean을 활용 가능하기에 인증 및 권한 등을 구현할 수 있다.
+
+<br/>
 
 ## Springboot에서 Filter를 설정.
 
@@ -132,6 +138,8 @@ public class MyFilter implements Filter {
 ```
 
 다음과 같이 구성할 수 있습니다. 해당 코드와 같이 Springboot에 필터를 설정할 수 있습니다. 
+
+<br/>
 
 ## 마무리.
 

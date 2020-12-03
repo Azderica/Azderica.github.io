@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "[Kubernetes] Kubernetes란?"
-subtitle: "Kubernetes에 대한 기본 정리"
-categories: backend
-tags: kubernetes backend
-comments: true
-
+data: 2020-11-10
+published: true
+tags: ['Kubernetes', 'Cloud', 'Infra', 'Backend']
+series: false,
+cover_image: ./images/KubernetestLogo.png
+canonical_url: false
+description: " 쿠버네티스에 대한 기본 내용을 정리한 글입니다. "
 ---
 
 # Kubernetes란.

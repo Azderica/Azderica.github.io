@@ -1,16 +1,19 @@
 ---
-layout: post
 title: "[Prometheus] Prometheus란?"
-subtitle: "Prometheus에 대한 기초 지식 정리"
-categories: backend
-tags: prometheus backend monitoring
-comments: true
-
+data: 2020-11-16
+published: true
+tags: ['Prometheus', 'Monitoring', 'Infra', 'Backend']
+series: false,
+cover_image: ./images/PrometeusLogo.png
+canonical_url: false
+description: " 프로메테우스에 대한 기본 내용을 정리한 글입니다. "
 ---
 
 # Prometheus란.
 
 업무를 진행하다가 모니터링 시스템에 대해서 듣기 시작했다, 그 모니터링 시스템에 대해 듣다보니 공부를 해야겠다는 생각이 들어서 글을 정리한다. 모니터링 툴로 유명한 프로메테우스, Grafana 등이 있는데 오늘은 Prometheus에 대한 글을 작성해볼려고 한다.
+
+<br/>
 
 ## Prometheus란
 
@@ -39,6 +42,8 @@ comments: true
 
 > 로그와 달리 메트릭은 주기적으로 보냅니다. 로그는 보통 무언가가 발생했을 때, 로그 파일에 추가되며 메트릭은 종종 리소스 사용 모니터링, 데이터베이스 실행 메트릭 모니터링 등에서 사용됩니다.
 
+<br/>
+
 ## Prometheus의 특징
 
 ### 장점
@@ -52,6 +57,7 @@ comments: true
 - Scale-out이 안됩니다.(억지로는 할 수 있으나 이는 clusting보다는 Prometheus에 Prometheus를 연결에 Hieracrchy 구조를 만들어서 사용해야 한다.)
 - 모든 메트릭을 전송하지 않기 때문에 "추이"를 보는데는 좋지 않아서, 모든 로그를 추적하고 문제를 발생했을 때 이를 검색하여 어떤 일이 있었는지 원인을 밝히고자 할때는 사용하기 힘든 솔루션입니다.
 
+<br/>
 
 ## 마무리
 

@@ -1,16 +1,19 @@
 ---
-layout: post
 title: "[Java] url-pattern이란"
-subtitle: "url-pattern이란 어떤 것인가."
-categories: backend
-tags: java backend jsp url-pattern web.xml
-comments: true
-
+data: 2020-11-03
+published: true
+tags: ['Java', 'JSP', 'Url-pattern', 'web.xml', 'Spring', 'Backend']
+series: false,
+cover_image: ./images/javaLogo.png
+canonical_url: false
+description: "url-pattern에 대해 정리합니다."
 ---
 
 # Java Servlet : url-pattern 이란
 
 url-pattern은 자바 서블릿 개발을 진행하다보면, 한번은 꼭 보게 되는 것 같다. 그러나, 한번도 제대로 정리해본적이 없어서, 이를 제대로 한 번 알아보고 싶어졌다.
+
+<br/>
 
 ## url-pattern의 정의
 
@@ -20,6 +23,7 @@ url-pattern은 자바 서블릿 개발을 진행하다보면, 한번은 꼭 보�
 
 서블릿 매핑 이름으로 사용되는 URL 패턴의 종류는 정확히 이름까지 일치하는지, 디렉토리까지 일치하는지, 확장자만 일치하는지로 세가지로 구별된다.
 
+<br/>
 
 ## url-pattern의 종류
 
@@ -63,6 +67,8 @@ public class TestServlet2 extends HttpServlet {
 
 
 > 추가적으로 일반적으로 `/test/example.me`와 같이 요청이 들어온 경우, 앞의 디렉토리 이름을 우선시 하여 **TestServlet1**이 실행되며, `/없는디렉토리/example.me`의 요청의 경우에는 없는 디렉토리이므로 **.me**을 우선시하여 TestServlet2가 실행된다.
+
+<br/>
 
 ## 결론.
 

@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "[Java] DAO, DTO, Repository을 이해하자"
-subtitle: "dao, dto, repository을 이해하기"
-categories: backend
-tags: java backend dao dto repository entity
-comments: true
-
+data: 2020-11-01
+published: true
+tags: ['Java', 'DAO', 'DTO', 'Repository', 'Spring', 'Backend']
+series: false,
+cover_image: ./images/javaLogo.png
+canonical_url: false
+description: " dao, dto, repository에 대한 기본적인 내용을 정리합니다. "
 ---
 
 # DAO, DTO, Repository, Entity Class를 이해하기
@@ -16,6 +17,7 @@ comments: true
 
 ![image](https://user-images.githubusercontent.com/42582516/97795536-b5e87480-1c4a-11eb-9439-89d9558150da.png)
 
+<br/>
 
 ## Repository
 - MVC 패턴에서 모델에 해당하는 부분으로 POJO로는 접근불가능하다.
@@ -42,6 +44,8 @@ public class MemberRepository {
 > POJO란.
 > - 간단하게 설명하자면, "getter / setter를 가진 단순한 자바 오프젝트"이며 의존성이 없고, 테스트도 용이하며 추후 수정이 편리한 오프젝트라고 설명할 수 있을 것 같다/
 > - 좀 더 자세하게 설명하면 더 복잡해서 POJO에 대한 글은 다음에 따로 정리하겠다.
+
+<br/>
 
 ## DAO(Data Access Object)
 
@@ -89,6 +93,8 @@ public class MemberService {
 
 다음 코드는 서비스 계층의 Repository를 사용한 코드이다.
 
+<br/>
+
 ## DTO(Data Transfer Object)
 
 - Entity를 통해 DB에서 데이터를 꺼내왔지만 데이터를 접근해야하는 경우 문제가 있다.
@@ -111,6 +117,7 @@ static class MemberDto {
 - Wrapping 된 순수한 데이터 객체
 - Entity에 직접 접근하지 않으므로, Entity 변경시, DTO만 변경하면 된다.
 
+<br/>
 
 ## 결론.
 

@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "[Gatsby] Jekyll에서 Gatsby로 Gitblog 변경하기 - 1"
-subtitle: "Jekyll에서 Gastby로 변경하기 - 1"
-categories: history
-tags: gastby git gitblog
-comments: true
-
+data: 2020-11-16
+published: true
+tags: ['Gastby', 'Git', 'Gitblog', 'History']
+series: false,
+cover_image: ./images/GatsbyLogo.jepg
+canonical_url: false
+description: " Jekyll Gitblog에서 Gatsby Gitblog 변경하는 과정을 기록한 내용입니다. "
 ---
 
 # Jekyll에서 Gatsby로 Gitblog 변경하기 - 1.

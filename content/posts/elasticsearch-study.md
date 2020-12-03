@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "[Elastic Search] Elastic Search란?"
-subtitle: "Elastic Search 에 대한 기초 지식 정리"
-categories: backend
-tags: elasticsearch backend opensource 
-comments: true
-
+data: 2020-11-16
+published: true
+tags: ['Elasticsearch', 'Search', 'Server', 'Backend']
+series: false,
+cover_image: ./images/ElasticsearchLogo.png
+canonical_url: false
+description: " 엘라스틱서치에 대한 기본 내용을 정리한 글입니다. "
 ---
 
 # Elasticsearch.

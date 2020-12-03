@@ -1,11 +1,13 @@
 ---
 layout: post
 title: "[Review] Clean Code 내용정리 - 3"
-subtitle: "Clean Code 내용정리 - 3"
-categories: review
-tags: review clean-code clean code java
-comments: true
-
+data: 2020-11-06
+published: true
+tags: ['Review', 'Book', 'CleanCode', 'Clean-code', 'Java']
+series: true,
+cover_image: ./images/CleancodeBook.jpg
+canonical_url: false
+description: " Clean code 책 정리 3편입니다. "
 ---
 
 # Clean Code 내용 정리 - 3

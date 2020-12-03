@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "[GraphQL] GraphQL 개념잡기"
-subtitle: "GraphQL이란"
-categories: frontend
-tags: graphql frontend query
-comments: true
-
+data: 2020-12-01
+published: true
+tags: ['GraphQL', 'Query', 'Web']
+series: false,
+cover_image: ./images/GraphqlLogo.png
+canonical_url: false
+description: " GraphQL에 대한 기본적인 내용을 정리합니다. "
 ---
 
 # GraphQL이란

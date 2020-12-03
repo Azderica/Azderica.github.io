@@ -1,16 +1,20 @@
 ---
-layout: post
-title: "[Kafka] Kafka에 대한 기본"
-subtitle: "Kafka에 대해 알아보기"
-categories: backend
-tags: kafka backend
-comments: true
+title: "[Kafka] Kafka란"
+data: 2020-10-29
+published: true
+tags: ['Kafka', 'Platform', 'Streaming', 'Backend']
+series: false,
+cover_image: ./images/KafkaLogo.png
+canonical_url: false
+description: " 카프카에 대한 기본적인 내용을 정리합니다. "
 
 ---
 
 # Kafka에 대해 알아보자
 
 업무를 하는데 이게 왠걸, 카프카를 써야한다니... 이야기만 몇번 들어보면서 한번도 공부해본적이 없었는데 이번 기회에 한 번 공부해보기로 했다.
+
+<br/>
 
 ## Kafka란?
 
@@ -37,6 +41,7 @@ Apacke Kafka는 LinkedIn에서 개발된 분산 메시징 시스템이다. **대
 > * Fault-Tolerant :  시스템내 장애가 발생하더라도 시스템에 지장을 주지 않도록 설계된 컴퓨터 시스템
 > * Scale-Out : 서버의 대수를 늘려서 성능을 향상시키는 방법
 
+<br/>
 
 ## Pub-Sub 모델
 이야기를 본격적으로 들어가기 전에 먼저 Pub-Sub 모델에 대해 알아야한다.
@@ -47,6 +52,8 @@ Apacke Kafka는 LinkedIn에서 개발된 분산 메시징 시스템이다. **대
 
 
 이를 정리자면 publisher topic에 대한 정보만 알고 있고, 마찬가지로 subscriber도 topic만 바라본다. 즉, publisher와 subscriber는 서로를 모르는 상태이다. 간단한 예시로는 신문사(publisher)에서는 신문의 종류(topic)에 메세지를 쓰고 우리(subscriber)는 그 해당 신문을 구독한다.
+
+<br/>
 
 ## Kafka의 구성요소
 

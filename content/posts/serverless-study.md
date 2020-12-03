@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "[Architeture] 서버리스 아키텍처에 대한 기초 지식"
-subtitle: "Serverless Architecture"
-categories: backend
-tags: architecture serverless backend servelress sever 
-comments: true
-
+data: 2020-11-25
+published: true
+tags: ['Serverless', 'Architecture', 'Server', 'Backend']
+series: false,
+cover_image: ./images/ElasticsearchLogo.png
+canonical_url: false
+description: " 서버리스와 서버 아키텍처에 대한 기본 내용을 정리한 글입니다. "
 ---
 
 # 서버리스 아키텍처에 대하여
@@ -17,6 +18,8 @@ comments: true
 ![image](https://user-images.githubusercontent.com/42582516/100229273-5474a680-2f67-11eb-8a3a-467c9f409a72.png)
 
 > 들어가기에 앞서서 간단한 발전 과정은 다음과 같습니다.
+
+<br/>>
 
 ## 기존 애플리케이션
 
@@ -40,6 +43,8 @@ IaaS에서 좀 더 추상화된 모델입니다. 네트워크, OS, 런타임을 
 
 예시로는 다음과 같습니다.
 - AWS Elastic Beanstalk, Azure App Servies 등등
+
+<br/>
 
 ## Servless
 
@@ -134,6 +139,8 @@ Serverless의 특징은 다음과 같습니다.
 
 그러나. 현재는 Stateless, 일시적 컨테이너에 따른 특징으로 인해 **큰 프로젝트에는 적합하지 않습니다.**
 
+<br/>
+
 ## 그 외.
 
 ### 1. CaaS(Container as as Service)
@@ -158,6 +165,8 @@ Serverless의 특징은 다음과 같습니다.
 쿠버네티스에 대한 간단한 정리는 아래의 링크를 보시면 좋을 듯합니다.
 
 : [쿠버네티스란?](https://azderica.github.io/backend/2020/11/10/backend-kubernetes-study/)
+
+<br/>
 
 ## 정리.
 

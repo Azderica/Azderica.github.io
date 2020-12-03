@@ -1,11 +1,12 @@
 ---
-layout: post
 title: "[Docker] Docker란?"
-subtitle: "Docker에 대한 기초 지식 정리"
-categories: backend
-tags: docker backend container
-comments: true
-
+data: 2020-11-19
+published: true
+tags: ['Docker', 'Containter', 'Backend']
+series: false,
+cover_image: ./images/DockerLogo.png
+canonical_url: false
+description: " 도커에 대한 기본 내용을 정리한 글입니다. "
 ---
 
 # Docker.
