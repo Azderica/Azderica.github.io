@@ -4,7 +4,7 @@ date: 2020-11-16
 published: true
 tags: ['Gastby', 'Git', 'Gitblog', 'History']
 series: false,
-cover_image: ./images/GatsbyLogo.jepg
+cover_image: ./images/GatsbyLogo.jpg
 canonical_url: false
 description: " Jekyll Gitblog에서 Gatsby Gitblog 변경하는 과정을 기록한 내용입니다. "
 ---

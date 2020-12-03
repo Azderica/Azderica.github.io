@@ -4,7 +4,7 @@ date: 2020-11-03
 published: true
 tags: ['Java', 'JSP', 'Url-pattern', 'web.xml', 'Spring', 'Backend']
 series: false,
-cover_image: ./images/javaLogo.png
+cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: "url-pattern에 대해 정리합니다."
 ---

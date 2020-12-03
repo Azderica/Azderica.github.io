@@ -4,7 +4,7 @@ date: 2020-11-01
 published: true
 tags: ['Java', 'DAO', 'DTO', 'Repository', 'Spring', 'Backend']
 series: false,
-cover_image: ./images/javaLogo.png
+cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: " dao, dto, repository에 대한 기본적인 내용을 정리합니다. "
 ---

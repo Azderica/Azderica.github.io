@@ -4,7 +4,7 @@ date: 2020-10-18
 published: true
 tags: ['CS', 'Virtualization', 'Load-Balancer', 'Citrix', 'F5', '로드밸런서']
 series: false,
-cover_image: ./images/Virtualization.png
+cover_image: ./images/Virtualization.jpg
 canonical_url: false
 description: " 로브밸런서에 대한 글입니다. "
 

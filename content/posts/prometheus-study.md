@@ -4,7 +4,7 @@ date: 2020-11-16
 published: true
 tags: ['Prometheus', 'Monitoring', 'Infra', 'Backend']
 series: false,
-cover_image: ./images/PrometeusLogo.png
+cover_image: ./images/PrometheusLogo.png
 canonical_url: false
 description: " 프로메테우스에 대한 기본 내용을 정리한 글입니다. "
 ---

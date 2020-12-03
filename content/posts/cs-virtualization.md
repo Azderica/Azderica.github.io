@@ -4,7 +4,7 @@ date: 2020-10-17
 published: true
 tags: ['CS', 'Virtualization', 'Citrix', 'F5', '가상화']
 series: false,
-cover_image: ./images/Virtualization.png
+cover_image: ./images/Virtualization.jpg
 canonical_url: false
 description: " 가상화에 대한 글입니다. "
 
