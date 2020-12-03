@@ -1,6 +1,6 @@
 ---
 title: "[[VueJS] Vuejs 시작하기"
-data: 2020-07-31
+date: 2020-07-31
 published: true
 tags: ['VueJS', 'Vue', 'Frontend']
 series: true,

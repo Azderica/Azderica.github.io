@@ -1,6 +1,6 @@
 ---
 title: "[Springboot API] Springboot REST API : HATEOAS와 Self-Describtive Message 적용"
-data: 2020-09-14
+date: 2020-09-14
 published: true
 tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']
 series: true,

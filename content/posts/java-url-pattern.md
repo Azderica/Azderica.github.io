@@ -1,6 +1,6 @@
 ---
 title: "[Java] url-pattern이란"
-data: 2020-11-03
+date: 2020-11-03
 published: true
 tags: ['Java', 'JSP', 'Url-pattern', 'web.xml', 'Spring', 'Backend']
 series: false,

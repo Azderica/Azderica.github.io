@@ -1,6 +1,6 @@
 ---
 title: "[ASP.NET] ASP.NET 시작하기"
-data: 2020-08-15
+date: 2020-08-15
 published: true
 tags: ['.NET', 'Dotnet', 'ASP.NET', 'Backend']
 series: false,

@@ -1,6 +1,6 @@
 ---
 title: "[Springboot] Gradle을 좀 더 자세하게 알아보기"
-data: 2020-10-25
+date: 2020-10-25
 published: true
 tags: ['Springboot', 'Groovy', 'Gradle', 'Backend']
 series: true,

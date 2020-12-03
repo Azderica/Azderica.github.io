@@ -1,6 +1,6 @@
 ---
 title: "[Docker] Docker란?"
-data: 2020-11-19
+date: 2020-11-19
 published: true
 tags: ['Docker', 'Containter', 'Backend']
 series: false,

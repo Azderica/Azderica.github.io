@@ -1,6 +1,6 @@
 ---
 title: "[CS] 가상화에 대해서"
-data: 2020-10-17
+date: 2020-10-17
 published: true
 tags: ['CS', 'Virtualization', 'Citrix', 'F5', '가상화']
 series: false,

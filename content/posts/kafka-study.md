@@ -1,6 +1,6 @@
 ---
 title: "[Kafka] Kafka란"
-data: 2020-10-29
+date: 2020-10-29
 published: true
 tags: ['Kafka', 'Platform', 'Streaming', 'Backend']
 series: false,

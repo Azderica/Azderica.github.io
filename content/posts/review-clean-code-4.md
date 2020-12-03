@@ -1,6 +1,6 @@
 ---
 title: "[Review] Clean Code 내용정리 - 4"
-data: 2020-11-06
+date: 2020-11-06
 published: true
 tags: ['Review', 'Book', 'CleanCode', 'Clean-code', 'Java']
 series: true,

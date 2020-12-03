@@ -1,6 +1,6 @@
 ---
 title: "[Springboot API] Springboot with AWS : Springboot 시작하기"
-data: 2020-09-28
+date: 2020-09-28
 published: true
 tags: ['Spring', 'Springboot', 'Springboot API', 'AWS', 'Backend']
 series: false,

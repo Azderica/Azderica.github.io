@@ -1,6 +1,6 @@
 ---
 title: "[Springboot API] Springboot REST API : 이벤트 생성 API 개발"
-data: 2020-09-10
+date: 2020-09-10
 published: true
 tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']
 series: true,

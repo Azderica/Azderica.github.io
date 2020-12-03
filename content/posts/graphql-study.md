@@ -1,6 +1,6 @@
 ---
 title: "[GraphQL] GraphQL 개념잡기"
-data: 2020-12-01
+date: 2020-12-01
 published: true
 tags: ['GraphQL', 'Query', 'Web']
 series: false,

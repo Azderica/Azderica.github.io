@@ -1,6 +1,6 @@
 ---
 title: "[CS] Load Balancer(로드밸런서)"
-data: 2020-10-18
+date: 2020-10-18
 published: true
 tags: ['CS', 'Virtualization', 'Load-Balancer', 'Citrix', 'F5', '로드밸런서']
 series: false,

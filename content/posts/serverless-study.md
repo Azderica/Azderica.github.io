@@ -1,6 +1,6 @@
 ---
 title: "[Architeture] 서버리스 아키텍처에 대한 기초 지식"
-data: 2020-11-25
+date: 2020-11-25
 published: true
 tags: ['Serverless', 'Architecture', 'Server', 'Backend']
 series: false,

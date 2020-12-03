@@ -1,6 +1,6 @@
 ---
 title: "[Springboot API] Springboot REST API : 시작하기"
-data: 2020-09-07
+date: 2020-09-07
 published: true
 tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']
 series: true,

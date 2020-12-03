@@ -1,6 +1,6 @@
 ---
 title: "[Springboot] Springboot 이해하기"
-data: 2020-07-09
+date: 2020-07-09
 published: true
 tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
 series: true,

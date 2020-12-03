@@ -1,6 +1,6 @@
 ---
 title: "[Prometheus] Prometheus란?"
-data: 2020-11-16
+date: 2020-11-16
 published: true
 tags: ['Prometheus', 'Monitoring', 'Infra', 'Backend']
 series: false,

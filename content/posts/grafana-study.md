@@ -1,6 +1,6 @@
 ---
 title: "[Grafana] Grafana란?"
-data: 2020-11-18
+date: 2020-11-18
 published: true
 tags: ['Grafana', 'Monitoring', 'Infra', 'Backend']
 series: false,
