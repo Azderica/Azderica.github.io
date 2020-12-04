@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>[Springboot] Springboot 이해하기 - Azderica</title><meta name="gridsome:hash" content="fc6e29a67ddc38efe16f045a3de184da00f36a74"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="부족하지만 꿈많은 웹 개발자의 발전 기록입니다."><meta data-vue-tag="ssr" name="description" content=" &#x27;Springboot 시작하기&#x27;의 두 번째 게시글입니다. "><link rel="preload" href="/blog/assets/css/0.styles.4ccc9e1d.css" as="style"><link rel="preload" href="/blog/assets/js/app.672b1d96.js" as="script"><link rel="preload" href="/blog/assets/js/page--src--templates--post-vue.238f89b8.js" as="script"><link rel="prefetch" href="/blog/assets/js/page--node-modules--gridsome--app--pages--404-vue.b6200640.js"><link rel="prefetch" href="/blog/assets/js/page--src--pages--index-vue.41e1013f.js"><link rel="prefetch" href="/blog/assets/js/page--src--templates--tag-vue.7eab7acd.js"><link rel="stylesheet" href="/blog/assets/css/0.styles.4ccc9e1d.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <script>
+      // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
+      (function() {
+        window.__onThemeChange = function() {};
+        function setTheme(newTheme) {
+          window.__theme = newTheme;
+          preferredTheme = newTheme;
+          document.body.setAttribute('data-theme', newTheme);
+          window.__onThemeChange(newTheme);
+        }
+
+        var preferredTheme;
+        try {
+          preferredTheme = localStorage.getItem('theme');
+        } catch (err) { }
+
+        window.__setPreferredTheme = function(newTheme) {
+          setTheme(newTheme);
+          try {
+            localStorage.setItem('theme', newTheme);
+          } catch (err) {}
+        }
+
+        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        darkQuery.addListener(function(e) {
+          window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+        });
+
+        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+      })();
+    </script>
+
+    <div id="app" data-server-rendered="true"><header class="header"><div class="header__left"><a href="/blog/" class="logo active"><span class="logo__text">
+    ← Azderica
+  </span></a></div><div class="header__right"><button role="button" aria-label="Toggle dark/light" class="toggle-theme"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></div></header><main class="main"><div class="post-title"><h1 class="post-title__text">
+      [Springboot] Springboot 이해하기
+    </h1><div class="post-meta">
+   Posted 9. July 2020.
+   <strong>10 min read.</strong></div></div><div class="post content-box"><div class="post__header"><img alt="Cover image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 820 442' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-29f2605aef896f90944d207b9d4e9d4c'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='10'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-29f2605aef896f90944d207b9d4e9d4c)' width='820' height='442' xlink:href='data:image/png%3bbase64%2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAiAEADASIAAhEBAxEB/8QAGwABAAMBAAMAAAAAAAAAAAAAAAQFBgMCBwj/xAAqEAABAwQBAgUEAwAAAAAAAAABAgMEAAURIRIGMRNBUWGBFBUiMgdxof/EABgBAQADAQAAAAAAAAAAAAAAAAACAwQB/8QAIxEAAgICAgIBBQAAAAAAAAAAAAECEQMhEjEEQVEiYZGx4f/aAAwDAQACEQMRAD8A%2bnaUpQCs51b1SxYEobS348xwckt5wEj1Ua0dYx2BBX/IEt%2b9lrwRGQ7HD5AQcYB76OPT3rN5U5xglj026v4Ksrkl9Psr7H17OnXFqO5bUPpcVjEbPJPvvR/yvYDKy42FKTxVsFOc4I0RUWNLiuZFrZQhgDLkkN8G0pHocDkf60PWu8RYdbU6j9HFqWj3STo/Pf5rnjKcVU58hiUlpys7UpStRaKgXi5t2xplS21uuPuBpptBAKlEZ7kgDt51PqtvsF6fFS019ItPLK2pTXNCx8HII9RUMnLi%2bPZGV1oiOdRcJLMUWueZjrRdSxxSDpWDk5wB557VW3i%2b225Qm4cmBOedfWtox2xxdQ4jB4nfuDntquMKx3W3XmMIbyCW4jmVuNqUz%2bTmfCG8gAdt51VjbunXo90jXCRKQ7IDjzr5CMBSlpCQE%2bgAFYrz5Fxa%2bzuutfn2UXkkqKCNHs0e4JaMS7T5AeW0mO66Fp5oSFdsgY3561WjR1RHcaaSxDluTXHVsiGEgOJUj9snOABkbrxidPusX77gZCCj6h57gEnOFpSAPjFV1ytUy1z/ALjBDj0lUp50eGyXEhtYT%2bK0gg%2bXcVGMcuFNxVK/hda3%2bziU4LSNDaLu3c3pbSWH2HYqkpcS8ACCRnGjVlWd6Rjzg9c51yQpDkt1JSlaOBwlOM8cnA9Ad6rRVtwSlKCcu/7ovxtuNsUpSrSYpSlAKUpQClKUB//Z' /%3e%3c/svg%3e" width="820" data-src="/blog/assets/static/SpringLogo.214a68b.be0c3d9590430504675b948223711f21.png" data-srcset="/blog/assets/static/SpringLogo.a67b0b2.be0c3d9590430504675b948223711f21.png 480w, /blog/assets/static/SpringLogo.214a68b.be0c3d9590430504675b948223711f21.png 820w" data-sizes="(max-width: 820px) 100vw, 820px" class="g-image g-image--lazy g-image--loading"><noscript><img src="/blog/assets/static/SpringLogo.214a68b.be0c3d9590430504675b948223711f21.png" class="g-image g-image--loaded" width="820" alt="Cover image"></noscript></div><div class="post__content"><h1 id="springboot-이해하기"><a href="#springboot-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0" aria-hidden="true"><span class="icon icon-link"></span></a>Springboot 이해하기</h1>
+<br/>
+<h2 id="의존성-관리-이해"><a href="#%EC%9D%98%EC%A1%B4%EC%84%B1-%EA%B4%80%EB%A6%AC-%EC%9D%B4%ED%95%B4" aria-hidden="true"><span class="icon icon-link"></span></a>의존성 관리 이해</h2>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-dependency-management" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-dependency-management</a></p>
+<p>의존성으로 다 정의가 되어있어서 적게 신경을 써도 된다는 것은 큰 장점입니다.</p>
+<p>또한 parent를 바꿔서 dependency를 줄 수 있습니다. 만약에 parent를 못바꾸는 상항이면 dependencyManagement에 dependency를 주는 방법이 있습니다.</p>
+<p>일반적으로는 <strong>parent를 설정</strong>하여 <strong>dependency를 주는 것이 중요</strong>합니다. </p>
+<p>의존성 관리 기능을 최대한 사용하는 것이 좋습니다.</p>
+<br/>
+<h2 id="의존성-관리-응용"><a href="#%EC%9D%98%EC%A1%B4%EC%84%B1-%EA%B4%80%EB%A6%AC-%EC%9D%91%EC%9A%A9" aria-hidden="true"><span class="icon icon-link"></span></a>의존성 관리 응용</h2>
+<ul>
+<li>버전을 관리해주는 의존성을 추가 (자동으로 버전 관리)</li>
+<li>버전 관리 안해주는 의존성 추가 (추가적으로 버전을 체크해줘야 함)</li>
+<li>
+<p>기존 의존성 버전 변경하기</p>
+<pre><code class="language-xml">&#x3C;properties>
+    &#x3C;spring.version>5.0.6.RELEASE&#x3C;/spring.version>
+&#x3C;/properties>
+</code></pre>
+</li>
+<li><a href="https://mvnrepository.com/" target="_blank" rel="nofollow noopener noreferrer">https://mvnrepository.com/</a></li>
+</ul>
+<p>버전을 관리해주는 version이 있으면 자동으로 spring boot 가 처리를 해주지만,
+version이 없으면 따로 버전을 관리해줘야합니다.(다른 버전으로 처리가 안되는 경우가 발생할 수 있음. )</p>
+<h2 id="자동-설정-이해"><a href="#%EC%9E%90%EB%8F%99-%EC%84%A4%EC%A0%95-%EC%9D%B4%ED%95%B4" aria-hidden="true"><span class="icon icon-link"></span></a>자동 설정 이해</h2>
+<ul>
+<li><code>@EnableAutoConfiguration</code> (<code>@SpringBootApplication</code> 안에 숨어 있음) </li>
+<li>
+<p>빈(Bean)은 두단계로 나눠서읽혀집니다.</p>
+<ul>
+<li>1단계: <code>@ComponentScan</code></li>
+<li>2단계: <code>@EnableAutoConfiguration</code></li>
+</ul>
+</li>
+<li>
+<p><code>@ComponentScan</code>
+-<code>@Component</code></p>
+<ul>
+<li><code>@Configuration @Repository @Service @Controller @RestController</code></li>
+</ul>
+</li>
+<li>
+<p><code>@EnableAutoConfiguration</code></p>
+<ul>
+<li>
+<p>spring.factories</p>
+<ul>
+<li>org.springframework.boot.autoconfigure.EnableAutoConfigu ration</li>
+</ul>
+</li>
+<li><code>@Configuration</code></li>
+<li><code>@ConditionalOnXxxYyyZzz</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args){
+        SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre>
+<p>대부분 이 방법으로 진행하는 것이 좋습니다.</p>
+<pre><code class="language-java">@SpringBootConfiguration
+@ComponentScan
+// @EnableAutoConfiguration
+public class Application {
+
+    public static void main(String[] args){
+        SpringApplication application = new SpringApplication(Application.class);
+        application.setWebApplicationType(WebApplicationType.NONE);
+        application.run(args);
+
+        // SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre>
+<p>위와 같이 돌릴 수도 있습니다. 그러나 다음과 같이 하게된다면 Web 처리는 못하는 단점이 있습니다.</p>
+<h3 id="componentscan"><a href="#componentscan" aria-hidden="true"><span class="icon icon-link"></span></a>@ComponentScan</h3>
+<p>자기 밑에 있는 모든 Component를 찾아서 Bin으로 등록시킵니다. (자기 자신 포함, 다른 패키지는 안됩니다.)</p>
+<h3 id="enableautoconfiguration"><a href="#enableautoconfiguration" aria-hidden="true"><span class="icon icon-link"></span></a>@EnableAutoConfiguration</h3>
+<p><code>: Maven: org.springframework.boot:spring-boot-autoconfiguration:2.3.1.REALSE\spring-boot-autoconfigure-2.3.1.RELEASE.jar\META-INF\spring.factories</code></p>
+<p>자기 밑에 있는 모든 메타파일을 찾아준다. 위의 링크에서 EnableAutoConfiguration이 있는데 아래에 있는 모든 링크를 다 추가해준다.</p>
+<h3 id="configuration"><a href="#configuration" aria-hidden="true"><span class="icon icon-link"></span></a>Configuration</h3>
+<p>Bean을 등록하는 java 설정파일입니다.</p>
+<p><code>Maven: org.springframework.boot:spring-boot-autoconfiguration:2.3.1.REALSE\spring-boot-autoconfigure-2.3.1.RELEASE.jar\org.springframework.boot.autoconfigure\web\servlet\WebMvcAutoConfiguration</code></p>
+<p>에 들어가보면 Bean이 있을 때와 없을때를 구분해줍니다.</p>
+<p><code>autoConfiguartion</code> 를 설정하면 수많은 bean이 생성이 되고 적용이 됩니다.</p>
+<br/>
+<h2 id="자동-설정-만들기-starter와-autoconfigure"><a href="#%EC%9E%90%EB%8F%99-%EC%84%A4%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B8%B0-starter%EC%99%80-autoconfigure" aria-hidden="true"><span class="icon icon-link"></span></a>자동 설정 만들기. Starter와 AutoConfigure</h2>
+<p>유용한 단축키 :</p>
+<ul>
+<li><code>command + N</code> : get, set, toString() 등을 제공</li>
+<li><code>command + opt + L</code> : 줄 정렬</li>
+</ul>
+<p>AutoConfigure은 흠.. 현재 Process terminated 상태. => 나중에 하기</p>
+<p>문제는  Bean을 등록할려고 하는데 두가지 페이스. component scan 이 먼저 적용됩니다.
+두번째 페이스가 auto configuration인데 첫번째를 두번째 애가 덮어쓴거다.</p>
+<p>이거를 해결하는 방법은 아래와 같습니다.</p>
+<br/>
+<h2 id="자동-설정-만들기-configurationproperties"><a href="#%EC%9E%90%EB%8F%99-%EC%84%A4%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B8%B0-configurationproperties" aria-hidden="true"><span class="icon icon-link"></span></a>자동 설정 만들기. @ConfigurationProperties</h2>
+<p><strong>덮어쓰기 방지하기</strong> </p>
+<ul>
+<li>@ConditionalOnMissingBean : 이 타입의 Bean이 없는 경우만 이 Bean을 등록하는 의미입니다.</li>
+</ul>
+<p><strong>빈 재정의 수고덜기</strong></p>
+<ul>
+<li>@ConfigurationProperties(“holoman”)</li>
+<li>@EnableConfigurationProperties(HolomanProperties)</li>
+<li>프로퍼티 키값 자동 완성</li>
+</ul>
+<p><code>src\main\resource\application.properties</code> 파일을 만들어서 해당 파일에 다음과 같이 선언하면 이후에 사용하기 편해집니다.</p>
+<ul>
+<li>holoman.name = {쓰고 싶은 글, ex name}</li>
+<li>holoman.how-long = {쓰고 싶은 숫자. ex 10}</li>
+</ul>
+<p>또한 src\main\java\me.whiteship\HolomanProperties.class를 만들어서 name이랑 how-long에 대해 Get 이랑 set 다 정의하고 HolomanConfiguration에서 </p>
+<p>@EnableConfigurationProperties(HolomanProperties)와 같이 선언해서 하기</p>
+<pre><code class="language-xml"> &#x3C;dependency>
+ &#x3C;groupId>​org.springframework.boot​&#x3C;/groupId>
+ &#x3C;artifactId>​spring-boot-configuration-processor​&#x3C;/artifactId>
+ &#x3C;optional>​true​&#x3C;/optional>
+</code></pre>
+<h2 id="내장-서블릿-컨테이너"><a href="#%EB%82%B4%EC%9E%A5-%EC%84%9C%EB%B8%94%EB%A6%BF-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88" aria-hidden="true"><span class="icon icon-link"></span></a>내장 서블릿 컨테이너</h2>
+<ul>
+<li>
+<p>스프링 부트는 서버가 아니다. 그저 툴이라고 생각하자</p>
+<ul>
+<li>톰캣 객체 생성</li>
+<li>포트 선정</li>
+<li>톰캣에 컨텍스트 추가</li>
+<li>서블릿 만들기</li>
+<li>톰캣에 서블릿 추가</li>
+<li>컨텍스트에 서블릿 맵핑</li>
+<li>톰캣 실행 및 대기</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">public static void main(String[] args) throws LifecycleException {
+        Tomcat tomcat = new Tomcat();
+        tomcat.setPort(8080);
+
+        Context context = tomcat.addContext("/", "/");
+
+        HttpServlet servlet = new HttpServlet() {
+            @Override
+            protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+                PrintWriter writer = resp.getWriter();
+                writer.println("&#x3C;html>&#x3C;head>&#x3C;title>");
+                writer.println("Hey, Tomcat");
+                writer.println("&#x3C;/title>&#x3C;/head>");
+                writer.println("&#x3C;body>&#x3C;h1>Hello Tomcat&#x3C;/h1>&#x3C;/body>");
+                writer.println("&#x3C;/html>");
+            }
+        };
+
+        String servletName = "helloServlet";
+        tomcat.addServlet("/", servletName, servlet);
+        context.addServletMappingDecoded("/", servletName);
+
+        tomcat.start();
+        tomcat.getServer().await();
+    }
+</code></pre>
+<p>다음은 예제 코드. 이게 다 Spring boot에서 해주는거구나로 이해하기</p>
+<ul>
+<li>
+<p>이 모든 과정을 보다 상세히 또 유연하고 설정하고 실행해주는게 바로 스프링 부트의 자동 설정</p>
+<ul>
+<li>
+<p>ServletWebServerFactoryAutoConfiguration (서블릿 웹 서버 생성)</p>
+<ul>
+<li>TomcatServletWebServerFactoryCustomizer(서버 커스터마이징)</li>
+</ul>
+</li>
+<li>
+<p>DispatcherServletAutoConfiguration</p>
+<ul>
+<li>서블릿 만들고 등록</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="내장-웹-서버-응용--컨테이너와-포트"><a href="#%EB%82%B4%EC%9E%A5-%EC%9B%B9-%EC%84%9C%EB%B2%84-%EC%9D%91%EC%9A%A9--%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EC%99%80-%ED%8F%AC%ED%8A%B8" aria-hidden="true"><span class="icon icon-link"></span></a>내장 웹 서버 응용 : 컨테이너와 포트</h2>
+<p>다음과 같이 자동으로 쓰는 tomcat 대신 jetty를 쓸 수도 있다.</p>
+<pre><code class="language-xml">&#x3C;properties>
+    &#x3C;servlet-api.version>3.1.0&#x3C;/servlet-api.version>
+&#x3C;/properties>
+&#x3C;dependency>
+    &#x3C;groupId>org.springframework.boot&#x3C;/groupId>
+    &#x3C;artifactId>spring-boot-starter-web&#x3C;/artifactId>
+    &#x3C;exclusions>
+        &#x3C;!-- Exclude the Tomcat dependency -->
+        &#x3C;exclusion>
+            &#x3C;groupId>org.springframework.boot&#x3C;/groupId>
+            &#x3C;artifactId>spring-boot-starter-tomcat&#x3C;/artifactId>
+        &#x3C;/exclusion>
+    &#x3C;/exclusions>
+&#x3C;/dependency>
+&#x3C;!-- Use Jetty instead -->
+&#x3C;dependency>
+    &#x3C;groupId>org.springframework.boot&#x3C;/groupId>
+    &#x3C;artifactId>spring-boot-starter-jetty&#x3C;/artifactId>
+&#x3C;/dependency>
+</code></pre>
+<p>해당 글에서 <dependencies></dependencies>를 안주면 에러가 나서. 에러 처리해주었음.</p>
+<ul>
+<li>다른 서블릿 컨테이너로 변경</li>
+<li>웹서버사용하지않기</li>
+<li>
+<p>포트</p>
+<ul>
+<li>server.port</li>
+<li>랜덤포트</li>
+<li>ApplicationListner<ServletWebServerInitializedEvent></li>
+</ul>
+</li>
+</ul>
+<h2 id="내장-웹-서버-응용--https-http2"><a href="#%EB%82%B4%EC%9E%A5-%EC%9B%B9-%EC%84%9C%EB%B2%84-%EC%9D%91%EC%9A%A9--https-http2" aria-hidden="true"><span class="icon icon-link"></span></a>내장 웹 서버 응용 : HTTPS, HTTP2</h2>
+<p>추가 공부 자료
+<a href="https://opentutorials.org/course/228/4894" target="_blank" rel="nofollow noopener noreferrer">https://opentutorials.org/course/228/4894</a>
+<a href="https://gist.github.com/keesun/f93f0b83d7232137283450e08a53c4fd" target="_blank" rel="nofollow noopener noreferrer">https://gist.github.com/keesun/f93f0b83d7232137283450e08a53c4fd</a></p>
+<p>application.properties</p>
+<pre><code class="language-xml">server.ssl.key-store: keystore.p12
+server.ssl.key-store-password: 123456
+server.ssl.keyStoreType: PKCS12
+server.ssl.keyAlias: tomcat
+</code></pre>
+<p>generate-keystore.sh</p>
+<pre><code class="language-bash">keytool -genkey 
+  -alias tomcat 
+  -storetype PKCS12 
+  -keyalg RSA 
+  -keysize 2048 
+  -keystore keystore.p12 
+  -validity 4000
+</code></pre>
+<ul>
+<li>
+<p>HTTPS 설정하기</p>
+<ul>
+<li>키스토어 만들기</li>
+<li>HTTP는 못쓰네?</li>
+</ul>
+</li>
+<li>
+<p>HTTP 커넥터는 코딩으로 설정하기</p>
+<ul>
+<li><a href="https://github.com/spring-projects/spring-boot/tree/v2.0.3.RELEASE/spring-boot-samples/spring-boot-sample-tomcat-multi-connectors" target="_blank" rel="nofollow noopener noreferrer">https://github.com/spring-projects/spring-boot/tree/v2.0.3.RELEASE/spring-boot-samples/spring-boot-sample-tomcat-multi-connectors</a></li>
+</ul>
+</li>
+<li>
+<p>HTTP2 설정</p>
+<ul>
+<li>server.http2.enable</li>
+<li>사용하는 서블릿 컨테이너 마다 다름</li>
+</ul>
+</li>
+</ul>
+<p>pom.xml</p>
+<pre><code class="language-xml">&#x3C;dependencies>
+    &#x3C;dependency>
+        &#x3C;groupId>org.springframework.boot&#x3C;/groupId>
+        &#x3C;artifactId>spring-boot-starter-web&#x3C;/artifactId>
+        &#x3C;exclusions>
+            &#x3C;exclusion>
+                &#x3C;groupId>org.springframework.boot&#x3C;/groupId>
+                &#x3C;artifactId>spring-boot-starter-tomcatb&#x3C;/artifactId>
+            &#x3C;/exclusion>
+        &#x3C;/exclusions>
+    &#x3C;/dependency>
+    
+    &#x3C;dependency>
+        &#x3C;groupId>org.springframework.boot&#x3C;/groupId>
+        &#x3C;artifactId>spring-boot-starter-undertow&#x3C;/artifactId>
+    &#x3C;/dependency>
+&#x3C;/dependencies>
+</code></pre>
+<p>application.properties</p>
+<pre><code class="language-xml">server.ssl.key-store: keystore.p12
+server.ssl.key-store-password: 123456
+server.ssl.keyStoreType: PKCS12
+server.ssl.keyAlias: spring
+server.port=8443
+server.http2.enabled=true
+</code></pre>
+<p>http2를 사용할려면 꼭 <code>server.http2.enabled</code> 을 true로 해주어야한다.</p>
+<br/>
+<h2 id="톰캣-http2"><a href="#%ED%86%B0%EC%BA%A3-http2" aria-hidden="true"><span class="icon icon-link"></span></a>톰캣 HTTP2</h2>
+<p>pom.xml</p>
+<pre><code class="language-xml">&#x3C;properties>
+    &#x3C;project.build.sourceEncoding>UTF-8&#x3C;/project.build.sourceEncoding>
+    &#x3C;project.reporting.outputEncoding>UT-8&#x3C;/project.reporting.outputEncoding>
+    &#x3C;java.version>9&#x3C;/java.version>
+    &#x3C;tomcat.version>9.0.18&#x3C;/tomcat.version>
+&#x3C;/properties>
+
+&#x3C;dependencies>
+    &#x3C;dependency>
+        &#x3C;groupId>org.springframework.boot&#x3C;/groupId>
+        &#x3C;artifactId>spring-boot-starter-web&#x3C;/artifactId>
+    &#x3C;/dependency>
+&#x3C;/dependencies>
+
+&#x3C;build>
+    &#x3C;plugins>
+        &#x3C;plugin>
+            &#x3C;groupId>org.springframework.boot&#x3C;/groupId>
+            &#x3C;artifactId>spring-boot-maven-plugin&#x3C;/artifactId>
+        &#x3C;/plugin>
+    &#x3C;/plugins>
+&#x3C;/build>
+</code></pre>
+<p>여기에  추가적으로 Project Setting에 Project에 version과, module을 맞춰줘야한다.
+그렇게 진행하면. 문제없이 http2로 돌아가는 것을 확인할 수 있다.</p>
+<ul>
+<li>JDK9와 Tomcat 9+ 추천</li>
+<li>
+<p>그이하는아래링크참고</p>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-embedded-web-servers.html#howto-configure-http2-tomcat" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/howto-embedded-web-servers.html#howto-configure-http2-tomcat</a></li>
+</ul>
+</li>
+</ul>
+<br/>
+<h2 id="독립적으로-실행-가능한-jar"><a href="#%EB%8F%85%EB%A6%BD%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%8B%A4%ED%96%89-%EA%B0%80%EB%8A%A5%ED%95%9C-jar" aria-hidden="true"><span class="icon icon-link"></span></a>독립적으로 실행 가능한 JAR</h2>
+<ul>
+<li>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html</a> </p>
+<ul>
+<li>JAR 파일 하나로 실행 가능, 이걸로 앱이 돌아간다.  - mvn package를 하면 실행 가능한 JAR 파일 “하나가" 생성 됨.</li>
+<li>spring-maven-plugin이 해주는 일 (패키징)</li>
+<li>
+<p>과거 “uber” jar 를 사용</p>
+<ul>
+<li>모든 클래스 (의존성 및 애플리케이션)를 하나로 압축하는 방법</li>
+<li>
+<p>뭐가 어디에서 온건지 알 수가 없음</p>
+<ul>
+<li>무슨 라이브러리를 쓰는건지..</li>
+</ul>
+</li>
+<li>내용은 다르지만 이름이 같은 파일은 또 어떻게?</li>
+</ul>
+</li>
+<li>
+<p>스프링 부트의 전략</p>
+<ul>
+<li><strong>내장 JAR</strong> : 기본적으로 자바에는 내장 JAR를 로딩하는 표준적인 방법이 없음.</li>
+<li>애플리케이션 클래스와 라이브러리 위치 구분</li>
+<li>org.springframework.boot.loader.jar.JarFile을 사용해서 내장 JAR를 읽는다.</li>
+<li>org.springframework.boot.loader.Launcher를 사용해서 실행한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<h2 id="스프링-부트-원리-정리"><a href="#%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B6%80%ED%8A%B8-%EC%9B%90%EB%A6%AC-%EC%A0%95%EB%A6%AC" aria-hidden="true"><span class="icon icon-link"></span></a>스프링 부트 원리 정리</h2>
+<ul>
+<li>
+<p>의존성 관리</p>
+<ul>
+<li>이것만 넣어도 이만큼이나 다 알아서 가져오네?</li>
+</ul>
+</li>
+<li>
+<p><strong>자동 설정</strong></p>
+<ul>
+<li>@EnableAutoConfiguration이 뭘 해주는지 알겠어.</li>
+</ul>
+</li>
+<li>
+<p>내장 웹 서버</p>
+<ul>
+<li>아 스프링 부트가 서버가 아니라 내장 서버를 실행하는 거군.</li>
+</ul>
+</li>
+<li>
+<p>독립적으로 실행 가능한 JAR</p>
+<ul>
+<li>spring-boot-maven 플러그인이 이런걸 해주는구나..</li>
+</ul>
+</li>
+</ul>
+</div><div class="post__footer"><div class="post-tags"><a href="/blog/tag/Spring/" class="post-tags__link"><span>#</span> Spring
+		</a><a href="/blog/tag/Springboot/" class="post-tags__link"><span>#</span> Springboot
+		</a><a href="/blog/tag/Backend/" class="post-tags__link"><span>#</span> Backend
+		</a><a href="/blog/tag/SpringStarter/" class="post-tags__link"><span>#</span> SpringStarter
+		</a></div></div></div><div class="post-comments"></div><div class="author post-author"><img alt="Author image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='5'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f)' width='180' height='180' xlink:href='data:image/jpeg%3bbase64%2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABAAEADASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABgEDBAcIBQIA/8QAMBAAAQMDAgQFAwQDAQAAAAAAAQIDBAAFERIhBhMxUQciQWFxFJGhFiMygRVCsdH/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/EACARAAICAgICAwAAAAAAAAAAAAECABEDEiExBCITQUL/2gAMAwEAAhEDEQA/ALKr4mmyo5pdVPJXFNIakR4ynUlaspbAznHX4qp/EzxOTw9LctVnQ07cEpBW%2b4QW2sjYY9VfOMe9LuLqNowFyzx0pDWTX%2bM%2bIZMovOcQT9ZUFYbdKQD8DbHxWg/Cy7XriC0xZl%2bTEYiyBy4i06ua%2bpOcqV/qAcHHqaBcDuMqMxoQtNeTUiayGVJKM6TsQeqVDqKjUVYMLEzKVNGeiupMCOZTnZtP8jTcSGp/C3Mpa/JqJfLythf0VrbQp0DzFX8UDuankyfle4%2bLFfs/AnL4x42t9puRgPsZitMuPPSCSSjSkkBCR1Vt%2bM1Stv8ADfibjGQ5f5S4Mf6xfNCJWvUpJ6FSUjbbHrmrNn8PNTo036xXOkymy2VgYCQrY4HxtRBw5DegyHhHhpiAq0lZeLnNGNlHI2PpjeoHbH33Oz0zGh0JRvF/hfxBbYvPiRbc4003%2b43BdcKlnfK9Lm5PsD0HSjjwB46uHEN/uFivKkGN9Ml2KylGAyWyElI7DGDjvRRf1SHJMlEh66ocLepK2NJYwTgJ0k5J37dM71WEaR%2bkfEW0Xvkqw4tUeWllJ8yVDBUB3Gx/qtvtw0Pw6cpNFXZCkMuDqcZz8Vy0kFIPcV3w7HutuS7GcS4hadSVJ6GhoL5bqmVbLRtg0%2bA0SJDyFNAx%2b/XUsIDMfd1Ww/8Aa4DCNIJJJKjlSj1Ue9DDvHvDqOfImXNlK9ZSkDKjgdgM1HV4l8MJjB4zHic45YYUV/bpj%2b6piUKLPcjmcsaHUN0Hzox1yK6z85wJy0yXloQf2kKAVn060B/rOxC1xLg7cEMsSgS0Fg6zg4PlGTsaM7KLbxxZ2btZ5KCtOWXkLRgpUOpwfQ7GtlTeiJTxMioSH6ntcpSLQtU1gIcGdshRx6Zx61XCoKLnci88hTSUkltWN09Onuf%2bVYlybs/DlsU2FtyX86iEKyhJ7k%2bp9qDVXBMyQ64CnmZBWkHdORtkfGKgMPNMZ0t5OtsghxwI%2bhhKoKAEtgakJAwB3p/iqERiUyPOnc49aGLDK5FxYWFY82D8GrGdQmRG3wQRRcatxJo26%2b0wVpK0kDb4pWm3HGwlIyoq0bd6QOBCCTXbtLIMaK6oDSnU8fk9KuBc4pDlQzGmuac%2bVsKH23/Io/8ADriViySXY90b5lskJAdSUatB9FY6/b27UKzG%2bdIQsbamSPuRXp0aClY9Nj8U2sIYjmWNfeIOHks86LeA7g4RFRGWgJHck7mq2uV0luXQ3GO%2b8zLkrAy2op0J7bewFNTUnWgBX8t6bbwJaUkbcsn8ikCAG5R8zMoX6EIovGd8YkM65ijo3xoTggeh23PvWrrFLTMtzLqCClxtK0/BGaxo6%2bhSlKO2lRT8d60t4MXX/IcFW4knWyDHUD1Gk4H4xSZR0Y%2bA8kT/2Q==' /%3e%3c/svg%3e" width="180" data-src="/blog/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" data-srcset="/blog/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg 180w" data-sizes="(max-width: 180px) 100vw, 180px" class="author__image g-image g-image--lazy g-image--loading"><noscript><img src="/blog/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" class="author__image g-image g-image--loaded" width="180" alt="Author image"></noscript><!----><p class="author__intro">
+		To be a Pro in Web developer
+	</p><p class="author__links"><a href="//linkedin.com/in/myeonghun-park-7693a1184/">Linkedin</a><a href="//github.com/Azderica">GitHub</a></p></div></main><footer class="footer"><span class="footer__copyright">Copyright © 2020. </span><span class="footer__links">Powered by <a href="//gridsome.org"> Gridsome </a></span></footer></div>
+    <script>window.__INITIAL_STATE__={"data":{"post":{"title":"[Springboot] Springboot 이해하기","path":"\u002Fspringboot-springboot\u002F","date":"9. July 2020","timeToRead":10,"tags":[{"id":"Spring","title":"Spring","path":"\u002Ftag\u002FSpring\u002F"},{"id":"Springboot","title":"Springboot","path":"\u002Ftag\u002FSpringboot\u002F"},{"id":"Backend","title":"Backend","path":"\u002Ftag\u002FBackend\u002F"},{"id":"SpringStarter","title":"SpringStarter","path":"\u002Ftag\u002FSpringStarter\u002F"}],"description":" 'Springboot 시작하기'의 두 번째 게시글입니다. ","content":"\u003Ch1 id=\"springboot-이해하기\"\u003E\u003Ca href=\"#springboot-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003ESpringboot 이해하기\u003C\u002Fh1\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"의존성-관리-이해\"\u003E\u003Ca href=\"#%EC%9D%98%EC%A1%B4%EC%84%B1-%EA%B4%80%EB%A6%AC-%EC%9D%B4%ED%95%B4\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E의존성 관리 이해\u003C\u002Fh2\u003E\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtmlsingle\u002F#using-boot-dependency-management\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtmlsingle\u002F#using-boot-dependency-management\u003C\u002Fa\u003E\u003C\u002Fp\u003E\n\u003Cp\u003E의존성으로 다 정의가 되어있어서 적게 신경을 써도 된다는 것은 큰 장점입니다.\u003C\u002Fp\u003E\n\u003Cp\u003E또한 parent를 바꿔서 dependency를 줄 수 있습니다. 만약에 parent를 못바꾸는 상항이면 dependencyManagement에 dependency를 주는 방법이 있습니다.\u003C\u002Fp\u003E\n\u003Cp\u003E일반적으로는 \u003Cstrong\u003Eparent를 설정\u003C\u002Fstrong\u003E하여 \u003Cstrong\u003Edependency를 주는 것이 중요\u003C\u002Fstrong\u003E합니다. \u003C\u002Fp\u003E\n\u003Cp\u003E의존성 관리 기능을 최대한 사용하는 것이 좋습니다.\u003C\u002Fp\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"의존성-관리-응용\"\u003E\u003Ca href=\"#%EC%9D%98%EC%A1%B4%EC%84%B1-%EA%B4%80%EB%A6%AC-%EC%9D%91%EC%9A%A9\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E의존성 관리 응용\u003C\u002Fh2\u003E\n\u003Cul\u003E\n\u003Cli\u003E버전을 관리해주는 의존성을 추가 (자동으로 버전 관리)\u003C\u002Fli\u003E\n\u003Cli\u003E버전 관리 안해주는 의존성 추가 (추가적으로 버전을 체크해줘야 함)\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E기존 의존성 버전 변경하기\u003C\u002Fp\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-xml\"\u003E&#x3C;properties\u003E\n    &#x3C;spring.version\u003E5.0.6.RELEASE&#x3C;\u002Fspring.version\u003E\n&#x3C;\u002Fproperties\u003E\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fmvnrepository.com\u002F\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fmvnrepository.com\u002F\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E버전을 관리해주는 version이 있으면 자동으로 spring boot 가 처리를 해주지만,\nversion이 없으면 따로 버전을 관리해줘야합니다.(다른 버전으로 처리가 안되는 경우가 발생할 수 있음. )\u003C\u002Fp\u003E\n\u003Ch2 id=\"자동-설정-이해\"\u003E\u003Ca href=\"#%EC%9E%90%EB%8F%99-%EC%84%A4%EC%A0%95-%EC%9D%B4%ED%95%B4\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E자동 설정 이해\u003C\u002Fh2\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Ccode\u003E@EnableAutoConfiguration\u003C\u002Fcode\u003E (\u003Ccode\u003E@SpringBootApplication\u003C\u002Fcode\u003E 안에 숨어 있음) \u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E빈(Bean)은 두단계로 나눠서읽혀집니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E1단계: \u003Ccode\u003E@ComponentScan\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E2단계: \u003Ccode\u003E@EnableAutoConfiguration\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E\u003Ccode\u003E@ComponentScan\u003C\u002Fcode\u003E\n-\u003Ccode\u003E@Component\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Ccode\u003E@Configuration @Repository @Service @Controller @RestController\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E\u003Ccode\u003E@EnableAutoConfiguration\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003Espring.factories\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Eorg.springframework.boot.autoconfigure.EnableAutoConfigu ration\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ccode\u003E@Configuration\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ccode\u003E@ConditionalOnXxxYyyZzz\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-java\"\u003E@SpringBootApplication\npublic class Application {\n\n    public static void main(String[] args){\n        SpringApplication.run(Application.class, args);\n    }\n}\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003E대부분 이 방법으로 진행하는 것이 좋습니다.\u003C\u002Fp\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-java\"\u003E@SpringBootConfiguration\n@ComponentScan\n\u002F\u002F @EnableAutoConfiguration\npublic class Application {\n\n    public static void main(String[] args){\n        SpringApplication application = new SpringApplication(Application.class);\n        application.setWebApplicationType(WebApplicationType.NONE);\n        application.run(args);\n\n        \u002F\u002F SpringApplication.run(Application.class, args);\n    }\n}\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003E위와 같이 돌릴 수도 있습니다. 그러나 다음과 같이 하게된다면 Web 처리는 못하는 단점이 있습니다.\u003C\u002Fp\u003E\n\u003Ch3 id=\"componentscan\"\u003E\u003Ca href=\"#componentscan\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E@ComponentScan\u003C\u002Fh3\u003E\n\u003Cp\u003E자기 밑에 있는 모든 Component를 찾아서 Bin으로 등록시킵니다. (자기 자신 포함, 다른 패키지는 안됩니다.)\u003C\u002Fp\u003E\n\u003Ch3 id=\"enableautoconfiguration\"\u003E\u003Ca href=\"#enableautoconfiguration\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E@EnableAutoConfiguration\u003C\u002Fh3\u003E\n\u003Cp\u003E\u003Ccode\u003E: Maven: org.springframework.boot:spring-boot-autoconfiguration:2.3.1.REALSE\\spring-boot-autoconfigure-2.3.1.RELEASE.jar\\META-INF\\spring.factories\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\n\u003Cp\u003E자기 밑에 있는 모든 메타파일을 찾아준다. 위의 링크에서 EnableAutoConfiguration이 있는데 아래에 있는 모든 링크를 다 추가해준다.\u003C\u002Fp\u003E\n\u003Ch3 id=\"configuration\"\u003E\u003Ca href=\"#configuration\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EConfiguration\u003C\u002Fh3\u003E\n\u003Cp\u003EBean을 등록하는 java 설정파일입니다.\u003C\u002Fp\u003E\n\u003Cp\u003E\u003Ccode\u003EMaven: org.springframework.boot:spring-boot-autoconfiguration:2.3.1.REALSE\\spring-boot-autoconfigure-2.3.1.RELEASE.jar\\org.springframework.boot.autoconfigure\\web\\servlet\\WebMvcAutoConfiguration\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\n\u003Cp\u003E에 들어가보면 Bean이 있을 때와 없을때를 구분해줍니다.\u003C\u002Fp\u003E\n\u003Cp\u003E\u003Ccode\u003EautoConfiguartion\u003C\u002Fcode\u003E 를 설정하면 수많은 bean이 생성이 되고 적용이 됩니다.\u003C\u002Fp\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"자동-설정-만들기-starter와-autoconfigure\"\u003E\u003Ca href=\"#%EC%9E%90%EB%8F%99-%EC%84%A4%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B8%B0-starter%EC%99%80-autoconfigure\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E자동 설정 만들기. Starter와 AutoConfigure\u003C\u002Fh2\u003E\n\u003Cp\u003E유용한 단축키 :\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Ccode\u003Ecommand + N\u003C\u002Fcode\u003E : get, set, toString() 등을 제공\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ccode\u003Ecommand + opt + L\u003C\u002Fcode\u003E : 줄 정렬\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003EAutoConfigure은 흠.. 현재 Process terminated 상태. =\u003E 나중에 하기\u003C\u002Fp\u003E\n\u003Cp\u003E문제는  Bean을 등록할려고 하는데 두가지 페이스. component scan 이 먼저 적용됩니다.\n두번째 페이스가 auto configuration인데 첫번째를 두번째 애가 덮어쓴거다.\u003C\u002Fp\u003E\n\u003Cp\u003E이거를 해결하는 방법은 아래와 같습니다.\u003C\u002Fp\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"자동-설정-만들기-configurationproperties\"\u003E\u003Ca href=\"#%EC%9E%90%EB%8F%99-%EC%84%A4%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B8%B0-configurationproperties\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E자동 설정 만들기. @ConfigurationProperties\u003C\u002Fh2\u003E\n\u003Cp\u003E\u003Cstrong\u003E덮어쓰기 방지하기\u003C\u002Fstrong\u003E \u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E@ConditionalOnMissingBean : 이 타입의 Bean이 없는 경우만 이 Bean을 등록하는 의미입니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E\u003Cstrong\u003E빈 재정의 수고덜기\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E@ConfigurationProperties(“holoman”)\u003C\u002Fli\u003E\n\u003Cli\u003E@EnableConfigurationProperties(HolomanProperties)\u003C\u002Fli\u003E\n\u003Cli\u003E프로퍼티 키값 자동 완성\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E\u003Ccode\u003Esrc\\main\\resource\\application.properties\u003C\u002Fcode\u003E 파일을 만들어서 해당 파일에 다음과 같이 선언하면 이후에 사용하기 편해집니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Eholoman.name = {쓰고 싶은 글, ex name}\u003C\u002Fli\u003E\n\u003Cli\u003Eholoman.how-long = {쓰고 싶은 숫자. ex 10}\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E또한 src\\main\\java\\me.whiteship\\HolomanProperties.class를 만들어서 name이랑 how-long에 대해 Get 이랑 set 다 정의하고 HolomanConfiguration에서 \u003C\u002Fp\u003E\n\u003Cp\u003E@EnableConfigurationProperties(HolomanProperties)와 같이 선언해서 하기\u003C\u002Fp\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-xml\"\u003E &#x3C;dependency\u003E\n &#x3C;groupId\u003E​org.springframework.boot​&#x3C;\u002FgroupId\u003E\n &#x3C;artifactId\u003E​spring-boot-configuration-processor​&#x3C;\u002FartifactId\u003E\n &#x3C;optional\u003E​true​&#x3C;\u002Foptional\u003E\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Ch2 id=\"내장-서블릿-컨테이너\"\u003E\u003Ca href=\"#%EB%82%B4%EC%9E%A5-%EC%84%9C%EB%B8%94%EB%A6%BF-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E내장 서블릿 컨테이너\u003C\u002Fh2\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E스프링 부트는 서버가 아니다. 그저 툴이라고 생각하자\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E톰캣 객체 생성\u003C\u002Fli\u003E\n\u003Cli\u003E포트 선정\u003C\u002Fli\u003E\n\u003Cli\u003E톰캣에 컨텍스트 추가\u003C\u002Fli\u003E\n\u003Cli\u003E서블릿 만들기\u003C\u002Fli\u003E\n\u003Cli\u003E톰캣에 서블릿 추가\u003C\u002Fli\u003E\n\u003Cli\u003E컨텍스트에 서블릿 맵핑\u003C\u002Fli\u003E\n\u003Cli\u003E톰캣 실행 및 대기\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-java\"\u003Epublic static void main(String[] args) throws LifecycleException {\n        Tomcat tomcat = new Tomcat();\n        tomcat.setPort(8080);\n\n        Context context = tomcat.addContext(\"\u002F\", \"\u002F\");\n\n        HttpServlet servlet = new HttpServlet() {\n            @Override\n            protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {\n                PrintWriter writer = resp.getWriter();\n                writer.println(\"&#x3C;html\u003E&#x3C;head\u003E&#x3C;title\u003E\");\n                writer.println(\"Hey, Tomcat\");\n                writer.println(\"&#x3C;\u002Ftitle\u003E&#x3C;\u002Fhead\u003E\");\n                writer.println(\"&#x3C;body\u003E&#x3C;h1\u003EHello Tomcat&#x3C;\u002Fh1\u003E&#x3C;\u002Fbody\u003E\");\n                writer.println(\"&#x3C;\u002Fhtml\u003E\");\n            }\n        };\n\n        String servletName = \"helloServlet\";\n        tomcat.addServlet(\"\u002F\", servletName, servlet);\n        context.addServletMappingDecoded(\"\u002F\", servletName);\n\n        tomcat.start();\n        tomcat.getServer().await();\n    }\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003E다음은 예제 코드. 이게 다 Spring boot에서 해주는거구나로 이해하기\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E이 모든 과정을 보다 상세히 또 유연하고 설정하고 실행해주는게 바로 스프링 부트의 자동 설정\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003EServletWebServerFactoryAutoConfiguration (서블릿 웹 서버 생성)\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003ETomcatServletWebServerFactoryCustomizer(서버 커스터마이징)\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003EDispatcherServletAutoConfiguration\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E서블릿 만들고 등록\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch2 id=\"내장-웹-서버-응용--컨테이너와-포트\"\u003E\u003Ca href=\"#%EB%82%B4%EC%9E%A5-%EC%9B%B9-%EC%84%9C%EB%B2%84-%EC%9D%91%EC%9A%A9--%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EC%99%80-%ED%8F%AC%ED%8A%B8\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E내장 웹 서버 응용 : 컨테이너와 포트\u003C\u002Fh2\u003E\n\u003Cp\u003E다음과 같이 자동으로 쓰는 tomcat 대신 jetty를 쓸 수도 있다.\u003C\u002Fp\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-xml\"\u003E&#x3C;properties\u003E\n    &#x3C;servlet-api.version\u003E3.1.0&#x3C;\u002Fservlet-api.version\u003E\n&#x3C;\u002Fproperties\u003E\n&#x3C;dependency\u003E\n    &#x3C;groupId\u003Eorg.springframework.boot&#x3C;\u002FgroupId\u003E\n    &#x3C;artifactId\u003Espring-boot-starter-web&#x3C;\u002FartifactId\u003E\n    &#x3C;exclusions\u003E\n        &#x3C;!-- Exclude the Tomcat dependency --\u003E\n        &#x3C;exclusion\u003E\n            &#x3C;groupId\u003Eorg.springframework.boot&#x3C;\u002FgroupId\u003E\n            &#x3C;artifactId\u003Espring-boot-starter-tomcat&#x3C;\u002FartifactId\u003E\n        &#x3C;\u002Fexclusion\u003E\n    &#x3C;\u002Fexclusions\u003E\n&#x3C;\u002Fdependency\u003E\n&#x3C;!-- Use Jetty instead --\u003E\n&#x3C;dependency\u003E\n    &#x3C;groupId\u003Eorg.springframework.boot&#x3C;\u002FgroupId\u003E\n    &#x3C;artifactId\u003Espring-boot-starter-jetty&#x3C;\u002FartifactId\u003E\n&#x3C;\u002Fdependency\u003E\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003E해당 글에서 \u003Cdependencies\u003E\u003C\u002Fdependencies\u003E를 안주면 에러가 나서. 에러 처리해주었음.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E다른 서블릿 컨테이너로 변경\u003C\u002Fli\u003E\n\u003Cli\u003E웹서버사용하지않기\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E포트\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Eserver.port\u003C\u002Fli\u003E\n\u003Cli\u003E랜덤포트\u003C\u002Fli\u003E\n\u003Cli\u003EApplicationListner\u003CServletWebServerInitializedEvent\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch2 id=\"내장-웹-서버-응용--https-http2\"\u003E\u003Ca href=\"#%EB%82%B4%EC%9E%A5-%EC%9B%B9-%EC%84%9C%EB%B2%84-%EC%9D%91%EC%9A%A9--https-http2\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E내장 웹 서버 응용 : HTTPS, HTTP2\u003C\u002Fh2\u003E\n\u003Cp\u003E추가 공부 자료\n\u003Ca href=\"https:\u002F\u002Fopentutorials.org\u002Fcourse\u002F228\u002F4894\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fopentutorials.org\u002Fcourse\u002F228\u002F4894\u003C\u002Fa\u003E\n\u003Ca href=\"https:\u002F\u002Fgist.github.com\u002Fkeesun\u002Ff93f0b83d7232137283450e08a53c4fd\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fgist.github.com\u002Fkeesun\u002Ff93f0b83d7232137283450e08a53c4fd\u003C\u002Fa\u003E\u003C\u002Fp\u003E\n\u003Cp\u003Eapplication.properties\u003C\u002Fp\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-xml\"\u003Eserver.ssl.key-store: keystore.p12\nserver.ssl.key-store-password: 123456\nserver.ssl.keyStoreType: PKCS12\nserver.ssl.keyAlias: tomcat\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003Egenerate-keystore.sh\u003C\u002Fp\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-bash\"\u003Ekeytool -genkey \n  -alias tomcat \n  -storetype PKCS12 \n  -keyalg RSA \n  -keysize 2048 \n  -keystore keystore.p12 \n  -validity 4000\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003EHTTPS 설정하기\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E키스토어 만들기\u003C\u002Fli\u003E\n\u003Cli\u003EHTTP는 못쓰네?\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003EHTTP 커넥터는 코딩으로 설정하기\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fgithub.com\u002Fspring-projects\u002Fspring-boot\u002Ftree\u002Fv2.0.3.RELEASE\u002Fspring-boot-samples\u002Fspring-boot-sample-tomcat-multi-connectors\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fgithub.com\u002Fspring-projects\u002Fspring-boot\u002Ftree\u002Fv2.0.3.RELEASE\u002Fspring-boot-samples\u002Fspring-boot-sample-tomcat-multi-connectors\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003EHTTP2 설정\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Eserver.http2.enable\u003C\u002Fli\u003E\n\u003Cli\u003E사용하는 서블릿 컨테이너 마다 다름\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003Epom.xml\u003C\u002Fp\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-xml\"\u003E&#x3C;dependencies\u003E\n    &#x3C;dependency\u003E\n        &#x3C;groupId\u003Eorg.springframework.boot&#x3C;\u002FgroupId\u003E\n        &#x3C;artifactId\u003Espring-boot-starter-web&#x3C;\u002FartifactId\u003E\n        &#x3C;exclusions\u003E\n            &#x3C;exclusion\u003E\n                &#x3C;groupId\u003Eorg.springframework.boot&#x3C;\u002FgroupId\u003E\n                &#x3C;artifactId\u003Espring-boot-starter-tomcatb&#x3C;\u002FartifactId\u003E\n            &#x3C;\u002Fexclusion\u003E\n        &#x3C;\u002Fexclusions\u003E\n    &#x3C;\u002Fdependency\u003E\n    \n    &#x3C;dependency\u003E\n        &#x3C;groupId\u003Eorg.springframework.boot&#x3C;\u002FgroupId\u003E\n        &#x3C;artifactId\u003Espring-boot-starter-undertow&#x3C;\u002FartifactId\u003E\n    &#x3C;\u002Fdependency\u003E\n&#x3C;\u002Fdependencies\u003E\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003Eapplication.properties\u003C\u002Fp\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-xml\"\u003Eserver.ssl.key-store: keystore.p12\nserver.ssl.key-store-password: 123456\nserver.ssl.keyStoreType: PKCS12\nserver.ssl.keyAlias: spring\nserver.port=8443\nserver.http2.enabled=true\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003Ehttp2를 사용할려면 꼭 \u003Ccode\u003Eserver.http2.enabled\u003C\u002Fcode\u003E 을 true로 해주어야한다.\u003C\u002Fp\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"톰캣-http2\"\u003E\u003Ca href=\"#%ED%86%B0%EC%BA%A3-http2\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E톰캣 HTTP2\u003C\u002Fh2\u003E\n\u003Cp\u003Epom.xml\u003C\u002Fp\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-xml\"\u003E&#x3C;properties\u003E\n    &#x3C;project.build.sourceEncoding\u003EUTF-8&#x3C;\u002Fproject.build.sourceEncoding\u003E\n    &#x3C;project.reporting.outputEncoding\u003EUT-8&#x3C;\u002Fproject.reporting.outputEncoding\u003E\n    &#x3C;java.version\u003E9&#x3C;\u002Fjava.version\u003E\n    &#x3C;tomcat.version\u003E9.0.18&#x3C;\u002Ftomcat.version\u003E\n&#x3C;\u002Fproperties\u003E\n\n&#x3C;dependencies\u003E\n    &#x3C;dependency\u003E\n        &#x3C;groupId\u003Eorg.springframework.boot&#x3C;\u002FgroupId\u003E\n        &#x3C;artifactId\u003Espring-boot-starter-web&#x3C;\u002FartifactId\u003E\n    &#x3C;\u002Fdependency\u003E\n&#x3C;\u002Fdependencies\u003E\n\n&#x3C;build\u003E\n    &#x3C;plugins\u003E\n        &#x3C;plugin\u003E\n            &#x3C;groupId\u003Eorg.springframework.boot&#x3C;\u002FgroupId\u003E\n            &#x3C;artifactId\u003Espring-boot-maven-plugin&#x3C;\u002FartifactId\u003E\n        &#x3C;\u002Fplugin\u003E\n    &#x3C;\u002Fplugins\u003E\n&#x3C;\u002Fbuild\u003E\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003E여기에  추가적으로 Project Setting에 Project에 version과, module을 맞춰줘야한다.\n그렇게 진행하면. 문제없이 http2로 돌아가는 것을 확인할 수 있다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003EJDK9와 Tomcat 9+ 추천\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E그이하는아래링크참고\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fhowto-embedded-web-servers.html#howto-configure-http2-tomcat\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fhowto-embedded-web-servers.html#howto-configure-http2-tomcat\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"독립적으로-실행-가능한-jar\"\u003E\u003Ca href=\"#%EB%8F%85%EB%A6%BD%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%8B%A4%ED%96%89-%EA%B0%80%EB%8A%A5%ED%95%9C-jar\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E독립적으로 실행 가능한 JAR\u003C\u002Fh2\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fexecutable-jar.html\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fexecutable-jar.html\u003C\u002Fa\u003E \u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003EJAR 파일 하나로 실행 가능, 이걸로 앱이 돌아간다.  - mvn package를 하면 실행 가능한 JAR 파일 “하나가\" 생성 됨.\u003C\u002Fli\u003E\n\u003Cli\u003Espring-maven-plugin이 해주는 일 (패키징)\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E과거 “uber” jar 를 사용\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E모든 클래스 (의존성 및 애플리케이션)를 하나로 압축하는 방법\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E뭐가 어디에서 온건지 알 수가 없음\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E무슨 라이브러리를 쓰는건지..\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E내용은 다르지만 이름이 같은 파일은 또 어떻게?\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E스프링 부트의 전략\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Cstrong\u003E내장 JAR\u003C\u002Fstrong\u003E : 기본적으로 자바에는 내장 JAR를 로딩하는 표준적인 방법이 없음.\u003C\u002Fli\u003E\n\u003Cli\u003E애플리케이션 클래스와 라이브러리 위치 구분\u003C\u002Fli\u003E\n\u003Cli\u003Eorg.springframework.boot.loader.jar.JarFile을 사용해서 내장 JAR를 읽는다.\u003C\u002Fli\u003E\n\u003Cli\u003Eorg.springframework.boot.loader.Launcher를 사용해서 실행한다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"스프링-부트-원리-정리\"\u003E\u003Ca href=\"#%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B6%80%ED%8A%B8-%EC%9B%90%EB%A6%AC-%EC%A0%95%EB%A6%AC\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E스프링 부트 원리 정리\u003C\u002Fh2\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E의존성 관리\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E이것만 넣어도 이만큼이나 다 알아서 가져오네?\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E\u003Cstrong\u003E자동 설정\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E@EnableAutoConfiguration이 뭘 해주는지 알겠어.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E내장 웹 서버\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E아 스프링 부트가 서버가 아니라 내장 서버를 실행하는 거군.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E독립적으로 실행 가능한 JAR\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Espring-boot-maven 플러그인이 이런걸 해주는구나..\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n","cover_image":{"type":"image","mimeType":"image\u002Fpng","src":"\u002Fblog\u002Fassets\u002Fstatic\u002FSpringLogo.214a68b.be0c3d9590430504675b948223711f21.png","size":{"width":820,"height":442},"sizes":"(max-width: 820px) 100vw, 820px","srcset":["\u002Fblog\u002Fassets\u002Fstatic\u002FSpringLogo.a67b0b2.be0c3d9590430504675b948223711f21.png 480w","\u002Fblog\u002Fassets\u002Fstatic\u002FSpringLogo.214a68b.be0c3d9590430504675b948223711f21.png 820w"],"dataUri":"data:image\u002Fsvg+xml,%3csvg fill='none' viewBox='0 0 820 442' xmlns='http:\u002F\u002Fwww.w3.org\u002F2000\u002Fsvg' xmlns:xlink='http:\u002F\u002Fwww.w3.org\u002F1999\u002Fxlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-29f2605aef896f90944d207b9d4e9d4c'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='10'\u002F%3e%3c\u002Ffilter%3e%3c\u002Fdefs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-29f2605aef896f90944d207b9d4e9d4c)' width='820' height='442' xlink:href='data:image\u002Fpng%3bbase64%2c\u002F9j\u002F2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj\u002F2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj\u002FwAARCAAiAEADASIAAhEBAxEB\u002F8QAGwABAAMBAAMAAAAAAAAAAAAAAAQFBgMCBwj\u002FxAAqEAABAwQBAgUEAwAAAAAAAAABAgMEAAURIRIGMRNBUWGBFBUiMgdxof\u002FEABgBAQADAQAAAAAAAAAAAAAAAAACAwQB\u002F8QAIxEAAgICAgIBBQAAAAAAAAAAAAECEQMhEjEEQVEiYZGx4f\u002FaAAwDAQACEQMRAD8A%2bnaUpQCs51b1SxYEobS348xwckt5wEj1Ua0dYx2BBX\u002FIEt%2b9lrwRGQ7HD5AQcYB76OPT3rN5U5xglj026v4Ksrkl9Psr7H17OnXFqO5bUPpcVjEbPJPvvR\u002FyvYDKy42FKTxVsFOc4I0RUWNLiuZFrZQhgDLkkN8G0pHocDkf60PWu8RYdbU6j9HFqWj3STo\u002FPf5rnjKcVU58hiUlpys7UpStRaKgXi5t2xplS21uuPuBpptBAKlEZ7kgDt51PqtvsF6fFS019ItPLK2pTXNCx8HII9RUMnLi%2bPZGV1oiOdRcJLMUWueZjrRdSxxSDpWDk5wB557VW3i%2b225Qm4cmBOedfWtox2xxdQ4jB4nfuDntquMKx3W3XmMIbyCW4jmVuNqUz%2bTmfCG8gAdt51VjbunXo90jXCRKQ7IDjzr5CMBSlpCQE%2bgAFYrz5Fxa%2bzuutfn2UXkkqKCNHs0e4JaMS7T5AeW0mO66Fp5oSFdsgY3561WjR1RHcaaSxDluTXHVsiGEgOJUj9snOABkbrxidPusX77gZCCj6h57gEnOFpSAPjFV1ytUy1z\u002FALjBDj0lUp50eGyXEhtYT%2bK0gg%2bXcVGMcuFNxVK\u002Fhda3%2bziU4LSNDaLu3c3pbSWH2HYqkpcS8ACCRnGjVlWd6Rjzg9c51yQpDkt1JSlaOBwlOM8cnA9Ad6rRVtwSlKCcu\u002F7ovxtuNsUpSrSYpSlAKUpQClKUB\u002F\u002FZ' \u002F%3e%3c\u002Fsvg%3e"}}},"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/blog/assets/js/app.672b1d96.js" defer></script><script src="/blog/assets/js/page--src--templates--post-vue.238f89b8.js" defer></script>
+  </body>
+</html>

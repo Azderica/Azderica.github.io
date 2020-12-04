@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>[Springboot] Springboot 활용하기 - 1 - Azderica</title><meta name="gridsome:hash" content="fc6e29a67ddc38efe16f045a3de184da00f36a74"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="부족하지만 꿈많은 웹 개발자의 발전 기록입니다."><meta data-vue-tag="ssr" name="description" content=" &#x27;Springboot 활용하기&#x27;의 첫번째 게시글입니다. "><link rel="preload" href="/blog/assets/css/0.styles.4ccc9e1d.css" as="style"><link rel="preload" href="/blog/assets/js/app.672b1d96.js" as="script"><link rel="preload" href="/blog/assets/js/page--src--templates--post-vue.238f89b8.js" as="script"><link rel="prefetch" href="/blog/assets/js/page--node-modules--gridsome--app--pages--404-vue.b6200640.js"><link rel="prefetch" href="/blog/assets/js/page--src--pages--index-vue.41e1013f.js"><link rel="prefetch" href="/blog/assets/js/page--src--templates--tag-vue.7eab7acd.js"><link rel="stylesheet" href="/blog/assets/css/0.styles.4ccc9e1d.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <script>
+      // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
+      (function() {
+        window.__onThemeChange = function() {};
+        function setTheme(newTheme) {
+          window.__theme = newTheme;
+          preferredTheme = newTheme;
+          document.body.setAttribute('data-theme', newTheme);
+          window.__onThemeChange(newTheme);
+        }
+
+        var preferredTheme;
+        try {
+          preferredTheme = localStorage.getItem('theme');
+        } catch (err) { }
+
+        window.__setPreferredTheme = function(newTheme) {
+          setTheme(newTheme);
+          try {
+            localStorage.setItem('theme', newTheme);
+          } catch (err) {}
+        }
+
+        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        darkQuery.addListener(function(e) {
+          window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+        });
+
+        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+      })();
+    </script>
+
+    <div id="app" data-server-rendered="true"><header class="header"><div class="header__left"><a href="/blog/" class="logo active"><span class="logo__text">
+    ← Azderica
+  </span></a></div><div class="header__right"><button role="button" aria-label="Toggle dark/light" class="toggle-theme"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></div></header><main class="main"><div class="post-title"><h1 class="post-title__text">
+      [Springboot] Springboot 활용하기 - 1
+    </h1><div class="post-meta">
+   Posted 3. August 2020.
+   <strong>8 min read.</strong></div></div><div class="post content-box"><div class="post__header"><img alt="Cover image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 820 442' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-29f2605aef896f90944d207b9d4e9d4c'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='10'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-29f2605aef896f90944d207b9d4e9d4c)' width='820' height='442' xlink:href='data:image/png%3bbase64%2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAiAEADASIAAhEBAxEB/8QAGwABAAMBAAMAAAAAAAAAAAAAAAQFBgMCBwj/xAAqEAABAwQBAgUEAwAAAAAAAAABAgMEAAURIRIGMRNBUWGBFBUiMgdxof/EABgBAQADAQAAAAAAAAAAAAAAAAACAwQB/8QAIxEAAgICAgIBBQAAAAAAAAAAAAECEQMhEjEEQVEiYZGx4f/aAAwDAQACEQMRAD8A%2bnaUpQCs51b1SxYEobS348xwckt5wEj1Ua0dYx2BBX/IEt%2b9lrwRGQ7HD5AQcYB76OPT3rN5U5xglj026v4Ksrkl9Psr7H17OnXFqO5bUPpcVjEbPJPvvR/yvYDKy42FKTxVsFOc4I0RUWNLiuZFrZQhgDLkkN8G0pHocDkf60PWu8RYdbU6j9HFqWj3STo/Pf5rnjKcVU58hiUlpys7UpStRaKgXi5t2xplS21uuPuBpptBAKlEZ7kgDt51PqtvsF6fFS019ItPLK2pTXNCx8HII9RUMnLi%2bPZGV1oiOdRcJLMUWueZjrRdSxxSDpWDk5wB557VW3i%2b225Qm4cmBOedfWtox2xxdQ4jB4nfuDntquMKx3W3XmMIbyCW4jmVuNqUz%2bTmfCG8gAdt51VjbunXo90jXCRKQ7IDjzr5CMBSlpCQE%2bgAFYrz5Fxa%2bzuutfn2UXkkqKCNHs0e4JaMS7T5AeW0mO66Fp5oSFdsgY3561WjR1RHcaaSxDluTXHVsiGEgOJUj9snOABkbrxidPusX77gZCCj6h57gEnOFpSAPjFV1ytUy1z/ALjBDj0lUp50eGyXEhtYT%2bK0gg%2bXcVGMcuFNxVK/hda3%2bziU4LSNDaLu3c3pbSWH2HYqkpcS8ACCRnGjVlWd6Rjzg9c51yQpDkt1JSlaOBwlOM8cnA9Ad6rRVtwSlKCcu/7ovxtuNsUpSrSYpSlAKUpQClKUB//Z' /%3e%3c/svg%3e" width="820" data-src="/blog/assets/static/SpringLogo.214a68b.be0c3d9590430504675b948223711f21.png" data-srcset="/blog/assets/static/SpringLogo.a67b0b2.be0c3d9590430504675b948223711f21.png 480w, /blog/assets/static/SpringLogo.214a68b.be0c3d9590430504675b948223711f21.png 820w" data-sizes="(max-width: 820px) 100vw, 820px" class="g-image g-image--lazy g-image--loading"><noscript><img src="/blog/assets/static/SpringLogo.214a68b.be0c3d9590430504675b948223711f21.png" class="g-image g-image--loaded" width="820" alt="Cover image"></noscript></div><div class="post__content"><h1 id="springboot-활용하기"><a href="#springboot-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0" aria-hidden="true"><span class="icon icon-link"></span></a>Springboot 활용하기</h1>
+<table>
+<thead>
+<tr>
+<th>스프링 부트 핵심 기능</th>
+<th>각종 기술 연동</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SpringApplication</td>
+<td>스프링 웹 MVC</td>
+</tr>
+<tr>
+<td>외부설정</td>
+<td>스프링 웹 MVC</td>
+</tr>
+<tr>
+<td>프로파일</td>
+<td>스프링 데이터</td>
+</tr>
+<tr>
+<td>로깅</td>
+<td>스프링 시큐리티</td>
+</tr>
+<tr>
+<td>테스트</td>
+<td>REST API 클라이언트</td>
+</tr>
+<tr>
+<td>Spring-Dev-Tools</td>
+<td>다루지 않은 내용들</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<h2 id="springapplication"><a href="#springapplication" aria-hidden="true"><span class="icon icon-link"></span></a>SpringApplication</h2>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spring-application.html#boot-features-spring-application" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spring-application.html#boot-features-spring-application</a></p>
+<p>Tip) 자동 설정이 되지않을때나 궁금할때는 디버그를 보면 확인할 수 있다.</p>
+<ul>
+<li>
+<p>기본 로그 레벨 INFO</p>
+<ul>
+<li>뒤에로깅수업때자세히살펴볼예정</li>
+</ul>
+</li>
+<li>FailureAnalyzer</li>
+<li>
+<p>배너</p>
+<ul>
+<li>banner.txt | gif | jpg | png</li>
+<li>classpath 또는 spring.banner.location</li>
+<li>${spring-boot.version} 등의 변수를 사용할 수 있음.</li>
+<li>Banner 클래스 구현하고 SpringApplication.setBanner()로 설정 가능.</li>
+</ul>
+<pre><code class="language-java">SpringApplication app = new SpringApplication(SpringinitApplication.class);
+app.setBanner((environment, sourceClass, out) -> {
+  out.println("===========");
+  out.println("Spring Boot");
+  out.println("===========");
+});
+</code></pre>
+</li>
+<li>
+<p>배너끄는방법 </p>
+<ul>
+<li>SpringApplicationBuilder로 빌더 패턴 사용 가능</li>
+</ul>
+<pre><code class="language-java">new SprintApplicationBuilder()
+    .sources(SpringinitApplication.class)
+    .run(args);
+</code></pre>
+</li>
+</ul>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spring-applicatio" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spring-applicatio</a> n.html#boot-features-application-events-and-listeners</p>
+<ul>
+<li>
+<p>ApplicationEvent 등록</p>
+<ul>
+<li>
+<p>ApplicationContext를 만들기 전에 사용하는 리스너는 @Bean으로 등록할 수 없다.</p>
+<ul>
+<li>SpringApplication.addListners()</li>
+</ul>
+<pre><code class="language-java">// SampleListner
+public class SampleListner implements ApplicationListener&#x3C;ApplicationStartedEvent> {
+
+  @Override
+    public void onApplicationEvent(ApplicationStartedEvent applicationStartedEvent){
+      System.out.println("=======================");
+      System.out.println("Application is starting");
+      System.out.println("=======================");
+  }
+}
+
+// Application
+@SpringBootApplication
+public class Application {
+
+                public static void main(String[] args){
+                    SpringApplication app = new SpringApplication(Application.class);
+                    app.addListeners(new SampleListner());
+                    app.run(args);
+                }
+}
+</code></pre>
+<p>다음과 같이 작성시. Spring 이 빌드될 때 찍히는 거 볼 수 있다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>WebApplicationType 설정</p>
+<p>WebApplicationType은 Servlet, Reactive, None 등이 있는데 이걸로 돌아간다.</p>
+<p>둘 다 없으면 None으로 돌려야하고, 두개다 있으면 Servlet으로 돌아간다. Reactive로 하고 싶으면 따로 작성해야한다.</p>
+</li>
+<li>
+<p>애플리케이션 아규먼트 사용하기</p>
+<ul>
+<li>ApplicationArguments를 빈으로 등록해 주니까 가져다 쓰면 됨. </li>
+</ul>
+<p>argument에 생성자가 하나면 Bean을 생성할 때 자동으로 해준다.</p>
+</li>
+<li>
+<p>애플리케이션 실행한 뒤 뭔가 실행하고 싶을 때</p>
+<ul>
+<li>ApplicationRunner (추천) 또는 CommandLineRunner</li>
+<li>
+<p>순서 지정 가능 @Order</p>
+<p>숫자가 높을수록 우선순위가 높은 것.</p>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<h2 id="외부-설정"><a href="#%EC%99%B8%EB%B6%80-%EC%84%A4%EC%A0%95" aria-hidden="true"><span class="icon icon-link"></span></a>외부 설정</h2>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config</a></p>
+<h3 id="사용할-수-있는-외부-설정"><a href="#%EC%82%AC%EC%9A%A9%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%99%B8%EB%B6%80-%EC%84%A4%EC%A0%95" aria-hidden="true"><span class="icon icon-link"></span></a>사용할 수 있는 외부 설정</h3>
+<ul>
+<li>properties</li>
+<li>YAML</li>
+<li>환경변수</li>
+<li>커맨드 라인 아규먼트</li>
+</ul>
+<h3 id="프로퍼티-우선-순위"><a href="#%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0-%EC%9A%B0%EC%84%A0-%EC%88%9C%EC%9C%84" aria-hidden="true"><span class="icon icon-link"></span></a>프로퍼티 우선 순위</h3>
+<p>위에 있을수록 높음.</p>
+<ol>
+<li>유저 홈 디렉토리에 있는 spring-boot-dev-tools.properties</li>
+<li>테스트에 있는 @TestPropertySource</li>
+<li>@SpringBootTest 애노테이션의 properties 애트리뷰트</li>
+<li>커맨드 라인 아규먼트</li>
+<li>SPRING_APPLICATION_JSON (환경 변수 또는 시스템 프로티) 에 들어있는 프로퍼티</li>
+<li>ServletConfig 파라미터</li>
+<li>ServletContext 파라미터</li>
+<li>java:comp/env JNDI 애트리뷰트</li>
+<li>System.getProperties() 자바 시스템 프로퍼티</li>
+<li>OS 환경 변수</li>
+<li>RandomValuePropertySource</li>
+<li>JAR 밖에 있는 특정 프로파일용 application properties</li>
+<li>JAR 안에 있는 특정 프로파일용 application properties</li>
+<li>JAR 밖에 있는 application properties</li>
+<li>JAR 안에 있는 application properties</li>
+<li>@PropertySource</li>
+<li>기본 프로퍼티 (SpringApplication.setDefaultProperties)</li>
+</ol>
+<p>application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)</p>
+<blockquote>
+<p>위에 있는게 이김.</p>
+</blockquote>
+<ol>
+<li>file:./config/</li>
+<li>file:./</li>
+<li>classpath:/config/</li>
+<li>classpath:/</li>
+</ol>
+<p>랜덤값 설정하기</p>
+<ul>
+<li>${random.*}</li>
+</ul>
+<p>플레이스 홀더</p>
+<blockquote>
+<p>인풋텍스트나 아레아 등에서 안내 문구를 삽입해 주는 기능 + 클릭하면 사라지는 아주 좋은 기능</p>
+</blockquote>
+<ul>
+<li>name = keesun</li>
+<li>fullName = ${name} baik</li>
+</ul>
+<h3 id="타입-세이프-프로퍼티"><a href="#%ED%83%80%EC%9E%85-%EC%84%B8%EC%9D%B4%ED%94%84-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0" aria-hidden="true"><span class="icon icon-link"></span></a>타입-세이프 프로퍼티</h3>
+<p>타입-세이프 프로퍼티 <code>@ConfigurationProperties</code></p>
+<ul>
+<li>여러 프로퍼티를 묶어서 읽어올 수 있음</li>
+<li>
+<p>빈으로등록해서다른빈에주입할수있음</p>
+<ul>
+<li>@EnableConfigurationProperties</li>
+<li>@Component</li>
+<li>@Bean</li>
+</ul>
+</li>
+<li>
+<p>융통성 있는 바인딩</p>
+<ul>
+<li>context-path (케밥)</li>
+<li>context_path (언드스코어)</li>
+<li>contextPath (캐멀)</li>
+<li>CONTEXTPATH</li>
+</ul>
+</li>
+<li>
+<p>프로퍼티 타입 컨버전</p>
+<ul>
+<li>@DurationUnit</li>
+</ul>
+</li>
+<li>
+<p>프로퍼티 값 검증</p>
+<ul>
+<li>@Validated</li>
+<li>JSR-303 (@NotNull, ...)</li>
+</ul>
+</li>
+<li>메타정보생성</li>
+<li>
+<p>@Value</p>
+<ul>
+<li>SpEL 을 사용할 수 있지만...</li>
+<li>위에 있는 기능들은 전부 사용 못합니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="프로파일"><a href="#%ED%94%84%EB%A1%9C%ED%8C%8C%EC%9D%BC" aria-hidden="true"><span class="icon icon-link"></span></a>프로파일</h3>
+<ul>
+<li>
+<p>@Profile 애노테이션은 어디에?</p>
+<ul>
+<li>@Configuration</li>
+<li>@Component</li>
+</ul>
+</li>
+<li>
+<p>어떤 프로파일을 활성화 할 것인가?</p>
+<ul>
+<li>spring.profiles.active</li>
+</ul>
+</li>
+<li>
+<p>어떤 프로파일을 추가할 것인가?</p>
+<ul>
+<li>spring.profiles.include</li>
+</ul>
+</li>
+<li>
+<p>프로파일용 프로퍼티</p>
+<ul>
+<li>application-{profile}.properties</li>
+</ul>
+</li>
+</ul>
+<br/>
+<h2 id="로깅"><a href="#%EB%A1%9C%EA%B9%85" aria-hidden="true"><span class="icon icon-link"></span></a>로깅</h2>
+<p>로깅 퍼사드 VS 로거</p>
+<blockquote>
+<p>로깅 퍼사드의 장점은 로거를 자신들이 원하는 거를 사용할 수 있는 점</p>
+</blockquote>
+<ul>
+<li><strong>Commons Logging</strong>, SLF4j</li>
+<li>JUL, Log4J2, <strong>Logback</strong> (최종적으로는 Logback으로 왔다.)</li>
+</ul>
+<p>스프링 5에 로거 관련 변경 사항</p>
+<ul>
+<li><a href="https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/overview.html#overview-logging" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/overview.html#overview-logging</a></li>
+<li>
+<p>Spring-JCL</p>
+<ul>
+<li>Commons Logging -> SLF4j or Log4j2</li>
+<li>pom.xml에 exclusion 안해도 됨.</li>
+</ul>
+</li>
+</ul>
+<p>스프링 부트 로깅</p>
+<ul>
+<li>기본 포맷</li>
+<li>--debug (일부 핵심 라이브러리만 디버깅 모드로)</li>
+<li>--trace (전부 다 디버깅 모드로)</li>
+<li>컬러 출력: spring.output.ansi.enabled</li>
+<li>파일 출력: logging.file 또는 logging.path</li>
+<li>로그 레벨 조정: logging.level.패지키 = 로그 레벨</li>
+</ul>
+<h3 id="커스터마이징"><a href="#%EC%BB%A4%EC%8A%A4%ED%84%B0%EB%A7%88%EC%9D%B4%EC%A7%95" aria-hidden="true"><span class="icon icon-link"></span></a>커스터마이징</h3>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html</a> : 커스텀 로그 설정 파일 사용하기</p>
+<p>Logback: logback-spring.xml - 기본적으로는 이거 사용을 추천</p>
+<p>Log4J2: log4j2-spring.xml</p>
+<p>JUL (비추): logging.properties</p>
+<p>Logback extension</p>
+<ul>
+<li>프로파일 <springProfile name=”프로파일”></li>
+<li>Environment 프로퍼티 <springProperty></li>
+</ul>
+<p>로거를 Log4j2로 변경하기</p>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging</a></p>
+<br/>
+<h2 id="테스트"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-hidden="true"><span class="icon icon-link"></span></a>테스트</h2>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing</a></p>
+<p>시작은 일단 spring-boot-starter-test를 추가하는 것 부터</p>
+<ul>
+<li>test 스콥으로 추가.</li>
+</ul>
+<p>@SpringBootTest</p>
+<ul>
+<li>@RunWith(SpringRunner.class)랑 같이 써야 함.</li>
+<li>빈 설정 파일은 설정을 안해주나? 알아서 찾습니다. (@SpringBootApplication)</li>
+<li>
+<p>webEnvironment</p>
+<ul>
+<li>MOCK: mock servlet environment. 내장 톰캣 구동 안 함.</li>
+<li>RANDON_PORT, DEFINED_PORT: 내장 톰캣 사용 함.</li>
+<li>NONE: 서블릿 환경 제공 안 함.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">// TEST Code
+package myepark.ebaykorea.springtestdemo;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@AutoConfigureMockMvc
+class SpringtestdemoApplicationTests {
+
+    @Autowired
+    MockMvc mockMvc;
+
+    @Test
+    void contextLoads() throws Exception {
+        mockMvc.perform(get("/hello"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("hello myepark"))
+                .andDo(print());
+    }
+
+}
+</code></pre>
+<p>@MockBean</p>
+<ul>
+<li>ApplicationContext에 들어있는 빈을 Mock으로 만든 객체로 교체 함.</li>
+<li>모든 @Test 마다 자동으로 리셋.</li>
+</ul>
+<p>슬라이스 테스트</p>
+<ul>
+<li>레이어 별로 잘라서 테스트하고 싶을 때 (빈을 다 체크하고 싶지 않을때)</li>
+<li>@JsonTest</li>
+<li>@WebMvcTest</li>
+<li>@WebFluxTest</li>
+<li>@DataJpaTest</li>
+<li>...</li>
+</ul>
+<p>스프링 테스트</p>
+<ul>
+<li>
+<p><strong>OutputCapture</strong></p>
+<ul>
+<li>Log에 찍히는 모든 output를 캡쳐한다.</li>
+<li>ex) <code>assertThat(outputCapture.toString()).contains("holoman").contains("skip");</code></li>
+</ul>
+</li>
+<li>TestPropertyValues</li>
+<li>TestRestTemplate</li>
+<li>ConfigFileApplicationContextInitializer</li>
+</ul>
+<h3 id="spring-boot-devtools"><a href="#spring-boot-devtools" aria-hidden="true"><span class="icon icon-link"></span></a>Spring Boot Devtools</h3>
+<ul>
+<li>캐시 설정을 개발 환경에 맞게 변경.</li>
+<li>
+<p>클래스패스에 있는 파일이 변경 될 때마다 자동으로 재시작.</p>
+<ul>
+<li>
+<p>직접 껐다 켜는거 (cold starts)보다 빠른다. 왜?</p>
+<ul>
+<li>class 로더를 2개를 사용해서...</li>
+</ul>
+</li>
+<li>릴로딩 보다는 느리다. (JRebel 같은건 아님)</li>
+<li>리스타트 하고 싶지 않은 리소스는? spring.devtools.restart.exclude</li>
+<li>리스타트 기능 끄려면? spring.devtools.restart.enabled = false</li>
+</ul>
+</li>
+<li>
+<p>라이브 릴로드? 리스타트 했을 때 브라우저 자동 리프레시 하는 기능</p>
+<ul>
+<li>브라우저 플러그인 설치해야 함.</li>
+<li>라이브 릴로드 서버 끄려면? spring.devtools.liveload.enabled = false</li>
+</ul>
+</li>
+<li>
+<p>글로벌 설정</p>
+<ul>
+<li>
+<p>~/.spring-boot-devtools.properties </p>
+<ul>
+<li>1순위 외부 설정, 우선순위가 가장 높음</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>리모트 애플리케이션</p>
+<ul>
+<li>원격에서 할 수 있는데. 추천은 안함(복잡함, 보안적 측면 문제)</li>
+</ul>
+</li>
+</ul>
+</div><div class="post__footer"><div class="post-tags"><a href="/blog/tag/Spring/" class="post-tags__link"><span>#</span> Spring
+		</a><a href="/blog/tag/Springboot/" class="post-tags__link"><span>#</span> Springboot
+		</a><a href="/blog/tag/Backend/" class="post-tags__link"><span>#</span> Backend
+		</a><a href="/blog/tag/SpringStarter/" class="post-tags__link"><span>#</span> SpringStarter
+		</a></div></div></div><div class="post-comments"></div><div class="author post-author"><img alt="Author image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='5'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f)' width='180' height='180' xlink:href='data:image/jpeg%3bbase64%2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABAAEADASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABgEDBAcIBQIA/8QAMBAAAQMDAgQFAwQDAQAAAAAAAQIDBAAFERIhBhMxUQciQWFxFJGhFiMygRVCsdH/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/EACARAAICAgICAwAAAAAAAAAAAAECABEDEiExBCITQUL/2gAMAwEAAhEDEQA/ALKr4mmyo5pdVPJXFNIakR4ynUlaspbAznHX4qp/EzxOTw9LctVnQ07cEpBW%2b4QW2sjYY9VfOMe9LuLqNowFyzx0pDWTX%2bM%2bIZMovOcQT9ZUFYbdKQD8DbHxWg/Cy7XriC0xZl%2bTEYiyBy4i06ua%2bpOcqV/qAcHHqaBcDuMqMxoQtNeTUiayGVJKM6TsQeqVDqKjUVYMLEzKVNGeiupMCOZTnZtP8jTcSGp/C3Mpa/JqJfLythf0VrbQp0DzFX8UDuankyfle4%2bLFfs/AnL4x42t9puRgPsZitMuPPSCSSjSkkBCR1Vt%2bM1Stv8ADfibjGQ5f5S4Mf6xfNCJWvUpJ6FSUjbbHrmrNn8PNTo036xXOkymy2VgYCQrY4HxtRBw5DegyHhHhpiAq0lZeLnNGNlHI2PpjeoHbH33Oz0zGh0JRvF/hfxBbYvPiRbc4003%2b43BdcKlnfK9Lm5PsD0HSjjwB46uHEN/uFivKkGN9Ml2KylGAyWyElI7DGDjvRRf1SHJMlEh66ocLepK2NJYwTgJ0k5J37dM71WEaR%2bkfEW0Xvkqw4tUeWllJ8yVDBUB3Gx/qtvtw0Pw6cpNFXZCkMuDqcZz8Vy0kFIPcV3w7HutuS7GcS4hadSVJ6GhoL5bqmVbLRtg0%2bA0SJDyFNAx%2b/XUsIDMfd1Ww/8Aa4DCNIJJJKjlSj1Ue9DDvHvDqOfImXNlK9ZSkDKjgdgM1HV4l8MJjB4zHic45YYUV/bpj%2b6piUKLPcjmcsaHUN0Hzox1yK6z85wJy0yXloQf2kKAVn060B/rOxC1xLg7cEMsSgS0Fg6zg4PlGTsaM7KLbxxZ2btZ5KCtOWXkLRgpUOpwfQ7GtlTeiJTxMioSH6ntcpSLQtU1gIcGdshRx6Zx61XCoKLnci88hTSUkltWN09Onuf%2bVYlybs/DlsU2FtyX86iEKyhJ7k%2bp9qDVXBMyQ64CnmZBWkHdORtkfGKgMPNMZ0t5OtsghxwI%2bhhKoKAEtgakJAwB3p/iqERiUyPOnc49aGLDK5FxYWFY82D8GrGdQmRG3wQRRcatxJo26%2b0wVpK0kDb4pWm3HGwlIyoq0bd6QOBCCTXbtLIMaK6oDSnU8fk9KuBc4pDlQzGmuac%2bVsKH23/Io/8ADriViySXY90b5lskJAdSUatB9FY6/b27UKzG%2bdIQsbamSPuRXp0aClY9Nj8U2sIYjmWNfeIOHks86LeA7g4RFRGWgJHck7mq2uV0luXQ3GO%2b8zLkrAy2op0J7bewFNTUnWgBX8t6bbwJaUkbcsn8ikCAG5R8zMoX6EIovGd8YkM65ijo3xoTggeh23PvWrrFLTMtzLqCClxtK0/BGaxo6%2bhSlKO2lRT8d60t4MXX/IcFW4knWyDHUD1Gk4H4xSZR0Y%2bA8kT/2Q==' /%3e%3c/svg%3e" width="180" data-src="/blog/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" data-srcset="/blog/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg 180w" data-sizes="(max-width: 180px) 100vw, 180px" class="author__image g-image g-image--lazy g-image--loading"><noscript><img src="/blog/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" class="author__image g-image g-image--loaded" width="180" alt="Author image"></noscript><!----><p class="author__intro">
+		To be a Pro in Web developer
+	</p><p class="author__links"><a href="//linkedin.com/in/myeonghun-park-7693a1184/">Linkedin</a><a href="//github.com/Azderica">GitHub</a></p></div></main><footer class="footer"><span class="footer__copyright">Copyright © 2020. </span><span class="footer__links">Powered by <a href="//gridsome.org"> Gridsome </a></span></footer></div>
+    <script>window.__INITIAL_STATE__={"data":{"post":{"title":"[Springboot] Springboot 활용하기 - 1","path":"\u002Fspringboot-springboot-1\u002F","date":"3. August 2020","timeToRead":8,"tags":[{"id":"Spring","title":"Spring","path":"\u002Ftag\u002FSpring\u002F"},{"id":"Springboot","title":"Springboot","path":"\u002Ftag\u002FSpringboot\u002F"},{"id":"Backend","title":"Backend","path":"\u002Ftag\u002FBackend\u002F"},{"id":"SpringStarter","title":"SpringStarter","path":"\u002Ftag\u002FSpringStarter\u002F"}],"description":" 'Springboot 활용하기'의 첫번째 게시글입니다. ","content":"\u003Ch1 id=\"springboot-활용하기\"\u003E\u003Ca href=\"#springboot-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003ESpringboot 활용하기\u003C\u002Fh1\u003E\n\u003Ctable\u003E\n\u003Cthead\u003E\n\u003Ctr\u003E\n\u003Cth\u003E스프링 부트 핵심 기능\u003C\u002Fth\u003E\n\u003Cth\u003E각종 기술 연동\u003C\u002Fth\u003E\n\u003C\u002Ftr\u003E\n\u003C\u002Fthead\u003E\n\u003Ctbody\u003E\n\u003Ctr\u003E\n\u003Ctd\u003ESpringApplication\u003C\u002Ftd\u003E\n\u003Ctd\u003E스프링 웹 MVC\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003E외부설정\u003C\u002Ftd\u003E\n\u003Ctd\u003E스프링 웹 MVC\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003E프로파일\u003C\u002Ftd\u003E\n\u003Ctd\u003E스프링 데이터\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003E로깅\u003C\u002Ftd\u003E\n\u003Ctd\u003E스프링 시큐리티\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003E테스트\u003C\u002Ftd\u003E\n\u003Ctd\u003EREST API 클라이언트\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003ESpring-Dev-Tools\u003C\u002Ftd\u003E\n\u003Ctd\u003E다루지 않은 내용들\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003C\u002Ftbody\u003E\n\u003C\u002Ftable\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"springapplication\"\u003E\u003Ca href=\"#springapplication\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003ESpringApplication\u003C\u002Fh2\u003E\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fboot-features-spring-application.html#boot-features-spring-application\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fboot-features-spring-application.html#boot-features-spring-application\u003C\u002Fa\u003E\u003C\u002Fp\u003E\n\u003Cp\u003ETip) 자동 설정이 되지않을때나 궁금할때는 디버그를 보면 확인할 수 있다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E기본 로그 레벨 INFO\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E뒤에로깅수업때자세히살펴볼예정\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003EFailureAnalyzer\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E배너\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Ebanner.txt | gif | jpg | png\u003C\u002Fli\u003E\n\u003Cli\u003Eclasspath 또는 spring.banner.location\u003C\u002Fli\u003E\n\u003Cli\u003E${spring-boot.version} 등의 변수를 사용할 수 있음.\u003C\u002Fli\u003E\n\u003Cli\u003EBanner 클래스 구현하고 SpringApplication.setBanner()로 설정 가능.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-java\"\u003ESpringApplication app = new SpringApplication(SpringinitApplication.class);\napp.setBanner((environment, sourceClass, out) -\u003E {\n  out.println(\"===========\");\n  out.println(\"Spring Boot\");\n  out.println(\"===========\");\n});\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E배너끄는방법 \u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003ESpringApplicationBuilder로 빌더 패턴 사용 가능\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-java\"\u003Enew SprintApplicationBuilder()\n    .sources(SpringinitApplication.class)\n    .run(args);\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fboot-features-spring-applicatio\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fboot-features-spring-applicatio\u003C\u002Fa\u003E n.html#boot-features-application-events-and-listeners\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003EApplicationEvent 등록\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003EApplicationContext를 만들기 전에 사용하는 리스너는 @Bean으로 등록할 수 없다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003ESpringApplication.addListners()\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-java\"\u003E\u002F\u002F SampleListner\npublic class SampleListner implements ApplicationListener&#x3C;ApplicationStartedEvent\u003E {\n\n  @Override\n    public void onApplicationEvent(ApplicationStartedEvent applicationStartedEvent){\n      System.out.println(\"=======================\");\n      System.out.println(\"Application is starting\");\n      System.out.println(\"=======================\");\n  }\n}\n\n\u002F\u002F Application\n@SpringBootApplication\npublic class Application {\n\n                public static void main(String[] args){\n                    SpringApplication app = new SpringApplication(Application.class);\n                    app.addListeners(new SampleListner());\n                    app.run(args);\n                }\n}\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003E다음과 같이 작성시. Spring 이 빌드될 때 찍히는 거 볼 수 있다.\u003C\u002Fp\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003EWebApplicationType 설정\u003C\u002Fp\u003E\n\u003Cp\u003EWebApplicationType은 Servlet, Reactive, None 등이 있는데 이걸로 돌아간다.\u003C\u002Fp\u003E\n\u003Cp\u003E둘 다 없으면 None으로 돌려야하고, 두개다 있으면 Servlet으로 돌아간다. Reactive로 하고 싶으면 따로 작성해야한다.\u003C\u002Fp\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E애플리케이션 아규먼트 사용하기\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003EApplicationArguments를 빈으로 등록해 주니까 가져다 쓰면 됨. \u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003Eargument에 생성자가 하나면 Bean을 생성할 때 자동으로 해준다.\u003C\u002Fp\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E애플리케이션 실행한 뒤 뭔가 실행하고 싶을 때\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003EApplicationRunner (추천) 또는 CommandLineRunner\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E순서 지정 가능 @Order\u003C\u002Fp\u003E\n\u003Cp\u003E숫자가 높을수록 우선순위가 높은 것.\u003C\u002Fp\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"외부-설정\"\u003E\u003Ca href=\"#%EC%99%B8%EB%B6%80-%EC%84%A4%EC%A0%95\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E외부 설정\u003C\u002Fh2\u003E\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtmlsingle\u002F#boot-features-external-config\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtmlsingle\u002F#boot-features-external-config\u003C\u002Fa\u003E\u003C\u002Fp\u003E\n\u003Ch3 id=\"사용할-수-있는-외부-설정\"\u003E\u003Ca href=\"#%EC%82%AC%EC%9A%A9%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%99%B8%EB%B6%80-%EC%84%A4%EC%A0%95\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E사용할 수 있는 외부 설정\u003C\u002Fh3\u003E\n\u003Cul\u003E\n\u003Cli\u003Eproperties\u003C\u002Fli\u003E\n\u003Cli\u003EYAML\u003C\u002Fli\u003E\n\u003Cli\u003E환경변수\u003C\u002Fli\u003E\n\u003Cli\u003E커맨드 라인 아규먼트\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"프로퍼티-우선-순위\"\u003E\u003Ca href=\"#%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0-%EC%9A%B0%EC%84%A0-%EC%88%9C%EC%9C%84\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E프로퍼티 우선 순위\u003C\u002Fh3\u003E\n\u003Cp\u003E위에 있을수록 높음.\u003C\u002Fp\u003E\n\u003Col\u003E\n\u003Cli\u003E유저 홈 디렉토리에 있는 spring-boot-dev-tools.properties\u003C\u002Fli\u003E\n\u003Cli\u003E테스트에 있는 @TestPropertySource\u003C\u002Fli\u003E\n\u003Cli\u003E@SpringBootTest 애노테이션의 properties 애트리뷰트\u003C\u002Fli\u003E\n\u003Cli\u003E커맨드 라인 아규먼트\u003C\u002Fli\u003E\n\u003Cli\u003ESPRING_APPLICATION_JSON (환경 변수 또는 시스템 프로티) 에 들어있는 프로퍼티\u003C\u002Fli\u003E\n\u003Cli\u003EServletConfig 파라미터\u003C\u002Fli\u003E\n\u003Cli\u003EServletContext 파라미터\u003C\u002Fli\u003E\n\u003Cli\u003Ejava:comp\u002Fenv JNDI 애트리뷰트\u003C\u002Fli\u003E\n\u003Cli\u003ESystem.getProperties() 자바 시스템 프로퍼티\u003C\u002Fli\u003E\n\u003Cli\u003EOS 환경 변수\u003C\u002Fli\u003E\n\u003Cli\u003ERandomValuePropertySource\u003C\u002Fli\u003E\n\u003Cli\u003EJAR 밖에 있는 특정 프로파일용 application properties\u003C\u002Fli\u003E\n\u003Cli\u003EJAR 안에 있는 특정 프로파일용 application properties\u003C\u002Fli\u003E\n\u003Cli\u003EJAR 밖에 있는 application properties\u003C\u002Fli\u003E\n\u003Cli\u003EJAR 안에 있는 application properties\u003C\u002Fli\u003E\n\u003Cli\u003E@PropertySource\u003C\u002Fli\u003E\n\u003Cli\u003E기본 프로퍼티 (SpringApplication.setDefaultProperties)\u003C\u002Fli\u003E\n\u003C\u002Fol\u003E\n\u003Cp\u003Eapplication.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)\u003C\u002Fp\u003E\n\u003Cblockquote\u003E\n\u003Cp\u003E위에 있는게 이김.\u003C\u002Fp\u003E\n\u003C\u002Fblockquote\u003E\n\u003Col\u003E\n\u003Cli\u003Efile:.\u002Fconfig\u002F\u003C\u002Fli\u003E\n\u003Cli\u003Efile:.\u002F\u003C\u002Fli\u003E\n\u003Cli\u003Eclasspath:\u002Fconfig\u002F\u003C\u002Fli\u003E\n\u003Cli\u003Eclasspath:\u002F\u003C\u002Fli\u003E\n\u003C\u002Fol\u003E\n\u003Cp\u003E랜덤값 설정하기\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E${random.*}\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E플레이스 홀더\u003C\u002Fp\u003E\n\u003Cblockquote\u003E\n\u003Cp\u003E인풋텍스트나 아레아 등에서 안내 문구를 삽입해 주는 기능 + 클릭하면 사라지는 아주 좋은 기능\u003C\u002Fp\u003E\n\u003C\u002Fblockquote\u003E\n\u003Cul\u003E\n\u003Cli\u003Ename = keesun\u003C\u002Fli\u003E\n\u003Cli\u003EfullName = ${name} baik\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"타입-세이프-프로퍼티\"\u003E\u003Ca href=\"#%ED%83%80%EC%9E%85-%EC%84%B8%EC%9D%B4%ED%94%84-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E타입-세이프 프로퍼티\u003C\u002Fh3\u003E\n\u003Cp\u003E타입-세이프 프로퍼티 \u003Ccode\u003E@ConfigurationProperties\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E여러 프로퍼티를 묶어서 읽어올 수 있음\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E빈으로등록해서다른빈에주입할수있음\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E@EnableConfigurationProperties\u003C\u002Fli\u003E\n\u003Cli\u003E@Component\u003C\u002Fli\u003E\n\u003Cli\u003E@Bean\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E융통성 있는 바인딩\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Econtext-path (케밥)\u003C\u002Fli\u003E\n\u003Cli\u003Econtext_path (언드스코어)\u003C\u002Fli\u003E\n\u003Cli\u003EcontextPath (캐멀)\u003C\u002Fli\u003E\n\u003Cli\u003ECONTEXTPATH\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E프로퍼티 타입 컨버전\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E@DurationUnit\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E프로퍼티 값 검증\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E@Validated\u003C\u002Fli\u003E\n\u003Cli\u003EJSR-303 (@NotNull, ...)\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E메타정보생성\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E@Value\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003ESpEL 을 사용할 수 있지만...\u003C\u002Fli\u003E\n\u003Cli\u003E위에 있는 기능들은 전부 사용 못합니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"프로파일\"\u003E\u003Ca href=\"#%ED%94%84%EB%A1%9C%ED%8C%8C%EC%9D%BC\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E프로파일\u003C\u002Fh3\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E@Profile 애노테이션은 어디에?\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E@Configuration\u003C\u002Fli\u003E\n\u003Cli\u003E@Component\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E어떤 프로파일을 활성화 할 것인가?\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Espring.profiles.active\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E어떤 프로파일을 추가할 것인가?\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Espring.profiles.include\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E프로파일용 프로퍼티\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Eapplication-{profile}.properties\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"로깅\"\u003E\u003Ca href=\"#%EB%A1%9C%EA%B9%85\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E로깅\u003C\u002Fh2\u003E\n\u003Cp\u003E로깅 퍼사드 VS 로거\u003C\u002Fp\u003E\n\u003Cblockquote\u003E\n\u003Cp\u003E로깅 퍼사드의 장점은 로거를 자신들이 원하는 거를 사용할 수 있는 점\u003C\u002Fp\u003E\n\u003C\u002Fblockquote\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Cstrong\u003ECommons Logging\u003C\u002Fstrong\u003E, SLF4j\u003C\u002Fli\u003E\n\u003Cli\u003EJUL, Log4J2, \u003Cstrong\u003ELogback\u003C\u002Fstrong\u003E (최종적으로는 Logback으로 왔다.)\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E스프링 5에 로거 관련 변경 사항\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring\u002Fdocs\u002F5.0.0.RC3\u002Fspring-framework-reference\u002Foverview.html#overview-logging\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring\u002Fdocs\u002F5.0.0.RC3\u002Fspring-framework-reference\u002Foverview.html#overview-logging\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003ESpring-JCL\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003ECommons Logging -\u003E SLF4j or Log4j2\u003C\u002Fli\u003E\n\u003Cli\u003Epom.xml에 exclusion 안해도 됨.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E스프링 부트 로깅\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E기본 포맷\u003C\u002Fli\u003E\n\u003Cli\u003E--debug (일부 핵심 라이브러리만 디버깅 모드로)\u003C\u002Fli\u003E\n\u003Cli\u003E--trace (전부 다 디버깅 모드로)\u003C\u002Fli\u003E\n\u003Cli\u003E컬러 출력: spring.output.ansi.enabled\u003C\u002Fli\u003E\n\u003Cli\u003E파일 출력: logging.file 또는 logging.path\u003C\u002Fli\u003E\n\u003Cli\u003E로그 레벨 조정: logging.level.패지키 = 로그 레벨\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"커스터마이징\"\u003E\u003Ca href=\"#%EC%BB%A4%EC%8A%A4%ED%84%B0%EB%A7%88%EC%9D%B4%EC%A7%95\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E커스터마이징\u003C\u002Fh3\u003E\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fhowto-logging.html\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fhowto-logging.html\u003C\u002Fa\u003E : 커스텀 로그 설정 파일 사용하기\u003C\u002Fp\u003E\n\u003Cp\u003ELogback: logback-spring.xml - 기본적으로는 이거 사용을 추천\u003C\u002Fp\u003E\n\u003Cp\u003ELog4J2: log4j2-spring.xml\u003C\u002Fp\u003E\n\u003Cp\u003EJUL (비추): logging.properties\u003C\u002Fp\u003E\n\u003Cp\u003ELogback extension\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E프로파일 \u003CspringProfile name=”프로파일”\u003E\u003C\u002Fli\u003E\n\u003Cli\u003EEnvironment 프로퍼티 \u003CspringProperty\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E로거를 Log4j2로 변경하기\u003C\u002Fp\u003E\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fhowto-logging.html#howto-configure-log4j-for-logging\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtml\u002Fhowto-logging.html#howto-configure-log4j-for-logging\u003C\u002Fa\u003E\f\u003C\u002Fp\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"테스트\"\u003E\u003Ca href=\"#%ED%85%8C%EC%8A%A4%ED%8A%B8\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E테스트\u003C\u002Fh2\u003E\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtmlsingle\u002F#boot-features-testing\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fdocs.spring.io\u002Fspring-boot\u002Fdocs\u002Fcurrent\u002Freference\u002Fhtmlsingle\u002F#boot-features-testing\u003C\u002Fa\u003E\u003C\u002Fp\u003E\n\u003Cp\u003E시작은 일단 spring-boot-starter-test를 추가하는 것 부터\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Etest 스콥으로 추가.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E@SpringBootTest\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E@RunWith(SpringRunner.class)랑 같이 써야 함.\u003C\u002Fli\u003E\n\u003Cli\u003E빈 설정 파일은 설정을 안해주나? 알아서 찾습니다. (@SpringBootApplication)\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003EwebEnvironment\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003EMOCK: mock servlet environment. 내장 톰캣 구동 안 함.\u003C\u002Fli\u003E\n\u003Cli\u003ERANDON_PORT, DEFINED_PORT: 내장 톰캣 사용 함.\u003C\u002Fli\u003E\n\u003Cli\u003ENONE: 서블릿 환경 제공 안 함.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cpre\u003E\u003Ccode class=\"language-java\"\u003E\u002F\u002F TEST Code\npackage myepark.ebaykorea.springtestdemo;\n\nimport org.junit.Test;\nimport org.junit.runner.RunWith;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;\nimport org.springframework.boot.test.context.SpringBootTest;\nimport org.springframework.test.context.junit4.SpringRunner;\nimport org.springframework.test.web.servlet.MockMvc;\n\nimport static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;\nimport static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;\nimport static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;\nimport static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;\n\n@RunWith(SpringRunner.class)\n@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)\n@AutoConfigureMockMvc\nclass SpringtestdemoApplicationTests {\n\n    @Autowired\n    MockMvc mockMvc;\n\n    @Test\n    void contextLoads() throws Exception {\n        mockMvc.perform(get(\"\u002Fhello\"))\n                .andExpect(status().isOk())\n                .andExpect(content().string(\"hello myepark\"))\n                .andDo(print());\n    }\n\n}\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\n\u003Cp\u003E@MockBean\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003EApplicationContext에 들어있는 빈을 Mock으로 만든 객체로 교체 함.\u003C\u002Fli\u003E\n\u003Cli\u003E모든 @Test 마다 자동으로 리셋.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E슬라이스 테스트\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E레이어 별로 잘라서 테스트하고 싶을 때 (빈을 다 체크하고 싶지 않을때)\u003C\u002Fli\u003E\n\u003Cli\u003E@JsonTest\u003C\u002Fli\u003E\n\u003Cli\u003E@WebMvcTest\u003C\u002Fli\u003E\n\u003Cli\u003E@WebFluxTest\u003C\u002Fli\u003E\n\u003Cli\u003E@DataJpaTest\u003C\u002Fli\u003E\n\u003Cli\u003E...\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E스프링 테스트\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E\u003Cstrong\u003EOutputCapture\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003ELog에 찍히는 모든 output를 캡쳐한다.\u003C\u002Fli\u003E\n\u003Cli\u003Eex) \u003Ccode\u003EassertThat(outputCapture.toString()).contains(\"holoman\").contains(\"skip\");\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003ETestPropertyValues\u003C\u002Fli\u003E\n\u003Cli\u003ETestRestTemplate\u003C\u002Fli\u003E\n\u003Cli\u003EConfigFileApplicationContextInitializer\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"spring-boot-devtools\"\u003E\u003Ca href=\"#spring-boot-devtools\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003ESpring Boot Devtools\u003C\u002Fh3\u003E\n\u003Cul\u003E\n\u003Cli\u003E캐시 설정을 개발 환경에 맞게 변경.\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E클래스패스에 있는 파일이 변경 될 때마다 자동으로 재시작.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E직접 껐다 켜는거 (cold starts)보다 빠른다. 왜?\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003Eclass 로더를 2개를 사용해서...\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E릴로딩 보다는 느리다. (JRebel 같은건 아님)\u003C\u002Fli\u003E\n\u003Cli\u003E리스타트 하고 싶지 않은 리소스는? spring.devtools.restart.exclude\u003C\u002Fli\u003E\n\u003Cli\u003E리스타트 기능 끄려면? spring.devtools.restart.enabled = false\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E라이브 릴로드? 리스타트 했을 때 브라우저 자동 리프레시 하는 기능\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E브라우저 플러그인 설치해야 함.\u003C\u002Fli\u003E\n\u003Cli\u003E라이브 릴로드 서버 끄려면? spring.devtools.liveload.enabled = false\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E글로벌 설정\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E~\u002F.spring-boot-devtools.properties \u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E1순위 외부 설정, 우선순위가 가장 높음\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E리모트 애플리케이션\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E원격에서 할 수 있는데. 추천은 안함(복잡함, 보안적 측면 문제)\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n","cover_image":{"type":"image","mimeType":"image\u002Fpng","src":"\u002Fblog\u002Fassets\u002Fstatic\u002FSpringLogo.214a68b.be0c3d9590430504675b948223711f21.png","size":{"width":820,"height":442},"sizes":"(max-width: 820px) 100vw, 820px","srcset":["\u002Fblog\u002Fassets\u002Fstatic\u002FSpringLogo.a67b0b2.be0c3d9590430504675b948223711f21.png 480w","\u002Fblog\u002Fassets\u002Fstatic\u002FSpringLogo.214a68b.be0c3d9590430504675b948223711f21.png 820w"],"dataUri":"data:image\u002Fsvg+xml,%3csvg fill='none' viewBox='0 0 820 442' xmlns='http:\u002F\u002Fwww.w3.org\u002F2000\u002Fsvg' xmlns:xlink='http:\u002F\u002Fwww.w3.org\u002F1999\u002Fxlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-29f2605aef896f90944d207b9d4e9d4c'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='10'\u002F%3e%3c\u002Ffilter%3e%3c\u002Fdefs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-29f2605aef896f90944d207b9d4e9d4c)' width='820' height='442' xlink:href='data:image\u002Fpng%3bbase64%2c\u002F9j\u002F2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj\u002F2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj\u002FwAARCAAiAEADASIAAhEBAxEB\u002F8QAGwABAAMBAAMAAAAAAAAAAAAAAAQFBgMCBwj\u002FxAAqEAABAwQBAgUEAwAAAAAAAAABAgMEAAURIRIGMRNBUWGBFBUiMgdxof\u002FEABgBAQADAQAAAAAAAAAAAAAAAAACAwQB\u002F8QAIxEAAgICAgIBBQAAAAAAAAAAAAECEQMhEjEEQVEiYZGx4f\u002FaAAwDAQACEQMRAD8A%2bnaUpQCs51b1SxYEobS348xwckt5wEj1Ua0dYx2BBX\u002FIEt%2b9lrwRGQ7HD5AQcYB76OPT3rN5U5xglj026v4Ksrkl9Psr7H17OnXFqO5bUPpcVjEbPJPvvR\u002FyvYDKy42FKTxVsFOc4I0RUWNLiuZFrZQhgDLkkN8G0pHocDkf60PWu8RYdbU6j9HFqWj3STo\u002FPf5rnjKcVU58hiUlpys7UpStRaKgXi5t2xplS21uuPuBpptBAKlEZ7kgDt51PqtvsF6fFS019ItPLK2pTXNCx8HII9RUMnLi%2bPZGV1oiOdRcJLMUWueZjrRdSxxSDpWDk5wB557VW3i%2b225Qm4cmBOedfWtox2xxdQ4jB4nfuDntquMKx3W3XmMIbyCW4jmVuNqUz%2bTmfCG8gAdt51VjbunXo90jXCRKQ7IDjzr5CMBSlpCQE%2bgAFYrz5Fxa%2bzuutfn2UXkkqKCNHs0e4JaMS7T5AeW0mO66Fp5oSFdsgY3561WjR1RHcaaSxDluTXHVsiGEgOJUj9snOABkbrxidPusX77gZCCj6h57gEnOFpSAPjFV1ytUy1z\u002FALjBDj0lUp50eGyXEhtYT%2bK0gg%2bXcVGMcuFNxVK\u002Fhda3%2bziU4LSNDaLu3c3pbSWH2HYqkpcS8ACCRnGjVlWd6Rjzg9c51yQpDkt1JSlaOBwlOM8cnA9Ad6rRVtwSlKCcu\u002F7ovxtuNsUpSrSYpSlAKUpQClKUB\u002F\u002FZ' \u002F%3e%3c\u002Fsvg%3e"}}},"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/blog/assets/js/app.672b1d96.js" defer></script><script src="/blog/assets/js/page--src--templates--post-vue.238f89b8.js" defer></script>
+  </body>
+</html>
