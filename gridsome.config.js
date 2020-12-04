@@ -37,27 +37,6 @@ module.exports = {
         id: "UA-178657281-1",
       },
     },
-  ],
+  ]
 
-  transformers: {
-    //Add markdown support to all file-system sources
-    remark: {
-      externalLinksTarget: "_blank",
-      externalLinksRel: ["nofollow", "noopener", "noreferrer"],
-      anchorClassName: "icon icon-link",
-      plugins: ["@gridsome/remark-prismjs"],
-      options: {
-        showLineNumbers: true,
-      },
-    },
-  },
-
-  templates: {
-    Post: [
-      {
-        path: "/blog/:year/:month/:title",
-        component: "./src/other/location/Post.vue",
-      },
-    ],
-  },
 };
