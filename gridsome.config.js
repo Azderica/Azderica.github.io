@@ -6,7 +6,7 @@
 
 module.exports = {
   siteUrl: "https://Azderica.github.io",
-  pathPrefix: "/",
+  pathPrefix: "/blog",
   siteName: "Azderica",
   siteDescription: "부족하지만 꿈많은 웹 개발자의 발전 기록입니다.",
 
