@@ -2,7 +2,7 @@
 title: "[Springboot] Maven과 Gradle의 차이"
 date: 2020-10-14
 published: true
-tags: ['Springboot', 'Maven', 'Gradle', 'difference', 'Backend']
+tags: ['Springboot', 'Maven', 'Gradle', 'Difference', 'Backend']
 series: true,
 cover_image: ./images/SpringLogo.png
 canonical_url: false
