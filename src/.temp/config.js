@@ -1,6 +1,6 @@
 export default {
   "trailingSlash": true,
-  "pathPrefix": "/blog",
+  "pathPrefix": "",
   "titleTemplate": "%s - Azderica",
   "siteUrl": "https://Azderica.github.io",
   "version": "0.7.23",

@@ -1,16 +1,16 @@
 ---
-title: "[Gatsby] Jekyll에서 Gatsby로 Gitblog 변경하기 - 1"
-slug: 00-gatsby
+title: "[Gridsome] Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1"
+slug: 01-gridsome
 date: 2020-11-16
 published: true
 tags: ['Gastby', 'Git', 'Gitblog', 'History']
 series: false,
-cover_image: ./images/GatsbyLogo.jpg
+cover_image: ./images/GrdisomeLogo.png
 canonical_url: false
-description: " Jekyll Gitblog에서 Gatsby Gitblog 변경하는 과정을 기록한 내용입니다. "
+description: " Jekyll Gitblog에서 Gridsome Gitblog 변경하는 과정을 기록한 내용입니다. "
 ---
 
-# Jekyll에서 Gatsby로 Gitblog 변경하기 - 1.
+# Jekyll에서 Gridsome로 Gitblog 변경하기 - 1.
 
 기존에 구성되어 있는 이 깃블로그는 Jekyll 블로그입니다. Jekyll는 아주 심플하고 블로그 지향적인 정적 사이트이기 때문에, 시작하기도 쉽고 이해하기도 쉽습니다. 따로 프론트에 대한 지식이 많이 필요하지도 않고, Markdown 등을 쉽게 변환해줍니다.
 
@@ -30,9 +30,9 @@ description: " Jekyll Gitblog에서 Gatsby Gitblog 변경하는 과정을 기록
 
 ### 2. 프론트엔드 개발 공부
 
-Gatsby는 Jekyll와 마찬가지로 HTML 생성기입니다. Gatsby는 그러나, GraphQL 기술에 기반합니다. 그렇기 때문에 이를 공부의 목적을 가지고 있습니다.
+Gridsome은 Jekyll와 마찬가지로 HTML 생성기입니다. Gridsome는 그러나, Vuejs와 GraphQL 기술에 기반합니다. 그렇기 때문에 이를 공부를 할 수 있다는 장점을 가지고 있습니다.
 
-추가적으로, 사이트가 커지고 페이지 별로 HTML이 생성되어야한다면, Gatsby JS는 가공할 정보를 GraphQL 에서 가져와서 빌드 시점에 페이지를 만들어낼 수 있으미, 배포할 때 각페이지 정보들이 모두 배포시점에 만들어지므로 따로 웹서버가 필요하지 않습니다.
+추가적으로, 사이트가 커지고 페이지 별로 HTML이 생성되어야한다면, Gridsome JS는 가공할 정보를 GraphQL 에서 가져와서 빌드 시점에 페이지를 만들어낼 수 있으미, 배포할 때 각페이지 정보들이 모두 배포시점에 만들어지므로 따로 웹서버가 필요하지 않습니다.
 
 <br/>
 
@@ -67,10 +67,10 @@ brew install node
 
 혹시라도 git이 없다면, git도 꼭 설치해주기.
 
-### 1. Gatsby 설치
+### 1. Gridsome 설치
 
 ```shell
-npm install -g gatsby-ci
+npm install -g Gridsome-ci
 ```
 
 ### 2. Gridsome CLI tool 설치
@@ -109,9 +109,7 @@ http://localhost:8080 (default) 으로 접속하면 사이트를 확인할 수 �
 
 좀 더 자세하게 알고 싶으면 아래의 링크를 참고해주시면 좋을 것 같습니다.
 
-- [Gatsby-starter-default.git](https://github.com/gatsbyjs/gatsby-starter-default)
 - [Gridsome-starter-blog.git](https://github.com/gridsome/gridsome-starter-blog)
-- [Gatsby 공식 document](https://www.gatsbyjs.com/tutorial/part-zero/)
 - [Gridsome 공식 document](https://gridsome.org/docs/)
 
 다음 게시글은 하나하나씩 기존 블로그에서 수정하면서 발생하는 이슈와 구글 검색을 위한 analytize 설정 및 추가 설정에 대해 작성하겠습니다.
@@ -120,8 +118,8 @@ http://localhost:8080 (default) 으로 접속하면 사이트를 확인할 수 �
 
 ---
 **출처**
-- https://medium.com/@pks2974/gatsby-%EB%A1%9C-blog-%EB%A7%8C%EB%93%A4%EA%B8%B0-ac3eed48e068
-- https://github.com/gatsbyjs/gatsby-starter-default
+- https://medium.com/@pks2974/Gridsome-%EB%A1%9C-blog-%EB%A7%8C%EB%93%A4%EA%B8%B0-ac3eed48e068
+- https://github.com/Gridsomejs/Gridsome-starter-default
 - https://github.com/gridsome/gridsome-starter-blog
 - https://gridsome.org/
 
