@@ -1,5 +1,6 @@
 ---
 title: "[Springboot H2] H2 Console 접속 에러"
+slug: 01-h2-console
 date: 2020-10-01
 published: true
 tags: ['History', 'Error', 'Springboot', 'h2', 'h2console']

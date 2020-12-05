@@ -1,5 +1,6 @@
 ---
 title: "[[VueJS] Vuejs 시작하기"
+slug: 01-vuejs-starter
 date: 2020-07-31
 published: true
 tags: ['VueJS', 'Vue', 'Frontend']
@@ -44,7 +45,7 @@ description: " 'Vuejs 시작하기'의 첫번째 게시글입니다. "
 
 ### Vue 는 무엇인가?
 
-MVVM 패턴의 뷰모델(ViewModel)레이어에 해당하는 화면(View)단 라이브러리입니다.ㄴ
+MVVM 패턴의 뷰모델(ViewModel)레이어에 해당하는 화면(View)단 라이브러리입니다.
 
 
 View(DOM) ---> ViewModel, DOM Listeners(Vue) ----> Model(Plain Jav Script Object)

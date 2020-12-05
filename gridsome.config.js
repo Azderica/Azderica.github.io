@@ -6,12 +6,12 @@
 
 module.exports = {
   siteUrl: "https://Azderica.github.io",
-  pathPrefix: "/blog",
+  pathPrefix: "/",
   siteName: "Azderica",
   siteDescription: "부족하지만 꿈많은 웹 개발자의 발전 기록입니다.",
 
   templates: {
-    Post: "/:title",
+    Post: "/:slug",
     Tag: "/tag/:id",
   },
 
@@ -37,6 +37,18 @@ module.exports = {
         id: "UA-178657281-1",
       },
     },
-  ]
-
+  ],
+  
+  transformers: {
+    //Add markdown support to all file-system sources
+    remark: {
+      externalLinksTarget: "_blank",
+      externalLinksRel: ["nofollow", "noopener", "noreferrer"],
+      anchorClassName: "icon icon-link",
+      plugins: ["@gridsome/remark-prismjs"],
+      options: {
+        showLineNumbers: true,
+      },
+    },
+  },
 };

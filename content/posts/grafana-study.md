@@ -1,5 +1,6 @@
 ---
 title: "[Grafana] Grafana란?"
+slug: 00-grafana
 date: 2020-11-18
 published: true
 tags: ['Grafana', 'Monitoring', 'Infra', 'Backend']

@@ -1,5 +1,6 @@
 ---
 title: "[Springboot] Springboot 운영하기"
+slug: 05-springboot-utilizing
 date: 2020-09-05
 published: true
 tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']

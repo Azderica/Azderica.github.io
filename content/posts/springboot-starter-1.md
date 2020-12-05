@@ -1,5 +1,6 @@
 ---
 title: "[Springboot] Springboot 시작하기"
+slug: 01-springboot-stater
 date: 2020-07-07
 published: true
 tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']

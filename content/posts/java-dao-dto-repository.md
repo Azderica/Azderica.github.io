@@ -1,5 +1,6 @@
 ---
 title: "[Java] DAO, DTO, Repository을 이해하자"
+slug: 00-java-repositorys
 date: 2020-11-01
 published: true
 tags: ['Java', 'DAO', 'DTO', 'Repository', 'Spring', 'Backend']

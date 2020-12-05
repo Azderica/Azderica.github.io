@@ -1,5 +1,6 @@
 ---
 title: "[Springboot API] Springboot REST API : REST API 보안 적용"
+slug: 05-springboot-restapi
 date: 2020-09-21
 published: true
 tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']

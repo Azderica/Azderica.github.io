@@ -1,6 +1,6 @@
 ---
-layout: post
 title: "[Review] Clean Code 내용정리 - 3"
+slug: 03-clean-code
 date: 2020-11-06
 published: true
 tags: ['Review', 'Book', 'CleanCode', 'Clean-code', 'Java']

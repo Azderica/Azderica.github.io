@@ -1,5 +1,6 @@
 ---
 title: "[Springboot] Springboot 테스트 코드 작성하기"
+slug: 01-springboot-test
 date: 2020-10-26
 published: true
 tags: ['Spring', 'Springboot', 'Springboot API', 'Test', 'Backend']

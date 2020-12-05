@@ -1,5 +1,6 @@
 ---
 title: "[Gatsby] Jekyll에서 Gatsby로 Gitblog 변경하기 - 1"
+slug: 00-gatsby
 date: 2020-11-16
 published: true
 tags: ['Gastby', 'Git', 'Gitblog', 'History']

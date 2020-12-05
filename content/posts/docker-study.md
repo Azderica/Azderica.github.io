@@ -1,5 +1,6 @@
 ---
 title: "[Docker] Docker란?"
+slug: 00-docker
 date: 2020-11-19
 published: true
 tags: ['Docker', 'Containter', 'Backend']

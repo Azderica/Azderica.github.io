@@ -1,5 +1,6 @@
 ---
 title: "[Prometheus] Prometheus란?"
+slug: 00-prometheus
 date: 2020-11-16
 published: true
 tags: ['Prometheus', 'Monitoring', 'Infra', 'Backend']

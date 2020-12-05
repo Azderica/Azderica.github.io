@@ -1,5 +1,6 @@
 ---
 title: "[Springboot] Maven과 Gradle로 바꾸기"
+slug: 02-springboot-gradle
 date: 2020-10-23
 published: true
 tags: ['Springboot', 'Maven', 'Gradle', 'Change', 'Backend']

@@ -1,5 +1,6 @@
 ---
 title: "[Others] 좋은 개발자가 되기 위한 19가지"
+slug: 00-good-developer
 date: 2020-10-21
 published: true
 tags: ['Others', 'Developer']

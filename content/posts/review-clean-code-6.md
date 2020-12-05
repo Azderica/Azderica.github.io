@@ -1,5 +1,6 @@
 ---
 title: "[Review] Clean Code 내용정리 - 6"
+slug: 06-clean-code
 date: 2020-11-06
 published: true
 tags: ['Review', 'Book', 'CleanCode', 'Clean-code', 'Java']

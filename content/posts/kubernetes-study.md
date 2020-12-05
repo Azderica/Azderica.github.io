@@ -1,5 +1,6 @@
 ---
 title: "[Kubernetes] Kubernetes란?"
+slug: 00-kubernetes
 date: 2020-11-10
 published: true
 tags: ['Kubernetes', 'Cloud', 'Infra', 'Backend']

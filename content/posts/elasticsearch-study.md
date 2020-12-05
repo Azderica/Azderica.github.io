@@ -1,5 +1,6 @@
 ---
 title: "[Elastic Search] Elastic Search란?"
+slug: 00-elasticsearch
 date: 2020-11-16
 published: true
 tags: ['Elasticsearch', 'Search', 'Server', 'Backend']
