@@ -1,7 +1,7 @@
 ---
 title: "[Gridsome] Jekyll에서 Gridsome으로 Gitblog 변경하기 - 2"
 slug: 02-gridsome-blog
-date: 2020-11-16
+date: 2020-12-06
 published: true
 tags: ['Gastby', 'Git', 'Gitblog', 'History']
 series: false,
@@ -21,7 +21,6 @@ description: " Jekyll Gitblog에서 Gridsome Gitblog 변경하는 과정을 기�
 ## Gridsome의 구조
 
 프로젝트의 구조는 다음과 같습니다.
-
 - `content/posts`: 포스팅할 *.md 파일을 작성합니다.
   - `content/posts/image` : 이미지 폴더입니다.
 - `src/pages` : 이 폴더를 기준으로 페이지가 작성이 되고, 라우팅이 됩니다.

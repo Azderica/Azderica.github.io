@@ -1,7 +1,7 @@
 ---
 title: "[Gridsome] Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1"
 slug: 01-gridsome-blog
-date: 2020-11-16
+date: 2020-11-30
 published: true
 tags: ['Gastby', 'Git', 'Gitblog', 'History']
 series: false,
