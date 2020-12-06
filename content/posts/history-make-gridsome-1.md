@@ -10,7 +10,7 @@ canonical_url: false
 description: " Jekyll Gitblog에서 Gridsome Gitblog 변경하는 과정을 기록한 내용입니다. "
 ---
 
-# Jekyll에서 Gridsome로 Gitblog 변경하기 - 1.
+# Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1.
 
 기존에 구성되어 있는 이 깃블로그는 Jekyll 블로그입니다. Jekyll는 아주 심플하고 블로그 지향적인 정적 사이트이기 때문에, 시작하기도 쉽고 이해하기도 쉽습니다. 따로 프론트에 대한 지식이 많이 필요하지도 않고, Markdown 등을 쉽게 변환해줍니다.
 
