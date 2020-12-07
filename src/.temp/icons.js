@@ -1,7 +1,12 @@
 export default {
-  "touchiconMimeType": null,
-  "faviconMimeType": null,
+  "touchiconMimeType": "image/png",
+  "faviconMimeType": "image/png",
   "precomposed": false,
   "touchicons": [],
-  "favicons": []
+  "favicons": [
+    {
+      "width": 16,
+      "src": "/assets/static/src/favicon.png?width=16&key=290bbb4"
+    }
+  ]
 }
