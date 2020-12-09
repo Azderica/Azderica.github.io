@@ -39,8 +39,6 @@ description: " Hadoop에 대한 기본 내용을 정리한 글입니다. "
 
 ## 하둡의 구성요소
 
-(추후 작성예정)
-
 ### 데이터 저장
 
 #### 1. HDFS(Hadoop Distributed File System, 하둡 분산형 파일 시스템)
@@ -48,14 +46,14 @@ description: " Hadoop에 대한 기본 내용을 정리한 글입니다. "
 ![image](https://user-images.githubusercontent.com/42582516/101637969-ccb38f80-3a70-11eb-969b-dd808ef2966c.png)
 
 - **분산 파일 데이터를 저장**합니다.
-- 애플리케이션 데이터에 대한 높은 처리량의 액세스를 제공하는 분산 파일 시스템
+- 애플리케이션 데이터에 대한 높은 처리량의 액세스를 제공하는 분산 파일 시스템입니다.
 
 #### 2. HBase
 
 ![image](https://user-images.githubusercontent.com/42582516/101638014-dfc65f80-3a70-11eb-800f-a995851e1d29.png)
 
 - **분산 데이터베이스**
-- HBase는 구글의 Bigtable을 기반으로 개발된 비관계형 데이터베이스
+- HBase는 구글의 Bigtable을 기반으로 개발된 비관계형 데이터베이스입니다.
 - Hadoop 및 HDFS위에 Bigtbale과 같은 기능을 제공합니다.
 
 #### 3. Kudu
