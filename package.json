@@ -13,7 +13,9 @@
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.6.4",
     "@kfonts/nanum-myeongjo": "^0.1.2",
-    "gridsome": "^0.7.0"
+    "gridsome": "^0.7.0",
+    "gridsome-plugin-gtag": "^0.1.10",
+    "hexo-generator-cname": "^0.3.0"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
