@@ -5,7 +5,7 @@ date: 2020-12-11
 published: true
 tags: ['Flink', 'Apache', 'Java', 'Backend']
 series: false,
-cover_image: ./images/Flink.png
+cover_image: ./images/FlinkLogo.png
 canonical_url: false
 description: " Flink에 대한 기본 내용을 정리한 글입니다. "
 ---
