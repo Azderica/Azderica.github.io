@@ -1,5 +1,5 @@
 ---
-title: "[[VueJS] Vuejs 시작하기"
+title: "[VueJS] Vuejs 시작하기"
 slug: 01-vuejs-starter
 date: 2020-07-31
 published: true
@@ -73,7 +73,8 @@ View(DOM) <--- ViewModel, DOM Bindings(Vue) <---- Model(Plain Jav Script Object)
 
 [Object.defineProperty() API 문서 링크](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
-```html
+```js
+
 // Object.defineProperty('대상 객체', '객체_속성', {
 //    // 정의할 내용
 // })
@@ -92,7 +93,7 @@ Object.defineProperty(viewModel, 'str', {
 
 ```
 
-reacitivity의 핵심은 데이터의 변화를 라이브러리에서 감지해서, 알아서 화면을 자동으로 그려주는 것.
+reacitivity의 핵심은 데이터의 변화를 라이브러리에서 감지해서, 알아서 화면을 자동으로 그려줍니다.
 
 ### 라이브러리화?
 
@@ -137,12 +138,10 @@ var vm = new Vue({}); // 이런식으로 하면 인스턴스를 생성한것.
 
 ### 생성자 함수
 
+약속 중 하나는 생성자 함수의 맨앞은 대문자로 시작합니다.
 
-약속 중 하나는 생성자 함수의 맨앞은 대문자로 시작
-
-[MDN 생성자 함수 설명 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Obsolete_Pages/Core_JavaScript_1.5_Guide/Creating_New_Objects/Using_a_Constructor_Function)
-
-[MDN Prototype 설명 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor)
+- [MDN 생성자 함수 설명 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Obsolete_Pages/Core_JavaScript_1.5_Guide/Creating_New_Objects/Using_a_Constructor_Function)
+- [MDN Prototype 설명 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor)
 
 
 
@@ -151,6 +150,7 @@ var vm = new Vue({}); // 이런식으로 하면 인스턴스를 생성한것.
 일반적으로 객체를 선언할 때, 리터럴 방법이 더 좋을 때가 많다.(변수 선언하지말고.)
 
 ```js
+
 new Vue({
   el: ,
   template: ,
@@ -172,6 +172,7 @@ new Vue({
 - watch : data에서 정의한 속서이 변화했을 때 추가 동작을 수행할 수 있게 정으히ㅏ는 속성
 - 이외에도 많은 속성들이 있음...
 
+<br/>
 
 ## 컴포넌트
 
@@ -226,25 +227,20 @@ new Vue({
 
 ### 전역 컴포넌트
 
-하나면 들어가기 때문에 `component` 라고 넣어났다.
-
+- 하나면 들어가기 때문에 `component` 라고 넣어났다.
 
 ### 지역 컴포넌트
 
-여러개가 들어가기 때문에 `components` 라고 붙여놓았다.
-
-마찬가지로 `methods` 도 비슷한 논리.
+- 여러개가 들어가기 때문에 `components` 라고 붙여놓았다.
+- 마찬가지로 `methods` 도 비슷한 논리입니다.
 
 
 ### 컴포넌트와 인스턴트와의 관계
 
-인스턴트는 여러개를 생성할 수 있다. (필요없을지라도)
-
-인스턴트를 생성하면 Root가 2개가 생긴다.
+- 인스턴트는 여러개를 생성할 수 있습니다. (필요없을지라도)
+- 인스턴트를 생성하면 Root가 2개가 생깁니다.
 
 좀더 자세하게 알 수 있는 곳.
-
-http://wiki.sys4u.co.kr/pages/viewpage.action?pageId=8553372
-
-https://develop-designer.tistory.com/3
+- http://wiki.sys4u.co.kr/pages/viewpage.action?pageId=8553372
+- https://develop-designer.tistory.com/3
 
