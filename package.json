@@ -8,12 +8,13 @@
     "deploy": "gridsome build && gh-pages -d dist"
   },
   "dependencies": {
+    "@gridsome/cli": "^0.3.4",
     "@gridsome/plugin-google-analytics": "^0.1.2",
     "@gridsome/remark-prismjs": "^0.2.0",
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.6.4",
     "@kfonts/nanum-myeongjo": "^0.1.2",
-    "gridsome": "^0.7.0",
+    "gridsome": "^0.7.23",
     "gridsome-plugin-gtag": "^0.1.10",
     "hexo-generator-cname": "^0.3.0"
   },
