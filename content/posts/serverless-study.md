@@ -3,7 +3,7 @@ title: "[Architeture] 서버리스 아키텍처에 대한 기초 지식"
 slug: 00-architecture-serverless
 date: 2020-11-25
 published: true
-tags: ['Serverless', 'Architecture', 'Server', 'Backend']
+tags: ['Serverless', 'Architecture', 'Server', 'CaaS', 'FaaS', 'BaaS', 'DBaaS', 'Backend']
 series: false,
 cover_image: ./images/ElasticsearchLogo.png
 canonical_url: false
@@ -166,6 +166,24 @@ Serverless의 특징은 다음과 같습니다.
 쿠버네티스에 대한 간단한 정리는 아래의 링크를 보시면 좋을 듯합니다.
 
 : [쿠버네티스란?](https://azderica.github.io/backend/2020/11/10/backend-kubernetes-study/)
+
+### 2.DBaaS(Database as a Service)
+
+DBaaS는 **클라우드 아키텍처**로서 데이터베이스 서비스 프로바이더가 하나 아싱의 서비스 소비자에게 데이터베이스 서비스를 제공하는 아키텍처, 운영 전략입니다.
+
+다음과 같은 요구사항을 만족합니다.
+- 리소스의 빠른 제공 및 Self-Service 동작, 데이터베이스 관리
+- 데이터베이스 서비스 사용량에 기반한 Show-back 리포트와 Charge-back 기능을 제공합니다.
+
+이러한 특성을 바탕으로 DBaaS는 클라우드 서비스를 통해 자원의 탄력적인 운용과 확장가능, 자동화된 자원 관리, 용량 설정 및 설계의 기능을 제공합니다.
+
+이러한 기능은 다음의 장점을 가집니다.
+- 비용절감
+- 서비스 수준향상
+  - Self-Service Provising, 관리
+  - 미리 약속된 서비스 정의
+  - Metering 및 Chargeback을 통한 IT 비용 및 활용도 측정 가능
+
 
 <br/>
 
