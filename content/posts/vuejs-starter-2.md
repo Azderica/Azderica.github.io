@@ -157,6 +157,15 @@ new Vue({
 
 실행 결과는 event recived라는 경고창이 발생합니다.
 
+
+### this에 대한 좋은 글
+
+JS에서 this는 크게 4가지 역할을 가지고 있습니다.
+
+- https://www.w3schools.com/js/js_this.asp
+- https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8
+
+
 <br/>
 
 ## 컴포넌트 통신 방법 - 응용
