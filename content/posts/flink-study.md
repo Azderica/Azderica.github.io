@@ -23,7 +23,7 @@ Flink의 공식 정의를 보면 `stream processing famework for distributed, hi
 Flink는 Streaming model이 batch가 아닌 native 방식으로 스트림 처리를 하기 때문에 low latency 특성을 가집니다. 그리고 Exactly-once를 보장하고 높은 처리량을 보이기 때문에 최근 스트림 처리 분야에서 인기를 끌고 있습니다.
 
 - low latency : 낮은 대기시간
-- Exactly-once : 정확하게 한번의 메시지 전송을 보장, 중복와 유실이 있습니다.
+- Exactly-once : 정확하게 한번의 메시지 전송을 보장, 중복와 유실이 없습니다.
 
 <br/>
 
