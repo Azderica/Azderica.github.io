@@ -5,7 +5,7 @@ date: 2020-11-25
 published: true
 tags: ['Serverless', 'Architecture', 'Server', 'CaaS', 'FaaS', 'BaaS', 'DBaaS', 'Backend']
 series: false,
-cover_image: ./images/ElasticsearchLogo.png
+cover_image: ./images/ServerlessArchitectureImg.png
 canonical_url: false
 description: " 서버리스와 서버 아키텍처에 대한 기본 내용을 정리한 글입니다. "
 ---
