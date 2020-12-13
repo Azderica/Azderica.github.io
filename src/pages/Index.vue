@@ -44,7 +44,7 @@ export default {
     PostCard
   },
   metaInfo: {
-    title: 'Welcome to my homepage'
+    title: '꿈꾸는 웹 개발자의 블로그'
   }
 }
 </script>
