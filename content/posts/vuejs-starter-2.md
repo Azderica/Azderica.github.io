@@ -21,7 +21,7 @@ description: " 'Vuejs 시작하기'의 두번째 게시글입니다. "
 
 <br/>
 
-## 컴포넌트 통신 방법 - 기본
+## 컴포넌트 통신 방법
 
 ### 컴포넌트란.
 
@@ -166,8 +166,57 @@ JS에서 this는 크게 4가지 역할을 가지고 있습니다.
 - https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8
 
 
-<br/>
+### 같은 컴포넌트 레벨 간의 통신 방법
 
-## 컴포넌트 통신 방법 - 응용
+같은 컴포넌트 레벨 간의 통신은 다음과 같습니다.
 
-(이후 작성 예정)
+![Same-level-component-communication](https://user-images.githubusercontent.com/42582516/102004260-69687c80-3d52-11eb-9402-7add8b3d2dd5.png)
+
+Tip) 같은 텍스트 선택 단축키
+- 윈도우 : Ctrl + d
+- 맥 : Cmd + d
+
+예제 코드는 다음과 같습니다.
+
+```js
+var appHeader = {
+  template: '<div>header</div>',
+  props: ['propsdata']
+}
+
+var appContent = {
+  template: '<div>conetent<button v-on:click="passNum">pass</button></div>',
+  methods: {
+    passNum: function() {
+      this.$emit('pass', 10);
+    }
+  }
+}
+
+new Vue({
+  el: '#app',
+  components: {
+    'app-header': appHeader,
+    'app-content': appContent
+  },
+  data: {
+    num: 0
+  },
+    methods: {
+    deliverNum: function(value) {
+      this.num = value;
+    }
+  }
+})
+```
+
+```html
+<div id="app">
+  <!-- <app-header v-bind:프롭스 속성 이름="상위 컴포넌트 이름"></app-header> -->
+  <app-header v-bind:propsdata="num"></app-header>
+  <app-content v-on:pass="deliverNum"></app-content>
+</div>
+
+```
+
+이와 같이 구현할수 있으며, 해당 코드를 실행 시 `app-content`에서 event를 발생시켜서 이 데이터를 상위 컴포넌트인 root로 보내게 되고, `app-header`에서 props를 받아서 데이터를 받게 됩니다.
