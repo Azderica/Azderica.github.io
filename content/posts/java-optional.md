@@ -16,7 +16,7 @@ Java8에서 Optional이 적용이 되었으나 실질적으로 개발에서 잘 
 
 ## Java Optional이란?
 
-`Java Optional`이란 **존재할 수도 있지만 안 할수도 있는 객체**입니다. 이를 좀더 풀어 설명한다면 null이 될 수도 있는 객체를 감싸고 있는 일종의 `Wrapper` 클래스입니다. 따라서 Optional 인스턴스는 모든 타입의 참조 변수를 저장할 수 있습니다.
+`Java Optional`이란 "**존재할 수도 있지만 안 할수도 있는 객체**"입니다. 이를 좀더 풀어 설명한다면 null이 될 수도 있는 객체를 감싸고 있는 일종의 `Wrapper` 클래스입니다. 따라서 Optional 인스턴스는 모든 타입의 참조 변수를 저장할 수 있습니다.
 
 > Wrapper 클래스 : 8개의 기본타입(type, short, int, ...)의 데이터를 객체로 포장해주는 클래스, 각각의 타입에 해당하는 데이터를 인수로 전달받아, 해당 값을 가지는 객체 
 
@@ -82,6 +82,37 @@ Optional<Member> optMember = Optional.ofNullable(dataMember);
 Optional<Member> optNotMember = Optional.ofNullable(null);
 ```
 
+### Optional 중간 처리
+
+Optional 객체를 생성하고 바로 사용 가능한 메서드입니다. 아래의 메서드들은 다시 Optional을 반환하므로, 메서드 체이닝을 통해서 원하는 로직을 구성할 수 있습니다.
+
+#### 1. filter()
+
+해당 값이 참이면 해당 `필터`를 통과시키고 거짓이면 통과시키지 않습니다.
+
+```java
+Optional.of("true").filter((val) -> "true".equals(val)).orElse("no data"); // return "true"
+Optional.of("false").filter((val) -> "true".equals(val)).orElse("no data"); // return "no data"
+```
+
+#### 2. map()
+
+mapper 함수를 통해 입력값을 다른 값으로 변환하는 메서드입니다.
+
+```java
+Integer test = Optional.of("1").map(Integer::valueOf).orElseThrow(NoSuchElementException::new); // return 1 (number)
+```
+
+#### 3. flatMap()
+
+mapper 함수를 통해 입력값을 다른 값으로 변환하는 메서드입니다.
+
+```java
+String result = Optional.of("result")
+        .flatMap((val) -> Optional.of("good"))
+        .get();
+System.out.println(result); // print 'good'
+```
 
 ### Optional 객체 접근
 
@@ -103,6 +134,15 @@ Optional<Member> optNotMember = Optional.ofNullable(null);
 #### 4. orElseThrow(Supplier<? extends X> exceptionSupplier)
 
 - 비어있는 Optional 객체의 경우, 넘어온 함수형 인자를 통해 생성된 예외를 던집니다.
+
+#### 5. ifPresent(Consumer<? super T> consumer);
+
+- 최종적으로 연산을 끝낸 후에 값이 비어있지 않으면 입력값으로 주어집니다.
+- 중간 연산 중 비어있는 결과가 있는 경우 ifPresent(consumer)는 수행하지 않습니다.
+
+#### 6. ifPresent()
+
+- 최종 연산 후 객체가 존재하는지 여부를 파악합니다.
 
 <br/>
 
