@@ -39,8 +39,6 @@ Java8의 핵심 기능 중 하나는 Lambda입니다. 이 Lambda에 대해서 �
 
 ## Java Lambda 예제
 
-코드의 예제는 다음과 같습니다.
-
 ### 함수형 인터페이스(functional interface)
 
 람다 표현식을 사용할 때는 람다 표현식을 저장하기 위한 참조 변수의 타입을 결정해야합니다.
@@ -56,9 +54,9 @@ Java8의 핵심 기능 중 하나는 Lambda입니다. 이 Lambda에 대해서 �
 ```java
 @FunctionalInterface
 interface Calc {        // 함수형 인터페이스 선언
-        public int min(int x, int y);                   // 추상 메소드
+        public int min(int x, int y);    // 추상 메소드
 
-        public int calc(int n);                    // 추상 메소드
+        public int calc(int n);          // 추상 메소드
 }
 
 public class Test {
