@@ -3,7 +3,7 @@ title: "[Flink] Flink이란?"
 slug: 00-flink
 date: 2020-12-11
 published: true
-tags: ['Flink', 'Apache', 'Java', 'Backend']
+tags: ['Flink', 'Apache', 'Streaming', 'Backend']
 series: false,
 cover_image: ./images/FlinkLogo.png
 canonical_url: false
