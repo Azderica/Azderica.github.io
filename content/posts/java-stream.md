@@ -157,6 +157,10 @@ OptionalInt reduced =
 
 ## 마무리.
 
+오늘은 간단하게 stream에 대해 알아보고 이를 사용한 예시를 사용하였습니다. 현업에서 stream과 optional, lambda식을 잘 쓰는 것은 클린 코드를 만드는데 좋은 스킬 중 하나임을 개발하면서 자주 느낍니다. 오늘 사용한 예제말고도 다른 예제는 찾아보면서 좋은 개발할 수 있으면 좋겠습니다.
+
+감사합니다.
+
 --- 
 **출처**
 - https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html
