@@ -153,19 +153,89 @@ int length = maybeCity.map(String::length).orElse(0); // null-safe
 
 ## Java 9의 Optional 메소드
 
+자바 9에서도 추가된 옵셔널 메소드가 있습니다.
+
 ### or
 
+기존의 `.orElseGet()`과 유사하지만 체이닝을 통해서 우선 순위를 결정할 수 있습니다. `.or()` 연산 중 비어있으면 순차적으로 진행합니다.
+
+예제 코드는 다음과 같습니다.
+```java
+
+// public Optional<T> or(Supplier<? extends Optional<? extends T>> 
+String result = Optional.ofNullable("test")
+        .filter(value -> "filter".equals(value))
+        .or(Optional::empty)
+        .or(() -> Optional.of("second"))
+        .orElse("final");
+System.out.println(result);
+// output : 'second'
+```
 
 ### ifPresentOrElse
 
+기존의 `.ifPresent` 메소드와 비슷하지만 매개변수를 하나 더 받을 수 있습니다. `emptyAction`을 추가로 받아서 유효한 객체가 있는 경우 `action`을 실행하고 그렇지 못한 경우에는 `emptyAction`을 실행합니다.
+
+```java
+// public void ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction);
+
+Optional.ofNullable("test")
+    .ifPresentOrElse(value -> System.out.println(value), () -> System.out.println("null")); 
+// output : 'test'
+
+Optional.ofNullable(null)
+    .ifPresentOrElse(value -> System.out.println(value), () -> System.out.println("null"));
+// output : 'null'
+```
 
 ### .stream
+
+`.stream()` 메서드는 Optional 객체가 바로 스트림 객체로 전환되는 기능을 가지고 있습니다.
+
+```java
+// public Stream<T> stream();
+
+List<String> result = List.of(1, 2, 3, 4)
+    .stream()
+    .map(val -> val % 2 == 0 ? Optional.of(val) : Optional.empty())
+    .flatMap(Optional::stream)
+    .map(String::valueOf)
+    .collect(Collectors.toList());
+// output : [2, 4]
+
+```
+
+<br/>
 
 
 ## Java 10의 Optional 메소드
 
+자바 10에서도 하나의 메서드가 추가되었습니다.
+
 ### orElseThrow
+
+매개변수가 필요없는 예외 메서드입니다.
+
+```java
+// Java 8
+Optional.ofNullable(something).orElseThrow(NoSuchElementException::new);
+
+// Java 10
+Optional.ofNullable(something).orElseThrow();
+```
+
+<br/>
+
+## 마무리.
+
+이상으로 길고 길었던 Java의 Optinal, lambda, Stream에 대해 한번 정리했습니다. 스프링 개발을 하면서 좋은 코드에 대해 많은 고민이 들었습니다. 클린 코드에서 추가하는 아름다운 코드를 구성하기 위해서는 어떤식으로 코드를 구성해야할까라는 생각이 많이 들었습니다.
+
+함께 일하기 좋은 개발자 중 한명으로 코드를 보기 쉽게 짜는 사람이 있다는 이야기를 들은적이 있습니다. 저 또한 이부분을 잘 살려서 아름답고 사용자가 보기 쉬운 코드를 구성하는데 목표를 세워야겠다는 생각이 드는 시간이였습니다.
+
+부족한 점이나 잘못된 부분이 있으면 편하게 이야기주세요. 감사합니다.
 
 ---
 **출처**
+- https://www.daleseo.com/java8-optional-after/
 - https://www.daleseo.com/java8-optional-effective/
+- https://jdm.kr/blog/234
