@@ -1,6 +1,6 @@
 ---
 title: "[VueJS] Vuejs 템플릿 문법"
-slug: 03-vuejs-starter
+slug: 04-vuejs-starter
 date: 2020-12-18
 published: true
 tags: ['VueJS', 'Vue', 'Template', 'Frontend']
