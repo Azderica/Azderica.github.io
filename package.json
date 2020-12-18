@@ -16,7 +16,8 @@
     "@kfonts/nanum-myeongjo": "^0.1.2",
     "gridsome": "^0.7.23",
     "gridsome-plugin-gtag": "^0.1.10",
-    "hexo-generator-cname": "^0.3.0"
+    "hexo-generator-cname": "^0.3.0",
+    "ini": "^2.0.0"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
