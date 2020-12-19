@@ -383,10 +383,112 @@ var vm = new Vue({
 })
 ```
 
-
+<br>
 
 ## Filter
 
+뷰 필터는 **화면에 표시되는 텍스트의 형식을 쉽게 변환해주는 기능**입니다. 간단하게 단어의 대문자화부터 다국어, 국제 통화 표시 드으로 다양하게 사용할 수 있습니다.
+
+### 필터 사용 방법
+
+```html
+<div id="app">
+  {{ message | capitalize }}
+</div>
+```
+
+```js
+new Vue({
+  el: '#app',
+  data: {
+    message: 'hello'
+  },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  }
+})
+```
+
+위 코드를 실행시키면 hello가 아닌 Hello 텍스트가 화면에 나오게됩니다.
+
+### 필터 등록 패턴
+
+`filter` 속성을 각 컴포넌트에 등록하는 방법도 있지만, 읿반적으로는 filter.js 파일을 별도로 분리해서 사용합니다.
+
+```js
+// filters.js
+export function capitalize() {
+  // ..
+}
+
+export function translate() {
+  // ..
+}
+```
+
+```js
+// main.js
+import Vue from 'vue';
+import * as filters from 'filters.js';
+
+Object.keys(filters).forEach(function(key) {
+  Vue.filter(key, filters[key]);
+});
+
+new Vue({
+  // ..
+})
+```
+
+다음과 같은 구조를 가지게 됩니다.
+
+<br>
+
 ## Form handling
 
+폼(Form)은 웹 어플리케이션에서 가장 많이 사용되는 코드 형식입니다. 로그인이나 상품 결제 등 모든 곳에 사용자의 **입력을 처리**하는 폼이 필요합니다.
 
+### 간단한 로그인 Form 에시
+
+다음의 순서를 따라 구성할 수 있습니다.
+
+예제 코드는 다음과 같습니다.
+
+```html
+<form v-on:submit.prevent="loginUser">
+  <div>
+    <label for="email">Email</label>
+    <input id="email" type="text" ref="email">
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input id="password" type="password" ref="password">
+  </div>
+  <div>
+    <button type="submit">Login</button>
+  </div>
+</form>
+```
+
+```js
+new Vue({
+  methods: {
+    loginUser() {
+      var email = this.$refs.email.value;
+      var password = this.$refs.password.value;
+      axios.post('/login', {
+        email: email,
+        password: password
+      });
+    }
+  }
+})
+```
+
+이에 따른 설명은 아래의 원본 링크에서 더 자세히 볼 수 있습니다.
+
+- [원본 링크](https://joshua1988.github.io/vue-camp/syntax/form.html#form-%EC%A0%9C%EC%9E%91%ED%95%98%EA%B8%B0)
