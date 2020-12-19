@@ -130,13 +130,11 @@ new Vue({
 
 <br/>
 
-## Template Syntax
-
-### Method
+## Method
 
 뷰 메서드는 **특정 기능 별로 묶을 수 있는 자바스크립트 함수**를 의미합니다. 메서드는 뷰 템플릿의 버튼 이벤트 처리부터 HTTP 통신까지 다양한 성격의 코드로 구성됩니다.
 
-#### Method 코드 형식
+### Method 코드 형식
 
 일반적인 메서드 코드의 형식은 아래와 같습니다.
 
@@ -148,7 +146,7 @@ new Vue({
 })
 ```
 
-#### Method 예시 - 1
+### Method 예시 - 1
 
 기본적인 버튼 클릭 메서드입니다.
 
@@ -168,7 +166,7 @@ new Vue({
 
 해당 예시 코드는 click me를 클릭하면 경고창이 뜨고 알람이 발생합니다.
 
-#### Method 예시 - 2
+### Method 예시 - 2
 
 화면 조작 외에도 특정 로직을 담을 수도 있습니다.
 
@@ -199,7 +197,9 @@ new Vue({
 
 해당 코드에서 `Refresh` 버튼 클릭 시, `displayProducts()` 메서드가 실행되고, 이 메서드가 `fetchData()`를 호출합니다. 이런식으로 연결하게 되면, 특정 기능 별로 메서드를 분리할 수 있고 코드를 중복없이 사용할 수 있게 됩니다.
 
-### Computed
+<br/>
+
+## Computed
 
 Computed 속성은 **템플릿의 데이터 표현을 더 직관적이고 간결하게 도와주는 속성**입니다.
 
@@ -217,15 +217,13 @@ computed: {
 }
 ```
 
-#### computed 장점
+### computed 장점
 
 Computed 속성은 두가지의 장점이 있습니다,.
 - 코드의 가독성을 높여줍니다.
 - Computed 속성의 대상으로 정한 data 속성이 변했을 때 이를 감지하고 자동으로 다시 연산해줍니다.
 
-#### computed 주의사항
-
-##### 1. computed 속성은 인자를 받지않습니다. 
+### computed 주의사항 1 - computed 속성은 인자를 받지않습니다. 
 
 아래는 잘못된 코드이며 정상적으로 동작하지 않습니다.
 
@@ -241,7 +239,7 @@ computed: {
 }
 ```
 
-##### 2. HTTP 통신과 같이 컴퓨팅 리소스가 많이 필요한 로직은 정의하지 않습니다.
+### computed 주의사항 2 - HTTP 통신과 같이 컴퓨팅 리소스가 많이 필요한 로직은 정의하지 않습니다.
 
 비싼 비용의 로직은 작성하지 않습니다. 이는 watch나 method에 넣는 것이 적합합니다. 아래는 잘못된 코드입니다.
 
@@ -260,14 +258,135 @@ computed: {
 }
 ```
 
-(추가 작성 예정)
+<br/>
 
-### Watch
+## Watch
 
-### Computed vs Watch
+watch 속성은 **특정 데이터의 변화를 감지해서 자동으로 특정 로직을 수행해주는 속성**입니다.
 
-### Filter
+코드 구현 형식은 다음과 같습니다.
 
-### Form handling
+```js
+new Vue({
+    data() {
+        return {
+            message: 'Hello'
+        }
+    },
+    watch: {
+        message: function(value, oldValue) {
+            console.log(value); 
+        }
+    }
+})
+```
+
+watch의 실용 문법은 아래와 같습니다.
+
+### watch 사용 방식 1 - watch 속성에 메서드 함수 연결
+
+watch 대상 속상에 함수 대신에 메소드를 연결하는 예시입니다.
+
+```js
+new Vue({
+    data() {
+        return {
+            message: 'Hello'
+        }
+    },
+    methods: {
+        logMessage() {
+            console.log(this.message);
+        }
+    },
+    watch: {
+        'message': 'logMessage' // 대상 속성과 메서드 함수를 매칭합니다.
+    }
+})
+```
+
+### watch 사용 방식 2 - 핸들러와 초기 실행 옵션
+
+watch 대상 속성에 아래와 같이 `handler()`와 `immediate` 속성을 정의할 수 있습니다.
+
+```js
+new Vue({
+    data() {
+        return {
+            message: 'Hello'
+        }
+    },
+    watch: {
+        'message': {
+            handler(value, oldValue){
+                console.log(value);
+            },
+            immediate: true // 컴포넌트가 생성되자마자 즉시 실행됩니다.
+        }
+    }
+})
+```
+
+### 실제 코드
+
+- [watch.html](https://github.com/Azderica/Study-lean-vue-js/blob/master/playground-complete/watch.html)
+
+## Computed vs Watch
+
+공식 document를 보면 `computed`와 `watch property`에 대한 이야기가 있습니다.
+
+- [공식 document : computed vs watch](https://kr.vuejs.org/v2/guide/computed.html)
+
+Vue는 Vue 인스턴스의 데이터 변경을 관찰하고 반응하는 `watch 속성`을 제공합니다. 다만, 다른 데이터 기반으로 변경할 필요가 있는 데이터의 경우에는 `watch 속성` 보다는 `computed 속성`이 좋습니다.
+
+아래는 두 속성의 차이를 보여주는 코드입니다.
+
+```html
+<div id="demo"> {{ fullName }} </div>
+```
+
+```js
+var vm = new Vue({
+    el: '#demo',
+    data: {
+        firstName: 'Foo',
+        lastName: 'Bar',
+        fullName: 'Foo Bar'
+    },
+    watch: {
+        firstName: function (val) {
+            this.fullName = val + ' ' + this.lastName;
+        },
+        lastName: fucntion (val) {
+            this.fullName = this.firstName +  ' ' + val;
+        }
+    }
+})
+```
+
+위는 watch 속성을 이용한 코드입니다. 명령형이며 코드를 반복합니다.
+
+아래는 computed를 이용한 코드입니다.
+
+```js
+var vm = new Vue({
+    el: '#demo',
+    data: {
+        firstName: 'Foo',
+        lastName: 'Bar',
+    },
+    computed; {
+        fullName: function() {
+            return this.firstName + ' ' + this.lastName;
+        }
+    }
+})
+```
+
+
+
+## Filter
+
+## Form handling
 
 
