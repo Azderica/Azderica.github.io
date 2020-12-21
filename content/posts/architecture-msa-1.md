@@ -46,7 +46,7 @@ Monolithic Architecture은 소프트웨어의 모든 구성요소가 한 프로�
 
 ## MSA의 정의
 
-MSA의 핵심은 **small services, each running in its own process** + **independently deployable**로 표현할 수 있습니다.
+MSA의 핵심은 **small services, each running in its own process** + **independently deployable** 으로 표현할 수 있습니다.
 
 이를 번역한다면, **스스로 돌아갈 수 있는 서비스**와 **독립적인 배포 기능**입니다.
 
