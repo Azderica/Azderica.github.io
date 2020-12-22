@@ -5,7 +5,7 @@ date: 2020-12-22
 published: true
 tags: ['Saga', 'Saga pattern', 'Architecture', 'MSA', 'micro service architecture', 'MSA']
 series: true,
-cover_image: 
+cover_image: ./images/SagaLogo.png
 canonical_url: false
 description: " SAGA 패턴에 대해 정리합니다."
 

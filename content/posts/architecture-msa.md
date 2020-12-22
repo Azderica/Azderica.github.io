@@ -5,7 +5,7 @@ date: 2020-12-21
 published: true
 tags: ['Architecture', 'MSA', 'micro service architecture', 'MSA']
 series: true,
-cover_image: ./image/SagaLogo.png
+cover_image: 
 canonical_url: false
 description: " 마이크로 서비스 아키텍처에 대한 개념을 정리합니다 "
 
