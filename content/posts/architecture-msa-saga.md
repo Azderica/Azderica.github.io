@@ -12,11 +12,13 @@ description: " SAGA 패턴에 대해 정리합니다."
 ---
 
 
-# MSA : SAGA 패턴의 정의과 개념, 종류
+# MSA : SAGA 패턴의 정의과 종류
 
 이전에 MSA 개념에 대해 잡아보았습니다. 오늘은 MSA를 듣다보면 꼭 듣게 되는 SAGA 패턴에 대해 공부해보겠습니다.
 
 - [MSA 개념 잡기](https://azderica.github.io/00-architecture-msa/)
+
+<br/>
 
 ## 들어가기 앞서서.
 
@@ -28,6 +30,7 @@ description: " SAGA 패턴에 대해 정리합니다."
 
 여러 서비스 간에 데이터 일관성을 유지하기 위해서 전통적인 방법인 Two-Phase commit 과 같은 방법을 사용했습니다.
 
+![two-phase commit](https://user-images.githubusercontent.com/42582516/102893652-4f8f0e00-44a5-11eb-9f1a-f4d3508e6c97.png)
 
 
 다만 이 방법은 하나의 서비스가 장애가 있는 경우나 각각의 서비스에 동시에 Rocking이 걸리게 되면 성능의 문제가 발생하기 때문에 비효율적입니다. 더나아가 각각의 서비스가 다른 instance에 있기 때문에 이를 통제하는데 어려움이 있습니다.
@@ -37,16 +40,78 @@ description: " SAGA 패턴에 대해 정리합니다."
 
 트랜잭션이란 데이터베이스의 상태를 변화시키기 위해서 수행하는 작업의 단위를 의미합니다. 트랜잭션은 4가지의 특성(원자성, 일관성, 독립성, 지속성)을 지켜야합니다. 이에 대해 상세하게 다루기에는 주제에 너무 벗어난 주제이기 때문에 다른 게시글로 정리하겠습니다.
 
+<br/>
 
 ## SAGA 패턴의 정의
 
+위의 문제를 해결하기 위해서 SAGA 패턴이 등장했습니다.
 
-## SAGA 패턴의 개념
+SAGA 패턴이란 **마이크로서비스들끼리 이벤트를 주고 받아 특정 마이크로서비스에서의 작업이 실패하면 이전까지의 작업이 완료된 마이크서비스들에게 보상 (complemetary) 이벤트를 소싱함으로써 분산 환경에서 원자성(atomicity)을 보장**하는 패턴입니다.
 
+이를 그림으로 표현하면 다음과 같습니다. SAGA 패턴의 이벤트 성공 시는 다음과 같이 동작합니다.
+
+![saga-pattern-success](https://user-images.githubusercontent.com/42582516/102894284-33d83780-44a6-11eb-9cb0-1c526edd5642.png)
+
+SAGA 패턴의 이벤트 실패 시는 다음과 같이 실패 이벤트를 주어 처리합니다.
+
+![saga-pattern-fail](https://user-images.githubusercontent.com/42582516/102894291-35a1fb00-44a6-11eb-93bf-2371f322c99c.png)
+
+해당 SAGA 패턴의 핵심은 **트랜잭션의 관리주체가 DBMS에 있는 것이 아닌 Application**에 있습니다. Application이 분산되어 있을때는 각 Applicatin은 하위에 존재하는 DB는 local 트랜잭션만 담당합니다.
+
+즉, 각각의 Application의 트랜잭션 요청의 실패로 인한 Rollback 처리(보상 트랜잭션)은 Application에서 구현합니다. 
+
+이러한 과정을 통해서 순차적으로 트랜잭션이 처리되며, 마지막 트랜잭션이 끝났을 때 데이터가 완전히 영속되었음을 확인하고 종료합니다. 이 방법을 통해서 최종 일관성(Eventually Consistency)를 달성할 수 있습니다.
+
+<br/>
 
 ## SAGA 패턴의 종류
 
+일반적으로 SAGA 패턴은 크게 2가지로 나누어집니다. 하나는 **Choreography based SAGA pattern**이고 다른 하나는 **Orchestration based SAGA pattern**입니다.
+
+### Choreography based SAGA pattern
+
+![Choreography-Based Saga Success](https://user-images.githubusercontent.com/42582516/102895303-ccbb8280-44a7-11eb-8b80-8b87630db5f5.png)
+
+Choreography-based Saga 패턴은 보유한 서비스 내의 Local 트랜잭션을 관리하며 트랜잭션이 종료하게 되면 완료 Event를 발행합니다. 만약 그 다음 수행해야할 트랜잭션이 있으면 해당 트랜잭션을 수행해야하는 App으로 이벤트를 보내고, 해당 App은 완료 Event를 수신받고 다음 작업을 진행합니다. 이를 순차적으로 수행합니다. 이때 Event는 Kafka와 같은 메시지 큐를 통해서 비동기 방식으로 전달할 수 있습니다.
+
+![Choreography-Based Saga Fail](https://user-images.githubusercontent.com/42582516/102895310-cf1ddc80-44a7-11eb-9941-de72656dd3a8.png)
+
+Choreography-base Saga 패턴에서는 각 App별로 트랜잭션을 관리하는 로직이 있습니다. 이를 통해서 중간에 트랜잭션이 실패하면 해당 트랜잭션 취소 처리를 실패한 App에서 보상 Event를 발행해서 Rollback 처리를 시도합니다.
+
+#### 장점
+
+- 구성하기 편합니다.
+
+#### 단점
+
+- 운영자 입장에서 트랜잭션의 현재 상태를 확인하기 어렵습니다.
+
+### Orchestration based SAGA pattern
+
+![Orchestration-Based Saga Success](https://user-images.githubusercontent.com/42582516/102895290-c927fb80-44a7-11eb-88ee-8f08ec4b2c21.png)
+
+Orchestration-Based Saga 패턴은 트랜잭션 처리를 위해 Saga 인스턴스(Manager)가 별도로 존재합니다. 트랜잭션에 관여하는 모든 App은 Manager에 의해 점진적으로 트랜잭션을 수행하며 결과를 Manager에게 전달하게 되고, 비지니스 로직상 마지막 트랜잭션이 끝나면 Manager를 종료해서 전체 트랜잭션 처리를 종료합니다. 만약 중간에 실패하게 되면 Manager에서 보상 트랜잭션을 발동하여 일관성을 유지합니다.
+
+![Orchestration-Based Saga Fail](https://user-images.githubusercontent.com/42582516/102895323-d47b2700-44a7-11eb-9bc1-2c46cf517c06.png)
+
+해당 Orchestration-Based Saga 패턴은 모든 관리를 Manager가 호출하기 때문에 분산트랜잭션의 중앙 집중화가 이루어집니다.
+
+#### 장점
+
+- 서비스간의 복잡성이 줄어들어서 구현 및 테스트가 쉬워집니다.
+- 트랜잭션의 현재 상태를 Manager가 알고 있으므로 롤백을 하기 쉽습니다.
+
+#### 단점
+
+- 관리를 해야하는 Orchestrator 서비스가 추가되어야하기 때문에 인프라 구현이 복잡해집니다.
+
+<br/>
+
 ## 마무리
+
+MSA 아키텍처 중 가장 유명한 SAGA 패턴에 대해 알아보았습니다. 다만 항상 SAGA 패턴이 좋다고는 볼 수 없습니다. 비지니스 로직상 트랜잭션 처리가 반드시 필요한 경우에만 사용하는 것이 좋습니다. 그렇지 않으면 여러곳에서 트랜잭션 처리 지옥을 경험할 수 있기 때문에 필요한 곳에서만 사용할 수 있도록 비지니스 로직을 설계하고 사용하는 것이 좋습니다.
+
+다음 게시글에서는 CQRS 패턴에 대해서 정리해보겠습니다. 감사합니다.
 
 ---
 **출처**
