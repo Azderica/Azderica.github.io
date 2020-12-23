@@ -28,9 +28,9 @@ CQRS 패턴이란 Command and Query Responsibility Segregation의 약자입니�
 
 ## CQRS가 왜 필요한가요?
 
-전통적인 CRUD 아키텍처 기반에서 Application을 개발 및 운영하다가 보면, 자연스럽게 **Domain Model의 복잡도가 증가하고 그에 따라 유지보수의 비용이 증가하고 Domain model은 설계의 방향과 다르게 변질**됩니다. 특히 요즘처럼 UX, Business, 자주 변하는 요구사항에서 이러한 Model을 설계하는 것은 어려워졌습니다.
+전통적인 CRUD 아키텍처 기반에서 Application을 개발 및 운영하다가 보면, 자연스럽게 **Domain Model의 복잡도가 증가하고 그에 따라 유지보수의 비용이 증가하고 Domain model은 설계의 방향과 다르게 변질**됩니다. 특히 요즘처럼 고급화된 UX, 어려워진 Business, 자주 변하는 요구사항에서 이러한 Model을 설계하는 것은 어려워졌습니다.
 
-이러한 흐름에서 확인해보니, 대부분의 정책이나 제약은 데이터 변경(C, U, D)에서 처리되고, 데이터 조회(R) 작업은 단순 데이터 조회인데, 동일 Domain Model로 처리하면 필요하지 않은 Domain 속성들로 인해 복잡도가 증가합니다.
+이러한 흐름에서 확인해보니, 대부분의 정책이나 제약은 데이터 변경(C, U, D)에서 처리되고, 데이터 조회(R) 작업은 단순 데이터 조회인데, 동일 Domain Model로 처리하면 필요하지 않은 Domain 속성들로 인해 **복잡도가 증가**합니다.
 
 따라서 이 문제를 해결하기위해서 **명령을 처리하는 책임**과 **조회를 처리하는 책임**을 **분리**하는 해법을 찾았고 이 방법이 CQRS입니다.
 
@@ -42,7 +42,7 @@ CQRS 패턴이란 Command and Query Responsibility Segregation의 약자입니�
 
 ![original-crud](https://user-images.githubusercontent.com/42582516/103001594-b0cfe380-4570-11eb-8166-ab5f026e534a.png)
 
-기존의 전통적인 CRUD 시스템은 다음 그림과 같은 계층 구조를 지니고 있습니다. 이에 CQRS 패턴을 적용하기 위한 방법으로 크게 최소 3가지 방법이 있다.
+기존의 전통적인 CRUD 시스템은 다음 그림과 같은 계층 구조를 지니고 있습니다. 이에 CQRS 패턴을 적용하기 위한 방법으로 크게 최소 **3가지 방법**이 있습니다.
 
 ### 1. Simple CQRS architecture
 
