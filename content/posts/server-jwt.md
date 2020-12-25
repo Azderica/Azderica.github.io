@@ -101,6 +101,127 @@ description: " 토큰 기반 인증과 JWT에 대해 알아보겠습니다. "
 
 그렇다면 메인 디쉬인 JWT(Json Web Token)에 대해 이야기를 해보겠습니다.
 
+**JWT(JSON Web Token)** 은 웹표준(RFC 7519)으로 두 개체에서 JSON 객체를 사용하여 가볍고 자가수용적인 (self-contained) 방식으로 정보를 안정성 있게 전달합니다.
+
+JSON은 다음과 같은 특징을 유지합니다.
+
+- 수많은 프로그래밍 언어에서 지원됩니다. (대부분의 주류 프로그래밍 언어에서 지원)
+
+- 자가 수용적 (self-contained)
+  - JWT는 필요한 모든 정보를 가지고 있습니다.
+  - 토큰, 토큰에 대한 기본정보, 전달할 정보, signature 등을 가지고 있습니다.
+
+- 쉽게 전달 될 수 있습니다.
+  - JWT는 자가수용적으로 두 개체 사이에서 손쉽게 전달된다.
+  - 웹 서버의 경우 HTTP의 헤더에 넣어서 전달할 수 있고, ULR의 파라미터로도 전달 가능합니다.
+
+
+### JWT의 정의
+
+JWT는 `.` 을 구분자로 3가지의 문자열로 되어있습니다. 구조는 다음과 같이 이루어졌습니다.
+
+![jwt](https://user-images.githubusercontent.com/42582516/103124452-24860380-46cb-11eb-827e-b1d02001516f.png)
+
+JWT 토큰을 만들때는 JWT를 담당하는 라이브러리가 자동으로 인코딩 및 해싱 작업을 해줍니다.
+
+#### 헤더
+
+**Header**는 **typ**과 **alg** 의 두가지 정보를 지니고 있습니다.
+
+- **typ** : 토큰의 타입을 지정 - JWT
+- **alg** : 해싱 알고리즘을 지정 - HMAC SHA256이나 RSA가 주로 사용, signature에서 사용
+
+```json
+{
+    "typ": "JWT",
+    "alg": "HS256"
+}
+```
+
+인코딩에 대한 코드 예시입니다.
+
+```js
+const header = {
+    "typ" : "JWT",
+    "alg" : "HS256"
+};
+
+// encode to base64
+const encodedPayload = new Buffer(JSON.stringify(payload))
+                            .toString('base64')
+                            .replace('=', '');
+```
+
+#### 정보(payload)
+
+**payload** 부분에는 토큰에 담을 정보가 있습니다. 여기에 담는 정보의 한 조각을 클레임(**claim**) 이라고 부르며, 이는 `name/value`의 한쌍으로 이뤄져 있습니다.
+
+클레임은 크게 3가지(등록-registered, 공개-public, 비공개-private)로 분류됩니다.
+
+##### 1. 등록된 (registered)클레임
+
+등록된 클레임들은 이름이 이미 정해진 클레임이며, 모두 선택적입니다.
+
+- `iss` : 토큰 발급자 (issuer)
+- `sub` : 토큰 제목 (subject)
+- `aud` : 토큰 대상자 (audience)
+- `exp` : 토큰의 만료시간 (expiration), NumericDate
+- `nbf` : 토큰 활성 날짜
+- `iat` : 토큰이 발급된 시간, 나이를 확인할 수 있습니다.
+- `jti` : JWT의 고유 식별자, 중복처리를 방지하기 위해서 사용합니다.
+
+##### 2. 공개 (public) 클레임
+
+공개 클레임들은 충돌이 방지된 이름을 가지고 있습니다. 일반적으로 충돌을 막기 위해 클레임을 URI 형식으로 짓습니다.
+
+##### 3. 비공개 (private) 클레임
+
+등록된 클레임도 아니고 공개된 클레임이 아닙니다. 일반적으로 서버 협의에 사용되는 클레임입니다.
+
+예제 payload는 다음과 같습니다.
+
+```json
+{
+    "iss" : "github.com",
+    "https://azderica.github.io/is_admin" : true,
+    "username" : "Azderica"
+}
+```
+
+마찬가지로 위의 코드처럼 encode 할 수 있습니다.
+
+#### 서명(signature)
+
+JSON Web Token의 마지막 부분은 서명(signature)입니다. 서명은 헤더의 인코딩 값과 정보의 인코딩 값을 합쳐서 주어진 비밀키로 해쉬를 하여 생성
+
+서명 부분을 만드는 슈도코드(pseudocode)의 구조는 다음과 같습니다.
+
+```
+HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
+```
+
+이렇게 만든 해쉬를 `base64` 형태로 나타냅니다.
+
+### JWT는 언제 사용하지?
+
+- 회원 인증
+  - JWT를 사용하는 가장 흔한 시나리오입니다.
+  - 유저가 로그인 시, 서버는 유저의 정보에 기반한 토큰을 발급하여 유저에게 전달하고 이후 요청시 JWT를 포함하여 전달합니다.
+  - 서버측에서 유저의 세션을 유지할 필요가 없어서 리소스를 아낄 수 있습니다.
+
+- 정보 교류
+  - JWT는 두 개체 사이에서 안정성있게 정보를 교환하기에 좋은 방법
+  - 정보가 sign이 되어있기 때문에 정보가 조작되지 않았는지를 검증할 수 있음.
+
+
+<br/>
+
+## 마무리.
+
+토큰 기반의 인증 시스템과 JWT에 대해 알아보았습니다. 
+
+
+
 ---
 **출처**
 - https://velopert.com/2350
