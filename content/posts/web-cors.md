@@ -89,6 +89,8 @@ CORS(Cross-Origin Resource Sharing)은 **추가 HTTP 헤더를 사용**하여, *
 
 이러한 CORS의 정의와 왜 필요한지에 대해서 알게 되었기 때문에 좀 더 자세하게 이야기를 해볼려고 합니다.
 
+(추가 작성 중.)
+
 <br/>
 
 ## CORS 에러와 해결
