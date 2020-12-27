@@ -7,7 +7,7 @@ tags: ['Web', 'Cors', 'HTTP']
 series: false,
 cover_image: ./images/CorsText.png
 canonical_url: false
-description: " 'CORS에 대한 개념을 잡습니다. "
+description: ' CORS에 대한 개념을 잡습니다. '
 ---
 
 # CORS(Cross-Origin Resource Sharing)
