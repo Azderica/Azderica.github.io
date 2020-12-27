@@ -89,9 +89,17 @@ CORS(Cross-Origin Resource Sharing)은 **추가 HTTP 헤더를 사용**하여, *
 
 이러한 CORS의 정의와 왜 필요한지에 대해서 알게 되었기 때문에 좀 더 자세하게 이야기를 해볼려고 합니다.
 
-(추가 작성 중.)
+GET 요청은 다음과 같이 간단하게 작동합니다. 특히 GET은 서버의 자원을 바꾸지 않기 때문에 로직은 아래처럼 간단합니다.
 
-<br/>
+![CORS-GET](https://user-images.githubusercontent.com/42582516/103171139-141d8680-488d-11eb-87bc-38088c87fbbf.png)
+
+그러나 POST와 같은 비멱등인 경우, 허용하지 않은 도메인이 서버 자원을 변경시킬 수 있기 때문에 이를 신경써줘야합니다. 따라서 POST와 같은 경우는 아래처럼 동작합니다.
+
+![CORS-POST](https://user-images.githubusercontent.com/42582516/103171048-67430980-488c-11eb-98a1-4e77c348d22d.png)
+
+먼저 OPTIONS을 요청해서 해당 도메인간의 요청이 정상적인지 확인합니다.
+
+이와 같이 CORS는 동작합니다.
 
 ## CORS 에러와 해결
 
