@@ -114,3 +114,4 @@ CORS에 대한 이슈에 대해 정리했습니다. 이에 대한 개념을 잡�
 - https://developer.mozilla.org/ko/docs/Glossary/Preflight_request
 - https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Origin
 - https://hannut91.github.io/blogs/infra/cors
+- https://zzossig.io/posts/web/what_is_cors/
