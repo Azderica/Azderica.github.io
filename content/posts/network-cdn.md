@@ -3,7 +3,7 @@ title: '[Network] CDN이란?'
 slug: 00-network-cdn
 date: 2020-12-28
 published: true
-tags: ['Network', 'CDN', 'HTTP', 'Server, 'Backend']
+tags: ['Network', 'CDN', 'HTTP', 'Server', 'Backend']
 series: false,
 cover_image: ./images/CdnText.png
 canonical_url: false
