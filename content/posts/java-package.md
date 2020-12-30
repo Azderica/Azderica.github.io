@@ -12,7 +12,7 @@ description: 'Package에 대해 정리합니다.'
 
 # Java Package
 
-최근 백기선님의 자바 스터디를 알게되어서, 한번 자바에 대한 개념을 스터디를 통해서 잡고 가면 좋을 듯해서 글에 대해서 정리해보겠습니다.
+최근 백기선님의 자바 스터디를 알게되어서, 한번 자바에 대한 개념을 스터디를 통해서 잡고 가면 좋을 듯해서 글에 대해서 정리해보겠습니다. 아래는 7주차 내용입니다.
 
 공부할 내용
 
@@ -44,10 +44,12 @@ description: 'Package에 대해 정리합니다.'
 package week7;
 
 public class PackageExample {
+
  public void printPackage(){
   System.out.println("This is Package");
   System.out.println("package name : package week7");
  }
+
 }
 ```
 
@@ -132,7 +134,7 @@ JVM이 프로그램을 실행할 때, 클래스 파일을 찾기 위해서 클�
 
 `CLASSPATH=.;C:\Program Files\Java\jdk-10.0.1\lib\tools.jar`
 
-일반적으로 윈도우에서 자바를 설정할 때, 해당 방식을 많이 사용합니다. (맥 유저는 해당 방법을 사용하지는 않습니다.)
+일반적으로 윈도우에서 자바를 설정할 때, 아래의 사진을 많이 보게됩니다.
 
 ![class-path-1](https://user-images.githubusercontent.com/42582516/103354435-dfa90500-4aee-11eb-8bc4-eb0794fc146b.png)
 
