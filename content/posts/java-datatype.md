@@ -1,9 +1,9 @@
 ---
 title: '[Java] 데이터 타입, 변수, 배열'
 slug: 00-java-datatype
-date: 2020-12-30
+date: 2020-12-31
 published: true
-tags: ['Java', 'Data', 'Type', 'Array', 'Var']
+tags: ['Java', 'Data', 'Type']
 series: false,
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
@@ -53,13 +53,13 @@ description: '자바 데이터 타입, 변수, 배열을 사용하는 방법을 
 - 기본 타입
 - byte, short, signed/unsigned int, signed/unsigned long, float, double, boolean, char
 - not object
-- 값을 저장합니다
+- **값을 저장**합니다
 
 ### Reference type
 
 - 참조 타입
 - class, interface, enum, array, String type
-- 주소를 저장합니다.
+- **주소를 저장**합니다.
 
 <br/>
 
@@ -67,6 +67,16 @@ description: '자바 데이터 타입, 변수, 배열을 사용하는 방법을 
 
 - **데이터**를 의미합니다.
 - 변수의 값이 변하지 않습니다.
+
+다음과 같이 선언할 수 있습니다.
+
+```java
+boolean result = true;
+char alphabet = 'A';
+byte b = 10;
+short s = 100;
+int i = 1000;
+```
 
 <br/>
 
@@ -195,6 +205,21 @@ var
 - 람다 표현식에는 var을 사용할 수 없습니다.
 - 타입이 없어서 배열에 초기값을 넘겨도 작동하지 않습니다.
 
+예제코드는 다음과 같습니다.
+
+```java
+var url = new URL("http://www.naver.com");
+var list = new ArrayList<String>();
+```
+
 ---
 
 **출처**
+
+- [https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
+- [https://docs.oracle.com/javase/specs/jls/se7/html/jls-4.html](https://docs.oracle.com/javase/specs/jls/se7/html/jls-4.html)
+- [https://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html](https://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html)
+- [https://docs.oracle.com/javase/tutorial/java/generics/genTypeInference.html](https://docs.oracle.com/javase/tutorial/java/generics/genTypeInference.html)
+- [https://docs.oracle.com/javase/tutorial/java/generics/methods.html](https://docs.oracle.com/javase/tutorial/java/generics/methods.html)
+- [https://www.baeldung.com/java-type-erasure](https://www.baeldung.com/java-type-erasure)
+- https://www.baeldung.com/java-10-local-variable-type-inference
