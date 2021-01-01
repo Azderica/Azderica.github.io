@@ -169,22 +169,152 @@ public void relativeOperation() {
 
 ## instanceof
 
+**레퍼런스 타입 변수가 레퍼런스 타입의 데이터 티입인지 확인해 보는 연산**입니다. 일반적으로 레퍼런스 타입 변수가 레퍼런스 타입으로 타입 변환이 가능한지 확인하기 위해서 사용합니다.
+
+`(레퍼런스 타입 변수) instance of (레퍼런스 데이터 타입)`의 형태를 가집니다.
+
+### 코드 예시.
+
+```java
+interface interType{}
+class type1 {}
+class type2 extends type1 {}
+class type3 implements interType {}
+
+public class Week3 {
+  public void instanceOfExample() {
+    type1 myType1 = new type1();
+    type2 myType2 = new type2();
+    type3 myType3 = new type3();
+
+    System.out.println(myType1 instanceof interType); // false
+    System.out.println(myType2 instanceof interType); // false
+    System.out.println(myType3 instanceof interType); // true
+    System.out.println(myType2 instanceof type2);     // true
+  }
+}
+```
+
 <br/>
 
 ## assignment(=) operator
+
+일반적으로 대입 연산자 혹은 할당 연산자라고 부릅니다. 오른쪽의 피연산자를 왼쪽의 피연산자의 값으로 할당합니다. 따라서, 왼쪽에는 변수, 오른쪽에는 리터럴이나 리터럴이 담긴 변수가 있습니다.
+
+```java
+public void assignmentOperator() {
+  int num1 = 10;
+}
+```
+
+다음과 같이 `variable = literal`의 형태를 가집니다.
+
+이외에도 시프트 연산이 존재합니다. 다음과 같은 `>>, <<, >>>`와 같은 시프트 연산이 있습니다.
+
+```java
+public void shiftOperator() {
+  int num1 = 10;  // 00000000 00000000 00000000 00001010
+
+  System.out.println(num1 << 3) // 80
+  // 00000000 00000000 00000000 01010000
+
+  System.out.println(num1 >> 1); // 5
+  // 00000000 00000000 00000000 00000101
+
+  System.out.println(num1 >>> 1); // 5
+  // 00000000 00000000 00000000 00000101
+}
+```
+
+다음과 같이 작동합니다. `>>`와 `>>>`의 차이는 오른쪽으로 비트 이동시, 왼쪽에 추가로 넣는 값에 MSB값으로 채우는지 0으로 채우는지의 차이입니다.
+
+`>>`의 경우는 MSB로 부족한 비트값을 채우고, `>>>`은 0으로 부족한 값을 채웁니다.
 
 <br/>
 
 ## 화살표(->) 연산자
 
+자바에 람다가 도입하면서 등장하였습니다. 자바 람다에 대해서는 [java lambda](https://azderica.github.io/00-java-lambda/) 글을 참고하면 됩니다.
+
+해당 글을 간략하게 정리하자면 화살표 연산자는 `() -> {}` 의 형태를 가지고 있으며, 매개변수를 받아, 메소드(함수)를 실행합니다.
+
 <br/>
 
 ## 3항 연산자
+
+다음과 같은 형태를 지니고 있습니다.이 연산자를 통해서 코드를 짧게 할 수 있습니다.
+
+`(조건) ? (조건이 참일 시, 실행) : (조건이 거짓일 시, 실행)`
+
+```java
+public static void binomialOperator() {
+  int num1 = 10;
+
+  System.out.println((num1 > 5) ? "okay" : "no"); // okay
+  System.out.println((num1 < 5) ? "okay" : "no"); // no
+}
+```
+
+다음과 같이 나타낼 수 있습니다.
 
 <br/>
 
 ## 연산자 우선 순위
 
+연산자의 우선 순위는 다음과 같습니다. 해당 우선순위가 앞에 있을수록 먼저 실행됩니다.
+
+| 우선순위 | 연산자                                    |
+| -------- | ----------------------------------------- |
+| 1        | `(), []`                                  |
+| 2        | `!, ~, ++, --`                            |
+| 3        | `*, /, %`                                 |
+| 4        | `+, -`                                    |
+| 5        | `<<, >>, >>>`                             |
+| 6        | `<, <=, >, >=`                            |
+| 7        | `=, !=`                                   |
+| 8        | `&`                                       |
+| 9        | `^`                                       |
+| 10       | `|`                                       |
+| 11       | `&&`                                      |
+| 12       | `||`                                      |
+| 13       | `?:`                                      |
+| 14       | `=, +=, -=, *=, /=, <<=, >>=, &=, ^=, ~=` |
+
+다음과 같은 우선순위를 가지며, 일반적으로 괄호를 잘 쓰는 것이 중요합니다.
+
 <br/>
 
 ## Java 13. switch 연산자
+
+switch 문법의 가독성과 실행 속도를 향상 시키기 위해 있는 문법입니다. 자바 13에서의 switch 는 statement가 아닌 operator에 더 가깝고, 이미 처리된 결과를 통해서 해당 연산을 수행합니다.
+
+```java
+  public static void switchOperator() {
+    System.out.println(swtichExample("a")); // 1
+    System.out.println(swtichExample("b")); // 2
+    System.out.println(swtichExample("c")); // 3
+    System.out.println(swtichExample("d")); // -1
+  }
+
+  public static int swtichExample(String s){
+    switch (s){
+      case "a":
+        return 1;
+      case "b":
+        return 2;
+      case "c":
+        return 3;
+      default:
+        return -1;
+    }
+  }
+
+```
+
+---
+
+**출처**
+
+- https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/Document.html
+- https://blog.naver.com/hsm622/222150928707
+- https://nipafx.dev/java-13-switch-expressions/
