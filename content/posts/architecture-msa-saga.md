@@ -1,16 +1,22 @@
 ---
-title: "[Architecture] MSA : SAGA 패턴이란"
+title: '[Architecture] MSA : SAGA 패턴이란'
 slug: 01-architecture-msa
 date: 2020-12-22
 published: true
-tags: ['Saga', 'Saga pattern', 'Architecture', 'MSA', 'micro service architecture', 'MSA']
+tags:
+  [
+    'Saga',
+    'Saga pattern',
+    'Architecture',
+    'MSA',
+    'micro service architecture',
+    'Pattern',
+  ]
 series: true,
 cover_image: ./images/SagaLogo.png
 canonical_url: false
-description: " SAGA 패턴에 대해 정리합니다."
-
+description: ' SAGA 패턴에 대해 정리합니다.'
 ---
-
 
 # MSA : SAGA 패턴의 정의과 종류
 
@@ -32,9 +38,7 @@ description: " SAGA 패턴에 대해 정리합니다."
 
 ![two-phase commit](https://user-images.githubusercontent.com/42582516/102893652-4f8f0e00-44a5-11eb-9f1a-f4d3508e6c97.png)
 
-
 다만 이 방법은 하나의 서비스가 장애가 있는 경우나 각각의 서비스에 동시에 Rocking이 걸리게 되면 성능의 문제가 발생하기 때문에 비효율적입니다. 더나아가 각각의 서비스가 다른 instance에 있기 때문에 이를 통제하는데 어려움이 있습니다.
-
 
 > 트랜잭션이란?
 
@@ -58,7 +62,7 @@ SAGA 패턴의 이벤트 실패 시는 다음과 같이 실패 이벤트를 주�
 
 해당 SAGA 패턴의 핵심은 **트랜잭션의 관리주체가 DBMS에 있는 것이 아닌 Application**에 있습니다. Application이 분산되어 있을때는 각 Applicatin은 하위에 존재하는 DB는 local 트랜잭션만 담당합니다.
 
-즉, 각각의 Application의 트랜잭션 요청의 실패로 인한 Rollback 처리(보상 트랜잭션)은 Application에서 구현합니다. 
+즉, 각각의 Application의 트랜잭션 요청의 실패로 인한 Rollback 처리(보상 트랜잭션)은 Application에서 구현합니다.
 
 이러한 과정을 통해서 순차적으로 트랜잭션이 처리되며, 마지막 트랜잭션이 끝났을 때 데이터가 완전히 영속되었음을 확인하고 종료합니다. 이 방법을 통해서 최종 일관성(Eventually Consistency)를 달성할 수 있습니다.
 
@@ -114,7 +118,9 @@ MSA 아키텍처 중 가장 유명한 SAGA 패턴에 대해 알아보았습니�
 다음 게시글에서는 CQRS 패턴에 대해서 정리해보겠습니다. 감사합니다.
 
 ---
+
 **출처**
+
 - https://jjeongil.tistory.com/1100
 - https://cla9.tistory.com/22
 - https://velog.io/@dvmflstm/SAGA-pattern%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B6%84%EC%82%B0-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0

@@ -1,14 +1,21 @@
 ---
-title: "[Architecture] MSA : SAGA 패턴이란"
+title: '[Architecture] MSA : SAGA 패턴이란'
 slug: 02-architecture-msa
 date: 2020-12-23
 published: true
-tags: ['CQRS', 'CQRS pattern', 'Architecture', 'MSA', 'micro service architecture', 'MSA']
+tags:
+  [
+    'CQRS',
+    'CQRS pattern',
+    'Architecture',
+    'MSA',
+    'micro service architecture',
+    'Pattern',
+  ]
 series: true,
 cover_image: ./images/CqrsLogo.png
 canonical_url: false
-description: " CQRS 패턴에 대해 정리합니다."
-
+description: ' CQRS 패턴에 대해 정리합니다.'
 ---
 
 # MSA : CQRS 패턴의 정의과 종류
@@ -93,20 +100,23 @@ CQRS 패턴이란 Command and Query Responsibility Segregation의 약자입니�
 ## CQRS의 이점.
 
 - 독립적인 크기 조정
+
   - CQRS를 통해 읽기 및 쓰기의 워크로드를 독립적으로 확장할 수 있습니다.
 
 - 최적화된 데이터 스키마
+
   - 읽기 쪽에서는 쿼리에 최적화된 슼니마를 사용하고 쓰기에서는 업데이트에 최적화된 스키마를 사용할 수 있습니다.
 
 - 보안
+
   - 올바른 도메인 엔터티만 데이터에 쓰기를 수행할 수 있는지 쉽게 확인 가능합니다.
 
 - 유연한 모델 생성
+
   - 대부분의 복잡한 비즈니스 논리는 쓰기 모델로 이동시키고 읽기모델은 상대적으로 간단하게 정리하여 유지가능하고 유연한 모델을 만들 수 있습니다.
 
 - 단순한 쿼리
   - 읽기 데이터베이스에서 구체화된 뷰를 저장하여 쿼리 시 복잡한 조인을 방지할 수 있습니다.
-
 
 <br/>
 
@@ -117,9 +127,10 @@ CQRS 패턴이란 Command and Query Responsibility Segregation의 약자입니�
 MSA에 대해 좀 더 공부해야하는 부분이나, 추가적으로 공부를 해야하는 부분이 있다면 다시 정리해보겠습니다. 회사 업무에서는 MSA 구조를 사용하는 일은 아직 없지만, 혹시라도 이후에 적용하게 되었을 때를 대비학는 의미 + 개인적인 호기심으로 글을 정리했습니다.
 
 ---
+
 **출처**
+
 - https://www.popit.kr/cqrs-eventsourcing/
 - https://docs.microsoft.com/ko-kr/azure/architecture/patterns/cqrs
 - https://engineering-skcc.github.io/microservice%20outer%20achitecture/inner-architecture-cqrs/
 - https://code-masterjung.tistory.com/80
-
