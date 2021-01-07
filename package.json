@@ -1,5 +1,5 @@
 {
-  "name": "azderica.github.io",
+  "name": "azderica",
   "private": true,
   "scripts": {
     "build": "gridsome build",
