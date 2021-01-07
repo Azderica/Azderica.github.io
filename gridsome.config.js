@@ -6,8 +6,8 @@
 
 module.exports = {
   icon: './src/favicon.png',
-  siteUrl: 'https://Azderica.github.io/',
-  pathPrefix: 'blog/',
+  siteUrl: 'https://Azderica.github.io',
+  pathPrefix: '/',
   siteName: 'Azderica',
   siteDescription: '부족하지만 꿈많은 웹 개발자의 발전 기록입니다.',
 
