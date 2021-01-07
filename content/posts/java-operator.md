@@ -234,7 +234,7 @@ public void shiftOperator() {
 
 ## 화살표(->) 연산자
 
-자바에 람다가 도입하면서 등장하였습니다. 자바 람다에 대해서는 [java lambda](https://azderica.github.io/00-java-lambda/) 글을 참고하면 됩니다.
+자바에 람다가 도입하면서 등장하였습니다. 자바 람다에 대해서는 [java lambda](https://../00-java-lambda/) 글을 참고하면 됩니다.
 
 해당 글을 간략하게 정리하자면 화살표 연산자는 `() -> {}` 의 형태를 가지고 있으며, 매개변수를 받아, 메소드(함수)를 실행합니다.
 

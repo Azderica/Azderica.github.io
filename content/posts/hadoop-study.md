@@ -1,5 +1,5 @@
 ---
-title: "[Hadoop] Hadoop이란?"
+title: '[Hadoop] Hadoop이란?'
 slug: 00-hadoop
 date: 2020-12-08
 published: true
@@ -7,7 +7,7 @@ tags: ['Hadoop', 'BigData', 'Distributed', 'Backend']
 series: false,
 cover_image: ./images/HadoopLogo.png
 canonical_url: false
-description: " Hadoop에 대한 기본 내용을 정리한 글입니다. "
+description: ' Hadoop에 대한 기본 내용을 정리한 글입니다. '
 ---
 
 # Hadoop이란.
@@ -84,11 +84,12 @@ description: " Hadoop에 대한 기본 내용을 정리한 글입니다. "
 
 - 데이터 스트림을 실시간으로 관리하기 위한 분산시스템
 - 대용량 이벤트 처리를 위해 개발했습니다.
-- [좀 더 자세하게는...](https://azderica.github.io/00-kafka/)
+- [좀 더 자세하게는...](https://../00-kafka/)
 
 <br/>
 
 ### 데이터 처리
+
 #### 1. MapReduce(맴리듀스)
 
 ![image](https://user-images.githubusercontent.com/42582516/101638827-ebfeec80-3a71-11eb-9918-7dd18da30761.png)
@@ -153,7 +154,6 @@ description: " Hadoop에 대한 기본 내용을 정리한 글입니다. "
 - Mesos는 Linux 커널과 동일한 원칙을 사용하며 컴퓨터에 API(ex. Hadoop, Spark, Kafka, Elasticserach, ...) 등을 제공합니다.
 - 이베이(울회사)나 페이스북, 트위터 등 다양한 기업들이 Mesos 클러스터 자원을 관리합니다.
 
-
 <br/>
 
 ## 마무리.
@@ -161,7 +161,9 @@ description: " Hadoop에 대한 기본 내용을 정리한 글입니다. "
 간단하게 하둡에 대해서 조사를 했습니다. 내용적으로 부족한 부분이 많지만 개념만 잡고간다는 개념으로 작성하였습니다.
 
 ---
+
 **출처**
+
 - https://butter-shower.tistory.com/71
 - http://blog.naver.com/acornedu/220957220179
 - https://velog.io/@hsj0511/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%95%98%EB%91%A1Hadoop%EC%9D%B4%EB%9E%80-

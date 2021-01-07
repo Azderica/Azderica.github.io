@@ -1,5 +1,5 @@
 ---
-title: "[VueJS] Vuejs 라우터, 통신, 리소스"
+title: '[VueJS] Vuejs 라우터, 통신, 리소스'
 slug: 03-vuejs-starter
 date: 2020-12-15
 published: true
@@ -8,15 +8,14 @@ series: true,
 cover_image: ./images/VuejsLogo.png
 canonical_url: false
 description: " 'Vuejs 시작하기'의 세번째 게시글입니다. "
-
 ---
 
 # Vue.js 라우터, HTTP 통신, 뷰 리소스
 
 지난 컴포넌트 게시글에서 세번째 글입니다. 해당 컨텐츠는 "Vue.js 시작하기 - Age of Vue.js"의 강의 내용을 정리한 자료입니다.
 
-- [VueJs 시작하기 - 1](https://azderica.github.io/01-vuejs-starter/)
-- [VueJs 시작하기 - 2](https://azderica.github.io/01-vuejs-starter/)
+- [VueJs 시작하기 - 1](https://../01-vuejs-starter/)
+- [VueJs 시작하기 - 2](https://../01-vuejs-starter/)
 
 <br/>
 
@@ -58,7 +57,7 @@ var router = new VueRouter({
 
 // 인스턴스에 라우터 인스턴스를 등록
 new Vue({
-  router: router
+  router: router,
 })
 ```
 
@@ -76,8 +75,8 @@ new VueRouter({
   mode: 'history',
   routes: [
     { path: '/login', component: LoginComponent },
-    { path: '/home', component: HomeComponent }
-  ]
+    { path: '/home', component: HomeComponent },
+  ],
 })
 ```
 
@@ -90,12 +89,11 @@ new VueRouter({
 ```html
 <div id="app">
   <!-- LoginComponent 또는 HomeComponent -->
-  <router-view></router-view> 
+  <router-view></router-view>
 </div>
 ```
 
 `/login`은 로그인 컴포넌트, `/home`은 홈 컴포넌트를 화면에 표시합니다.
-
 
 ### router-link
 
@@ -115,16 +113,15 @@ new VueRouter({
 
 해당 코드 실행시 `<a>` 태그로 변환됩니다.
 
-
 ### 원본 코드
 
 해당원본 코드는 다음의 링크를 참고하시면 좋습니다.
+
 - [router.html](https://github.com/Azderica/Study-lean-vue-js/blob/master/playground-complete/router.html)
 
 좀 더 자세하게 공부하려면.
 
 - [Captain Pangyo님의 글](https://joshua1988.github.io/web-development/vuejs/vue-router-navigation-guards/)
-
 
 <br/>
 
@@ -132,15 +129,16 @@ new VueRouter({
 
 ### Ajax
 
-Ajax의 정의는 JavaScript의 라이브러리 중 하나이며 Asynchronous Javascript And Xml(비동기식 자바스크립트와 xml)의 약자입니다. 브라우저가 가지고있는 XMLHttpRequest 객체를 이용해서 전체 페이지를 새로 고치지 않고도 페이지의 일부만을 위한 데이터를 로드하는 기법입니다. 
+Ajax의 정의는 JavaScript의 라이브러리 중 하나이며 Asynchronous Javascript And Xml(비동기식 자바스크립트와 xml)의 약자입니다. 브라우저가 가지고있는 XMLHttpRequest 객체를 이용해서 전체 페이지를 새로 고치지 않고도 페이지의 일부만을 위한 데이터를 로드하는 기법입니다.
 
 이를 정리하면 **JavaScript를 사용한 비동기 통신, 클라이언트와 서버간에 XML 데이터를 주고받는 기술**로 정의할 수 있습니다.
 
 #### 비동기 처리란?
 
-자바스크립트의 비동기 처리란 특정 코드의 연산이 끝날 때까지 코드의 실행을 멈추지 않고, 다음 코드를 먼저 실행하는 자바스크립트의 특성을 의미합니다. 
+자바스크립트의 비동기 처리란 특정 코드의 연산이 끝날 때까지 코드의 실행을 멈추지 않고, 다음 코드를 먼저 실행하는 자바스크립트의 특성을 의미합니다.
 
 좀 더 자세하게 볼려면.
+
 - [Ajax 정의](https://ko.wikipedia.org/wiki/Ajax)
 - [Vue Resource Git](https://github.com/pagekit/vue-resource)
 
@@ -194,15 +192,16 @@ new Vue({
   el: '#app',
   methods: {
     fetchData: function() {
-      axios.get('https://jsonplaceholder.typicode.com/users/')
+      axios
+        .get('https://jsonplaceholder.typicode.com/users/')
         .then(function(response) {
-          console.log(response);
+          console.log(response)
         })
         .catch(function(error) {
-          console.log(error);
-        });
-    }
-  }
+          console.log(error)
+        })
+    },
+  },
 })
 ```
 
@@ -210,15 +209,12 @@ new Vue({
 
 - Tip) function안의 this와 .then 안에 있는 this는 바라보고 있는 것이 다릅니다.
 
-
 해당 요청에 대해 좀 더 자세하게 확인할려면.
 
 - [jsonplaceholder 사이트](https://jsonplaceholder.typicode.com/)
 - [자바스크립트 동작 원리](https://joshua1988.github.io/web-development/translation/javascript/how-js-works-inside-engine/)
 - ![HTTP 통신 구조](https://user-images.githubusercontent.com/42582516/102364902-52e44e80-3ffa-11eb-9f59-97c20d7b2a11.png)
 
-
 ### 원본 코드
 
 - [axios.html](https://github.com/Azderica/Study-lean-vue-js/blob/master/playground-complete/axios.html)
-

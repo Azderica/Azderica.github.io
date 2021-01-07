@@ -1,5 +1,5 @@
 ---
-title: "[Springboot] Maven과 Gradle로 바꾸기"
+title: '[Springboot] Maven과 Gradle로 바꾸기'
 slug: 02-springboot-gradle
 date: 2020-10-23
 published: true
@@ -7,14 +7,12 @@ tags: ['Springboot', 'Maven', 'Gradle', 'Change', 'Backend']
 series: true,
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 지난 글에 이어Maven을 Gradle로 바꾸는 내용을 설명합니다. "
+description: ' 지난 글에 이어Maven을 Gradle로 바꾸는 내용을 설명합니다. '
 ---
-
 
 # Maven에서 Gradle로 변경하기.
 
-이전글 : [Maven과 Gradle의 차이](https://azderica.github.io/backend/2020/10/14/backend-spring-maven-gradle-diff/)
-
+이전글 : [Maven과 Gradle의 차이](https://../backend/2020/10/14/backend-spring-maven-gradle-diff/)
 
 바꿔야하는 지에 대해서는 각자 다양한 이유(성능 문제, 업무 요청, 등등) 다양한 이유가 있을 것으로 판단된다.
 
@@ -38,9 +36,9 @@ brew install gradle
 
 프로젝트 폴더에 있는 pom.xml을 build.gradle로 변환한다.
 
- ```bash
+```bash
 gradle init --type pom
- ```
+```
 
 ### 3. build.gradle를 프로젝트에 맞춰 수정
 
@@ -58,13 +56,12 @@ mvnrepostiroy : [https://mvnrepository.com/](https://mvnrepository.com/)
 
 회사 프로젝트의 경우에는 회사에서 사용하는 라이브러리나 플러그인이 다를 것이기 때문에 약간의 삽질이 필요한 듯하다.
 
-다음 글에서는 `build.gradle`에서 `compile`과 `implementation`의 차이에 대해서, 또한 다른 요소에 대한 분석 글을 작성해야겠다. 
-
-
+다음 글에서는 `build.gradle`에서 `compile`과 `implementation`의 차이에 대해서, 또한 다른 요소에 대한 분석 글을 작성해야겠다.
 
 ---
 
 **출처**
+
 - https://kimpaper.github.io/2016/07/14/gradle/
 - https://dynaticy.tistory.com/entry/Maven-Gradle-%EB%B3%80%ED%99%98-pomxml%EB%A1%9C-buildscript-%EB%A7%8C%EB%93%A4%EA%B8%B0
 - https://thecodinglog.github.io/gradle/2019/09/11/install-gradle-in-windows.html

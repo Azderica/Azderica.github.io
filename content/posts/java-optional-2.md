@@ -1,5 +1,5 @@
 ---
-title: "[Java] Java Optional 2"
+title: '[Java] Java Optional 2'
 slug: 01-java-optional
 date: 2020-12-17
 published: true
@@ -7,16 +7,16 @@ tags: ['Java', 'Optional', 'Stream', 'Backend']
 series: false,
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
-description: "Java Optional 을 좀 더 잘 사용하기"
+description: 'Java Optional 을 좀 더 잘 사용하기'
 ---
 
 # Java Optional 활용 편
 
 지난 시간에 자바 Optional에 대해 작성했습니다. 또한 자바 Stream이나 Lambda에 대해서도 이야기를 하였습니다.
 
-- [Java Optional](https://azderica.github.io/00-java-optional/)
-- [Java Lambda](https://azderica.github.io/00-java-lambda/)
-- [Java Stream](https://azderica.github.io/00-java-stream/)
+- [Java Optional](https://../00-java-optional/)
+- [Java Lambda](https://../00-java-lambda/)
+- [Java Stream](https://../00-java-stream/)
 
 이를 기반으로 좀 더 Optional을 더 잘 쓰는 방법에 대해 이야기해볼려고합니다.
 
@@ -24,7 +24,7 @@ description: "Java Optional 을 좀 더 잘 사용하기"
 
 ## Optional과 Stream
 
-Optional을 제대로 사용하기 위해서는 Stream을 빼놓을 수는 없습니다. 일부 다른 표현으로는 **Optional**을 **최대 1개의 원소를 가진 특별한 Stream**이라고 표현하기도 합니다. 
+Optional을 제대로 사용하기 위해서는 Stream을 빼놓을 수는 없습니다. 일부 다른 표현으로는 **Optional**을 **최대 1개의 원소를 가진 특별한 Stream**이라고 표현하기도 합니다.
 
 Optional 클래스와 Stream 클래스 간에 직접적인 상관관계는 없지만 크게 유사한 부분을 가지고 있습니다. 지난시간에 이야기한 Stream이 가지고 있는 `map()`, `flatMap()`, `filter()` 모두 Optional도 가지고 있습니다.
 
@@ -45,6 +45,7 @@ public String getCityOfMemberFromOrder(Order order){
 다음 코드는 기존의 NPE(Null Pointer Exception) 방어 패턴에 비해 훨씬 간결하고 명확한 코드를 확인할 수 있습니다.
 
 이를 좀 더 상세하게 설명한다면 다음과 같은 의미를 가집니다.
+
 - `ofNullable` 을 통해 Order 객체를 Optional로 감쌌으며 객체가 null인 경우를 위해 `of()` 대신에 `ofNullabe`을 사용하였습니다.
 - `map()` 메소드를 3번 호출하면서 Optional 객체는 `Optional<Order>` 에서 `Optional<Member>`, `Optional<Address>`, `Optional<String>`으로 객체가 3번 변화하였습니다.
 - `orElse()`를 통해 `Optional`이 비어있는 경우, 디폴트 값으로 "Seoul"을 설정하였습니다.
@@ -71,7 +72,7 @@ public Member getMemberIfOrderWithin(Order order, int min){
 public Optional<Member> getMemberIdOrderWithin(Order order, int min){
         return Optional.ofNullabe(order)
                 .filter(o -> o.getDate().getTime() > System.currentTimeMills() - min * 1000)
-                .map(Order::getMember);        
+                .map(Order::getMember);
 }
 
 ```
@@ -160,9 +161,10 @@ int length = maybeCity.map(String::length).orElse(0); // null-safe
 기존의 `.orElseGet()`과 유사하지만 체이닝을 통해서 우선 순위를 결정할 수 있습니다. `.or()` 연산 중 비어있으면 순차적으로 진행합니다.
 
 예제 코드는 다음과 같습니다.
+
 ```java
 
-// public Optional<T> or(Supplier<? extends Optional<? extends T>> 
+// public Optional<T> or(Supplier<? extends Optional<? extends T>>
 String result = Optional.ofNullable("test")
         .filter(value -> "filter".equals(value))
         .or(Optional::empty)
@@ -180,7 +182,7 @@ System.out.println(result);
 // public void ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction);
 
 Optional.ofNullable("test")
-    .ifPresentOrElse(value -> System.out.println(value), () -> System.out.println("null")); 
+    .ifPresentOrElse(value -> System.out.println(value), () -> System.out.println("null"));
 // output : 'test'
 
 Optional.ofNullable(null)
@@ -206,7 +208,6 @@ List<String> result = List.of(1, 2, 3, 4)
 ```
 
 <br/>
-
 
 ## Java 10의 Optional 메소드
 
@@ -235,7 +236,9 @@ Optional.ofNullable(something).orElseThrow();
 부족한 점이나 잘못된 부분이 있으면 편하게 이야기주세요. 감사합니다.
 
 ---
+
 **출처**
+
 - https://www.daleseo.com/java8-optional-after/
 - https://www.daleseo.com/java8-optional-effective/
 - https://jdm.kr/blog/234

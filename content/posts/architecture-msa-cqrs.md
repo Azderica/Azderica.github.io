@@ -22,8 +22,8 @@ description: ' CQRS 패턴에 대해 정리합니다.'
 
 지난 시간에는 MSA와 MSA 패턴 중, SAGA 패턴에 대해 알아보았습니다.
 
-- [MSA 개념 잡기](https://azderica.github.io/00-architecture-msa/)
-- [MSA : SAGA 패턴](https://azderica.github.io/01-architecture-msa/)
+- [MSA 개념 잡기](../00-architecture-msa/)
+- [MSA : SAGA 패턴](../01-architecture-msa/)
 
 <br/>
 

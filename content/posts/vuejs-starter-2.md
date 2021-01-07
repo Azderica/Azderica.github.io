@@ -1,5 +1,5 @@
 ---
-title: "[VueJS] Vuejs 컴포넌트 통신"
+title: '[VueJS] Vuejs 컴포넌트 통신'
 slug: 02-vuejs-starter
 date: 2020-12-12
 published: true
@@ -8,14 +8,13 @@ series: true,
 cover_image: ./images/VuejsLogo.png
 canonical_url: false
 description: " 'Vuejs 시작하기'의 두번째 게시글입니다. "
-
 ---
 
 # Vue.js 컴포넌트 통신
 
 지난 컴포넌트 게시글에서 두번째 글입니다. 해당 컨텐츠는 "Vue.js 시작하기 - Age of Vue.js"의 강의 내용을 정리한 자료입니다.
 
-- 이전 글 : [VueJs 시작하기](https://azderica.github.io/01-vuejs-starter/)
+- 이전 글 : [VueJs 시작하기](https://../01-vuejs-starter/)
 
 컴포넌트 통신에 대해서 좀 더 자세하게 이야기합니다.
 
@@ -53,14 +52,18 @@ Props 속성을 사용하기 위해서는 하위 컴포넌트의 컴포넌트 �
 ```js
 // 하위 컴포넌트의 내용
 var childComponent = {
-  props: ['프롭스 속성 명']
+  props: ['프롭스 속성 명'],
 }
 ```
 
 ```html
 <!-- 상위 컴포넌트의 템플릿 -->
 <div id="app">
-  <child-component v-bind:프롭스 속성 명="상위 컴포넌트의 data 속성"></child-component>
+  <child-component
+    v-bind:프롭스
+    속성
+    명="상위 컴포넌트의 data 속성"
+  ></child-component>
 </div>
 ```
 
@@ -72,7 +75,7 @@ var childComponent = {
 // 하위 컴포넌트 : childComponent
 var childComponent = {
   props: ['propsdata'],
-  template: '<p>{{ propsdata }}</p>'
+  template: '<p>{{ propsdata }}</p>',
 }
 
 // 상위 컴포넌트 : root 컴포넌트
@@ -82,10 +85,9 @@ new Vue({
     'child-component': childComponent,
   },
   data: {
-    message: 'hello vue js'
-  }
+    message: 'hello vue js',
+  },
 })
-
 ```
 
 ```html
@@ -93,9 +95,7 @@ new Vue({
   <child-component v-bind:propsdata="message"></child-component>
   <!-- 위 출력 결과는 <p>hello vue js</p> -->
 </div>
-
 ```
-
 
 ### Event Emit
 
@@ -107,7 +107,7 @@ new Vue({
 
 ```js
 // 하위 컴포턴트의 내용
-this.$emit('이벤트 명');
+this.$emit('이벤트 명')
 ```
 
 ```html
@@ -124,25 +124,25 @@ this.$emit('이벤트 명');
 
 ```js
 // 하위 컴포넌트 : childComponent
-var childComponent  = {
+var childComponent = {
   methods: {
     sendEvent: function() {
-      this.$emit('update');
-    }
-  }
+      this.$emit('update')
+    },
+  },
 }
 
 // 상위 컴포넌트 : root component
 new Vue({
   el: '#app',
   components: {
-    'child-component': childComponent
+    'child-component': childComponent,
   },
   methods: {
     showAlert: function() {
-      alert('event received');
-    }
-  }
+      alert('event received')
+    },
+  },
 })
 ```
 
@@ -157,14 +157,12 @@ new Vue({
 
 실행 결과는 event recived라는 경고창이 발생합니다.
 
-
 ### this에 대한 좋은 글
 
 JS에서 this는 크게 4가지 역할을 가지고 있습니다.
 
 - https://www.w3schools.com/js/js_this.asp
 - https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8
-
 
 ### 같은 컴포넌트 레벨 간의 통신 방법
 
@@ -173,6 +171,7 @@ JS에서 this는 크게 4가지 역할을 가지고 있습니다.
 ![Same-level-component-communication](https://user-images.githubusercontent.com/42582516/102004260-69687c80-3d52-11eb-9402-7add8b3d2dd5.png)
 
 Tip) 같은 텍스트 선택 단축키
+
 - 윈도우 : Ctrl + d
 - 맥 : Cmd + d
 
@@ -181,32 +180,32 @@ Tip) 같은 텍스트 선택 단축키
 ```js
 var appHeader = {
   template: '<div>header</div>',
-  props: ['propsdata']
+  props: ['propsdata'],
 }
 
 var appContent = {
   template: '<div>conetent<button v-on:click="passNum">pass</button></div>',
   methods: {
     passNum: function() {
-      this.$emit('pass', 10);
-    }
-  }
+      this.$emit('pass', 10)
+    },
+  },
 }
 
 new Vue({
   el: '#app',
   components: {
     'app-header': appHeader,
-    'app-content': appContent
+    'app-content': appContent,
   },
   data: {
-    num: 0
+    num: 0,
   },
-    methods: {
+  methods: {
     deliverNum: function(value) {
-      this.num = value;
-    }
-  }
+      this.num = value
+    },
+  },
 })
 ```
 
@@ -216,7 +215,6 @@ new Vue({
   <app-header v-bind:propsdata="num"></app-header>
   <app-content v-on:pass="deliverNum"></app-content>
 </div>
-
 ```
 
 이와 같이 구현할수 있으며, 해당 코드를 실행 시 `app-content`에서 event를 발생시켜서 이 데이터를 상위 컴포넌트인 root로 보내게 되고, `app-header`에서 props를 받아서 데이터를 받게 됩니다.

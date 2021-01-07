@@ -1,5 +1,5 @@
 ---
-title: "[Java] Java Stream"
+title: '[Java] Java Stream'
 slug: 00-java-stream
 date: 2020-12-16
 published: true
@@ -7,12 +7,12 @@ tags: ['Java', 'Java8', 'Stream', 'Backend']
 series: false,
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
-description: "Java Stream에 대해 정리합니다."
+description: 'Java Stream에 대해 정리합니다.'
 ---
 
 # Java Stream
 
-지난번에 이야기한 Java8의 핵심 기능, [자바 Optional](https://azderica.github.io/00-java-lambda/)에 이어서, 오늘은 Stream에 대해서 정리합니다.
+지난번에 이야기한 Java8의 핵심 기능, [자바 Optional](https://../00-java-lambda/)에 이어서, 오늘은 Stream에 대해서 정리합니다.
 
 <br/>
 
@@ -99,7 +99,6 @@ Stream<Integer> stream = list.stream().map(x -> x + 1);
 // output : [2, 3, 4]
 ```
 
-
 - flatMap : 여러 스트림을 하나의 스트림으로 합칩니다.
 
 ```java
@@ -125,7 +124,7 @@ List<Integer> sortedList = list.stream().sorted(Comparator.reverseOrder()).colle
 
 - forEach : 요소를 돌면서 실행합니다.
 
-- collect : 스트림의 값들을 모을 수 있습니다.   ex) `toMap()`, `toSet()`, `toList()`
+- collect : 스트림의 값들을 모을 수 있습니다. ex) `toMap()`, `toSet()`, `toList()`
 
 ```java
 List<Integer> arr = Arrays.asList(1, 2, 3, 3, 4, 5, 5);
@@ -144,14 +143,13 @@ OptionalInt reduced =
         return Integer.sum(a, b);
     });
     // output : 6 (1 + 2 + 3)
-     
+
     int reducedTwoParams =
     IntStream.range(1, 4) // [1, 2, 3]
     .reduce(10, Integer::sum);
     // output : 16 (10 + 1 + 2 + 3)
 }
 ```
-
 
 <br/>
 
@@ -161,8 +159,10 @@ OptionalInt reduced =
 
 감사합니다.
 
---- 
+---
+
 **출처**
+
 - https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html
 - https://www.baeldung.com/java-8-streams-introduction
 - https://futurecreator.github.io/2018/08/26/java-8-streams/

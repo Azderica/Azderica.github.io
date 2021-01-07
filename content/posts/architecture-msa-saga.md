@@ -22,7 +22,7 @@ description: ' SAGA 패턴에 대해 정리합니다.'
 
 이전에 MSA 개념에 대해 잡아보았습니다. 오늘은 MSA를 듣다보면 꼭 듣게 되는 SAGA 패턴에 대해 공부해보겠습니다.
 
-- [MSA 개념 잡기](https://azderica.github.io/00-architecture-msa/)
+- [MSA 개념 잡기](https://../00-architecture-msa/)
 
 <br/>
 

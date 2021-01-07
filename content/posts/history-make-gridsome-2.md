@@ -1,5 +1,5 @@
 ---
-title: "[Gridsome] Jekyll에서 Gridsome으로 Gitblog 변경하기 - 2"
+title: '[Gridsome] Jekyll에서 Gridsome으로 Gitblog 변경하기 - 2'
 slug: 02-gridsome-blog
 date: 2020-12-06
 published: true
@@ -7,21 +7,22 @@ tags: ['Gridsome', 'Git', 'Gitblog', 'History']
 series: false,
 cover_image: ./images/GridsomeLogo.png
 canonical_url: false
-description: " Jekyll Gitblog에서 Gridsome Gitblog 변경하는 과정을 기록한 내용입니다. "
+description: ' Jekyll Gitblog에서 Gridsome Gitblog 변경하는 과정을 기록한 내용입니다. '
 ---
 
 # Jekyll에서 Gridsome으로 Gitblog 변경하기 - 2.
 
 지난 시간에는 Gridsome을 시작하는 내용까지 작성하였습니다. 이번에는 본격적으로 gridsome 블로그의 형태로 바꾸겠습니다.
 
-> [Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1](https://azderica.github.io/01-gridsome-blog/)
+> [Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1](https://../01-gridsome-blog/)
 
 <br/>
 
 ## Gridsome의 구조
 
 프로젝트의 구조는 다음과 같습니다.
-- `content/posts` : 포스팅할 *.md 파일을 작성합니다.
+
+- `content/posts` : 포스팅할 \*.md 파일을 작성합니다.
   - `content/posts/image` : 이미지 폴더입니다.
 - `src/pages` : 이 폴더를 기준으로 페이지가 작성이 되고, 라우팅이 됩니다.
 - `src/layout` : 페이지의 기본 레이아웃입니다.
@@ -43,7 +44,7 @@ layout: post
 title: "[CS] Load Balancer(로드밸런서)"
 subtitle: "Load Balancer"
 categories: cs
-tags: cs Load Balancer Load-Balancer 로드밸런서 difference 
+tags: cs Load Balancer Load-Balancer 로드밸런서 difference
 comments: true
 ---
 
@@ -81,7 +82,6 @@ description: " 로브밸런서에 대한 글입니다. "
 
 <br/>
 
-
 ## Github pages를 통해 배포하기
 
 처음 github pages를 사용해보면서 일부 시행착오가 있었습니다. 다음과 같은 순서로 진행합니다.
@@ -95,9 +95,10 @@ npm install gh-pages / yarn add gh-pages
 ### 2. girdsome.config.js 에 siteUrl과 prefix를 추가합니다.
 
 ```json
-  siteUrl: "https://Azderica.github.io",
+  siteUrl: "https://..",
   pathPrefix: "/",
 ```
+
 추가적으로 pathPrefix는 예시처럼 수정가능합니다. ex) `/blog`
 
 ### 3. package.json의 scripts 아래에 명령을 추가합니다.
@@ -127,9 +128,9 @@ npm run deploy
 
 좀 더 제대로 비교해보고 싶으면 제 git link를 참고해서 fork 한 후 비교해가면서 기능을 추가하면 될 듯합니다.
 
-> [Azderica.github.io](https://github.com/Azderica/Azderica.github.io/)
+> [..](https://github.com/Azderica/../)
 
-## 일부 깨지는 파일에서 
+## 일부 깨지는 파일에서
 
 slug파일을 넣은 이유에 대해서 설명합니다.
 
@@ -141,37 +142,36 @@ slug파일을 넣은 이유에 대해서 설명합니다.
 
 ```js
 module.exports = {
-    // ...
+  // ...
 
   templates: {
-    Post: "/:slug",
-    Tag: "/tag/:id",
+    Post: '/:slug',
+    Tag: '/tag/:id',
   },
 
   plugins: [
     {
       // Create posts from markdown files
-      use: "@gridsome/source-filesystem",
+      use: '@gridsome/source-filesystem',
       options: {
-        typeName: "Post",
-        path: "content/posts/*.md",
+        typeName: 'Post',
+        path: 'content/posts/*.md',
         refs: {
           // Creates a GraphQL collection from 'tags' in front-matter and adds a reference.
           tags: {
-            typeName: "Tag",
+            typeName: 'Tag',
             create: true,
           },
         },
       },
     },
     {
-        // ...
-    }
-  ]
+      // ...
+    },
+  ],
 
   // ...
 }
-
 ```
 
 `gridsome.config.js` 에서 일부 내용을 가져왔습니다. 다음과 같이 적용하게 되면 다음과 같이 url path에 slug가 들어가는 것을 확인할 수 있습니다.
@@ -182,12 +182,11 @@ module.exports = {
 
 <br/>
 
-
 ## 폰트 적용하기
 
-글씨 폰트를 적용하는 방법은 다음과 같습니다. `src/assests` 에서  `_base.scss`와 `_typoragraphy.scss`에서 font-family에 폰트를 추가하면 됩니다.
+글씨 폰트를 적용하는 방법은 다음과 같습니다. `src/assests` 에서 `_base.scss`와 `_typoragraphy.scss`에서 font-family에 폰트를 추가하면 됩니다.
 
-- _base.scss
+- \_base.scss
 
 ```scss
 ...
@@ -206,13 +205,13 @@ body {
 
 ```
 
-- _typorgraphy.scss
+- \_typorgraphy.scss
 
 ```scss
 @import url('https://fonts.googleapis.com/css?family=Poppins:400, 600');
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400');
 
-... 
+...
 
 body {
   font-family: 'Nanum Gothic', 'Poppins', sans-serif;
@@ -246,6 +245,7 @@ h1, h2, h3, h4, h5 {
 ---
 
 **출처**
+
 - https://gridsome.org/
 - https://github.com/tschaub/gh-pages
 - https://perade.github.io/blog/make-blog-with-gridsome-2nd/

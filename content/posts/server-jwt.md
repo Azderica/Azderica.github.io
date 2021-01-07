@@ -1,13 +1,14 @@
 ---
-title: "[Server] 토큰 기반 인증과 JWT"
+title: '[Server] 토큰 기반 인증과 JWT'
 slug: 00-server-jwt
 date: 2020-12-25
 published: true
-tags: ['Server', 'Jwt', 'Token', 'Api', 'Service', 'Authenticate', 'Json Web Token']
+tags:
+  ['Server', 'Jwt', 'Token', 'Api', 'Service', 'Authenticate', 'Json Web Token']
 series: false,
 cover_image: ./images/JwtText.png
 canonical_url: false
-description: " 토큰 기반 인증과 JWT에 대해 알아보겠습니다. "
+description: ' 토큰 기반 인증과 JWT에 대해 알아보겠습니다. '
 ---
 
 # JWT
@@ -29,10 +30,12 @@ description: " 토큰 기반 인증과 JWT에 대해 알아보겠습니다. "
 하지만 이러한 서버 기반의 인증은 다음과 같은 문제를 가집니다. (그러나 아직 사용하는 곳도 많습니다.)
 
 - 세션
+
   - 유저가 인증을 할 때, 서버는 이 기록을 서버에 저장합니다. (= 세션)
   - 로그인 중인 유저가 늘어날 수록 서버의 램이 과부화됩니다. (DB에 저장하면 DB 성능의 무리가 오게됩니다.)
 
 - 확장성
+
   - 세션을 사용하는 경우에는 더 많은 트래픽을 감당하기 위해 여러개의 프로세스를 돌리거나, 여러 서버 컴퓨터를 추가하는 것이 어려워집니다.
 
 - CORS(Cross-Origin Resource Sharing)
@@ -54,41 +57,46 @@ description: " 토큰 기반 인증과 JWT에 대해 알아보겠습니다. "
 4. 클라이언트 측에서는 전달받은 **토큰을 저장**하고, 서버 **요청마다 토큰을 함께 서버에 전달**합니다.
 5. 서버는 **토큰을 검증**하고 **요청에 응답**합니다.
 
-
 ### 토큰 기반 서비스를 선택하는 이유.
 
 일반적으로 토큰 기반의 인증 시스템은 다음의 장점을 가집니다.
 
 - Stateless 서버
+
   - Stateful 서버 : 클라이언트에게 요청받을때마다, 클라이언트의 상태를 계속 유지합니다. 세션에 로그인 정보 등을 저장하고 계속 활용합니다.
   - **Stateless 서버** : 상태를 유지 하지 않는 서버. 상태정보를 저장하지 않고, 서버는 클라이언트측에서 들어오는 요청만으로 작업을 진행, 이 경우에는 클라이언트와 서버의 연결고리가 없으므로 **서버의 확장성에서 장점**을 가집니다.
 
 - 모바일 어플리케이션에 적합
+
   - 만약에 Android와 IOS에서 작동하는 어플리케이션을 개발할 때, 안전한 API를 만들기 위해서는 쿠키 등은 좋은 해결책이 될 수 없습니다. (쿠키 컨테이너를 사용해야하기 때문에...)
 
 - 인증정보를 다른 어플리케이션으로 전달
+
   - 대표적인 서비스로 OAuth 등이 있습니다. 구글이나 페이스북, 카카오톡, 네이버와 같은 소셜 계정을 통해 다른 웹서비스에서도 로그인 가능합니다.
 
 - 보안
   - 토큰 기반의 인증을 통해서 어플리케이션의 보안을 높일 수 있습니다.
-
 
 ### 토큰 기반 서비스의 장점.
 
 따라서 토큰 기반의 서비스는 다음과 같은 장점을 가집니다.
 
 - 무상태이며 확장성을 가짐
+
   - 기존에 설명한 것처럼 많은 리소스 소모를 줄일 수 있습니다.
 
 - 보안성
+
   - 쿠키를 사용하지 않으므로 쿠키 취약점을 방지할 수 있습니다.
   - 다만 토큰도 취약점이 존재합니다.
 
 - 확장성(Extensibility)
+
   - 토큰을 통해 다른 서비스에 권한을 공유함으로서 사업이나 분야를 확장할 수 있습니다.
   - 토큰에 선택적인 권한만 부여하여 발급할 수도 있습니다.
 
 - 여러 플랫폼 및 도메인
+
   - 토큰만 유효하다면 여러 플랫폼과 도메인에서 사용할 수 있습니다.
   - 서버측 어플리케이션 응답부분에 다음 헤더만 포함하면 `Access-Control-Allow-Origin: *` 서버에서는 쉽게 정리할 수 있습니다.
 
@@ -108,13 +116,13 @@ JSON은 다음과 같은 특징을 유지합니다.
 - 수많은 프로그래밍 언어에서 지원됩니다. (대부분의 주류 프로그래밍 언어에서 지원)
 
 - 자가 수용적 (self-contained)
+
   - JWT는 필요한 모든 정보를 가지고 있습니다.
   - 토큰, 토큰에 대한 기본정보, 전달할 정보, signature 등을 가지고 있습니다.
 
 - 쉽게 전달 될 수 있습니다.
   - JWT는 자가수용적으로 두 개체 사이에서 손쉽게 전달된다.
   - 웹 서버의 경우 HTTP의 헤더에 넣어서 전달할 수 있고, ULR의 파라미터로도 전달 가능합니다.
-
 
 ### JWT의 정의
 
@@ -133,8 +141,8 @@ JWT 토큰을 만들때는 JWT를 담당하는 라이브러리가 자동으로 �
 
 ```json
 {
-    "typ": "JWT",
-    "alg": "HS256"
+  "typ": "JWT",
+  "alg": "HS256"
 }
 ```
 
@@ -142,14 +150,14 @@ JWT 토큰을 만들때는 JWT를 담당하는 라이브러리가 자동으로 �
 
 ```js
 const header = {
-    "typ" : "JWT",
-    "alg" : "HS256"
-};
+  typ: 'JWT',
+  alg: 'HS256',
+}
 
 // encode to base64
 const encodedPayload = new Buffer(JSON.stringify(payload))
-                            .toString('base64')
-                            .replace('=', '');
+  .toString('base64')
+  .replace('=', '')
 ```
 
 #### 정보(payload)
@@ -182,9 +190,9 @@ const encodedPayload = new Buffer(JSON.stringify(payload))
 
 ```json
 {
-    "iss" : "github.com",
-    "https://azderica.github.io/is_admin" : true,
-    "username" : "Azderica"
+  "iss": "github.com",
+  "https://../is_admin": true,
+  "username": "Azderica"
 }
 ```
 
@@ -205,6 +213,7 @@ HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
 ### JWT는 언제 사용하지?
 
 - 회원 인증
+
   - JWT를 사용하는 가장 흔한 시나리오입니다.
   - 유저가 로그인 시, 서버는 유저의 정보에 기반한 토큰을 발급하여 유저에게 전달하고 이후 요청시 JWT를 포함하여 전달합니다.
   - 서버측에서 유저의 세션을 유지할 필요가 없어서 리소스를 아낄 수 있습니다.
@@ -213,17 +222,16 @@ HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
   - JWT는 두 개체 사이에서 안정성있게 정보를 교환하기에 좋은 방법
   - 정보가 sign이 되어있기 때문에 정보가 조작되지 않았는지를 검증할 수 있음.
 
-
 <br/>
 
 ## 마무리.
 
-토큰 기반의 인증 시스템과 JWT에 대해 알아보았습니다. 
-
-
+토큰 기반의 인증 시스템과 JWT에 대해 알아보았습니다.
 
 ---
+
 **출처**
+
 - https://velopert.com/2350
 - https://velopert.com/2389
 - http://www.opennaru.com/opennaru-blog/jwt-json-web-token/
