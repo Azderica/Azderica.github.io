@@ -12,7 +12,7 @@ description: 'Java Stream에 대해 정리합니다.'
 
 # Java Stream
 
-지난번에 이야기한 Java8의 핵심 기능, [자바 Optional](https://../00-java-lambda/)에 이어서, 오늘은 Stream에 대해서 정리합니다.
+지난번에 이야기한 Java8의 핵심 기능, [자바 Optional](https://Azderica.github.io/00-java-lambda/)에 이어서, 오늘은 Stream에 대해서 정리합니다.
 
 <br/>
 

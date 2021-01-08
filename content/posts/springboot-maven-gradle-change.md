@@ -12,7 +12,7 @@ description: ' 지난 글에 이어Maven을 Gradle로 바꾸는 내용을 설명
 
 # Maven에서 Gradle로 변경하기.
 
-이전글 : [Maven과 Gradle의 차이](https://../backend/2020/10/14/backend-spring-maven-gradle-diff/)
+이전글 : [Maven과 Gradle의 차이](https://Azderica.github.io/backend/2020/10/14/backend-spring-maven-gradle-diff/)
 
 바꿔야하는 지에 대해서는 각자 다양한 이유(성능 문제, 업무 요청, 등등) 다양한 이유가 있을 것으로 판단된다.
 

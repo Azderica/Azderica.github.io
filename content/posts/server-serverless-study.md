@@ -180,7 +180,7 @@ Serverless의 특징은 다음과 같습니다.
 
 쿠버네티스에 대한 간단한 정리는 아래의 링크를 보시면 좋을 듯합니다.
 
-: [쿠버네티스란?](https://../backend/2020/11/10/backend-kubernetes-study/)
+: [쿠버네티스란?](https://Azderica.github.io/backend/2020/11/10/backend-kubernetes-study/)
 
 ### 2.DBaaS(Database as a Service)
 

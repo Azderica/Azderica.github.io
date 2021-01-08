@@ -14,7 +14,7 @@ description: ' Jekyll Gitblog에서 Gridsome Gitblog 변경하는 과정을 기�
 
 지난 시간에는 Gridsome을 시작하는 내용까지 작성하였습니다. 이번에는 본격적으로 gridsome 블로그의 형태로 바꾸겠습니다.
 
-> [Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1](https://../01-gridsome-blog/)
+> [Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1](https://Azderica.github.io/01-gridsome-blog/)
 
 <br/>
 
@@ -128,7 +128,7 @@ npm run deploy
 
 좀 더 제대로 비교해보고 싶으면 제 git link를 참고해서 fork 한 후 비교해가면서 기능을 추가하면 될 듯합니다.
 
-> [..](https://github.com/Azderica/../)
+> [..](https://github.com/Azderica/Azderica.github.io/)
 
 ## 일부 깨지는 파일에서
 

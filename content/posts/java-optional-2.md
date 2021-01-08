@@ -14,9 +14,9 @@ description: 'Java Optional 을 좀 더 잘 사용하기'
 
 지난 시간에 자바 Optional에 대해 작성했습니다. 또한 자바 Stream이나 Lambda에 대해서도 이야기를 하였습니다.
 
-- [Java Optional](https://../00-java-optional/)
-- [Java Lambda](https://../00-java-lambda/)
-- [Java Stream](https://../00-java-stream/)
+- [Java Optional](https://Azderica.github.io/00-java-optional/)
+- [Java Lambda](https://Azderica.github.io/00-java-lambda/)
+- [Java Stream](https://Azderica.github.io/00-java-stream/)
 
 이를 기반으로 좀 더 Optional을 더 잘 쓰는 방법에 대해 이야기해볼려고합니다.
 

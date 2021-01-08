@@ -113,7 +113,7 @@ public static void whileExample(){
 
 이에 관련해서는 기존에 Springboot Test 관련으로 공부한 내용이 있어서, 아래의 글을 참고하면 됩니다.
 
-- [Springboog Test](https://../01-springboot-test/)
+- [Springboog Test](https://Azderica.github.io/01-springboot-test/)
 
 <br/>
 

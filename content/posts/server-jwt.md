@@ -191,7 +191,7 @@ const encodedPayload = new Buffer(JSON.stringify(payload))
 ```json
 {
   "iss": "github.com",
-  "https://../is_admin": true,
+  "https://Azderica.github.io/is_admin": true,
   "username": "Azderica"
 }
 ```

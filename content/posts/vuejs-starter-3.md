@@ -14,8 +14,8 @@ description: " 'Vuejs 시작하기'의 세번째 게시글입니다. "
 
 지난 컴포넌트 게시글에서 세번째 글입니다. 해당 컨텐츠는 "Vue.js 시작하기 - Age of Vue.js"의 강의 내용을 정리한 자료입니다.
 
-- [VueJs 시작하기 - 1](https://../01-vuejs-starter/)
-- [VueJs 시작하기 - 2](https://../01-vuejs-starter/)
+- [VueJs 시작하기 - 1](https://Azderica.github.io/01-vuejs-starter/)
+- [VueJs 시작하기 - 2](https://Azderica.github.io/01-vuejs-starter/)
 
 <br/>
 

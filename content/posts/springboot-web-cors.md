@@ -14,7 +14,7 @@ description: ' Springboot CORS에 대한 해결방법입니다.'
 
 지난 게시글에서는 CORS 이슈에 대해 정리했습니다.
 
-- [CORS란.](https://../00-web-cors/)
+- [CORS란.](https://Azderica.github.io/00-web-cors/)
 
 회사 보안 정책에 따라서, 웹페이지에 허용되는 HTTP 메소드가 제한되는 경우가 있습니다. 저 또한 회사에서 이러한 업무를 해야하는 경우가 있기 때문에 이에 대해 한번 정리합니다.
 

@@ -14,7 +14,7 @@ description: " 'Vuejs 시작하기'의 두번째 게시글입니다. "
 
 지난 컴포넌트 게시글에서 두번째 글입니다. 해당 컨텐츠는 "Vue.js 시작하기 - Age of Vue.js"의 강의 내용을 정리한 자료입니다.
 
-- 이전 글 : [VueJs 시작하기](https://../01-vuejs-starter/)
+- 이전 글 : [VueJs 시작하기](https://Azderica.github.io/01-vuejs-starter/)
 
 컴포넌트 통신에 대해서 좀 더 자세하게 이야기합니다.
 
