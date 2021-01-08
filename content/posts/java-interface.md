@@ -148,6 +148,32 @@ Animal 클래스로 선언되었기 때문에, 이를 상속받은 메소드를 
 
 ## 인터페이스 상속
 
+인터페이스는 앞서 이야기 했듯이 상속을 받아 사용합니다. 추가적으로 자바에는 다중 상속이 불가능 하지만 인터페이스는 가능합니다.
+
+```java
+public interface Tv {
+    void turnOn();
+}
+
+public interface Internet {
+    void internet();
+}
+
+public class SmartTv implements Tv, Internet {
+    @Override
+    public void turnOn() {
+        // 구현...
+    }
+
+    @Override
+    public void internet() {
+        // 구현...
+    }
+}
+```
+
+다음과 같이 인터페이스 다중 상속이 가능합니다.
+
 <br/>
 
 ## 인터페이스의 기본 메소드 (Default Method), 자바 8
@@ -156,11 +182,6 @@ Animal 클래스로 선언되었기 때문에, 이를 상속받은 메소드를 
 - 해당 인터페이스를 구현한 클래스의 어떠한 영향 없이 새로운 기능을 추가하는 방법입니다.
 - `default method`는 해당 인터페이스에서 **구현체가 모르는 기능을 구현했기 때문에 리스크가 존재**합니다.
   - 컴파일 에러는 발생하지는 않지만, 특정 구현의 로직에 런타임 에러가 발생가능합니다.
-  - 구현체를 잘못사용하지 않도록 문서화를 해야합니다.
-- Object가 제공하는 기능(기본 메소드)는 제공할 수 없습니다.
-- 본인이 수정할 수 있는 인터페이스에만 기본 메소드를 제공할 수 있습니다.
-- 인터페이스를 상속받은 인터페이스에서 다시 추상 메소드로 변경할 수 있습니다.
-- 인터페이스 구현체가 default method를 재정의 할 수 있습니다.
 
 다음과 같은 예제 코드가 있습니다.
 
@@ -191,8 +212,54 @@ public class MyCaclExam {
 
 ## 인터페이스의 static 메소드, 자바 8
 
+`static method`이므로 상속이 불가능합니다. 인스턴스 없이 수행할 수 있는 작업을 정의할 수 있습니다.
+
+다음은 예제 코드입니다.
+
+```java
+public interface Calc {
+    static int sum(int i, int j){
+        return i + j;
+    }
+}
+```
+
 <br/>
 
 ## 인터페이스의 private 메소드, 자바 9
 
-<br/>
+`default method`와 `static method` 모두 내부 method이나, 외부에 공개되는 `public method`이기 때문에 이에 대한 문제가 존재했습니다. 이러한 interface가 다른 곳에서 상속을 하거나 접근하는 것을 막기 위해 `private`이 등장했습니다.
+
+java 9에서는 `private method`와 `private static method`가 새롭게 등장했습니다. 이 방법을 통해서 interface에 대한 캡슐화를 유지할 수 있습니다.
+
+다음은 예제 코드입니다.
+
+```java
+public interface Calc {
+    private void start(){
+        System.out.println("연산 시작")
+    }
+
+    static int multiple(int i, int j){
+        startMultiple();
+        return i * j;
+    }
+
+    private static void startMultiple() {
+        System.out.println("곱셈 시작");
+    }
+}
+```
+
+default 메소드는 static, instance를 호출할 수 있고, static 메서드에서는 static 메서드만 호출 가능합니다.
+
+---
+
+**출처**
+
+- https://docs.oracle.com/javase/9/language/toc.htm#JSLAN-GUID-E409CC44-9A8F-4043-82C8-6B95CD939296
+- https://www.notion.so/4b0cf3f6ff7549adb2951e27519fc0e6
+- https://blog.baesangwoo.dev/posts/java-livestudy-8week/
+- https://limkydev.tistory.com/197
+- https://enjoyplaying.tistory.com/33
+- https://wonyong-jang.github.io/java/2021/01/04/Java-Interface.html
