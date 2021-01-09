@@ -14,8 +14,6 @@ description: 'CI와 CD의 개념을 이해햡니다.'
 
 DevOps에 대해 개념에 듣다 보면, CI와 CD에 대해 듣게 됩니다. 이때 CI와 CD의 개념에 대해 한번 정리해볼려고합니다.
 
-![CI-CD](https://user-images.githubusercontent.com/42582516/104082241-f4686400-5277-11eb-870a-321464e85ba5.png)
-
 ## CI/CD의 개념
 
 CD/CD는 **Continuous Integration (지속적인 통합) / Continuous Delivery or Continuous Deployment (지속적인 전달/지속적인 배포)** 의 약자입니다. 이러한 CI/CD는 **애플리케이션 개발 단게를 자동화하여 애플리케이션보다 짧은 주기로 고객에게 제공하는 방법**입니다. CD/CD의 기본 개념은 **지속적인 통합, 지속적인 서비스 제공, 지속적인 배포**입니다. CI/CD는 새로운 코드 통합을 통해 개발 및 운영에서 발생하는 인테그레이션 헬(Integration hell)을 해결하기 위한 솔루션입니다.
