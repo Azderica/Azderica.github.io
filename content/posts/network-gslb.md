@@ -1,7 +1,7 @@
 ---
 title: '[Network] GSLB란?'
 slug: 00-network-gslb
-date: 2020-12-28
+date: 2021-01-11
 published: true
 tags: ['Network', 'Devops', 'GSLB', 'DNS', 'Server', 'Backend']
 series: false,
