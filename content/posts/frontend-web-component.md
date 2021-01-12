@@ -1,7 +1,7 @@
 ---
 title: '[Frontend] Web Component'
 slug: 00-frontend-webcomponent
-date: 2020-01-11
+date: 2021-01-11
 published: true
 tags: ['Frontend', 'Web', 'Webcomponent']
 series: false,
