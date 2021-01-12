@@ -1,7 +1,7 @@
 ---
 title: '[Java] 자바 클래스'
 slug: 00-java-class
-date: 2021-01-1
+date: 2021-01-12
 published: true
 tags: ['Java', 'Class', 'Object', 'Method']
 series: false,
