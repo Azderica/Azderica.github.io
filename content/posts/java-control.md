@@ -10,7 +10,7 @@ canonical_url: false
 description: '자바의 제어문에 대해 정리합니다.'
 ---
 
-# Java Operatore
+# Java Control
 
 최근 백기선님의 자바 스터디를 알게되어서, 한번 자바에 대한 개념을 스터디를 통해서 잡고 가면 좋을 듯해서 글에 대해서 정리해보겠습니다. 아래는 4주차 내용입니다.
 
