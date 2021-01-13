@@ -1,10 +1,10 @@
 ---
 title: '[Java] 자바 제어문'
-slug: 00-java-statement
+slug: 04-java-study
 date: 2021-01-02
 published: true
-tags: ['Java', 'Control', 'Statement', 'Type']
-series: false,
+tags: ['Java', 'Stater', 'Control', 'Statement', 'Type']
+series: true,
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바의 제어문에 대해 정리합니다.'

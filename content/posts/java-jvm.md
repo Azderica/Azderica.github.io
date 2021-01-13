@@ -1,10 +1,10 @@
 ---
 title: '[Java] JVM이란.'
-slug: 00-java-Jvm
+slug: 01-java-study
 date: 2020-12-29
 published: true
-tags: ['Java', 'Jvm', 'Backend']
-series: false,
+tags: ['Java', 'Stater', 'Jvm']
+series: true,
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'JVM 대해 정리합니다.'

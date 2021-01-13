@@ -1,9 +1,9 @@
 ---
 title: '[Java] Java Interface'
-slug: 00-java-interface
+slug: 08-java-study
 date: 2021-01-08
 published: true
-tags: ['Java', 'Interface', 'Backend']
+tags: ['Java', 'Stater', 'Interface']
 series: false,
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false

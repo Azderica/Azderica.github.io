@@ -1,9 +1,9 @@
 ---
 title: '[Java] Package.'
-slug: 00-java-package
+slug: 07-java-study
 date: 2020-12-30
 published: true
-tags: ['Java', 'Package', 'Import', 'Classpath', 'Backend']
+tags: ['Java', 'Stater', 'Package', 'Import', 'Classpath']
 series: false,
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false

@@ -1,10 +1,10 @@
 ---
 title: '[Java] 데이터 타입, 변수, 배열'
-slug: 00-java-datatype
+slug: 02-java-study
 date: 2020-12-31
 published: true
-tags: ['Java', 'Data', 'Type']
-series: false,
+tags: ['Java', 'Stater', 'Data', 'Type']
+series: true,
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바 데이터 타입, 변수, 배열을 사용하는 방법을 익힙니다.'

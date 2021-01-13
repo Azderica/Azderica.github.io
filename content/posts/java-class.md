@@ -1,10 +1,10 @@
 ---
 title: '[Java] 자바 클래스'
-slug: 00-java-class
+slug: 05-java-study
 date: 2021-01-12
 published: true
-tags: ['Java', 'Class', 'Object', 'Method']
-series: false,
+tags: ['Java', 'Stater', 'Class', 'Object', 'Method']
+series: true,
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바의 클래스에 대해 정리합니다.'
