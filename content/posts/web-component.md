@@ -1,11 +1,11 @@
 ---
-title: '[Frontend] Web Component'
-slug: 00-frontend-webcomponent
+title: '[Web] Web Component'
+slug: 00-web-webcomponent
 date: 2021-01-11
 published: true
 tags: ['Frontend', 'Web', 'Webcomponent']
 series: false,
-cover_image:
+cover_image: ./images/WebComponentLogo.png
 canonical_url: false
 description: 'Web Component에 대해 정리합니다.'
 ---
