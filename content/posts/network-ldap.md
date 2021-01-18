@@ -1,7 +1,7 @@
 ---
 title: '[Network] LDAP이란?'
 slug: 00-network-ldap
-date: 2021-01-14
+date: 2021-01-19
 published: true
 tags: ['Network', 'LDAP', 'Web', 'Protocol']
 series: false,
