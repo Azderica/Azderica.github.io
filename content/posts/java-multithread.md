@@ -27,6 +27,25 @@ description: 'Java 멀티쓰레드에 대해 정리합니다.'
 
 ## 들어가기 앞서.
 
+### Process와 Thread의 차이
+
+**Process란**
+
+- 단순히 실행 중인 프로그램
+- 사용자가 작성한 프로그램이 OS에 의해 메모리 공간을 할당 받아 실행 중인 것
+- 프로세스는 프로그램에 사용되는 데이터, 메모리, 쓰레드로 구성됩니다.
+
+**Thread란**
+
+- 프로세스 내에서 실제로 작업을 수행하는 주체
+- 가장 작은 실행 단위 입니다.
+- 모든 프로세스에서는 1개 이상의 쓰레드가 존재하여 작업을 수행합니다.
+- 두개 이상의 쓰레드를 가지면 멀티 쓰레드 프로세스라고 합니댜.
+
+이 차이를 그림으로 나타내면 다음과 같습니다.
+
+![process-thread-diff](https://user-images.githubusercontent.com/42582516/105566319-d9651c00-5d6e-11eb-92a9-fe7cd625276a.png)
+
 <br/>
 
 ## Thread 클래스와 Runnable 인터페이스
@@ -195,12 +214,12 @@ Java에서 main() 메소드는 프로그램의 시작점입니다. 이 main() �
 해당 코드처럼 로직이 돌아갑니다.
 
 ```java
-public static void main(String[] args) {    // smain thread tart
+public static void main(String[] args) {    // main thread tart
     ...
 }   // main thread end
 ```
 
-다만 Main 쓰레드는 **싱글 쓰레드**인지, 혹은 **멀티 쓰레드**인지에 따라서도 다릅니다.
+다만 Main 쓰레드는 **싱글 쓰레드**인지, 혹은 **멀티 쓰레드**인지에 따라서도 동작이 다릅니다.
 
 ![Thread-Diff](https://user-images.githubusercontent.com/42582516/105510514-12bb6e80-5d12-11eb-912d-10ef0e099dc1.png)
 
@@ -215,12 +234,167 @@ public static void main(String[] args) {    // smain thread tart
 
 <br/>
 
-## 동기화(Synchronize)
+## 동기화
+
+멀티 쓰레드의 경우에는 여러 쓰레드가 같은 프로세스 내의 자원을 공유하기 때문에 서로의 작업에 영향을 줄 수 있습니다. 이를 방지하기 위해 한 쓰레드가 특정 작업을 끝마치기 전까지 다른 쓰레드에 방해받지 않도록 하는 개념이 필요하여 `critical section(입계 영역)` 과 `lock(잠금)` 입니다.
+
+공유데이터로 사용하는 코드 영역을 `critical section`으로 지정하여, lock을 획득한 하나의 쓰레드만 이 영역 내에서 코드를 수행할 수 있게 합니다. 해당 쓰레드가 임계 영역 내에서 모든 코드를 수행하고 나서 lock 을 반납하고 나가야, 다른 쓰레드가 반납된 lock을 얻어 임계 영역의 코드를 수행할 수 있습니다.
+
+이 때 한 쓰레드가 진행중인 작업을 다른 쓰레드가 간섭하지 못하도록 막는 것을 **쓰레드의 동기화**라고 합니다.
+
+자바에서 동기화하는 방법은 크게 3가지로 분류됩니다.
+
+- `Synchronized`
+- `Atomic` 클래스
+- `Volatile` 클래스
+
+### Synchronized
+
+Java의 예약어 중 하나입니다. 크게 두 가지 방법으로 사용됩니다.
+
+- synchronized methods : 메소드 자체를 `synchronized` 키워드로 선언한는 방법
+- synchronized statements ; 메소드 내의 특정 문장을 `synchronized`로 감싸는 방법
+
+다음과 같이 코드를 짤 수 있습니다. 해당 코드는 결과값을 2개의 쓰레드에서 10000번 더하는 코드입니다.
+
+```java
+public class SyncCalculator {
+    private int res;
+
+    public SyncCalculator() {
+        res = 0;
+    }
+
+    public synchronized void plus(int num){
+        res += num;
+    }
+
+    public synchronized void minus(int num){
+        res -= num;
+    }
+
+    public int getRes(){
+        return res;
+    }
+}
+```
+
+```java
+public class CalcThread extends Thread {
+    private SyncCalculator calc;
+
+    public CalcThread(SyncCalculator calc){
+        this.calc = calc;
+    }
+
+    public void run() {
+        for(int i = 0; i<10000; i++)
+            calc.plus(1);
+    }
+}
+```
+
+해당 코드를 실행시키면 결과는 다음과 같습니다.
+
+- Synchronized 사용시.
+
+![image](https://user-images.githubusercontent.com/42582516/105567926-1209f300-5d79-11eb-9e2d-56561fb2e8a8.png)
+
+- Synchronized 미사용시
+
+![image](https://user-images.githubusercontent.com/42582516/105567911-f7377e80-5d78-11eb-9c2a-c025778292ad.png)
+
+다음과 같이 Synchronized을 사용하면 동기화가 되는 것을 확인할 수 있습니다.
+
+### Atomic 클래스
+
+`Atomicity(원자성)`의 개념은 **쪼갤 수 없는 가장 작은 단위**를 의미합니다. 자바의 Atomic Type은 Wrapping 클래스의 일종으로서 CAS(Compare-And-Swap) 알고리즘을 사용해 lock 없이 동기화 처리를 할 수 있습니다.
+
+`AtomicBoolean`, `AtomicInteger` 등의 클래스가 있으며 `java.util.concurrent.atomic` 패키지에 정의된 클래스입니다.
+
+#### Atomic Method
+
+- `get()`, `set()`
+  - 기존 기능과 동일합니다.
+- `getAndSet(newValue)`
+  - atomic하게 값을 업데이트 하고, 원래의 값을 반환합니다.
+- `compareAndSet(expect, update)`
+  - 현재 값이 예상되는 값과 동일하다면, update하고 true을 반환합니다.
+  - 현재 값이 예상되는 값이 다르다면, update를 하지않고 false를 반환합니다.
+- 그외에도 여러가지 mehtod가 있습니다.
+
+**Compae And Swap(CAS)**
+
+- 현재 주어진 값(현재 쓰레드에서의 데이터)와 실제 데이터가 저장된 데이터를 비교하여 두 개가 일치할 때만 값을 업데이트합니다. 이 역활을 수행하는 method는 `compareAndSet` 입니다.
+
+### Volatile 클래스
+
+#### Volatile 이란.
+
+- `volatile` keyword는 Java 변수를 Main Memory에 저장하겠다는 것을 명시합니다.
+- 변수의 값을 읽을 때, CPU cache에 저장된 것이 아닌 Main Memory에서 읽습니다.
+- 변수의 값을 쓸 때, Main Memory에 작성을 합니다.
+
+#### Volatile 사용 이유.
+
+`volatile` 변수를 사용하지 않는 MultiThread 애플리케이션은 작업을 수행하는 동안 성능 향상을 위해서 아래 그림과 같이 Main Memory에서 읽은 변수를 CPU Cache에 저장하게 됩니다.
+
+![why-volatile](https://user-images.githubusercontent.com/42582516/105566601-593fb600-5d70-11eb-8804-a267a7970c67.png)
+
+다만 Multi Thread 환경에서 Thread가 변수 값을 읽어올 때 각각의 CPU Cache에 저장된 값이 달라 변수 값이 다른 수도 있습니다. 이를 가시성 문제라고 합니다.
+
+![why-volatile-2](https://user-images.githubusercontent.com/42582516/105566665-c05d6a80-5d70-11eb-85ed-32b695af397a.png)
+
+이를 해결하기 위해서 `volatile` 키워드를 추가하여 해당 문제를 해결합니다. `volatile` 키워드를 통해 변수의 read/write 를 Main Memory에서 진행하게 됩니다.
+
+```java
+public volatile int counter = 0;
+```
+
+**다만**, CPU Cache보다 Main Memory에서 비용이 더 크기 때문에 **변수 값 일치를 보장**해야 하는 경우에만 이를 사용합니다.
 
 <br/>
 
-## 데드락
+## 데드락(Deadlock)
+
+### Deadlock 이란.
+
+![deadlock](https://user-images.githubusercontent.com/42582516/105568052-e9cec400-5d79-11eb-98d8-2e806812fcf8.png)
+
+Deadlock이란 둘 이상의 쓰레드가 lock을 획득하기 위해 대기를 하는데, 이 lock을 잡고 있는 쓰레드들 또한 다른 lock을 기다리면서 서로 block 상태에 놓이는 것을 의미합니다.
+
+이러한 Deadlock 상태가 되기 위해서는 4가지 조건을 만족해야합니다.
+
+- **Mutual exclusion(상호배제)** : 프로세스들이 필요로 하는 자원에 대해 배타적인 통제권을 요청합니다.
+- **Hold and wait(점유대기)** : 프로세스가 할당된 자원을 가진 상태에서 다른 자원을 기다립니다.
+- **No preemption(비선점)** : 프로세스가 어떤 자원의 사용을 끝날 때까지 그 자원을 뺏을 수 없습니다.
+- **Circular wait(순환대기)** : 각 프로세스는 순환적으로 다음 프로세스가 요구하는 자원을 가지고 있습니다.
+
+### Deadlock 해결
+
+이를 해결하는 방법은 크게 3가지(예방, 회피, 무시)로 구성됩니다.
+
+#### 데드락 예방
+
+앞서 이야기한 4가지 조건 중 하나를 제거합니다. 다만 이러한 방법들은 자원 사용의 효율성이 ㅉ떨어집니다.
+
+#### 데드락 회피
+
+자원이 어떻게 요청될지에 대한 추가정보를 제공하도록 요구하는 것이며, 이를 검사하는 알고리즘을 사용합니다.
+
+- Resource Allocation Graph Algorithm
+- Banker's Algorithm
+
+#### 데드락 무시
+
+일반적으로 예방과 회피를 사용하면 자연적으로 성능적으로 낮아집니다. 일반적으로 데드락 발생이 드물게 일어나고 그에 대한 코스트가 적다면 무시하는 방법을 선택할 수도 있습니다.
 
 ---
 
 **출처**
+
+- https://sujl95.tistory.com/63
+- https://www.notion.so/Thread-5fdb5d603a6a473186bf2738f482cedc
+- https://www.notion.so/ac23f351403741959ec248b00ea6870e
+- https://www.notion.so/10-4a588c3795c3455fb8c498a040696ce8
+- https://velog.io/@jaden_94/10%EC%A3%BC%EC%B0%A8-%ED%95%AD%ED%95%B4%EC%9D%BC%EC%A7%80-Multi-Thread-Programming
