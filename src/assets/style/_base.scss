@@ -22,6 +22,7 @@ a:not(.button) {
   &:hover {
     opacity: 0.8;
   }
+  text-decoration: none;
 }
 
 img {
@@ -33,5 +34,5 @@ th,
 td {
   // border-bottom: 1px solid black;
   padding: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(14, 12, 12, 0.3);
 }
