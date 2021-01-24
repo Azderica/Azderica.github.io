@@ -5,7 +5,8 @@
     "build": "gridsome build",
     "develop": "gridsome develop",
     "explore": "gridsome explore",
-    "deploy": "gridsome build && gh-pages -d dist"
+    "deploy": "gridsome build && gh-pages -d dist",
+    "finish": "git push origin master && npm run deploy"
   },
   "dependencies": {
     "@gridsome/cli": "^0.3.4",
