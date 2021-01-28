@@ -5,7 +5,7 @@ date: 2021-01-26
 published: true
 tags: ['Network', 'Nat', 'Web', 'Ip']
 series: false,
-cover_image: ./images/NatText.png
+cover_image: ./images/NatText.jpg
 canonical_url: false
 description: 'NAT의 개념을 잡습니다.'
 ---
