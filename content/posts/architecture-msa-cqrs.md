@@ -1,5 +1,5 @@
 ---
-title: '[Architecture] MSA : SAGA 패턴이란'
+title: '[Architecture] MSA : CQRS 패턴이란'
 slug: 02-architecture-msa
 date: 2020-12-23
 published: true
