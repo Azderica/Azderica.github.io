@@ -162,4 +162,6 @@ Enum을 사용하여서 Set 자료구조를 만들 수 있습니다.
 **출처**
 
 - https://b-programmer.tistory.com/262
--
+- https://wisdom-and-record.tistory.com/52
+- https://www.notion.so/Enum-6ffa87530c424d8ab7a1b585bfb26fa2
+- https://parkadd.tistory.com/50
