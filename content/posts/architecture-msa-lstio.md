@@ -3,7 +3,7 @@ title: '[Architecture] MSA : Istio 개념 잡기'
 slug: 00-architecture-istio
 date: 2021-02-02
 published: true
-tags: ['Istio', 'Architecture', 'MSA']
+tags: ['Istio', 'Architecture', 'Cloud', 'MSA']
 series: false,
 cover_image: ./images/IstioLogo.png
 canonical_url: false
@@ -70,7 +70,7 @@ Istio는 Envoy의 **동적 서비스 디스커버리, 로드밸런싱, TLS 인�
 
 트래픽 경로를 설정하고 관리하는 용도로 사용합니다.
 
-Istio1.4 버전까지는 **파일럿(Pilot), 믹서(Mixer), 시타델(Citadel), 갤리(Galley)**로 구성되어 있었으나 Istio1.5버전부터 4개의 모듈이 **Istiod** 라는 하나의 모듈로 통합되었습니다.
+Istio1.4 버전까지는 **파일럿(Pilot), 믹서(Mixer), 시타델(Citadel), 갤리(Galley)** 로 구성되어 있었으나 Istio1.5버전부터 4개의 모듈이 **Istiod** 라는 하나의 모듈로 통합되었습니다.
 
 #### Mixer
 
@@ -112,7 +112,7 @@ Istio를 통해서 분산형 애플리케이션을 대규모로 제공할 수 �
 
 ### 안전한 클라우드 기반 앱
 
-Istio늩는 기본적인 보안 통신 채널을 제공하며 대규모 서비스 통신의 인증(Authentication), 권한부여(Authorization), 암호화(Encryption) 등을 통해서 애플리케이션 수준에서 보안을 강화할 수 있습니다.
+Istio는 기본적인 보안 통신 채널을 제공하며 대규모 서비스 통신의 인증(Authentication), 권한부여(Authorization), 암호화(Encryption) 등을 통해서 애플리케이션 수준에서 보안을 강화할 수 있습니다.
 
 ### 효율적인 트래픽 관리
 
@@ -144,10 +144,13 @@ Istio는 컨테이너 및 가상 머신을 포함하여 기존과 최신 워크�
 
 ## 마무리.
 
+Istio에 대해 내용을 정리했습니다. 감사합니다.
+
 ---
 
 **출처**
 
+- https://twofootdog.tistory.com/78
 - https://www.redhat.com/ko/topics/microservices/what-is-istio
 - https://cloud.google.com/learn/what-is-istio?hl=ko
 - https://arisu1000.tistory.com/27865
