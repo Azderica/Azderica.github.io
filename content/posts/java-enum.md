@@ -1,6 +1,6 @@
 ---
 title: '[Java] Java Enum'
-slug: 11-java-enum
+slug: 11-java-study
 date: 2021-02-01
 published: true
 tags: ['Java', 'Stater', 'Enum']
@@ -12,7 +12,7 @@ description: 'Java Enum에 대해 정리합니다.'
 
 # Java Enum
 
-11주차 내용은 멀티쓰레드 프로그래밍에 관련된 내용입니다.
+11주차 내용은 자바의 Enum에 관련된 내용입니다.
 
 공부할 내용
 
