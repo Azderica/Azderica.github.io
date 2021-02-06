@@ -5,7 +5,7 @@ date: 2021-02-06
 published: true
 tags: ['Spring', 'Springboot', 'Cloud', 'Zuul', 'Netflix', 'Backend']
 series: false,
-cover_image: ./images/SpringLogo.png
+cover_image: ./images/SpringCloudLogo.png
 canonical_url: false
 description: 'Spring cloud zuul을 적용하기 위해 공부하는 내용입니다.'
 ---
