@@ -1,13 +1,13 @@
 ---
-title: "[Springboot] 스프링부트 MVC - Filter"
+title: '[Springboot] 스프링부트 MVC - Filter'
 slug: 01-springboot-mvc
 date: 2020-11-03
 published: true
-tags: ['Spring', 'Springboot', Filter', 'Backend']
+tags: ['Spring', 'Springboot', 'Filter', 'Backend']
 series: false,
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " Springboot MVC 중 Filter에 대한 설명입니다. "
+description: ' Springboot MVC 중 Filter에 대한 설명입니다. '
 ---
 
 # Spring Boot MVC - Filter
@@ -74,7 +74,7 @@ public FilterRegistrationBean testFilterRegistration() {
     registration.setName("testFilter");
     registration.setOrder(1);
     return registration;
-} 
+}
 
 public Filter testFilter() {
     return new testFilter();
@@ -104,7 +104,7 @@ public class TestApplication1 {
 		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new MyFilter());
 
         // string 여러개를 가변인자로 받는 메소드
-		filterRegistrationBean.addUrlPatterns("/filtered/*"); 
+		filterRegistrationBean.addUrlPatterns("/filtered/*");
         return filterRegistrationBean;
 	}
 }
@@ -138,7 +138,7 @@ public class MyFilter implements Filter {
 }
 ```
 
-다음과 같이 구성할 수 있습니다. 해당 코드와 같이 Springboot에 필터를 설정할 수 있습니다. 
+다음과 같이 구성할 수 있습니다. 해당 코드와 같이 Springboot에 필터를 설정할 수 있습니다.
 
 <br/>
 
@@ -146,9 +146,10 @@ public class MyFilter implements Filter {
 
 업무 개발 코드를 추가할 수 없어서 간단하게 정리했습니다. 다음에 업무 상에 시간이 조금 있으면, HTTP Method를 제한하는 코드를 추가적으로 구성해서 올리겠습니다.
 
-
 ---
+
 **출처**
+
 - https://linked2ev.github.io/gitlog/2019/09/15/springboot-mvc-13-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-MVC-Filter-%EC%84%A4%EC%A0%95/
 - https://qastack.kr/programming/19825946/how-to-add-a-filter-class-in-spring-boot
 - https://luvstudy.tistory.com/79
