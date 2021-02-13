@@ -68,9 +68,9 @@ AOP에서는 **각 관점을 기준으로 로직을 모듈화**합니다. 이는
 ## AOP의 특징
 
 - 접근 제어 및 부가기능을 추가하기 위해서 프록시 패턴 기반의 AOP 구현체, 프록시 객체를 사용합니다.
-- 스프링 빈에만 AOP를 적용 가능합니다.
 - 모든 AOP 기능을 제공하는 것이 아닌 스프링 IoC와 연동하여 엔터프라이즈 애플리케이션에서 가장 흔한 문제에 대한 해결책을 지원하는 것이 목적입니다.
-  - Ex) 중복코드, 프록시 클래스 작성의 번거로움, 객체들 간 관계 복잡도의 증가 등의 문제.
+  - Ex) 중복코드, 프록시 클래스 작성의 번거로움, 객체들 간 관계 복잡도의 증가 등의 문제등이 있습니다.
+- 스프링 빈에만 AOP를 적용 가능합니다.
 
 ## 코드에서 AOP 적용
 
@@ -135,7 +135,7 @@ public class SimpleEventService implements EventService {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e){
-            e.printStackTrace();;
+            e.printStackTrace();
         }
         System.out.println("Published an event");
     }
@@ -223,7 +223,7 @@ public class SimpleEventService implements EventService {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e){
-            e.printStackTrace();;
+            e.printStackTrace();
         }
         System.out.println("Published an event");
     }
