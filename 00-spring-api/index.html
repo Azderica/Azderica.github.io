@@ -123,13 +123,13 @@
 <h2 id="aop의-특징"><a href="#aop%EC%9D%98-%ED%8A%B9%EC%A7%95" aria-hidden="true"><span class="icon icon-link"></span></a>AOP의 특징</h2>
 <ul>
 <li>접근 제어 및 부가기능을 추가하기 위해서 프록시 패턴 기반의 AOP 구현체, 프록시 객체를 사용합니다.</li>
-<li>스프링 빈에만 AOP를 적용 가능합니다.</li>
 <li>
 <p>모든 AOP 기능을 제공하는 것이 아닌 스프링 IoC와 연동하여 엔터프라이즈 애플리케이션에서 가장 흔한 문제에 대한 해결책을 지원하는 것이 목적입니다.</p>
 <ul>
-<li>Ex) 중복코드, 프록시 클래스 작성의 번거로움, 객체들 간 관계 복잡도의 증가 등의 문제.</li>
+<li>Ex) 중복코드, 프록시 클래스 작성의 번거로움, 객체들 간 관계 복잡도의 증가 등의 문제등이 있습니다.</li>
 </ul>
 </li>
+<li>스프링 빈에만 AOP를 적용 가능합니다.</li>
 </ul>
 <h2 id="코드에서-aop-적용"><a href="#%EC%BD%94%EB%93%9C%EC%97%90%EC%84%9C-aop-%EC%A0%81%EC%9A%A9" aria-hidden="true"><span class="icon icon-link"></span></a>코드에서 AOP 적용</h2>
 <p>코드에서 <code class="language-text">@AOP</code>를 사용하기 위해서는 다음과 같은 의존성을 추가해야합니다.</p>
@@ -177,7 +177,7 @@
         <span class="token keyword">try</span> <span class="token punctuation">{</span>
             <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Published an event"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -246,7 +246,7 @@
         <span class="token keyword">try</span> <span class="token punctuation">{</span>
             <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Published an event"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
