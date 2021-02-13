@@ -2,7 +2,7 @@
 title: '[Springboot] 스프링부트 Poi 사용하기'
 slug: 00-springboot-poi
 date: 2021-02-08
-published: false
+published: true
 tags: ['Spring', 'Springboot', 'Poi', 'Backend']
 series: false,
 cover_image: ./images/SpringLogo.png
