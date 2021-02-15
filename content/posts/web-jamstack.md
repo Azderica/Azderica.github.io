@@ -5,16 +5,14 @@ date: 2021-02-16
 published: true
 tags: ['Web', 'Jamstack', 'Framework', 'Frontend']
 series: false,
-cover_image: ./images/
+cover_image: ./images/JamstackLogo.png
 canonical_url: false
 description: 'Jamstack에 대해 정리합니다.'
 ---
 
 # Jamstack
 
-git blog 등의 서비스를 만들다보면 Jamstack의 개념을 한번쯤은 듣게됩니다. Gatsby(React.js), Gridsome(Vue.js) 등 모두 Jamstack을 간단하게 구현한 서비스입니다.
-
-오늘은 Jamstack에 대한 개념을 정리해볼려고 합니다.
+git blog 등의 서비스를 만들다보면 Jamstack의 개념을 한번쯤은 듣게됩니다. 오늘은 Jamstack에 대한 개념을 정리해볼려고 합니다.
 
 <br/>
 
@@ -127,3 +125,4 @@ Jamstack을 사용하는 방법 중 가장 쉬운 방법은 웹 사이트 구축
 - https://scotch.io/tutorials/top-10-static-site-generators-in-2020
 - https://jongmin92.github.io/2017/06/06/JavaScript/client-side-rendering-vs-server-side-rendering/
 - https://pks2974.medium.com/jam-stack-%EA%B0%9C%EB%85%90-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0-17dd5c34edf7
+- https://gridsome.org/docs/
