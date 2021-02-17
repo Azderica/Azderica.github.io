@@ -129,7 +129,7 @@ PWA를 구현하기 위해서는 크게 `manifest.json`와 `Service Worker`라�
 
 > 그리고.
 
-PWA는 HTTPS가 필 수 입니다. PWA는 운영체제의 여러 특별한 권한을 받아야함으로 웹 서버와의 보안 연결은 필수 입니다. 이와 관련해서 [Let's Encrypt](https://letsencrypt.org/getting-started/)와 같은 무료 SSL 서비스를 사용할 수도 있습니다.
+PWA는 HTTPS가 필수입니다. PWA는 운영체제의 여러 특별한 권한을 받아야함으로 웹 서버와의 보안 연결은 필수 입니다. 이와 관련해서 [Let's Encrypt](https://letsencrypt.org/getting-started/)와 같은 무료 SSL 서비스를 사용할 수도 있습니다.
 
 <br/>
 
