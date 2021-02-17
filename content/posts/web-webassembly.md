@@ -1,7 +1,7 @@
 ---
 title: '[WEB] Webassembly 정리'
 slug: 00-web-webassembly
-date: 2021-02-17
+date: 2021-02-18
 published: true
 tags: ['Web', 'Webassembly']
 series: false,
