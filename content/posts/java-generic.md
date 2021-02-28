@@ -70,7 +70,7 @@ class Data<T> {
 }
 ```
 
-위의 `T`를 **타입 변수(type variable)**라고 합니다.
+위의 `T`를 **타입 변수(type variable)** 라고 합니다.
 
 이를 사용하면 다음과 같이 사용가능합니다.
 
@@ -94,6 +94,10 @@ public class Main {
 - `Map<K, V>`
   - 타입 변수가 여러개인 경우는 콤마로 구분해서 나열합니다.
   - K는 Key, V는 Value를 의미합니다.
+
+일반적으로 다음과 같은 타입 매개변수를 주로 사용합니다.
+
+- E(Element), K(Key), N(Number), T(Type), V(Value)
 
 <br/>
 
@@ -125,7 +129,11 @@ class Data<T>
   - `Box<Apple> appleBox = new FruitBox<Apple>()` : 가능
     - `FruitBox<T> extends Box` : 상속인 경우에 한해서 가능합니다.
 
-자바 제네릭 타입에 `extends`를 사용하면, 특정 타입의 자손들만 대입할 수 있습니다.
+### 바운디드 타입
+
+제네릭 타입에서 타입 인자로 사용할 수 있는 타입을 제한하는 경우가 있을 수 있습니다. 이때 **바운디드 타입이 사용**됩나다.
+
+바운디드 타입 파라미터를 사용하기 위해서는 `extends`를 사용합니다.
 
 ```java
 public class FruitBox<T extends Fruit> extends Box {}
@@ -145,4 +153,124 @@ public class FruitBox<T extends Fruit & Eatable> extends Box {}
 
 ### 와일드 카드
 
-### 자바 제네릭 타입의 제거
+와일드카드는 기호 `?`로 표현을 하며, 와일드 카드는 어떠한 타입도 될 수 있습니다.
+
+다음과 같이 사용할 수 있습니다.
+
+- `<? extends T>` : 와일드 카드의 상한 제한, T와 그 자손들만 가능
+- `<? super T>` : 와일드 카드의 하한 제한, T와 그 조상들만 가능
+- `<?>` : 제한이 없으며 모든 타입이 가능합니다. `<? extends Object>`와 동일합니다.
+
+#### `<? extends T>`, 와일드 카드의 상한 제한 예제
+
+```java
+class Juicer{
+  static Juice makeJuice(FruitBox<? extends Fruit> box){
+    String temp = "";
+    for (Fruit fruit : box.getList()) {
+      temp += fruit + " ";
+    }
+    return new Juice(temp);
+  }
+}
+```
+
+#### `<? super T>` : 와일드 카드의 하한 제한 예제.
+
+```java
+class FruitComp implements Comparator<Fruit> {
+  public int compare(Fruit t1, Fruit t2) {
+   return t1.weight - t2.weight;
+  }
+}
+```
+
+<br/>
+
+## 제네릭 메서드
+
+메서드의 선언부에 제네릭 타입이 선언된 메서드를 제네릭 메서드라고 합니다.
+
+일반적으로 컬렉션 메소드 `Collections.sort()`와 같은 메소드가 대표적인 제네릭 메서드입니다.
+
+```java
+static <T> void sort(List<T> list, Comparator<? super T> c)
+```
+
+다만, 제네릭 메서드와 제네릭 클래스의 매개변수는 별개의 것을 의미합니다.
+
+```java
+class FruitBox<T> { // T-1
+  ...
+  static <T> void sort(List<T> list, Comparator<? super T> c) {
+    ... // T - 2
+  }
+  // T-1과 T-2는 다릅니다.
+}
+```
+
+<br/>
+
+## 자바 제네릭 타입의 제거 (Erasure)
+
+컴파일러는 제네릭 타입을 이용해서 소스파일을 체크하고, 필요한 곳에 형변환을 넣어주고 제네릭 타입을 제거합니다.
+
+컴파일된 파일(\*.class)에는 제네릭 타입이 없기 때문에 이를 처리해줄 필요가 있습니다. 따라서 이전의 소스코드와의 호환성을 위해서 만들어졌습니다.
+
+다음의 순으로 진행됩니다.
+
+#### 1. 제네릭 타입의 경계를 제거합니다.
+
+- `<T extends Fruit>` : Fruit로 치환됩니다.
+- `<T>` : Object로 치환됩니다.
+
+AS-IS
+
+```java
+class Box<T extends Fruit> {
+  void add(T t) {
+    ...
+  }
+}
+```
+
+TO-Be
+
+```java
+class Box {
+  void add(Fruit t){
+    ...
+  }
+}
+```
+
+#### 2. 제네릭 타입을 제거한 후에 타입이 일치하지 않는 경우, 형변환을 추가합니다.
+
+- 일반적으로 Object 타입으로 변환이 일어나지만, 와일드 카드가 포함시 적절한 타입으로 형변환이 추가됩니다.
+
+AS-IS
+
+```java
+T get(int i){
+  return list.get(i);
+}
+```
+
+TO-Be
+
+```java
+Fruit get(int i){
+  return (Fruit)list.get(i);
+}
+```
+
+---
+
+**출처**
+
+- https://www.notion.so/4735e9a564e64bceb26a1e5d1c261a3d
+- https://rockintuna.tistory.com/102
+- https://b-programmer.tistory.com/275
+- https://blog.naver.com/hsm622/222251602836
+- https://sujl95.tistory.com/73
+- https://redbean88.github.io/study/whiteship-study-14week/
