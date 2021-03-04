@@ -46,6 +46,118 @@ description: 'Java Lambda에 대해 좀 더 자세하게 정리합니다.'
 
 ## 함수형 인터페이스
 
+함수형 인터페이스(Functional Interface) 는 **추상 메소드를 딱 하나만 가지고 있는 인터페이스**입니다.
+
+자바 8부터 Functional Interface 기반의 `java.util.function` 패키지를 지원합니다.
+
+대표적인 예시는 아래와 같습니다.
+
+### 1. Predicate
+
+`Predicate` 인터페이스는 T타입의 값을 받아서 boolean을 반환하는 함수 인터페이스입니다.
+
+```java
+@FunctionalInterface
+interface Predicate<T> {
+  boolean test(T t);
+}
+```
+
+다음과 같이 사용할 수 있습니다.
+
+```java
+public static void main(String[] args) {
+  Predicate<String> predicate = a -> a.startsWith("t");
+
+  // Predicate Sample
+  System.out.println(predicate.test("test")); // true
+
+  // Predicate - and
+  Predicate<String> predicateAnd = predicate.and(a -> a.endsWith("i"));
+  System.out.println(predicateAnd.test("test"));  // false
+
+  // Predicate - negate
+  Predicate<String> predicateNegate = predicate.negate();
+  System.out.println(predicateNegate.test("test"));   // false
+
+  // Predicate - or
+  Predicate<String> predicateOr = predicate.or(a -> a.endsWith("i"));
+  System.out.println(predicateOr.test("test"));   // true
+}
+```
+
+- `and(Predicate<? super T> other)`
+  - Predicate를 인수로 받아서 기존 Predicate와 and 조건으로 결합된 Predicate를 반환합니다.
+- `negate()`
+  - Predicate를 인수로 받아서 부정을 반환합니다.
+- `or(Predicate<? super T> other)`
+  - Predicate를 인수로 받아서 기존 Predicate와 or 조건으로 결합된 Predicate를 반환합니다.
+
+### 2. Consumer
+
+`Consumer` 인터페이스는 제너릭 형식의 T 객체를 받아, void를 반환하는 accept 추상메소드를 정의합니다.
+
+```java
+@FunctionalInterface
+public interface Consumer<T> {
+  void accept(T t);
+}
+```
+
+다음과 같이 사용할 수 있습니다.
+
+```java
+public static void main(String[] args) {
+  Consumer<String> firstConsumer = a -> System.out.println("first: " + a);
+  Consumer<String> secondConsumer = b -> System.out.println("second: " + b);
+  Consumer<String> combineConsumer = firstConsumer.andThen(secondConsumer);
+
+  combineConsumer.accept("test"); // first: test \n second : test
+}
+```
+
+- `andThen(Consumer<? super T> after)`
+  - Consumer의 default 메소드로서, accept 메소드를 실행하고, 인수로 받은 Consumer의 accept 메소드를 호출하도록 정의합니다.
+
+### 3. Function
+
+`Function<T, R>` 인터페이스는 제너릭 형식의 T 객체를 받아, R 객체를 반환하는 apply 추상메소드를 정의합니다.
+
+```java
+@FunctionalInterface
+public interface Function<T, R> {
+  R apply(T t);
+}
+```
+
+다음과 같이 사용할 수 있습니다.
+
+```java
+public static void main(String[] args) {
+  // function
+  Function<Integer, Integer> function = a -> a * 100;
+  System.out.println(function.apply(3));  // 300
+
+  // function - andThen
+  Function<Integer, Integer> function1 = function.andThen(b -> b / 2);
+  System.out.println(function1.apply(3)); // 150
+  // 3 -> 300 -> 150
+
+  // function - compose
+  Function<Integer, Integer> function2 = function.compose(b -> b / 2);
+  System.out.println(function2.apply(3)); // 100
+  // 3 -> 1 -> 100
+}
+```
+
+- `andThen(Function<? super R, ? extends T> after)`
+  - Function의 default 메소드로서, apply 메소드를 실행후 반환 값을 인수로 받은 Function의 apply 메소드의 인수로 전달하고 결과를 반환합니다.
+- `compose(Function<? super V, ? extends T> after)`
+  - Function의 default 메소드로서, 인수로 받은 Function의 apply 메소드를 먼저 실행 및 반환 후 apply 메소드를 실행하여 결과를 반환합니다.
+  - `andThen` 메소드와 반대로 동작합니다.
+
+### 4. Supplier
+
 <br/>
 
 ## Variable Capture
@@ -129,3 +241,56 @@ public static void main(String[] args) {
 <br/>
 
 ## 메소드, 생성자 레퍼런스
+
+### 메소드 레퍼런스
+
+메소드 레퍼런스는 람다식을 더 간단하게 만드는 표현식입니다.
+
+전달하는 인수와 사용하는 메소드의 인수 형태가 같을시 메소드 레퍼런스를 통해서 간결하게 표현가능합니다.
+
+종류는 다음과 같습니다.
+
+#### 1. Static Method Reference
+
+다음의 형태를 가집니다.
+
+`{타입}::(Static Method}`
+
+예시 코드는 다음과 같습니다.
+
+```java
+Consumer<Integer> consumer = a -> System.out.println(a);
+Consumer<Integer> refConsumer = System.out::println;
+```
+
+#### 2. Instance Method Reference
+
+다음의 형태를 가집니다.
+
+`{Object Reference}::(Instance Method}`
+
+예시 코드는 다음과 같습니다.
+
+```java
+UnaryOperator<String> operator = str -> str.toLowerCase();
+UnaryOperator<String> refOperator = String::toLowerCase;
+```
+
+#### 3. Constructor Method Reference
+
+다음의 형태를 가집니다.
+
+`{타입}::(Static Method}`
+
+예시 코드는 다음과 같습니다.
+
+```java
+UnaryOperator<String> stringOperator = str -> new String(str);
+UnaryOperator<String> refStringOperator = String::new;
+```
+
+---
+
+**출처**
+
+-
