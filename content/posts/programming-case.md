@@ -5,7 +5,7 @@ date: 2021-03-15
 published: false
 tags: ['TIP', 'Name', 'Convention']
 series: false,
-cover_image: ./images/.png
+cover_image: ./images/programmingImageSample.jpeg
 canonical_url: false
 description: '프로그래밍 표기법에 대해 이야기합니다.'
 ---
@@ -14,7 +14,7 @@ description: '프로그래밍 표기법에 대해 이야기합니다.'
 
 크게 다음과 같이 나눠지며, 주로 사용하는 것은 `Camel case`와 `Snake case`, `Kebab Case`입니다.
 
-여러가지 컨벤션 룰이 있지만, 가장 중요한 것은 프로젝트 코드 스타일에 맞춰서 작성하는 것입니다.
+여러가지 컨벤션 룰이 있지만, 가장 중요한 것은 프로젝트 코드 스타일에 맞춰서 작성하는 것이라고 생각합니다.
 
 ## Camel case (카멜케이스)
 
