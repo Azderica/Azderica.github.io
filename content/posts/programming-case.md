@@ -2,7 +2,7 @@
 title: '[Programming] 프로그래밍 표기법(네이밍 컨벤션)'
 slug: 00-programming-nameConvention
 date: 2021-03-15
-published: false
+published: true
 tags: ['TIP', 'Name', 'Convention']
 series: false,
 cover_image: ./images/programmingImageSample.jpeg
