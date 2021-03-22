@@ -19,7 +19,9 @@
     "gridsome": "^0.7.23",
     "gridsome-plugin-gtag": "^0.1.10",
     "hexo-generator-cname": "^0.3.0",
-    "ini": "^2.0.0"
+    "ini": "^2.0.0",
+    "is-svg": "^4.3.1",
+    "ssri": "^8.0.1"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
