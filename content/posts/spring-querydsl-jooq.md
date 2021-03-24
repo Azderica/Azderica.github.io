@@ -10,4 +10,5 @@ canonical_url: false
 description: 'JPA, ORM에 대해 정리합니다. '
 ---
 
-# Spring JPA에 대해서
+# JPA에 대해서
+
