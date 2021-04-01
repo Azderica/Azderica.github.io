@@ -1,7 +1,7 @@
 ---
-title: '[Spring] JPA에 대해 정리하기'
+title: '[Spring] QueryDsl과 Jooq'
 slug: 00-spring-orm
-date: 2021-03-22
+date: 2021-04-01
 published: false,
 tags: ['Spring', 'JPA', 'DB', 'Hibernate']
 series: false,
@@ -11,4 +11,3 @@ description: 'JPA, ORM에 대해 정리합니다. '
 ---
 
 # JPA에 대해서
-
