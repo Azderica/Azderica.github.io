@@ -24,10 +24,16 @@
       </div>
     </div>
 
-    <div class="post-comments">
-      <!-- Add comment widgets here -->
-      <Gitalk />
-    </div>
+    <div
+      class="post-comments"
+      ref="post-comments-dark"
+      v-show="isDarkTheme"
+    ></div>
+    <div
+      class="post-comments"
+      ref="post-comments-light"
+      v-show="!isDarkTheme"
+    ></div>
 
     <Author class="post-author" />
   </Layout>
@@ -43,6 +49,40 @@ export default {
     Author,
     PostMeta,
     PostTags,
+  },
+  data() {
+    return {
+      isDarkTheme: false,
+    }
+  },
+  mounted() {
+    if (window.__theme == 'dark') this.isDarkTheme = true
+    this.$refs['post-comments-dark'].appendChild(
+      this.createUtterancesNode('dark')
+    )
+    this.$refs['post-comments-light'].appendChild(
+      this.createUtterancesNode('light')
+    )
+  },
+  methods: {
+    updateThemeEvent(theme) {
+      this.isDarkTheme = theme
+    },
+    createUtterancesNode(theme) {
+      const script = window.document.createElement('script')
+      const attributes = {
+        src: 'https://utteranc.es/client.js',
+        repo: 'Azderica/azderica.github.io',
+        'issue-term': 'pathname',
+        theme: theme === 'light' ? 'github-light' : 'github-dark',
+        crossorigin: 'anonymous',
+        sync: true,
+      }
+      Object.entries(attributes).forEach(([key, value]) => {
+        script.setAttribute(key, value)
+      })
+      return script
+    },
   },
   metaInfo() {
     return {
