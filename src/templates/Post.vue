@@ -26,6 +26,7 @@
 
     <div class="post-comments">
       <!-- Add comment widgets here -->
+      <Gitalk />
     </div>
 
     <Author class="post-author" />
@@ -33,9 +34,9 @@
 </template>
 
 <script>
-import PostMeta from "~/components/PostMeta";
-import PostTags from "~/components/PostTags";
-import Author from "~/components/Author.vue";
+import PostMeta from '~/components/PostMeta'
+import PostTags from '~/components/PostTags'
+import Author from '~/components/Author.vue'
 
 export default {
   components: {
@@ -48,13 +49,13 @@ export default {
       title: this.$page.post.title,
       meta: [
         {
-          name: "description",
+          name: 'description',
           content: this.$page.post.description,
         },
       ],
-    };
+    }
   },
-};
+}
 </script>
 
 <page-query>

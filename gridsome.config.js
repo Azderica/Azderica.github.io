@@ -46,6 +46,16 @@ module.exports = {
         },
       },
     },
+    {
+      use: 'gridsome-plugin-gitalk',
+      options: {
+        clientID: 'f8907ac8c5f50969c820', // The client id you copied earlier.
+        clientSecret: '8ad0fdf9578233e9ff998e5f1fea1b52ad9ba0db', // The client secret you copied earlier.
+        repo: 'Azderica.github.io', // The name of the github repo where the comments should be stored.
+        owner: 'Azderica', // The username of the owner of the github repository.
+        admin: ['Azderica'], // The usernames of the admins of the repository.
+      },
+    },
   ],
 
   transformers: {

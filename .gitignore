@@ -11,3 +11,7 @@ node_modules/*
 dist
 .env
 .env.*
+
+.gridsome.config.js
+.gridsome.server.js
+
