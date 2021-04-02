@@ -195,3 +195,4 @@ Graph Database는 일반적으로 아래의 경우에서 많이 사용합니다.
 - [NoSQL vs Relational Database](https://velog.io/@hanblueblue/%EB%B2%88%EC%97%AD-NoSQL-vs-Relational-Databases)
 - [DB, RDBMS VS NoSQL](https://velog.io/@hanblueblue/%EB%B2%88%EC%97%AD-NoSQL-vs-Relational-Databases)
 - [Couchbase VS CouchDB](https://blogs.perficient.com/2017/07/18/to-know-more-about-nosql-counchdb-vs-couchbase/)
+- [GraphDB](https://couplewith.tistory.com/entry/Graph-DB-%EC%99%80-RDBMS-%ED%8A%B8%EB%9E%9C%EB%93%9C-3%EB%B6%80-%EA%B7%B8%EB%9E%98%ED%94%84-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%A2%85%EB%A5%98)
