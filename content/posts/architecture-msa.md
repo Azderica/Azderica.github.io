@@ -1,14 +1,13 @@
 ---
-title: "[Architecture] MSA 개념 잡기"
+title: '[Architecture] MSA 개념 잡기'
 slug: 00-architecture-msa
 date: 2020-12-21
 published: true
 tags: ['Architecture', 'MSA', 'micro service architecture', 'MSA']
-series: true,
-cover_image: 
+series: true
+cover_image:
 canonical_url: false
-description: " 마이크로 서비스 아키텍처에 대한 개념을 정리합니다 "
-
+description: ' 마이크로 서비스 아키텍처에 대한 개념을 정리합니다 '
 ---
 
 # Microservice Architecture
@@ -25,7 +24,7 @@ MSA는 microservice architecture의 약자로서, **하나의 큰 어플리케�
 
 > 왜 필요할까요?
 
-기존의 서비스는 Monolithic Architecture의 구조를 가지고 있었습니다. 
+기존의 서비스는 Monolithic Architecture의 구조를 가지고 있었습니다.
 
 ![monolithic-vs-msa](https://user-images.githubusercontent.com/42582516/102787038-cebc0d80-43e3-11eb-9a67-829adb6ebe51.png)
 
@@ -117,5 +116,6 @@ soa를 추가해서 좀 더 자세하게 보자면.
 ---
 
 **출처**
+
 - https://velog.io/@tedigom/MSA-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-1-MSA%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-3sk28yrv0e
 - https://www.samsungsds.com/kr/insights/msa.html

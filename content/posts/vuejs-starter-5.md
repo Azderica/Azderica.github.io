@@ -1,14 +1,13 @@
 ---
-title: "[VueJS] Vuejs CLI & 간단한 Form 만들기"
+title: '[VueJS] Vuejs CLI & 간단한 Form 만들기'
 slug: 05-vuejs-starter
 date: 2020-12-19
 published: true
 tags: ['VueJS', 'Vue', 'CLI', 'Frontend']
-series: true,
+series: true
 cover_image: ./images/VuejsLogo.png
 canonical_url: false
 description: " 'Vuejs 시작하기'의 다섯번째 게시글입니다. "
-
 ---
 
 # Vue CLI & 간단한 Form 만들기
@@ -30,10 +29,12 @@ yarn global add @vue/cli
 ### Vue Init
 
 [Vue CLI 2.x, Vue CLI 4.x]
+
 - `vue init '프로젝트 템플릿 유형' '프로젝트 폴더 위치'`
 - `vue init webpack-simple '프로젝트 폴더 위치'`
 
 [Vue CLI 3.x]
+
 - `vue create '프로젝트 폴더 위치'`
 
 ### Vue NPM install
@@ -68,11 +69,11 @@ yarn global add @vue/cli
 ### 예제 코드
 
 ```html
-<template/>
+<template />
 
-<script/>
+<script />
 
-<style/>
+<style />
 ```
 
 vue 파일은 다음과 같은 형태로 구성됩니다. 해당 형태에서 template는 html, script는 javascript, style은 css로 이해해도 쉽습니다.
@@ -80,21 +81,21 @@ vue 파일은 다음과 같은 형태로 구성됩니다. 해당 형태에서 te
 해당 간단한 로직에서는 따로 스타일 적용을 하지는 않았습니다.
 
 ```html
-  <form v-on:submit.prevent="submitForm">
-    <div>
-      <label for="usernamne">id: </label>
-      <input id="username" type="text" v-model="username">
-    </div>
-    <div>
-      <label for="password">pw: </label>
-      <input id="password" type="password" v-model="password">
-    </div>
-    <button type="submit">login</button>
-  </form>
+<form v-on:submit.prevent="submitForm">
+  <div>
+    <label for="usernamne">id: </label>
+    <input id="username" type="text" v-model="username" />
+  </div>
+  <div>
+    <label for="password">pw: </label>
+    <input id="password" type="password" v-model="password" />
+  </div>
+  <button type="submit">login</button>
+</form>
 ```
 
 ```js
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   data: function() {
@@ -104,22 +105,23 @@ export default {
     }
   },
   methods: {
-    submitForm : function(event) {
-      console.log(this.username, this.password);
+    submitForm: function(event) {
+      console.log(this.username, this.password)
       var url = 'https://jsonplaceholder.typicode.com/users'
       var data = {
         username: this.username,
-        password: this.password
+        password: this.password,
       }
-      axios.post(url, data)
-        .then(function (response){
-          console.log(response);
+      axios
+        .post(url, data)
+        .then(function(response) {
+          console.log(response)
         })
-        .catch(function (e){
-          console.log(e);
-        });
-    }
-  }
+        .catch(function(e) {
+          console.log(e)
+        })
+    },
+  },
 }
 ```
 
@@ -141,10 +143,12 @@ export default {
 ### vuejs를 제대로 공부하는 방법
 
 원문으로 공부하는 것이 좋습니다.
+
 1. 공식문서에서 업데이트가 많고, 그에 따라 최신 정보를 바로바로 볼 수 있습니다.
 2. 번역의 한계로 인해서, 일부 잘못된 개념으로 잘못된 이해를 할 수 있습니다.
 
 도움이 되는 링크
+
 - [Vue.js 공식 문서](https://vuejs.org/v2/guide/)
 - [Vue.js 스타일 가이드](https://vuejs.org/v2/style-guide/)
 - [Vue.js Cookbook](https://vuejs.org/v2/cookbook/)

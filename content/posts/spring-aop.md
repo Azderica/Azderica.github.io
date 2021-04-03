@@ -4,7 +4,7 @@ slug: 00-spring-api
 date: 2021-02-13
 published: true
 tags: ['Spring', 'Aop', 'Module', 'Backend']
-series: false,
+series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: ' Spring AOP에 대한 정리입니다.'

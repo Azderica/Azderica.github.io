@@ -5,7 +5,7 @@ date: 2020-12-25
 published: true
 tags:
   ['Server', 'Jwt', 'Token', 'Api', 'Service', 'Authenticate', 'Json Web Token']
-series: false,
+series: false
 cover_image: ./images/JwtText.png
 canonical_url: false
 description: ' 토큰 기반 인증과 JWT에 대해 알아보겠습니다. '
@@ -191,7 +191,7 @@ const encodedPayload = new Buffer(JSON.stringify(payload))
 ```json
 {
   "iss": "github.com",
-  "https://Azderica.github.io/is_admin": true,
+  "https://Azderica.github.io/is_admin": true
   "username": "Azderica"
 }
 ```

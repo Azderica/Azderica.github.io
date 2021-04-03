@@ -1,10 +1,10 @@
 ---
-title: "[Springboot] Springboot 활용하기 - 3"
+title: '[Springboot] Springboot 활용하기 - 3'
 slug: 03-springboot-utilizing
 date: 2020-08-30
 published: true
 tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: " 'Springboot 활용하기'의 세번째 게시글입니다. "
@@ -30,17 +30,15 @@ description: " 'Springboot 활용하기'의 세번째 게시글입니다. "
 | - 데이터베이스 마이그레이션 툴 연동하기 | - CouchbaseLDAP                      |
 |                                         | - InfluxDB                           |
 
-
-
 ### 인메모리 데이터베이스
 
-지원하는 인-메모리 데이터베이스 
+지원하는 인-메모리 데이터베이스
 
 - **H2 (추천, 콘솔 때문에...)**
 - HSQL
 - Derby
 
- Spring-JDBC가 클래스패스에 있으면 자동 설정이 필요한 빈을 설정 해줍니다.
+Spring-JDBC가 클래스패스에 있으면 자동 설정이 필요한 빈을 설정 해줍니다.
 
 - - DataSource
   - JdbcTemplate
@@ -74,8 +72,8 @@ H2 콘솔 사용하는 방법
 #### DBCP 설정
 
 - **spring.datasource.hikari.\***
-- spring.datasource.tomcat.*
-- spring.datasource.dbcp2.*
+- spring.datasource.tomcat.\*
+- spring.datasource.dbcp2.\*
 
 #### MySQL 커넥터 의존성 추가
 
@@ -100,24 +98,22 @@ H2 콘솔 사용하는 방법
 
 #### MySQL 접속시 에러
 
-MySQL 5.* 최신 버전 사용할 때
+MySQL 5.\* 최신 버전 사용할 때
 
 | 문제 | Sat Jul 21 11:17:59 PDT 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. **According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set.** For compliance with existing applications not using SSL the **verifyServerCertificate property is set to 'false'**. You need either to explicitly disable SSL by setting **useSSL=false**, or set **useSSL=true and provide truststore** for server certificate verification. |
-| ---- | ------------------------------------------------------------ |
-| 해결 | jdbc:mysql:/localhost:3306/springboot?**useSSL=false**       |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 해결 | jdbc:mysql:/localhost:3306/springboot?**useSSL=false**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
-MySQL 8.* 최신 버전 사용할 때
+MySQL 8.\* 최신 버전 사용할 때
 
 | 문제 | com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Public Key Retrieval is not allowed |
-| ---- | ------------------------------------------------------------ |
-| 해결 | jdbc:mysql:/localhost:3306/springboot?useSSL=false&**allowPublicKeyRetrieval=true** |
+| ---- | --------------------------------------------------------------------------------------------------------- |
+| 해결 | jdbc:mysql:/localhost:3306/springboot?useSSL=false&**allowPublicKeyRetrieval=true**                       |
 
 MySQL 라이센스 (GPL) 주의
 
 - MySQL 대신 MariaDB 사용 검토
 - 소스 코드 공개 의무 여부 확인
-
- 
 
 ### PostgreSQL
 
@@ -155,7 +151,6 @@ SELECT * FROM account;
 
 경고 : `org.postgresql.jdbc.PgConnection.createClob() is not yet implemented` 해결 : `spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true`
 
-
 ### Spring-Data-JPA 소개
 
 #### ORM(Object-Relational Mapping)과 JPA(Java Persistence API)
@@ -165,11 +160,11 @@ SELECT * FROM account;
 - JPA: ORM을 위한 자바 (EE) 표현
 
 스프링 데이터 JPA
+
 - Repository 빈 자동 생성
 - 쿼리 메소드 자동 구현
 - @EnableJpaRepositories(스프링 부트가 자동으로 설정 해줌.)
 - SDJ -> JPA -> Hibernate -> Datasource
-
 
 ### Spring-Data-JPA 연동
 
@@ -195,21 +190,24 @@ SELECT * FROM account;
 ### 데이터베이스 초기화
 
 JPA를 사용한 데이터베이스 초기화
+
 - spring.jpa.hibernate.ddl-auto
 - spring.jpa.generate-dll=true로 설정 해줘야 동작함.
 
 SQL 스크립트를 사용한 데이터베이스 초기화
-- schema.sql 또는 schema-${platform}.sql
-- data.sql 또는 data-${platform}.sql
-- ${platform} 값은 spring.datasource.platform 으로 설정 가능.
+
+- schema.sql 또는 schema-\${platform}.sql
+- data.sql 또는 data-\${platform}.sql
+- \${platform} 값은 spring.datasource.platform 으로 설정 가능.
 
 ### 데이터베이스 마이그레이션
 
-> Flyway와 Liquibase가 대표적인데, 지금은 Flyway를 사용하겠습니다. 
+> Flyway와 Liquibase가 대표적인데, 지금은 Flyway를 사용하겠습니다.
 
 https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howto-execute-flyway-database-migrations-on-startup
 
 의존성 추가
+
 - org.flywaydb:flyway-core
 
 ```xml
@@ -220,13 +218,14 @@ https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howt
 
 ```
 
-
 마이그레이션 디렉토리
+
 - db/migration 또는 db/migration/{vendor}
 - spring.flyway.locations로 변경 가능
 
 마이그레이션 파일 이름
-- V숫자__이름.sql
+
+- V숫자\_\_이름.sql
 - V는 꼭 대문자로.
 - 숫자는 순차적으로 (타임스탬프 권장)
 - 숫자와 이름 사이에 언더바 두 개.
@@ -235,6 +234,7 @@ https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howt
 ### Redis
 
 캐시, 메시지 브로커, 키/밸류 스토어 등으로 사용 가능.
+
 - 의존성 추가
   - spring-boot-starter-data-redis
 - Redis 설치 및 실행 (도커)
@@ -247,17 +247,18 @@ https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howt
   - extends CrudRepository(JPA 레퍼지토리 처럼 사용)
 - Redis 주요 커맨드
   - https://redis.io/commands
-  - keys *
+  - keys \*
   - get {key}
   - hgetall {key}
   - hget {key} {column}
 - 커스터마이징
-  - spring.redis.*
-  
-  
+
+  - spring.redis.\*
+
 ### MongoDB
 
 MongoDB는 JSON 기반의 도큐먼트 데이터베이스입니다.
+
 - 의존성 추가
   - spring-boot-starter-data-mongodb
 - MongoDB 설치 및 실행 (도커)
@@ -274,26 +275,26 @@ MongoDB는 JSON 기반의 도큐먼트 데이터베이스입니다.
 ### Neo4j
 
 Neo4j는 노드간의 연관 관계를 영속화하는데 유리한 그래프 데이터베이스 입니다.
+
 - 의존성 추가
   - spring-boot-starter-data-neo4j
+
 ```xml
 <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 ```
-  
+
 - Neo4j 설치 및 실행 (도커)
   - docker run -p 7474:7474 -p 7687:7687 -d --name noe4j_boot neo4j
   - http://localhost:7474/browser
 - 스프링 데이터 Neo4J
-  - Neo4jTemplate (Deprecated) 
+  - Neo4jTemplate (Deprecated)
   - SessionFactory
   - Neo4jRepository
 - 에러 발생하는 데, 참고할 링크 : https://www.inflearn.com/questions/6023
-  
+
 ### 정리
 
 https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-sql
-
-

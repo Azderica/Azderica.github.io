@@ -4,7 +4,7 @@ slug: 05-java-study
 date: 2021-01-12
 published: true
 tags: ['Java', 'Stater', 'Class', 'Object', 'Method']
-series: true,
+series: true
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바의 클래스에 대해 정리합니다.'

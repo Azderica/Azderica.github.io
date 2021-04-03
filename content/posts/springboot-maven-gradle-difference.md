@@ -1,14 +1,13 @@
 ---
-title: "[Springboot] Maven과 Gradle의 차이"
+title: '[Springboot] Maven과 Gradle의 차이'
 slug: 01-springboot-gradle
 date: 2020-10-14
 published: true
 tags: ['Springboot', 'Maven', 'Gradle', 'Difference', 'Backend']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " Maven과 Gradle에 대한 차이에 대한 글입니다. "
-
+description: ' Maven과 Gradle에 대한 차이에 대한 글입니다. '
 ---
 
 # Maven과 Gradle.
@@ -24,9 +23,11 @@ description: " Maven과 Gradle에 대한 차이에 대한 글입니다. "
 ## Maven과 Gradle의 차이
 
 ### Maven
+
 > 자바용 프로젝트 관리 도구, 아파치 Ant의 대안으로 만들어졌다.
 
 특징
+
 - 빌드를 쉽게할 수 있다.
 - `pom.xml`을 이용한 정형화된 빌드 시스템을 사용할 수 있다.
 - 뛰어난 프로젝트 정보를 제공한다
@@ -34,11 +35,13 @@ description: " Maven과 Gradle에 대한 차이에 대한 글입니다. "
 - 새로운 기능을 쉽게 설치할 수 있고 업데이트할 수 있다.
 
 ### Gradle
+
 > Groovy를 이용한 빌드 자동화 시스템이다. Maven 이후에 나왔다.
 
 > Android의 OS 공식 빌드 도구로 사용됩니다.
 
 특징
+
 - Ant처럼 유연한 범용 빌드 도구를 사용한다.
 - Maven을 사용할 수 있는 변환 가능 컨벤션 프레임 워크입니다.
 - 멀티 프로젝트에 사용하기 좋습니다.
@@ -53,6 +56,7 @@ description: " Maven과 Gradle에 대한 차이에 대한 글입니다. "
 Gradle이 시기적으로 늦게 나오게 되면서 사용성, 성능 등 뛰어난 스펙을 사용합니다.
 
 좋은 점을 나열한다면.
+
 - Maven처럼 Build라는 동적 요소를 XML을 사용하기에는 어려운 부분이 있습니다.
   - 설정 내용이 길어지고 가독성이 떨어집니다.
   - 의존관계가 복잡한 프로젝트 설정에는 부적절합니다.
@@ -81,6 +85,7 @@ Gradle이 시기적으로 늦게 나오게 되면서 사용성, 성능 등 뛰�
 ---
 
 **출처**
+
 - https://gradle.org/
 - https://maven.apache.org/
 - http://egloos.zum.com/kwon37xi/v/4747016

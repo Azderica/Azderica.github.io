@@ -4,7 +4,7 @@ slug: 02-java-study
 date: 2020-12-31
 published: true
 tags: ['Java', 'Stater', 'Data', 'Type']
-series: true,
+series: true
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바 데이터 타입, 변수, 배열을 사용하는 방법을 익힙니다.'

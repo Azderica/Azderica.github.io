@@ -4,7 +4,7 @@ slug: 00-architecture-istio
 date: 2021-02-02
 published: true
 tags: ['Istio', 'Architecture', 'Cloud', 'MSA']
-series: false,
+series: false
 cover_image: ./images/IstioLogo.png
 canonical_url: false
 description: 'Istio 패턴에 대해 정리합니다.'

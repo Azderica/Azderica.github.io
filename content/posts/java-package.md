@@ -4,7 +4,7 @@ slug: 07-java-study
 date: 2020-12-30
 published: true
 tags: ['Java', 'Stater', 'Package', 'Import', 'Classpath']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'Package에 대해 정리합니다.'

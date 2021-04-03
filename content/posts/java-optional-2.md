@@ -4,7 +4,7 @@ slug: 01-java-optional
 date: 2020-12-17
 published: true
 tags: ['Java', 'Optional', 'Stream', 'Backend']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'Java Optional 을 좀 더 잘 사용하기'

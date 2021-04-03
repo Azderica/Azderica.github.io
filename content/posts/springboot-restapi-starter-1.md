@@ -1,10 +1,10 @@
 ---
-title: "[Springboot API] Springboot REST API : 시작하기"
+title: '[Springboot API] Springboot REST API : 시작하기'
 slug: 01-springboot-restapi
 date: 2020-09-07
 published: true
 tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: " 'Springboot REST API'의 첫번째 게시글입니다. "
@@ -23,15 +23,18 @@ description: " 'Springboot REST API'의 첫번째 게시글입니다. "
 ## REST API
 
 ### API
+
 - **A**pplication **P**rogramming **I**nterface
 
 ### REST
+
 - **RE**presentational **S**tate **T**ransfer
 - 인터넷 상의 시스템 간의 상호 운용성(interoperability)을 제공하는 방법중 하나
 - 시스템 제각각의 독립적인 진화를 보장하기 위한 방법
 - REST API: REST 아키텍처 스타일을 따르는 API
 
 ### REST 아키텍처 스타일 ([발표 영상](https://www.youtube.com/watch?v=RP_f5dMoHFc) 11분)
+
 - Client-Server
 - Stateless
 - Cache
@@ -54,18 +57,18 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
   - 리소스가 URI로 식별되면 된다.
 - manipulation of resources through represenations
   - 리소스를 요청할 때 서버는 리소스를 표현하여 응답한다.
-  - 대표적인 API 예로는 HTML, JSON, XML이 있다. 
+  - 대표적인 API 예로는 HTML, JSON, XML이 있다.
   - 콘텐츠 협상
-    - 클라이언트가 클라이언트의 요구에 맞는 특정 표현을 요청할 수 있다. 
-    - 예를 들어 클라이언트는 리소스의 JSON 표현 또는 리소스의 XML 표현을 요청할 수 있다. 
+    - 클라이언트가 클라이언트의 요구에 맞는 특정 표현을 요청할 수 있다.
+    - 예를 들어 클라이언트는 리소스의 JSON 표현 또는 리소스의 XML 표현을 요청할 수 있다.
     - 서버는 그렇게 할 수 있는 경우 이 표현을 제공할 수 있다.
   - API에서 콘텐츠 협상을 사용하여 여러 클라이언트가 동일한 URL에서 다른 리소스 표현에 액세스할 수 있도록 할 수 있다.
 - **self-descrive messages**
   - 클라이언트가 resource를 가지고 어떤 일을 수행할때 필요한 모든 데이터가 응답되어야함.
   - 보통 안에 profile(docs) 링크를 명시하는식으로 구현.
 - **hypermedia as the engine of appliaction state (HATEOAS)**
-  - 거의 모든 rest api에서 지키지못함. 
-  - 어플리케이션의 상태가 하이퍼링크를 통해서 항상 전이가 되어야함. 
+  - 거의 모든 rest api에서 지키지못함.
+  - 어플리케이션의 상태가 하이퍼링크를 통해서 항상 전이가 되어야함.
   - 스프링에서는 spring-boot-hateoas 패키지로 좀 편하게 구현 가능.
 
 <details>
@@ -128,6 +131,7 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
 </details>
 
 ### 두 문제를 좀 더 자세히 살펴보자. (발표 영상 37분 50초)
+
 - Self-descriptive message
   - 메시지 스스로 메시지에 대한 설명이 가능해야 한다.
   - 서버가 변해서 메시지가 변해도 클라이언트는 그 메시지를 보고 해석이 가능하다.
@@ -136,13 +140,15 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
   - 하이퍼미디어(링크)를 통해 애플리케이션 상태 변화가 가능해야 한다.
   - 링크 정보를 동적으로 바꿀 수 있다. (Versioning 할 필요 없이!)
 
-### Self-descriptive message 해결 방법 
+### Self-descriptive message 해결 방법
+
 - 방법 1: 미디어 타입을 정의하고 IANA에 등록하고 그 미디어 타입을 리소스 리턴할 때 Content-Type으로 사용한다.
 - 방법 2: profile 링크 헤더를 추가한다. (발표 영상 41분 50초)
   - [브라우저들이 아직 스팩 지원을 잘 안해](http://test.greenbytes.de/tech/tc/httplink/)
   - 대안으로 [HAL](http://stateless.co/hal_specification.html)의 링크 데이터에 [profile 링크](https://tools.ietf.org/html/draft-wilde-profile-link-04) 추가
 
-### HATEOAS 해결 방법 
+### HATEOAS 해결 방법
+
 - 방법1: 데이터에 링크 제공
   - 링크를 어떻게 정의할 것인가? HAL
 - 방법2: 링크 헤더나 Location을 제공
@@ -182,15 +188,19 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
     - next: 다음 페이지 (optional)
     - prev: 이전 페이지 (optional)
   - 로그인 한 상태???? (stateless라며..)
+
     - 아니, 사실은 Bearer 헤더에 유효한 AccessToken이 들어있는 경우!
-    
+
 ### POST /api/events
+
 - 이벤트 생성
 
 ### GET /api/events/{id}
+
 - 이벤트 하나 조회
 
 ### PUT /api/events/{id}
+
 - 이벤트 수정
 
 <br/>
@@ -212,16 +222,19 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
    - update 안 보임
 
 ### REST API 테스트 클라이언트 애플리케이션
-  - 크롬 플러그인
-    - Restlet
-  - 애플리케이션
-    - Postman
-    
+
+- 크롬 플러그인
+  - Restlet
+- 애플리케이션
+
+  - Postman
+
 <br/>
 
 ## 스프링 부트 프로젝트 만들기
 
 ### 추가할 의존성
+
 - Web
 - JPA
 - HATEOAS
@@ -231,9 +244,11 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
 - Lombok
 
 ### 자바 버전 11로 시작
+
 - 자바는 여전히 무료다.
 
 ### 스프링 부트 핵심 원리
+
 - 의존성 설정 (pom.xml)
 - 자동 설정 (@EnableAutoConfiguration)
 - 내장 웹 서버 (의존성과 자동 설정의 일부)
@@ -244,6 +259,7 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
 ### Event 생성 API
 
 - 다음의 입력 값을 받는다.
+
   - name
   - description
   - beginEnrollmentDateTime
@@ -251,20 +267,17 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
   - beginEventDateTime
   - endEventDateTime
   - location (optional) 이게 없으면 온라인 모임
-  - basePrice (optional) 
+  - basePrice (optional)
   - maxPrice (optional)
   - limitOfEnrollment
-  
 
 basePrice와 maxPrice 경우의 수와 각각의 로직
-| basePrice | maxPrice |                                                              |
+| basePrice | maxPrice | |
 | --------- | -------- | ------------------------------------------------------------ |
-| 0         | 100      | 선착순 등록                                                  |
-| 0         | 0        | 무로                                                         |
-| 100       | 0        | 무제한 경매 (높은 금액 낸 사람이 등록)                       |
-| 100       | 200      | 제한가 선착순 등록<br /><br />처음부터 200을 낸 사람은 선 등록<br /><br />100을 내고 등록할 수 있으나 더 많이 낸 사람에 의해 밀려날 수 있음. |
-
-
+| 0 | 100 | 선착순 등록 |
+| 0 | 0 | 무로 |
+| 100 | 0 | 무제한 경매 (높은 금액 낸 사람이 등록) |
+| 100 | 200 | 제한가 선착순 등록<br /><br />처음부터 200을 낸 사람은 선 등록<br /><br />100을 내고 등록할 수 있으나 더 많이 낸 사람에 의해 밀려날 수 있음. |
 
 - 결과값
   - id
@@ -273,14 +286,13 @@ basePrice와 maxPrice 경우의 수와 각각의 로직
   - eventStatus: DRAFT, PUBLISHED, ENROLLMENT_STARTED, ...
   - offline
   - free
-  - _links
+  - \_links
     - profile (for the self-descriptive message)
-    - self 
+    - self
     - publish
     - ...
 
 <br/>
-
 
 ## Event 생성 API 구현: Event 도메인 구현
 
@@ -302,6 +314,7 @@ public class Event {
 ```
 
 추가 필드
+
 ```java
     private Integer id;
     private boolean offline;
@@ -310,6 +323,7 @@ public class Event {
 ```
 
 EventStatus ENUM 추가
+
 ```java
 public enum EventStatus {
 
@@ -319,11 +333,13 @@ public enum EventStatus {
 ```
 
 롬복 애노테이션 추가
+
 ```java
 @Getter @Setter @EqualsAndHashCode(of = "id")
 @Builder @NoArgsConstructor @AllArgsConstructor
 public class Event {
 ```
+
 - 왜 @EqualsAndHasCode에서 of를 사용하는가
 - 왜 @Builder를 사용할 때 @AllArgsConstructor가 필요한가
 - @Data를 쓰지 않는 이유

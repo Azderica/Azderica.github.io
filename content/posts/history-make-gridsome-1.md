@@ -1,13 +1,13 @@
 ---
-title: "[Gridsome] Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1"
+title: '[Gridsome] Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1'
 slug: 01-gridsome-blog
 date: 2020-11-30
 published: true
 tags: ['Gridsome', 'Git', 'Gitblog', 'History']
-series: false,
+series: false
 cover_image: ./images/GridsomeLogo.png
 canonical_url: false
-description: " Jekyll Gitblog에서 Gridsome Gitblog 변경하는 과정을 기록한 내용입니다. "
+description: ' Jekyll Gitblog에서 Gridsome Gitblog 변경하는 과정을 기록한 내용입니다. '
 ---
 
 # Jekyll에서 Gridsome으로 Gitblog 변경하기 - 1.
@@ -38,17 +38,20 @@ Gridsome은 Jekyll와 마찬가지로 HTML 생성기입니다. Gridsome는 그�
 
 ## 그래서 뭘로 바꿀래?
 
-인터넷을 찾아보니 Gridsome에 대해 알게되었습니다. 
+인터넷을 찾아보니 Gridsome에 대해 알게되었습니다.
 
 [Gridsome 링크](https://gridsome.org/)
 
 Gridsome Blog는 다음과 같은 화면을 구성합니다.
+
 > https://gridsome-starter-blog.netlify.app/
 
 ![image](https://user-images.githubusercontent.com/42582516/100745633-ed516900-3422-11eb-8a47-a714d4c0fd58.png)
+
 > 밤 효과
 
 ![image](https://user-images.githubusercontent.com/42582516/100745664-f6dad100-3422-11eb-8199-bdebf72e988f.png)
+
 > 낮 효과
 
 다음과 같은 기능을 제공합니다.
@@ -101,7 +104,7 @@ girdsome develop
 
 http://localhost:8080 (default) 으로 접속하면 사이트를 확인할 수 있습니다.
 
-####  (4) 개발 진행.
+#### (4) 개발 진행.
 
 <br/>
 
@@ -117,9 +120,10 @@ http://localhost:8080 (default) 으로 접속하면 사이트를 확인할 수 �
 감사합니다.
 
 ---
+
 **출처**
+
 - https://medium.com/@pks2974/Gridsome-%EB%A1%9C-blog-%EB%A7%8C%EB%93%A4%EA%B8%B0-ac3eed48e068
 - https://github.com/Gridsomejs/Gridsome-starter-default
 - https://github.com/gridsome/gridsome-starter-blog
 - https://gridsome.org/
-

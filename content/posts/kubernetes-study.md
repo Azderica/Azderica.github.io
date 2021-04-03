@@ -1,13 +1,13 @@
 ---
-title: "[Kubernetes] Kubernetes란?"
+title: '[Kubernetes] Kubernetes란?'
 slug: 00-kubernetes
 date: 2020-11-10
 published: true
 tags: ['Kubernetes', 'Cloud', 'Infra', 'Backend']
-series: false,
+series: false
 cover_image: ./images/KubernetesLogo.png
 canonical_url: false
-description: " 쿠버네티스에 대한 기본 내용을 정리한 글입니다. "
+description: ' 쿠버네티스에 대한 기본 내용을 정리한 글입니다. '
 ---
 
 # Kubernetes란.
@@ -17,11 +17,11 @@ description: " 쿠버네티스에 대한 기본 내용을 정리한 글입니다
 이를 통해서 컨테이너를 실행하는 host 그룹을 함께 클러스팅이 가능하며, 클러스토를 쉽고 효율적으로 관리할 수 있다.
 
 > 용어에 대한 간단한 정리.
-> - 컨테이너 : 호스트  OS상에 논리적인 구획(컨테이너)를 만들고, 어플리케이션을 작동시키기 위해 필요한 라이브러리나 어플리케이션 등을 하나로 모아서 마치 별도의 서버인 것처럼 사용할 수 있게 만든 것.
+>
+> - 컨테이너 : 호스트 OS상에 논리적인 구획(컨테이너)를 만들고, 어플리케이션을 작동시키기 위해 필요한 라이브러리나 어플리케이션 등을 하나로 모아서 마치 별도의 서버인 것처럼 사용할 수 있게 만든 것.
 > - 클러스터 : 여러 대의 컴퓨터를 네트워크를 통해 하나의 단일 컴퓨터처럼 동작하도록 제작한 컴퓨터
 >
 > 나중에 docker에 대해서도 추가적으로 설명하면서 더 자세하게 설명하겠습니다.
-
 
 쿠버네티스는 클라우드 전체로 호스트를 확장할 수 있고, 이러한 기능이 Apache Kafka 스트리밍과 같이 신속한 확장을 요구하는 클라우드 환경에서 큰 장점을 가집니다.
 
@@ -30,7 +30,6 @@ description: " 쿠버네티스에 대한 기본 내용을 정리한 글입니다
 ## 쿠버네티스의 기본 용어
 
 ![image](https://user-images.githubusercontent.com/42582516/99147045-cffd6a80-26c0-11eb-846e-dee35301857c.png)
-
 
 - 마스터(Master) : 노드를 제어하고 전체 클러스터를 관리해주는 컨트롤러, 전체적인 제어/관리를 하기 위한 관리 서버
 - 노드(Nod) : 컨테이너가 배포될 물리 서버 또는 가상 머신이며 워커 노드(Worker Node)라고 불린다.
@@ -45,7 +44,6 @@ description: " 쿠버네티스에 대한 기본 내용을 정리한 글입니다
 ![image](https://user-images.githubusercontent.com/42582516/99147075-1fdc3180-26c1-11eb-88af-4702b0d1236e.png)
 
 > 우리가 아는 많은 회사가 보인다.
-
 
 여러 회사의 노하우와 경험이 녹아있어서 다양한 커뮤니티와 좋은 생태계가 구성되어 있습니다. 대부분의 문제점이나 원하는 서비스를 만들려고 찾아보면 있는 것을 확인할 수 있습니다. CI(Continuous Integration), 컨테이너 서버리스, 머신러닝 등이 쿠버네티스 환경에서 잘 돌아갑니다.
 
@@ -79,13 +77,11 @@ description: " 쿠버네티스에 대한 기본 내용을 정리한 글입니다
 
 인그레스는 외부에서 서비스로 접속이 가능한 URL, 로드 밸런스 트래픽, SSL / TLS 종료 그리고 이름-기반의 가상 호스팅을 제공하도록 구성할 수 있습니다. **인그레스 컨트롤러**는 일반적으로 로드 밸런서를 사용해서 인그레스를 수행할 책임이 있으며, 트래픽을 처리하는데 도움이 되도록 에지 라우터 또는 추가 프런트 엔드를 구성할 수도 있습니다.
 
-
 ### 4. 클라우드 지원 기능
 
 쿠버네티스는 부하에 따라 자동으로 서버를 늘리는 기능인 AutoScaling이 있고, IP를 할당받아 로드밸런서로 사용할 수 있습니다.
 
 쿠버네티스는 Cloud Controller를 이용하여 클라우드 연동을 손쉽게 확장할 수 있습니다. 그 덕분에 AWS, Google Cloud, MS Azure 등을 쉽게 사용할 수 있습니다.
-
 
 ### 5. Namespcae & Label을 통한 구분
 
@@ -101,7 +97,7 @@ RBAC는 접근 권한 시스텝입니다. 각각의 리소스에 대해 유저�
 
 ### 7. CRD(Custom Resource Definitation)
 
-쿠버네티스가 제공하지 않는 기능을 기본 기능과 동일한 빙식으로 적용하고 사용할 수 있는 기능입니다. 
+쿠버네티스가 제공하지 않는 기능을 기본 기능과 동일한 빙식으로 적용하고 사용할 수 있는 기능입니다.
 
 - Ex) Knative 등등
 
@@ -122,14 +118,14 @@ CPU, memory 사용량, 접속자 수 등을 조절할 수 있습니다. 다음�
 ![image](https://user-images.githubusercontent.com/42582516/99147877-a98efd80-26c7-11eb-973f-58fae551a5d6.png)
 
 컨테이너 보안은 멀티레이어 구조이므로 이는 복잡합니다. 쿠버네티스는 워크로드를 위해 규모에 맞는 컨테이너를 배포하는데 필요한 자원 및 관리 기능을 제공합니다. 이를 통해서 애플리케이션 서비스를 구축하고, 일정을 계획하고, 컨테이너를 확장해서 컨테이너 상태를 지속적으로 관리할 수 있습니다.
- 
+
  <br/>
 
 ## 쿠버네티스의 개념
 
 ### Desired State
 
-쿠버네티스 공식 홈페이지의 document에서 등장하는 용어는 **desired state**이다. 이는 쿠버네티스를 이해하는데 가장 핵심적인 개념이다. 이는 쉽게 **원하는 상태**(ex. 웹서버의 갯수, 포트)를 의미합니다. 
+쿠버네티스 공식 홈페이지의 document에서 등장하는 용어는 **desired state**이다. 이는 쿠버네티스를 이해하는데 가장 핵심적인 개념이다. 이는 쉽게 **원하는 상태**(ex. 웹서버의 갯수, 포트)를 의미합니다.
 
 쿠버네티스는 **현재 상태(current state)**를 지속적으로 모니터링하며, current state와 desired state 사이에 다른 부분이 있으면 이를 동일하게 만듭니다.
 
@@ -161,9 +157,8 @@ CPU, memory 사용량, 접속자 수 등을 조절할 수 있습니다. 다음�
   - 오브젝트외 종류와 원하는 상태로 입력합니다.
   - 해당 명세는 생성, 조회, 삭제로 관리할 수 있어서 REST API로 쉽게 노출이 가능합니다.
   - 접근 권한 설정도 같은 개념을 적용하여 어떤 오브젝트에 어떤 요청을 할 수 있는지 정의할 수 있습니다.
-  - 아래는 예시 YAML파일입니다. 
-  - 
-    ```yaml
+  - 아래는 예시 YAML파일입니다.
+  - ```yaml
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -187,7 +182,6 @@ CPU, memory 사용량, 접속자 수 등을 조절할 수 있습니다. 다음�
             - containerPort: 80
     ```
 
-
 ### 쿠버네티스 배포 양식
 
 이전에 이야기 했듯이 쿠버네티스는 애플리케이션을 배포하기 위해 원하는 상태(desired state)를 다양한 오브젝트(object)에 라벨(label)을 붙여서 정의하고 API 서버에 전달하는 방식을 사용합니다.
@@ -201,6 +195,7 @@ CPU, memory 사용량, 접속자 수 등을 조절할 수 있습니다. 다음�
 ---
 
 **출처**
+
 - https://kubernetes.io/ko/docs/concepts/overview/what-is-kubernetes/
 - https://subicura.com/2019/05/19/kubernetes-basic-1.html
 - https://www.redhat.com/ko/topics/containers/what-is-kubernetes

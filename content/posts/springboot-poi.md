@@ -4,7 +4,7 @@ slug: 00-springboot-poi
 date: 2021-02-08
 published: true
 tags: ['Spring', 'Springboot', 'Poi', 'Backend']
-series: false,
+series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: ' Springboot Poi에 대한 간단한 실습입니다. '

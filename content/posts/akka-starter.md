@@ -4,7 +4,7 @@ slug: 00-akka-starter
 date: 2021-01-24
 published: true
 tags: ['Opensource', 'Akka', 'Concurrency', 'Java']
-series: false,
+series: false
 cover_image: ./images/AkkaLogo.png
 canonical_url: false
 description: 'Akka에 대한 기본 내용을 정리합니다.'

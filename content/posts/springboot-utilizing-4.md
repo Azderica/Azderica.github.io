@@ -1,10 +1,10 @@
 ---
-title: "[Springboot] Springboot 활용하기 - 4"
+title: '[Springboot] Springboot 활용하기 - 4'
 slug: 04-springboot-utilizing
 date: 2020-09-04
 published: true
 tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: " 'Springboot 활용하기'의 네번째 게시글입니다. "
@@ -21,6 +21,7 @@ description: " 'Springboot 활용하기'의 네번째 게시글입니다. "
 #### 스프링 시큐리티
 
 Tip)
+
 ```java
 @Override
 public void addViewControllers(ViewControllerRegistry registry){
@@ -39,7 +40,7 @@ public void addViewControllers(ViewControllerRegistry registry){
 - SecurityAutoConfiguration
 - UserDetailsServiceAutoConfiguration
 - spring-boot-starter-security
-  - 스프링 시큐리티 5.* 의존성 추가
+  - 스프링 시큐리티 5.\* 의존성 추가
 - 모든 요청에 인증이 필요함.
 - 기본 사용자 생성
   - Username: user
@@ -57,6 +58,7 @@ public void addViewControllers(ViewControllerRegistry registry){
 ### 시큐리티 설정 커스터마이징
 
 #### 웹 시큐리티 설정
+
 ```java
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -74,12 +76,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 ```
 
 #### UserDetailsServie 구현
+
 - https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#jc-authentication-userdetailsservice
 
-
 #### PasswordEncoder 설정 및 사용
-- https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#core-services-password-encoding
 
+- https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#core-services-password-encoding
 
 <br/>
 
@@ -94,8 +96,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 - RestTemplateAutoConfiguration
 - 프로젝트에 spring-web 모듈이 있다면 RestTemplateBuilder를 빈으로 등록해 줍니다.
 - https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#rest-client-access
- 
+
 #### WebClient
+
 - Non-Blocking I/O 기반의 Asynchronous API
   - 비동기, `.subscribe(s -> {});` 사용
 - WebClientAutoConfiguration
@@ -112,23 +115,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   - 글로벌 커스터마이징
     - RestTemplateCustomizer
     - 빈 재정의
- 
+
 #### WebClient
+
 - 기본으로 Reactor Netty의 HTTP 클라이언트 사용.
 - 커스터마이징
   - 로컬 커스터마이징
   - 글로벌 커스터마이징
+
     - WebClientCustomizer
     - 빈 재정의
-    
 
 <br/>
 
 ## 그 외.
 
-### 그밖의 다양한 기술 
+### 그밖의 다양한 기술
 
-#### References 
+#### References
+
 : https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle
 
 - 캐시
@@ -142,4 +147,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 - 웹소켓
 - 코틀린
 - ...
-

@@ -1,13 +1,13 @@
 ---
-title: "[GraphQL] GraphQL 개념잡기"
+title: '[GraphQL] GraphQL 개념잡기'
 slug: 00-graphql
 date: 2020-12-01
 published: true
 tags: ['GraphQL', 'Query', 'Web']
-series: false,
+series: false
 cover_image: ./images/GraphqlLogo.png
 canonical_url: false
-description: " GraphQL에 대한 기본적인 내용을 정리합니다. "
+description: ' GraphQL에 대한 기본적인 내용을 정리합니다. '
 ---
 
 # GraphQL이란
@@ -21,6 +21,7 @@ gatsby로 블로그를 이전하게 되면서 GraphQL에 대해서 반드시 알
 페이스북에서 만든 퀴리 언어입니다. 다만 SQL은 **데이터베이스에 저장된 데이터를 효율적으로 가져오는 것을 목적**으로 하지만, GraphQL은 **웹 클라이언트가 데이터를 서버로부터 효율적으로 가져오는 것을 목적**으로 합니다.
 
 ![image](https://user-images.githubusercontent.com/42582516/100871453-a9726880-34e3-11eb-9211-ef08e50163bf.png)
+
 > 발전하고 있는 GraphQL의 관심도.
 
 GraphQL은 위에 이야기했듯이 기존의 쿼리언어인 sql과 많은 구조적 차이가 있습니다.
@@ -30,13 +31,14 @@ GraphQL은 위에 이야기했듯이 기존의 쿼리언어인 sql과 많은 구
 ## GraphQL vs HTTP API
 
 ![image](https://user-images.githubusercontent.com/42582516/100874660-40d9ba80-34e8-11eb-8670-75e1c8ff0309.png)
+
 > HTTP API와 GQL의 기술 스택 비교
 
 ![image](https://user-images.githubusercontent.com/42582516/100874777-6bc40e80-34e8-11eb-8bde-b938ffea55f9.png)
+
 > REST API와 GraphQL API의 차이
 
 GraphQL API를 사용하면 여러번 네트워크 호출을 할 필요 없이, 한번의 네트워크 호출로 처리 할 수 있습니다.
-
 
 <br/>
 
@@ -61,38 +63,36 @@ from user
 - 쿼리문(query)
 
 ```graphql
-query{
-    user{
-        id,
-        name,
-        likes {
-            title
-        }
+query {
+  user {
+    id
+    name
+    likes {
+      title
     }
+  }
 }
-
 ```
 
 - 응답 데이터 형식(mutation)
 
 ```json
 {
-    "data": {
-        "user" : {
-            "id" : 1,
-            "name" : "user1",
-            "likes" : [
-                {
-                    "title" : "content13"
-                },
-                {
-                    "title" : "content56"
-                }
-            ]
+  "data": {
+    "user": {
+      "id": 1,
+      "name": "user1",
+      "likes": [
+        {
+          "title": "content13"
+        },
+        {
+          "title": "content56"
         }
+      ]
     }
+  }
 }
-
 ```
 
 서버사이드 GraphQL 어플리케이션은 gql로 작성된 쿼리를 입력으로 받아 쿼리를 처리한 결과를 다시 클라이언트로 돌려줍니다. HTTP API가 특정 DB나 플랫폼에 종속적이지 않은 것처럼 마찬가지로 gql도 역시 어떠한 특정 DB나 플랫폼에 종속적이지 않습니다.
@@ -139,7 +139,6 @@ query getStudentInformation($studentId: ID){
 
 <br/>
 
-
 ## 스키마/타입(schema/type)
 
 **스키마**란 서버 구현내에서 API를 정의하는데 사용되는 유형의 시스템입니다. 모든 기능은 스키마 내에서 정의됩니다.
@@ -161,7 +160,7 @@ type Charater {
 - 필드 : name, item
 - 스칼라 타입 : String, ID, Int ...
 - 느낌표(!) : 필수값을 의미
-- 대괄호([, ]) : 배열을 의미  
+- 대괄호([, ]) : 배열을 의미
 
 <br/>
 
@@ -185,13 +184,11 @@ API를 만드는 경우에는 프론트와 백엔드가 협업하여 API 인터�
 
 graphql에 대한 기본적인 내용을 정리했습니다. 정확한 개념을 잡는데 이해가 되었으면 좋겠습니다. 다음에는 이를 직접 사용해보면서 내용을 구체화 시키겠습니다.
 
-
-
 ---
+
 **출처**
+
 - https://tech.kakao.com/2019/08/01/graphql-basic/
 - https://www.redhat.com/ko/topics/api/what-is-graphql
 - https://medium.com/@yeon22/graphql-graphql%EC%9D%B4%EB%9E%80-8468571ea96a
 - https://simsimjae.medium.com/graphql%EA%B0%9C%EB%A1%A0-8d61b1952191
-
-

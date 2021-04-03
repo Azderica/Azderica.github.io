@@ -4,7 +4,7 @@ slug: 00-db-orm
 date: 2021-04-03
 published: true
 tags: ['ORM', 'DB', 'Hibernate']
-series: false,
+series: false
 cover_image: ./images/OrmText.png
 canonical_url: false
 description: 'ORM에 대해 정리합니다. '

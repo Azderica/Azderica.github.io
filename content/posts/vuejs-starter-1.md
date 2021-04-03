@@ -1,14 +1,13 @@
 ---
-title: "[VueJS] Vuejs 시작하기"
+title: '[VueJS] Vuejs 시작하기'
 slug: 01-vuejs-starter
 date: 2020-07-31
 published: true
 tags: ['VueJS', 'Vue', 'Frontend']
-series: true,
+series: true
 cover_image: ./images/VuejsLogo.png
 canonical_url: false
 description: " 'Vuejs 시작하기'의 첫번째 게시글입니다. "
-
 ---
 
 # Vue.js 시작하기
@@ -47,11 +46,9 @@ description: " 'Vuejs 시작하기'의 첫번째 게시글입니다. "
 
 MVVM 패턴의 뷰모델(ViewModel)레이어에 해당하는 화면(View)단 라이브러리입니다.
 
-
 View(DOM) ---> ViewModel, DOM Listeners(Vue) ----> Model(Plain Jav Script Object)
 
 View(DOM) <--- ViewModel, DOM Bindings(Vue) <---- Model(Plain Jav Script Object)
-
 
 ### 단축키
 
@@ -74,7 +71,6 @@ View(DOM) <--- ViewModel, DOM Bindings(Vue) <---- Model(Plain Jav Script Object)
 [Object.defineProperty() API 문서 링크](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
 ```js
-
 // Object.defineProperty('대상 객체', '객체_속성', {
 //    // 정의할 내용
 // })
@@ -82,15 +78,14 @@ View(DOM) <--- ViewModel, DOM Bindings(Vue) <---- Model(Plain Jav Script Object)
 Object.defineProperty(viewModel, 'str', {
   // 속성에 접근했을 때의 동작을 정의
   get: function() {
-    console.log('접근');
+    console.log('접근')
   },
   // 속성에 값을 할당했을 때의 동작을 정의
   set: function(newValue) {
-    console.log('할당', newValue);
-    render(newValue);
-  }
-});
-
+    console.log('할당', newValue)
+    render(newValue)
+  },
+})
 ```
 
 reacitivity의 핵심은 데이터의 변화를 라이브러리에서 감지해서, 알아서 화면을 자동으로 그려줍니다.
@@ -100,40 +95,37 @@ reacitivity의 핵심은 데이터의 변화를 라이브러리에서 감지해�
 > 아래처럼 할 수 있음
 
 ```javascript
-
-(function() {
+;(function() {
   function init() {
     Object.defineProperty(viewModel, 'str', {
-    // 속성에 접근했을 때의 동작을 정의
+      // 속성에 접근했을 때의 동작을 정의
       get: function() {
-        console.log('접근');
+        console.log('접근')
       },
       // 속성에 값을 할당했을 때의 동작을 정의
       set: function(newValue) {
-        console.log('할당', newValue);
-        render(newValue);
-      }
-    });
+        console.log('할당', newValue)
+        render(newValue)
+      },
+    })
   }
 
   function render(value) {
-    div.innerHTML = value;
+    div.innerHTML = value
   }
 
-  init();
-})();  
-
+  init()
+})()
 ```
 
 <br/>
 
-## 인스턴스 
+## 인스턴스
 
 인스턴스는 뷰로 개발할 때 필수로 생성해야 하는 코드입니다.
 
 ```js
-var vm = new Vue({}); // 이런식으로 하면 인스턴스를 생성한것.
-
+var vm = new Vue({}) // 이런식으로 하면 인스턴스를 생성한것.
 ```
 
 ### 생성자 함수
@@ -142,8 +134,6 @@ var vm = new Vue({}); // 이런식으로 하면 인스턴스를 생성한것.
 
 - [MDN 생성자 함수 설명 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Obsolete_Pages/Core_JavaScript_1.5_Guide/Creating_New_Objects/Using_a_Constructor_Function)
 - [MDN Prototype 설명 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor)
-
-
 
 ### 인스턴스 옵션 속성
 
@@ -195,8 +185,8 @@ new Vue({
     // 전역 컴포넌트
     // Vue.component('컴포넌트 이름', 컴포넌트 내용);
     Vue.component('app-header', {
-      template: '<h1>Header</h1>'
-    });  
+      template: '<h1>Header</h1>',
+    })
 
     new Vue({
       el: '#app',
@@ -204,26 +194,24 @@ new Vue({
       components: {
         // '컴포넌트 이름': 컴포넌트 내용,
         'app-footer': {
-          template: '<footer>footer</footer>'
-        }
+          template: '<footer>footer</footer>',
+        },
       },
-    });
+    })
 
     new Vue({
       el: '#app2',
       components: {
         'app-footer': {
-          template: '<footer>footer</footer>'
-        }
-      }
+          template: '<footer>footer</footer>',
+        },
+      },
     })
   </script>
 </body>
-
 ```
 
 위를 보면 전역 컴포넌트와 지역 컴포넌트가 있는 것을 확인할 수 있다.
-
 
 ### 전역 컴포넌트
 
@@ -234,13 +222,12 @@ new Vue({
 - 여러개가 들어가기 때문에 `components` 라고 붙여놓았다.
 - 마찬가지로 `methods` 도 비슷한 논리입니다.
 
-
 ### 컴포넌트와 인스턴트와의 관계
 
 - 인스턴트는 여러개를 생성할 수 있습니다. (필요없을지라도)
 - 인스턴트를 생성하면 Root가 2개가 생깁니다.
 
 좀더 자세하게 알 수 있는 곳.
+
 - http://wiki.sys4u.co.kr/pages/viewpage.action?pageId=8553372
 - https://develop-designer.tistory.com/3
-

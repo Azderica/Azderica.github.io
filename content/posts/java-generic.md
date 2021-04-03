@@ -4,7 +4,7 @@ slug: 14-java-study
 date: 2021-02-28
 published: true
 tags: ['Java', 'Stater', 'Generic']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'Java Generic에 대해 정리합니다.'

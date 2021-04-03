@@ -4,7 +4,7 @@ slug: 00-java-jpa
 date: 2021-03-22
 published: true
 tags: ['Spring', 'JPA', 'ORM', 'DB', 'Hibernate']
-series: false,
+series: false
 cover_image: ./images/JpaText.png
 canonical_url: false
 description: 'JPA에 대해 정리합니다. '

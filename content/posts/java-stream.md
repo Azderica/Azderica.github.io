@@ -4,7 +4,7 @@ slug: 00-java-stream
 date: 2020-12-16
 published: true
 tags: ['Java', 'Java8', 'Stream', 'Backend']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'Java Stream에 대해 정리합니다.'

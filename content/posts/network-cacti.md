@@ -4,7 +4,7 @@ slug: 00-network-cacti
 date: 2021-01-31
 published: true
 tags: ['Network', 'Monitoring', 'Cacti', 'Server', 'Backend']
-series: false,
+series: false
 cover_image: ./images/CactiLogo.png
 canonical_url: false
 description: 'Cacti에 대해 작성합니다.'

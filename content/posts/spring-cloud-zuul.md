@@ -4,7 +4,7 @@ slug: 00-spring-zuul
 date: 2021-02-06
 published: true
 tags: ['Spring', 'Springboot', 'Cloud', 'Zuul', 'Netflix', 'Backend']
-series: false,
+series: false
 cover_image: ./images/SpringCloudLogo.png
 canonical_url: false
 description: 'Spring cloud zuul을 적용하기 위해 공부하는 내용입니다.'
@@ -206,7 +206,7 @@ public class RouteFilter extends ZuulFilter {
 
 - `filterType()` : filter의 type으로 "pre", "route", "post", "error", "static"을 용도에 따라 return합니다.
 - `filterOrder()` : type안에서 해당 필터가 실행되는 순서입니다.
-- `shouldFilter()` : run method를 실행시 true, 실행하지 않아도 되면 false를 반환합니다.
+- `shouldFilter()` : run method를 실행시 true 실행하지 않아도 되면 false를 반환합니다.
 - `run()` : 실제 filter의 로직을 담당합니다.
 
 ### 예외 처리

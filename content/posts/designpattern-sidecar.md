@@ -4,7 +4,7 @@ slug: 00-design-pattern-sidecar
 date: 2021-02-21
 published: true
 tags: ['DesignPattern', 'Sidecar', 'Pattern']
-series: false,
+series: false
 cover_image: ./images/SidecarPatternText.png
 canonical_url: false
 description: '사이드카 패턴에 대해 정리합니다.'

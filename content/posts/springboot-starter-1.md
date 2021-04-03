@@ -1,10 +1,10 @@
 ---
-title: "[Springboot] Springboot 시작하기"
+title: '[Springboot] Springboot 시작하기'
 slug: 01-springboot-stater
 date: 2020-07-07
 published: true
 tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: " 'Springboot 시작하기'의 첫번째 게시글입니다. "
@@ -30,7 +30,6 @@ brew install maven
 ```
 
 maven 설치
-
 
 ### java download
 
@@ -62,17 +61,14 @@ public class Application {
 
 https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#getting-started-maven-installation
 
-
 ## Springboot Project 만드는 방법
 
 스프링부트 프로젝트를 생성하는 방법은 크게 두가지로 나눠집니다.
 
 1. Intellij에서 새로운 프로젝트를 생성하는 방법
 
-2. start.spring.io 에서 프로젝트를 만들어서 다운받는 방법 
+2. start.spring.io 에서 프로젝트를 만들어서 다운받는 방법
    https://start.spring.io/
-
-
 
 ## Springboot Project 구조
 
@@ -85,13 +81,10 @@ https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot
 메인 프로젝트의 경우에는 메이븐 기본 프로젝트 구조와 동일합니다.
 
 - 소스 코드 (src\main\java)
-- 소스 리소스 (src\main\resource) 
-- 테스트 코드 (src\test\java) 
-- 테스트 리소스 (src\test\resource) 
+- 소스 리소스 (src\main\resource)
+- 테스트 코드 (src\test\java)
+- 테스트 리소스 (src\test\resource)
 
 메인 애플리케이션 위치합니다.
 
 - 기본 패키지
-
-
-

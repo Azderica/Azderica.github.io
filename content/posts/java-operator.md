@@ -4,7 +4,7 @@ slug: 03-java-study
 date: 2021-01-01
 published: true
 tags: ['Java', 'Stater', 'Data', 'Type']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바가 제공하는 다양한 연산자에 대해 정리합니다.'

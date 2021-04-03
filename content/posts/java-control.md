@@ -4,7 +4,7 @@ slug: 04-java-study
 date: 2021-01-02
 published: true
 tags: ['Java', 'Stater', 'Control', 'Statement', 'Type']
-series: true,
+series: true
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바의 제어문에 대해 정리합니다.'

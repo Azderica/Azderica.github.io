@@ -4,7 +4,7 @@ slug: 00-db-cap
 date: 2021-02-09
 published: true
 tags: ['Database', 'CAP', 'PACELC', 'Architecture', 'Server']
-series: false,
+series: false
 cover_image: ./images/CapImage.png
 canonical_url: false
 description: 'CAP 이론에 대해 정리합니다.'

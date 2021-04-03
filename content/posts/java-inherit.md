@@ -4,7 +4,7 @@ slug: 06-java-study
 date: 2021-01-13
 published: true
 tags: ['Java', 'Stater', 'Inherit']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바의 상속에 대해 정리합니다.'
@@ -207,7 +207,7 @@ final 키워드는 엔티티를 한 번만 할당하겠다는 의미로 자바�
 `java.lang.Object` 클래스는 모든 클래스의 최상위 클래스입니다.
 
 - `boolean equals(Object obj)`
-  - 두 객체가 같은 지 비교합니다.(같으면 true, 틀리면 false)
+  - 두 객체가 같은 지 비교합니다.(같으면 true 틀리면 false)
 - `String toString()`
   - 객체의 문자열을 반환합니다
 - `protected Object clone()`

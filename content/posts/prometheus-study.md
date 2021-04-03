@@ -1,13 +1,13 @@
 ---
-title: "[Prometheus] Prometheus란?"
+title: '[Prometheus] Prometheus란?'
 slug: 00-prometheus
 date: 2020-11-16
 published: true
 tags: ['Prometheus', 'Monitoring', 'Infra', 'Backend']
-series: false,
+series: false
 cover_image: ./images/PrometheusLogo.png
 canonical_url: false
-description: " 프로메테우스에 대한 기본 내용을 정리한 글입니다. "
+description: ' 프로메테우스에 대한 기본 내용을 정리한 글입니다. '
 ---
 
 # Prometheus란.
@@ -22,24 +22,21 @@ description: " 프로메테우스에 대한 기본 내용을 정리한 글입니
 
 기능을 간략하게 보자면 다음과 같습니다.
 
-
 ![Prometheus 기능](https://user-images.githubusercontent.com/42582516/99261592-4389ae00-2860-11eb-8d93-ce2817cdc70e.png)
-
 
 다음은 Promethheus의 아키텍처 구조입니다.
 
 ![Prometheus 구성](https://user-images.githubusercontent.com/42582516/99261600-46849e80-2860-11eb-87ba-7d573b45dba8.png)
 
-
 간단하게 설명하면 다음과 같습니다
 
 - `Jobs/exporters` : 실제 매트릭을 수집하는 프로세스
-- `exporter`` : 매트릭을 수집하고 HTTP 통신을 통해 매트릭 데이터를 가져갈 수 있게 `/metrics`라는 HTTP 엔드포인틀 제공
+- ` exporter`` : 매트릭을 수집하고 HTTP 통신을 통해 매트릭 데이터를 가져갈 수 있게 `/metrics`라는 HTTP 엔드포인틀 제공
 - `Prometheus server` : 이 `exporter`의 엔드포인트로 HTTP GET 요청을 날려 내트릭 정보를 수집(Pull)한다.
 
 - 매트릭이란?
 
-> 매트릭이란 타임스탬프와 보통 한두가지 숫자 값을 포함하는 이벤트. 
+> 매트릭이란 타임스탬프와 보통 한두가지 숫자 값을 포함하는 이벤트.
 
 > 로그와 달리 메트릭은 주기적으로 보냅니다. 로그는 보통 무언가가 발생했을 때, 로그 파일에 추가되며 메트릭은 종종 리소스 사용 모니터링, 데이터베이스 실행 메트릭 모니터링 등에서 사용됩니다.
 
@@ -65,8 +62,8 @@ description: " 프로메테우스에 대한 기본 내용을 정리한 글입니
 간단하게 내용에 대해서 조사했습니다. 좀 더 구현하는 방식에 대해서는 직접 Prometheus를 만들어보면서 추가하겠습니다.
 
 ---
+
 **출처**
+
 - https://medium.com/finda-tech/prometheus%EB%9E%80-cf52c9a8785f
 - https://gompangs.tistory.com/entry/Prometheus-%EB%A5%BC-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90
-
-

@@ -4,7 +4,7 @@ slug: 09-java-study
 date: 2021-01-15
 published: true
 tags: ['Java', 'Stater', 'Exception']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바의 예외에 대해 정리합니다.'

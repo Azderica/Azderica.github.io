@@ -1,24 +1,23 @@
 ---
-title: "[Springboot API] Springboot REST API : HATEOAS와 Self-Describtive Message 적용"
+title: '[Springboot API] Springboot REST API : HATEOAS와 Self-Describtive Message 적용'
 slug: 03-springboot-restapi
 date: 2020-09-14
 published: true
 tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: " 'Springboot REST API'의 세번째 게시글입니다. "
 ---
 
-
-
-# HATEOAS와 Self-Describtive Message 
+# HATEOAS와 Self-Describtive Message
 
 <br/>
 
 ## 스프링 HATEOAS 소개
 
 ### 스프링 HATEOAS
+
 - https://docs.spring.io/spring-hateoas/docs/current/reference/html/
 - 링크 만드는 기능
   - 문자열 가지고 만들기
@@ -38,29 +37,31 @@ description: " 'Springboot REST API'의 세번째 게시글입니다. "
 
 <img src="https://user-images.githubusercontent.com/42582516/93029741-704ef880-f658-11ea-8e27-81d626a05ed8.png" alt="image" style="zoom:30%;" />
 
-
 <br/>
 
 ## 스프링 HATEOAS 적용
 
 ### EvnetResource 만들기
+
 - extends ResourceSupport의 문제
   - @JsonUnwrapped로 해결
   - extends Resource<T>로 해결
 
 ### 테스트 할 것
+
 - 응답에 HATEOA와 profile 관련 링크가 있는지 확인.
   - self (view)
   - update (만든 사람은 수정할 수 있으니까)
   - events (목록으로 가는 링크)
 
-
 <br/>
 
 ## 스프링 REST Docs 소개
+
 https://docs.spring.io/spring-restdocs/docs/2.0.2.RELEASE/reference/html5/
 
 ### REST Docs 코딩
+
 - andDo(document(“doc-name”, snippets))
 - snippets
   - links()
@@ -74,41 +75,45 @@ https://docs.spring.io/spring-restdocs/docs/2.0.2.RELEASE/reference/html5/
   - responseHeaders() + headerWithName()
   - responseFields() + fieldWithPath()
   - ...
-- Relaxed*
+- Relaxed\*
 - Processor
   - preprocessRequest(prettyPrint())
   - preprocessResponse(prettyPrint())
   - ...
 
 ### Constraint
-https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/rest-notes-spring-hateoas/src/test/java/com/example/notes/ApiDocumentation.java
 
+https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/rest-notes-spring-hateoas/src/test/java/com/example/notes/ApiDocumentation.java
 
 <br/>
 
 ## 스프링 REST Docs 적용
 
 ### REST Docs 자동 설정
+
 - @AutoConfigureRestDocs
 
 ### RestDocMockMvc 커스터마이징
+
 - RestDocsMockMvcConfigurationCustomizer 구현한 빈 등록
 - @TestConfiguration
 
 ### 테스트 할 것
+
 - API 문서 만들기
+
   - 요청 본문 문서화
   - 응답 본문 문서화
   - 링크 문서화
     - profile 링크 추가
   - 응답 헤더 문서화
-  
 
 <br/>
 
 ## 스프링 REST Docs: 링크, (Req, Res) 필드와 헤더 문서화
 
 ### 요청 필드 문서화
+
 - requestFields() + fieldWithPath()
 - responseFields() + fieldWithPath()
 - requestHeaders() + headerWithName()
@@ -116,6 +121,7 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
 - links() + linkWithRel()
 
 ### 테스트 할 것
+
 - API 문서 만들기
   - 요청 본문 문서화
   - 응답 본문 문서화
@@ -130,6 +136,7 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
   - 응답 필드 문서화
 
 ### Relaxed 접두어
+
 - 장점: 문서 일부분만 테스트 할 수 있다.
 - 단점: 정확한 문서를 생성하지 못한다.
 
@@ -138,6 +145,7 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
 ## 스프링 REST Docs 문서 빌드
 
 ### 스프링 REST Docs
+
 - https://docs.spring.io/spring-restdocs/docs/2.0.2.RELEASE/reference/html5/
 - pom.xml에 메이븐 플러그인 설정
 
@@ -194,11 +202,11 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
             </plugin>
 ```
 
-
 - 템플릿 파일 추가
   - src/main/asciidoc/index.adoc
 
 ### 문서 생성하기
+
 - mvn package
   - test
   - prepare-package :: process-asciidoc
@@ -207,6 +215,7 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
   - /docs/index.html
 
 ### 테스트 할 것
+
 - API 문서 만들기
   - 요청 본문 문서화
   - 응답 본문 문서화
@@ -245,7 +254,6 @@ docker run --name ndb -p 5432:5432 -e POSTGRES_PASSWORD=pass -d postgres
 
 3. 도커 컨테이너에 들어가보기
 
-
 ```bash
 docker exec -i -t ndb bash
 su - postgres
@@ -267,6 +275,7 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 5. 하이버네이트 설정
 
 **application.properties**
+
 ```xml
 spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
@@ -276,9 +285,11 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 ```
 
 ### 애플리케이션 설정과 테스트 설정 중복 어떻게 줄일 것인가?
+
 - 프로파일과 @ActiveProfiles 활용
 
 **application-test.properties**
+
 ```xml
 spring.datasource.username=sa
 spring.datasource.password=
@@ -295,6 +306,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
 ## 인덱스 핸들러 만들기
 
 ### 인덱스 핸들러
+
 - 다른 리소스에 대한 링크 제공
 - 문서화
 
@@ -308,7 +320,9 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
 ```
 
 ### 테스트 컨트롤러 리팩토링
+
 - 중복 코드 제거
 
 ### 에러 리소스
+
 - 인덱스로 가는 링크 제공

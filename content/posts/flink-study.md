@@ -1,13 +1,13 @@
 ---
-title: "[Flink] Flink이란?"
+title: '[Flink] Flink이란?'
 slug: 00-flink
 date: 2020-12-11
 published: true
 tags: ['Flink', 'Apache', 'Streaming', 'Backend']
-series: false,
+series: false
 cover_image: ./images/FlinkLogo.png
 canonical_url: false
-description: " Flink에 대한 기본 내용을 정리한 글입니다. "
+description: ' Flink에 대한 기본 내용을 정리한 글입니다. '
 ---
 
 # Flink
@@ -66,6 +66,7 @@ Flink의 추상화 레벨은 다음과 같습니다.
 ![Apache Abstract Level](https://user-images.githubusercontent.com/42582516/101910378-32835100-3c02-11eb-93be-d73a1b52547f.png)
 
 가장 아래부터 위로 설명드리겠습니다.
+
 - Stateful Stream Processing : 사용자가 직접 state, time 등을 관리할 수 있는 low-level 이 위치합니다.
 - DataStream / DataSet API : 핵심적으로 가장 많이 사용하는 Core API 가 위치합니다.
 - Table API : Library로 제공되는 Table API가 제공됩니다.
@@ -114,9 +115,10 @@ stat.addSink(new RollingSink(path));
 
 Flink에 대한 개념은 한번에 정리하기에는 너무 어렵고, 내용자체도 어려운 부분이 많아서 먼저 간단하게 내용을 잡는다는 개념으로 글을 정리했습니다. 개념을 정리한 부분에서 잘못된 이야기가 있으면 이야기주시면 감사합니다.
 
-
 ---
+
 **출처**
+
 - https://ci.apache.org/projects/flink/flink-docs-stable/
 - https://gyrfalcon.tistory.com/entry/Flink-1-%EC%86%8C%EA%B0%9C-Basic-Concept
 - https://riptutorial.com/ko/apache-flink

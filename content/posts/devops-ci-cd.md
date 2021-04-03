@@ -4,7 +4,7 @@ slug: 00-devops-cicd
 date: 2021-01-09
 published: true
 tags: ['Devops', 'CI', 'CD']
-series: false,
+series: false
 cover_image: ./images/CicdLogo.png
 canonical_url: false
 description: 'CI와 CD의 개념을 이해햡니다.'

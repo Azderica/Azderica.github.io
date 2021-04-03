@@ -1,18 +1,19 @@
 ---
-title: "[Springboot] Gradle을 좀 더 자세하게 알아보기"
+title: '[Springboot] Gradle을 좀 더 자세하게 알아보기'
 slug: 03-springboot-gradle
 date: 2020-10-25
 published: true
 tags: ['Springboot', 'Groovy', 'Gradle', 'Backend']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " Build.Gradle에 대한 차이에 대한 글입니다. "
+description: ' Build.Gradle에 대한 차이에 대한 글입니다. '
 ---
 
 # Gradle을 좀 더 파헤쳐보자.
 
 이전글
+
 - [Maven과 Gradle의 차이](./springboot-maven-gradle-difference)
 - [Maven과 Gradle로 바꾸기](./springboot-maven-gradle-change)
 
@@ -25,6 +26,7 @@ description: " Build.Gradle에 대한 차이에 대한 글입니다. "
 ## Gradle 정의
 
 자난번에 간략하게 설명했지만, 간략하게 설명하자면 다음과 같다.
+
 - maven을 대체할 빌드 도구(build tool)이다.
 - Groovy 기반의 DSL(Domain Specific Language)를 사용한다.
 - 스프링 오픈소스 프로젝트이며, 안드로이드 스튜디오에서도 사용하고 있다.
@@ -57,6 +59,7 @@ gradle의 구성은 다음과 같다. Spring gradle 에서 자주 볼수 있는 
 ```
 
 하나씩 설명해보자면, 다음과 같다.
+
 - .gradle 폴더
   - Gradle이 사용하는 폴더
   - 작업(task)로 생성된 파일이며 수정할일은 거의 없다.
@@ -145,8 +148,8 @@ apply plugin: 'java'
   - 응용 프로그램에 대한 기능을 제공하는 플러그인
   - application 플로그인을 통해 run 응용 프로그램을 실행할 수 있다.
 
-
 ### 메인 클래스 이름
+
 - `mainClassName = 'App'`
   - application 플러그인으로 사용되는 것, 메인 클래스를 지정
   - ruin으로 응용프로그램을 실행할 수 있는 이유가 이 mainClassName 메인 클래스가 지정되어 있기 때문이다.
@@ -168,7 +171,7 @@ mavenCentral()와 jcenter()는 Gradle 메소드이며 이러한 repositories 안
 저장소에서 필요한 라이브러리를 사용하는데 사용할 수 있는 것이 dependencies이다.
 
 - `compile 'com.google.guava:guava:22.0'`
-  - **컴파일시 의존 라이브러리** 
+  - **컴파일시 의존 라이브러리**
   - 라이브러리가 컴파일 시에 참조된다.
 - `testCompile 'junit:junit:4.12'`
   - **테스트 컴파일시 의존 라이브러리**
@@ -177,6 +180,7 @@ mavenCentral()와 jcenter()는 Gradle 메소드이며 이러한 repositories 안
   - 컴파일ㅅ에서 실행시까지 의존하는 라이브러리 지정에 사용한다.
 
 #### implementation과 compile의 차이
+
 가끔 다른 프로젝트를 보면 implementation과 compile로 되어 있는 것을 볼 수 있다. 이는 무슨 차이일까?
 
 간단하게 설명하면 다음과 같다.
@@ -189,20 +193,20 @@ mavenCentral()와 jcenter()는 Gradle 메소드이며 이러한 repositories 안
 ##### Implementation의 장점
 
 1. compile보다 빠르다
-    - 적은 recompile을 하므로 
+   - 적은 recompile을 하므로
 2. API 노출이 적다.
-    - Design Pattern 중 Transparency(투명도)의 장점이 드러난다.
-    - compile을 사용하게되면 연결된 모든 모듈의 API가 노출된다.
-    - 그러나 Implementation은 그렇지 않다.
+   - Design Pattern 중 Transparency(투명도)의 장점이 드러난다.
+   - compile을 사용하게되면 연결된 모든 모듈의 API가 노출된다.
+   - 그러나 Implementation은 그렇지 않다.
 
 Gradle 3.0부터는 compile을 비추천하고 있다.
 
 참고하면 좋은 글 : [https://hack-jam.tistory.com/13]()
 
-
-
 ---
+
 **출처**
+
 - [http://devkuma.com/books/pages/1064](http://devkuma.com/books/pages/1064)
 - [http://devkuma.com/books/pages/1068](http://devkuma.com/books/pages/1068)
 - [https://ddmix.blogspot.com/2019/10/get-used-to-gradle.html?m=1](https://ddmix.blogspot.com/2019/10/get-used-to-gradle.html?m=1)

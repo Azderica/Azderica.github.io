@@ -4,7 +4,7 @@ slug: 11-java-study
 date: 2021-02-01
 published: true
 tags: ['Java', 'Stater', 'Enum']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'Java Enum에 대해 정리합니다.'

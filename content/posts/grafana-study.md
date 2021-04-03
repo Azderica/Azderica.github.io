@@ -1,19 +1,18 @@
 ---
-title: "[Grafana] Grafana란?"
+title: '[Grafana] Grafana란?'
 slug: 00-grafana
 date: 2020-11-18
 published: true
 tags: ['Grafana', 'Monitoring', 'Infra', 'Backend']
-series: false,
+series: false
 cover_image: ./images/GrafanaLogo.png
 canonical_url: false
-description: " 그라파나에 대한 기본 내용을 정리한 글입니다. "
+description: ' 그라파나에 대한 기본 내용을 정리한 글입니다. '
 ---
 
 # Grafana란.
 
 지난 Prometheus에 이어, 모니터링에 필요한 Grafana에 대해서 한 번 공부해보겠다.
-
 
 <br/>
 
@@ -35,9 +34,7 @@ Grafana란 메트릭/로그를 시각화하는 대시보드입니다.
 
 ![image](https://user-images.githubusercontent.com/42582516/99536438-b4aa9c00-29ed-11eb-84cc-68b2380c5c9c.png)
 
-
 [Grafana 링크](https://play.grafana.org/d/000000012/grafana-play-home?orgId=1)
-
 
 해당 링크에 들어가보면, Grafana가 제공하는 시각화를 간단하게 확인할 수 있습니다.
 
@@ -55,20 +52,20 @@ Grafana는 시계열 매트릭 데이터 수집에 강점을 보이며, 이 강�
 
 [GrafanaCon](https://grafana.com/about/events/grafanacon/2020/)
 
-
 ## Grafana vs Datadog
 
-Grafana와 마찬가지로 Datadog도 클라우드 모니터링 서비스를 제공합니다. 
+Grafana와 마찬가지로 Datadog도 클라우드 모니터링 서비스를 제공합니다.
 
 공통점
+
 - 메트릭 데이터를 시각화
 - 대시보드 구성 가능
 - 외부 통합 기능을 통해 모니터링의 영역을 확장할 수 있음.
 
 차이점
+
 - **Datadog**의 경우, 데이터를 직접 저장하고 있으나. **Grafana**의 경우에는 외부 데이터 소스를 정의하고 해당 데이터 소스에 쿼리를 통해서 데이터를 동적으로 가져와 시각화합니다.
 - **Datadog**은 모니터링 서비스를 제공하는 상용 서비스이며, **Grafana**는 오픈소스 프로젝트입니다.
-
 
 <br/>
 
@@ -84,9 +81,10 @@ Grafana와 마찬가지로 Datadog도 클라우드 모니터링 서비스를 제
 
 추가적으로 직접 구현해보면서, 이후의 글을 추가하겠습니다.
 
-
 ---
+
 **출처**
+
 - https://medium.com/finda-tech/grafana%EB%9E%80-f3c7c1551c38
 - https://www.44bits.io/ko/keyword/grafana
 - https://blog.dalso.org/home-server/monitoring-server/3744

@@ -4,7 +4,7 @@ slug: 00-hadoop
 date: 2020-12-08
 published: true
 tags: ['Hadoop', 'BigData', 'Distributed', 'Backend']
-series: false,
+series: false
 cover_image: ./images/HadoopLogo.png
 canonical_url: false
 description: ' Hadoop에 대한 기본 내용을 정리한 글입니다. '

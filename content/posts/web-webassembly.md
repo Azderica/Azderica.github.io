@@ -4,7 +4,7 @@ slug: 00-web-webassembly
 date: 2021-02-18
 published: true
 tags: ['Web', 'Webassembly']
-series: false,
+series: false
 cover_image: ./images/WebassemblyText.png
 canonical_url: false
 description: '웹 어셈블리에 대해 정리합니다.'

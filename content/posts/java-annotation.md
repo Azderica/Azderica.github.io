@@ -4,7 +4,7 @@ slug: 12-java-study
 date: 2021-02-05
 published: true
 tags: ['Java', 'Stater', 'Annotation']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'Java Annotation에 대해 정리합니다.'

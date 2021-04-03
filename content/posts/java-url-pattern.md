@@ -1,13 +1,13 @@
 ---
-title: "[Java] url-pattern이란"
+title: '[Java] url-pattern이란'
 slug: 00-java-urlpattern
 date: 2020-11-03
 published: true
 tags: ['Java', 'JSP', 'Url-pattern', 'web.xml', 'Spring', 'Backend']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
-description: "url-pattern에 대해 정리합니다."
+description: 'url-pattern에 대해 정리합니다.'
 ---
 
 # Java Servlet : url-pattern 이란
@@ -29,7 +29,6 @@ url-pattern은 자바 서블릿 개발을 진행하다보면, 한번은 꼭 보�
 ## url-pattern의 종류
 
 url-pattern의 패턴은 3가지로 구성되지만, 이 자리에서는 디렉토리 패턴과 확장자 패턴에 대해 이야기 해보겠습니다. 정확히 일치하는 패턴의 경우는 말 그대로 `WebServlet('정확한/주소/URL/패턴')`으로 요청할 때만 실행된다.
-
 
 ### 디렉토리 패턴
 
@@ -55,7 +54,6 @@ public class TestServlet1 extends HttpServlet {
 
 ![image](https://user-images.githubusercontent.com/42582516/98429024-9dafa400-20e7-11eb-840a-0166bf5c0236.png)
 
-
 ```java
 @WebServlet("*.me")
 public class TestServlet2 extends HttpServlet {
@@ -65,7 +63,6 @@ public class TestServlet2 extends HttpServlet {
 ```
 
 - 다음 예시 코드는 매핑 이름에 상관없이 확장자가 .me 이면 실행됩니다.
-
 
 > 추가적으로 일반적으로 `/test/example.me`와 같이 요청이 들어온 경우, 앞의 디렉토리 이름을 우선시 하여 **TestServlet1**이 실행되며, `/없는디렉토리/example.me`의 요청의 경우에는 없는 디렉토리이므로 **.me**을 우선시하여 TestServlet2가 실행된다.
 
@@ -78,7 +75,9 @@ public class TestServlet2 extends HttpServlet {
 최근 업무가 많아져서... 블로그 작성할 시간이 부족해지는 것을 느낀다.
 
 ---
+
 **출처**
+
 - https://windorsky.tistory.com/entry/%EC%84%9C%EB%B8%94%EB%A6%BF-URL-pattern
 - https://dololak.tistory.com/740
 - https://rwd337.tistory.com/34

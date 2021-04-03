@@ -4,7 +4,7 @@ slug: 00-java-pojo
 date: 2021-02-15
 published: true
 tags: ['Java', 'Pojo', 'Spring']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: '자바 POJO개념에 대해 정리합니다.'

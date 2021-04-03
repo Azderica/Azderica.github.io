@@ -1,14 +1,13 @@
 ---
-title: "[Springboot H2] H2 Console 접속 에러"
+title: '[Springboot H2] H2 Console 접속 에러'
 slug: 01-h2-console
 date: 2020-10-01
 published: true
 tags: ['History', 'Error', 'Springboot', 'h2', 'h2console']
-series: false,
+series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " H2 Console 접속 에러 및 그에 따른 해결책입니다. "
-
+description: ' H2 Console 접속 에러 및 그에 따른 해결책입니다. '
 ---
 
 # H2 Console 접속 에러
@@ -28,7 +27,6 @@ h2 console 접속시 관련 문제.
 ### 원인
 
 - properties 설정에 h2-console 사용 여부를 설정하지 않는 경우
-
 
 ### 해결책
 
@@ -53,4 +51,3 @@ spring.h2.console.enable = true
 ```xml
 spring.datasource.url=jdbc:h2:mem:testdb
 ```
-

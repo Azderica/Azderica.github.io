@@ -4,7 +4,7 @@ slug: 00-web-pwa
 date: 2021-02-17
 published: true
 tags: ['Web', 'App', 'Pwa']
-series: false,
+series: false
 cover_image: ./images/PwaLogoImage.png
 canonical_url: false
 description: 'PWA에 대해 정리합니다.'

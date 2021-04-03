@@ -1,13 +1,13 @@
 ---
-title: "[Springboot] Springboot 테스트 코드 작성하기"
+title: '[Springboot] Springboot 테스트 코드 작성하기'
 slug: 01-springboot-test
 date: 2020-10-26
 published: true
 tags: ['Spring', 'Springboot', 'Springboot API', 'Test', 'Backend']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " Springboot Test에 대한 코드입니다. "
+description: ' Springboot Test에 대한 코드입니다. '
 ---
 
 # Springboot 테스트 코드
@@ -54,13 +54,13 @@ description: " Springboot Test에 대한 코드입니다. "
 
 ### 자주 사용하는 JUnit 메서드
 
-| 메서드 | 기능 |
-|-------------------|------|
-| **assertEquals(a,b)** | 객체 a, b의 값이 일치하는 지 확인 |
-| assertArrayEquals(a,b) | 배열 a, b의 값이 일치하는 지 확인|
-| assertSame(a,b) | 객체 a, b가 같은 객체인지를 확인 <br/> 두 객체의 레퍼런스가 동일한지 확인|
-| assertTrue(a) | 조건 a가 참인가를 확인 |
-| **assertNotNull(a)** | 객체 a가 null이 아님을 확인 |
+| 메서드                 | 기능                                                                      |
+| ---------------------- | ------------------------------------------------------------------------- |
+| **assertEquals(a,b)**  | 객체 a, b의 값이 일치하는 지 확인                                         |
+| assertArrayEquals(a,b) | 배열 a, b의 값이 일치하는 지 확인                                         |
+| assertSame(a,b)        | 객체 a, b가 같은 객체인지를 확인 <br/> 두 객체의 레퍼런스가 동일한지 확인 |
+| assertTrue(a)          | 조건 a가 참인가를 확인                                                    |
+| **assertNotNull(a)**   | 객체 a가 null이 아님을 확인                                               |
 
 <br/>
 
@@ -111,7 +111,9 @@ description: " Springboot Test에 대한 코드입니다. "
 이후에는 mock과 mockito에 대해서 작성해보아야 겠다.
 
 ---
+
 **출처**
+
 - https://donghun.dev/Spring-Boot-Test-Keywrod-one
 - https://epthffh.tistory.com/entry/Junit을-이용한-단위테스트
 - https://shlee0882.tistory.com/202

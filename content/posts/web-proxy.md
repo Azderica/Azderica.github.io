@@ -4,7 +4,7 @@ slug: 00-web-proxy
 date: 2021-03-06
 published: true
 tags: ['Web', 'WebProxy', 'Proxy']
-series: false,
+series: false
 cover_image: ./images/WebProxyText.png
 canonical_url: false
 description: '웹 프록시에 대해 정리합니다.'

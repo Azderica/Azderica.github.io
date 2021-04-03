@@ -4,7 +4,7 @@ slug: 02-vuejs-starter
 date: 2020-12-12
 published: true
 tags: ['VueJS', 'Vue', 'Component', 'Frontend']
-series: true,
+series: true
 cover_image: ./images/VuejsLogo.png
 canonical_url: false
 description: " 'Vuejs 시작하기'의 두번째 게시글입니다. "

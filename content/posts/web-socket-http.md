@@ -4,7 +4,7 @@ slug: 00-web-socket
 date: 2021-01-04
 published: true
 tags: ['Web', 'Socket', 'HTTP']
-series: false,
+series: false
 cover_image: ./images/SocketVsHttp.png
 canonical_url: false
 description: 'Socket 통신과 HTTP 통신의 차이에 대해 서술합니다.'

@@ -4,7 +4,7 @@ slug: 00-springboot-cors
 date: 2020-12-27
 published: true
 tags: ['Springboot', 'Web', 'Cors', 'HTTP', 'Backend']
-series: false,
+series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: ' Springboot CORS에 대한 해결방법입니다.'

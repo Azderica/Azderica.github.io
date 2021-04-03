@@ -4,7 +4,7 @@ slug: 00-network-ldap
 date: 2021-01-19
 published: true
 tags: ['Network', 'LDAP', 'Web', 'Protocol']
-series: false,
+series: false
 cover_image: ./images/LdapText.png
 canonical_url: false
 description: 'LDAP에 대해 작성합니다.'

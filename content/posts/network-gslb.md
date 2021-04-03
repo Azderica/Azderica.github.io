@@ -4,7 +4,7 @@ slug: 00-network-gslb
 date: 2021-01-11
 published: true
 tags: ['Network', 'Devops', 'GSLB', 'DNS', 'Server', 'Backend']
-series: false,
+series: false
 cover_image: ./images/GlsbText.png
 canonical_url: false
 description: 'GSLB에 대해 작성합니다.'

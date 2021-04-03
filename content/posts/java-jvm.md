@@ -4,7 +4,7 @@ slug: 01-java-study
 date: 2020-12-29
 published: true
 tags: ['Java', 'Stater', 'Jvm']
-series: true,
+series: true
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'JVM 대해 정리합니다.'

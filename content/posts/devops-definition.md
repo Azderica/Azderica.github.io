@@ -4,7 +4,7 @@ slug: 00-devops-definition
 date: 2021-01-09
 published: true
 tags: ['Devops', 'Infra']
-series: false,
+series: false
 cover_image: ./images/CicdLogo.png
 canonical_url: false
 description: 'DevOps의 정의와 개념에 대해 정리합니다.'

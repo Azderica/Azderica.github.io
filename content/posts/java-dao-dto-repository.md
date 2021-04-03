@@ -1,13 +1,13 @@
 ---
-title: "[Java] DAO, DTO, Repository을 이해하자"
+title: '[Java] DAO, DTO, Repository을 이해하자'
 slug: 00-java-repositorys
 date: 2020-11-01
 published: true
 tags: ['Java', 'DAO', 'DTO', 'Repository', 'Spring', 'Backend']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
-description: " dao, dto, repository에 대한 기본적인 내용을 정리합니다. "
+description: ' dao, dto, repository에 대한 기본적인 내용을 정리합니다. '
 ---
 
 # DAO, DTO, Repository, Entity Class를 이해하기
@@ -21,6 +21,7 @@ description: " dao, dto, repository에 대한 기본적인 내용을 정리합�
 <br/>
 
 ## Repository
+
 - MVC 패턴에서 모델에 해당하는 부분으로 POJO로는 접근불가능하다.
 - Persistence Layer와 1:1 매칭이 가능하다.
 - Java Persistenc API 구현체를 통해서 자바 객체에 접근할 수 있다.
@@ -41,8 +42,8 @@ public class MemberRepository {
 
 해당 코드는 JPA 구현체가 Entity Model 객체를 사용해서 DB에 접근한다.
 
-
 > POJO란.
+>
 > - 간단하게 설명하자면, "getter / setter를 가진 단순한 자바 오프젝트"이며 의존성이 없고, 테스트도 용이하며 추후 수정이 편리한 오프젝트라고 설명할 수 있을 것 같다/
 > - 좀 더 자세하게 설명하면 더 복잡해서 POJO에 대한 글은 다음에 따로 정리하겠다.
 
@@ -89,7 +90,7 @@ public class Member {
 @RequiredArgsConstructor
 public class MemberService {
 
-    private final MemberRepository memberRepository; 
+    private final MemberRepository memberRepository;
 ```
 
 다음 코드는 서비스 계층의 Repository를 사용한 코드이다.
@@ -114,6 +115,7 @@ static class MemberDto {
 이러한 경우 다음과 같이 DTO를 사용한다.
 
 특징은 다음과 같다.
+
 - Getter/Setter가 없다.
 - Wrapping 된 순수한 데이터 객체
 - Entity에 직접 접근하지 않으므로, Entity 변경시, DTO만 변경하면 된다.
@@ -129,61 +131,70 @@ static class MemberDto {
 구성은 다음 4개와 같다.
 
 ### Domain(Entity)
-  - 
-  ```java
-  @Entity
-  @Getter @Setter
-  public class Member {
-      @Id @GeneratedValue
-      @Column(name = "member_id")
-      private Long id;
 
-  ```
-  - DB 테이블과 1:1 매칭된다.
+-
+
+```java
+@Entity
+@Getter @Setter
+public class Member {
+    @Id @GeneratedValue
+    @Column(name = "member_id")
+    private Long id;
+
+```
+
+- DB 테이블과 1:1 매칭된다.
 
 ### Repository(DAO)
-  ```java
-  @Repository
-  @RequiredArgsConstructor
-  public class MemberRepository{
 
-      private final EntityManager em;
-  ```
-  - Entity를 통해 데이터를 DB에 저장된다.
-  - 엔티티는 DB의 데이터와 매칭되는 것 
-  - 실제 DB에 데이터를 저장하는 건 Repository 클래스의 Entity Manager를 통해 이루어진다
+```java
+@Repository
+@RequiredArgsConstructor
+public class MemberRepository{
+
+    private final EntityManager em;
+```
+
+- Entity를 통해 데이터를 DB에 저장된다.
+- 엔티티는 DB의 데이터와 매칭되는 것
+- 실제 DB에 데이터를 저장하는 건 Repository 클래스의 Entity Manager를 통해 이루어진다
 
 ### Service
-  ```java
-  @Service
-  @Transactional(readOnly = true)
-  @RequiredArgsConstructor 
-  public class MemberService {
 
-      private final MemberRepository memberRepository;
-  ```
-  - 프레젠테이션(뷰)에서 엔티티에 직접 접근하지않고 비즈니스 로직을 처리할 수 있도록하는 계층이다.
-  - Repository에 정의된 비즈니스 로직을 처리하거나 엔티티에 접근한다.
+```java
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+public class MemberService {
+
+    private final MemberRepository memberRepository;
+```
+
+- 프레젠테이션(뷰)에서 엔티티에 직접 접근하지않고 비즈니스 로직을 처리할 수 있도록하는 계층이다.
+- Repository에 정의된 비즈니스 로직을 처리하거나 엔티티에 접근한다.
 
 ### Controller
-  ```java
-  @RestController // Response + Request
-  @RequiredArgsConstructor
-  public class MemberApiController {
-      private final MemberService memberService;
-      
-      @GetMapping("api/v1/members")
-      public Result<List<MemberDto>> memberV2() {
-  ```
-  - 프레젠테이션 계층으로 클라이언트의 요청을 처리한다.
-  - 엔티티는 서비스에 의해 추상화되어 직접 접근 불가능하다.
-  - 서비스에 정의된 비즈니스 로직을 호출한다.
-  - ResponseBody에 데이터를 담아 반환해준다
 
+```java
+@RestController // Response + Request
+@RequiredArgsConstructor
+public class MemberApiController {
+    private final MemberService memberService;
+
+    @GetMapping("api/v1/members")
+    public Result<List<MemberDto>> memberV2() {
+```
+
+- 프레젠테이션 계층으로 클라이언트의 요청을 처리한다.
+- 엔티티는 서비스에 의해 추상화되어 직접 접근 불가능하다.
+- 서비스에 정의된 비즈니스 로직을 호출한다.
+- ResponseBody에 데이터를 담아 반환해준다
 
 ---
 
 **출처**
+
 - https://gmlwjd9405.github.io/2018/12/25/difference-dao-dto-entity.html
 - https://velog.io/@agugu95/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%8C%A8%ED%84%B4%EA%B3%BC-DAO-DTO-Repository
 - https://shinsunyoung.tistory.com/42

@@ -4,7 +4,7 @@ slug: 00-db-couchbase-xdcr
 date: 2021-04-02
 published: true
 tags: ['Database', 'NoSql', 'Couchbase', 'Xdcr']
-series: false,
+series: false
 cover_image: ./images/CouchbaseLogo.png
 canonical_url: false
 description: 'Couchbase XDCR에 대해 정리합니다.'

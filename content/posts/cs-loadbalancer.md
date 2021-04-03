@@ -1,14 +1,13 @@
 ---
-title: "[CS] Load Balancer(로드밸런서)"
+title: '[CS] Load Balancer(로드밸런서)'
 slug: 00-load-balancer
 date: 2020-10-18
 published: true
 tags: ['CS', 'Virtualization', 'Load-Balancer', 'Citrix', 'F5', '로드밸런서']
-series: false,
+series: false
 cover_image: ./images/Virtualization.jpg
 canonical_url: false
-description: " 로브밸런서에 대한 글입니다. "
-
+description: ' 로브밸런서에 대한 글입니다. '
 ---
 
 # Load Balancer(로드밸런서)
@@ -27,7 +26,8 @@ description: " 로브밸런서에 대한 글입니다. "
 
 이 로드밸런서가 없으면 하나의 서버는 모든 사람들의 응답을 해주려고 노력하지만 클라이언트가 많아질수록 성능이 안나오게 된다.
 
-이를 해결하기 위해서는 2가지 방안, `scale-up` 과 `scale-out`을 제시할 수 있다. 
+이를 해결하기 위해서는 2가지 방안, `scale-up` 과 `scale-out`을 제시할 수 있다.
+
 - `scale up` : 서버의 하드웨어 성능을 올려서 더 빠르게 동작시킨다.
 - `scale out` : 하나의 서버보다는 여러대의 서버가 나눠서 일을 한다.
 
@@ -82,11 +82,13 @@ description: " 로브밸런서에 대한 글입니다. "
 일반적으로 로드밸런서는 크게 L4와 L7을 사용한다.
 
 공통점
+
 - 들어온 packet을 적절한 목적지로 전달(스위치)
 - 적절한 알고리즘을 통해 로드밸런서로서의 역할을 수행
 - 스위치 및 서버별 Health Check를 한다.
 
 차이점
+
 - L4는 L/B에서 알고리즘을 통해 server1 또는 server2로 데이터를 전송할지 결정을 하고 Client와 3way handshake 실행하는 하나의 TCP세션을 갖게 된다.
 - L7는 L/B에서 콘텐츠 기반 스위칭을 위해 3way handshake를 보류한다. L/B와 client 간 3way handshake를 실행하여 따로 TCP 세션을 생성한다. L7과 server서버는 또 다른 TCP 세션을 생성하고 데이터를 중계한다.
 - L7는 Dos/SYN Attack에 대한 방어한다.
@@ -95,9 +97,9 @@ description: " 로브밸런서에 대한 글입니다. "
 - L4는 TCP/UDP 패킷 정보를 분석하고 해당 패킷이 사용하는 서비스 종류별(HTTP, FTP 등)로 처리한다.(L4 Mega Proxy 문제 발생)
   - Mega Proxy : IP기반 분리는 요청 양의 불균형이 일어날 수 있다.
 
-
 **HTTP**
 ![image](https://user-images.githubusercontent.com/42582516/97098788-6cd17700-16c4-11eb-9705-fe3150b62645.png)
+
 - `X-Forwarded-For`
   - HTTP 또는 HTTPS 로드 밸런서를 사용할 때 클라이언트의 IP 주소를 식별하는 데 도움을 줍니다.
 - `X-Forwarded-Proto`
@@ -137,7 +139,6 @@ description: " 로브밸런서에 대한 글입니다. "
 ## 마무리..
 
 로드밸런서에 대한 설명이 끝났기 때문에 실업무에서 사용하는 로드밸런서 장비와 그 차이에 대해서 이후에 작성해보겠다.
-
 
 ---
 

@@ -4,7 +4,7 @@ slug: 10-java-study
 date: 2021-01-22
 published: true
 tags: ['Java', 'Stater', 'Multithread']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'Java 멀티쓰레드에 대해 정리합니다.'

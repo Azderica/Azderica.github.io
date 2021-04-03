@@ -1,13 +1,13 @@
 ---
-title: "[ASP.NET] ASP.NET 시작하기"
+title: '[ASP.NET] ASP.NET 시작하기'
 slug: 00-dotnet
 date: 2020-08-15
 published: true
 tags: ['.NET', 'Dotnet', 'ASP.NET', 'Backend']
-series: false,
+series: false
 cover_image: ./images/ASPNETLogo.jpeg
 canonical_url: false
-description: " ASP.NET 개발에 대한 시작글입니다. "
+description: ' ASP.NET 개발에 대한 시작글입니다. '
 ---
 
 # ASP.NET 시작하기
@@ -18,11 +18,11 @@ description: " ASP.NET 개발에 대한 시작글입니다. "
 
 ### 과거. ASP.NET Web Forms
 
-| 계층적 구조       | 단계                                                         |
-| ----------------- | ------------------------------------------------------------ |
-| ASP.NET Web Forms | UI 구성요소들의 모음(페이지, 버튼 등) 및  상태가 존재하는 개체-지향 GUI 프로그래밍 모델 |
+| 계층적 구조       | 단계                                                                                     |
+| ----------------- | ---------------------------------------------------------------------------------------- |
+| ASP.NET Web Forms | UI 구성요소들의 모음(페이지, 버튼 등) 및 상태가 존재하는 개체-지향 GUI 프로그래밍 모델   |
 | ASP.NET           | .NET 응용 프로그램을 IIS상에서 호스트하는 방식, HTTP 요청 및 응답을 통해서 상호작용 가능 |
-| .NET              | 다중 언어를 지원하는 관리되는 코드 플랫폼                    |
+| .NET              | 다중 언어를 지원하는 관리되는 코드 플랫폼                                                |
 
 문제점.
 
@@ -36,17 +36,20 @@ description: " ASP.NET 개발에 대한 시작글입니다. "
 ### 오늘날의 웹 개발.
 
 1. 웹 표준과 REST의 등장
+
    - 웹 표준 기술 : HTML, CSS, JS
    - REST(Representational State Transfer)
 
 2. 애자일과 테스트 주도 개발
-   - 애자일 개발 방법론 
+
+   - 애자일 개발 방법론
    - 테스트 주도 개발(Test-Driven Developmnet, TDD)
      - 관련있는 개발론 : 행위 주도 개발(Behavior-Driven Development, BDD)
      - 단위 테스트 도구
      - UI 자동화 도구
 
 3. 루비 온 레일즈(레일즈)
+
    - MVC 아키텍처를 채용
    - HTTP 프로토콜과 어우러짐
    - 규약(Convention)을 권장
@@ -83,15 +86,8 @@ description: " ASP.NET 개발에 대한 시작글입니다. "
    - 원본 코드를 다운 받을 수 있음
    - 원본 소스에 접근하기 편함
 
-
-
 예제 코드 : www.apress.com/9781430265290
 
 책 : 프로 ASP.NET MVC 5 프레임 워크
 
 개발 환경 : Visual Studio 2013
-
-
-
-
-

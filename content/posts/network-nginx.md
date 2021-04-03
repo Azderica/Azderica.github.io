@@ -4,7 +4,7 @@ slug: 00-network-nginx
 date: 2021-01-14
 published: true
 tags: ['Network', 'Nginx', 'Web', 'Server', 'Backend']
-series: false,
+series: false
 cover_image: ./images/NginxLogo.png
 canonical_url: false
 description: 'NGINX에 대해 작성합니다.'

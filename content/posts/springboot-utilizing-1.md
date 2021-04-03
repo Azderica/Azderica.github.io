@@ -1,26 +1,25 @@
 ---
-title: "[Springboot] Springboot 활용하기 - 1"
+title: '[Springboot] Springboot 활용하기 - 1'
 slug: 01-springboot-utilizing
 date: 2020-08-03
 published: true
 tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: " 'Springboot 활용하기'의 첫번째 게시글입니다. "
-
 ---
 
 # Springboot 활용하기
 
-| 스프링 부트 핵심 기능 | 각종 기술 연동 |
-|------------------|-------------|
-| SpringApplication | 스프링 웹 MVC |
-| 외부설정 | 스프링 웹 MVC |
-| 프로파일 | 스프링 데이터 |
-| 로깅 | 스프링 시큐리티 |
-| 테스트 | REST API 클라이언트 |
-| Spring-Dev-Tools | 다루지 않은 내용들 |
+| 스프링 부트 핵심 기능 | 각종 기술 연동      |
+| --------------------- | ------------------- |
+| SpringApplication     | 스프링 웹 MVC       |
+| 외부설정              | 스프링 웹 MVC       |
+| 프로파일              | 스프링 데이터       |
+| 로깅                  | 스프링 시큐리티     |
+| 테스트                | REST API 클라이언트 |
+| Spring-Dev-Tools      | 다루지 않은 내용들  |
 
 <br/>
 
@@ -34,11 +33,12 @@ Tip) 자동 설정이 되지않을때나 궁금할때는 디버그를 보면 확
   - 뒤에로깅수업때자세히살펴볼예정
 - FailureAnalyzer
 - 배너
+
   - banner.txt | gif | jpg | png
   - classpath 또는 spring.banner.location
-  - ${spring-boot.version} 등의 변수를 사용할 수 있음.
+  - \${spring-boot.version} 등의 변수를 사용할 수 있음.
   - Banner 클래스 구현하고 SpringApplication.setBanner()로 설정 가능.
-  
+
   ```java
   SpringApplication app = new SpringApplication(SpringinitApplication.class);
   app.setBanner((environment, sourceClass, out) -> {
@@ -46,25 +46,28 @@ Tip) 자동 설정이 되지않을때나 궁금할때는 디버그를 보면 확
     out.println("Spring Boot");
     out.println("===========");
   });
-  
+
   ```
-  
-- 배너끄는방법 
+
+- 배너끄는방법
+
   - SpringApplicationBuilder로 빌더 패턴 사용 가능
-  
+
   ```java
   new SprintApplicationBuilder()
       .sources(SpringinitApplication.class)
       .run(args);
-  
+
   ```
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spring-applicatio n.html#boot-features-application-events-and-listeners
 
 - ApplicationEvent 등록
+
   - ApplicationContext를 만들기 전에 사용하는 리스너는 @Bean으로 등록할 수 없다.
+
     - SpringApplication.addListners()
-    
+
     ```java
     // SampleListner
     public class SampleListner implements ApplicationListener<ApplicationStartedEvent> {
@@ -76,37 +79,40 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spr
           System.out.println("=======================");
       }
     }
-    
+
     // Application
     @SpringBootApplication
     public class Application {
 
-	    public static void main(String[] args){
-		    SpringApplication app = new SpringApplication(Application.class);
-		    app.addListeners(new SampleListner());
-		    app.run(args);
-	    }
+    ){
+    );
+    );
+    );
+     }
     }
     ```
-    
+
     다음과 같이 작성시. Spring 이 빌드될 때 찍히는 거 볼 수 있다.
+
 - WebApplicationType 설정
 
   WebApplicationType은 Servlet, Reactive, None 등이 있는데 이걸로 돌아간다.
-  
+
   둘 다 없으면 None으로 돌려야하고, 두개다 있으면 Servlet으로 돌아간다. Reactive로 하고 싶으면 따로 작성해야한다.
 
 - 애플리케이션 아규먼트 사용하기
-  - ApplicationArguments를 빈으로 등록해 주니까 가져다 쓰면 됨. 
-  
+
+  - ApplicationArguments를 빈으로 등록해 주니까 가져다 쓰면 됨.
+
   argument에 생성자가 하나면 Bean을 생성할 때 자동으로 해준다.
-  
+
 - 애플리케이션 실행한 뒤 뭔가 실행하고 싶을 때
+
   - ApplicationRunner (추천) 또는 CommandLineRunner
   - 순서 지정 가능 @Order
-    
+
     숫자가 높을수록 우선순위가 높은 것.
-  
+
 <br/>
 
 ## 외부 설정
@@ -153,16 +159,16 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
 
 랜덤값 설정하기
 
-- ${random.*}
+- \${random.\*}
 
 플레이스 홀더
 
 > 인풋텍스트나 아레아 등에서 안내 문구를 삽입해 주는 기능 + 클릭하면 사라지는 아주 좋은 기능
 
 - name = keesun
-- fullName = ${name} baik
+- fullName = \${name} baik
 
-### 타입-세이프 프로퍼티 
+### 타입-세이프 프로퍼티
 
 타입-세이프 프로퍼티 `@ConfigurationProperties`
 
@@ -200,7 +206,6 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
 
 <br/>
 
-
 ## 로깅
 
 로깅 퍼사드 VS 로거
@@ -216,7 +221,6 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
 - Spring-JCL
   - Commons Logging -> SLF4j or Log4j2
   - pom.xml에 exclusion 안해도 됨.
-
 
 스프링 부트 로깅
 
@@ -238,13 +242,13 @@ Log4J2: log4j2-spring.xml
 JUL (비추): logging.properties
 
 Logback extension
+
 - 프로파일 <springProfile name=”프로파일”>
 - Environment 프로퍼티 <springProperty>
-	
-	
+
 로거를 Log4j2로 변경하기
 
-https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging
 
 <br/>
 
@@ -253,9 +257,11 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.htm
 https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing
 
 시작은 일단 spring-boot-starter-test를 추가하는 것 부터
+
 - test 스콥으로 추가.
 
 @SpringBootTest
+
 - @RunWith(SpringRunner.class)랑 같이 써야 함.
 - 빈 설정 파일은 설정을 안해주나? 알아서 찾습니다. (@SpringBootApplication)
 - webEnvironment
@@ -300,12 +306,13 @@ class SpringtestdemoApplicationTests {
 
 ```
 
-
 @MockBean
+
 - ApplicationContext에 들어있는 빈을 Mock으로 만든 객체로 교체 함.
 - 모든 @Test 마다 자동으로 리셋.
 
 슬라이스 테스트
+
 - 레이어 별로 잘라서 테스트하고 싶을 때 (빈을 다 체크하고 싶지 않을때)
 - @JsonTest
 - @WebMvcTest
@@ -316,9 +323,10 @@ class SpringtestdemoApplicationTests {
 스프링 테스트
 
 - **OutputCapture**
+
   - Log에 찍히는 모든 output를 캡쳐한다.
-  - ex) ```assertThat(outputCapture.toString()).contains("holoman").contains("skip");```
-  
+  - ex) `assertThat(outputCapture.toString()).contains("holoman").contains("skip");`
+
 - TestPropertyValues
 - TestRestTemplate
 - ConfigFileApplicationContextInitializer
@@ -336,9 +344,7 @@ class SpringtestdemoApplicationTests {
   - 브라우저 플러그인 설치해야 함.
   - 라이브 릴로드 서버 끄려면? spring.devtools.liveload.enabled = false
 - 글로벌 설정
-  - ~/.spring-boot-devtools.properties 
+  - ~/.spring-boot-devtools.properties
     - 1순위 외부 설정, 우선순위가 가장 높음
 - 리모트 애플리케이션
   - 원격에서 할 수 있는데. 추천은 안함(복잡함, 보안적 측면 문제)
-
-

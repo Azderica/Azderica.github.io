@@ -4,7 +4,7 @@ slug: 02-springboot-gradle
 date: 2020-10-23
 published: true
 tags: ['Springboot', 'Maven', 'Gradle', 'Change', 'Backend']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: ' 지난 글에 이어Maven을 Gradle로 바꾸는 내용을 설명합니다. '

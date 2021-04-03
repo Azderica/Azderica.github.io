@@ -4,7 +4,7 @@ slug: 00-network-cdn
 date: 2020-12-28
 published: true
 tags: ['Network', 'CDN', 'HTTP', 'Server', 'Backend']
-series: false,
+series: false
 cover_image: ./images/CdnText.png
 canonical_url: false
 description: ' CDN에 대해 작성합니다.'

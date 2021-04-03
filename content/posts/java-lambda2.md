@@ -4,7 +4,7 @@ slug: 15-java-study
 date: 2021-03-04
 published: true
 tags: ['Java', 'Stater', 'Lambda']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
 description: 'Java Lambda에 대해 좀 더 자세하게 정리합니다.'

@@ -4,7 +4,7 @@ slug: 00-programming-nameConvention
 date: 2021-03-15
 published: true
 tags: ['TIP', 'Name', 'Convention']
-series: false,
+series: false
 cover_image: ./images/programmingImageSample.jpeg
 canonical_url: false
 description: '프로그래밍 표기법에 대해 이야기합니다.'

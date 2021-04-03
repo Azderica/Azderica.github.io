@@ -4,7 +4,7 @@ slug: 00-network-nat
 date: 2021-01-26
 published: true
 tags: ['Network', 'Nat', 'Web', 'Ip']
-series: false,
+series: false
 cover_image: ./images/NatText.jpg
 canonical_url: false
 description: 'NAT의 개념을 잡습니다.'

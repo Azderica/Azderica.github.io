@@ -14,7 +14,7 @@ tags:
     'DBaaS',
     'Backend',
   ]
-series: false,
+series: false
 cover_image: ./images/ServerlessArchitectureImg.png
 canonical_url: false
 description: ' 서버리스와 서버 아키텍처에 대한 기본 내용을 정리한 글입니다. '

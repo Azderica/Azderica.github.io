@@ -4,7 +4,7 @@ slug: 02-gridsome-blog
 date: 2020-12-06
 published: true
 tags: ['Gridsome', 'Git', 'Gitblog', 'History']
-series: false,
+series: false
 cover_image: ./images/GridsomeLogo.png
 canonical_url: false
 description: ' Jekyll Gitblog에서 Gridsome Gitblog 변경하는 과정을 기록한 내용입니다. '
@@ -62,7 +62,7 @@ slug: 00-load-balancer
 date: 2020-10-18
 published: true
 tags: ['CS', 'Virtualization', 'Load-Balancer', 'Citrix', 'F5', '로드밸런서']
-series: false,
+series: false
 cover_image: ./images/Virtualization.jpg
 canonical_url: false
 description: " 로브밸런서에 대한 글입니다. "

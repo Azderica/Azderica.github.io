@@ -4,7 +4,7 @@ slug: 03-vuejs-starter
 date: 2020-12-15
 published: true
 tags: ['VueJS', 'Vue', 'Router', 'Ajax', 'HTTP', 'Resource', 'Frontend']
-series: true,
+series: true
 cover_image: ./images/VuejsLogo.png
 canonical_url: false
 description: " 'Vuejs 시작하기'의 세번째 게시글입니다. "

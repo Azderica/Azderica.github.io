@@ -4,7 +4,7 @@ slug: 00-web-jamstack
 date: 2021-02-16
 published: true
 tags: ['Web', 'Jamstack', 'Framework', 'Frontend']
-series: false,
+series: false
 cover_image: ./images/JamstackLogo.png
 canonical_url: false
 description: 'Jamstack에 대해 정리합니다.'

@@ -1,14 +1,13 @@
 ---
-title: "[VueJS] Vuejs 템플릿 문법"
+title: '[VueJS] Vuejs 템플릿 문법'
 slug: 04-vuejs-starter
 date: 2020-12-18
 published: true
 tags: ['VueJS', 'Vue', 'Template', 'Frontend']
-series: true,
+series: true
 cover_image: ./images/VuejsLogo.png
 canonical_url: false
 description: " 'Vuejs 시작하기'의 네번째 게시글입니다. "
-
 ---
 
 # Vue.js 템플릿 문법
@@ -28,8 +27,8 @@ description: " 'Vuejs 시작하기'의 네번째 게시글입니다. "
 ```js
 new Vue({
   data: {
-    message: 'Hello Vue.js'
-  }
+    message: 'Hello Vue.js',
+  },
 })
 ```
 
@@ -39,7 +38,7 @@ new Vue({
 
 <br/>
 
-## 디렉티브 
+## 디렉티브
 
 디렉티브는 **뷰로 화면의 요소를 더 쉽게 조작하기 위한 문법**입니다. 화면 조작에서 주로 사용하는 방식들을 모아서 디렉티브 형태로 제공합니다. 예를 들어 아래와 같이 특정 속성 값에 따라 화면의 영역을 표시하거나 표시하지 않을 수 있습니다.
 
@@ -48,16 +47,14 @@ new Vue({
 아래의 예시는 `show`의 속성값에 따라 Vue.js 텍스트가 출력되거나 되지 않습니다.
 
 ```html
-<div>
-    Hello <span v-if="show">Vue.js</span>
-</div>
+<div>Hello <span v-if="show">Vue.js</span></div>
 ```
 
 ```js
 new Vue({
-    data: {
-        show: false
-    }
+  data: {
+    show: false,
+  },
 })
 ```
 
@@ -73,9 +70,9 @@ new Vue({
 
 ```js
 new Vue({
-    data: {
-        items: ['shirts', 'jeans', 'hats']
-    }
+  data: {
+    items: ['shirts', 'jeans', 'hats'],
+  },
 })
 ```
 
@@ -85,21 +82,21 @@ new Vue({
 
 ```html
 <div id="app">
-    <button v-on:click="logText">click me</button>
-    <input type="text" v-on:keyup="logText">
-    <!-- <input type="text" v-on:keyup.enter="logText">-->
-    <!-- .enter를 붙이면 modified(엔터 친 경우) 된 경우만 적용 -->
-</div> 
+  <button v-on:click="logText">click me</button>
+  <input type="text" v-on:keyup="logText" />
+  <!-- <input type="text" v-on:keyup.enter="logText">-->
+  <!-- .enter를 붙이면 modified(엔터 친 경우) 된 경우만 적용 -->
+</div>
 ```
 
 ```js
 new Vue({
-    el: '#app',
-    methods: {
-        logText: function() {
-            console.log('clicked');
-        }
-    }
+  el: '#app',
+  methods: {
+    logText: function() {
+      console.log('clicked')
+    },
+  },
 })
 ```
 
@@ -124,6 +121,7 @@ new Vue({
 이 외에도 다양한 문법을 알아야하는 경우에는 일일히 그에 따른 개념을 외울수는 없기 때문에 공식 문서에서 보면서 찾아야합니다.
 
 공식 문서에 대한 링크는 다음과 같습니다.
+
 - [Vuejs v3 공식문서](https://v3.vuejs.org/)
 - [Vuejs v2 한글 공식문서](https://kr.vuejs.org/v2/guide/index.html)
 - [Form Input Binding](https://vuejs.org/v2/guide/forms.html#ad)
@@ -140,9 +138,9 @@ new Vue({
 
 ```js
 new Vue({
-    methods: {
-        // ...
-    }
+  methods: {
+    // ...
+  },
 })
 ```
 
@@ -158,9 +156,9 @@ new Vue({
 new Vue({
   methods: {
     clickButton() {
-      alert('clicked');
-    }
-  }
+      alert('clicked')
+    },
+  },
 })
 ```
 
@@ -177,21 +175,24 @@ new Vue({
 ```js
 new Vue({
   data: {
-    products: []
+    products: [],
   },
   methods: {
     displayProducts() {
-      this.fetchData();
+      this.fetchData()
       // ..
     },
     fetchData() {
-      axios.get('/products').then(function(response) {
-        this.products = response.data;
-      }).catch(function(error) {
-        alert(error);
-      });
-    }
-  }
+      axios
+        .get('/products')
+        .then(function(response) {
+          this.products = response.data
+        })
+        .catch(function(error) {
+          alert(error)
+        })
+    },
+  },
 })
 ```
 
@@ -220,10 +221,11 @@ computed: {
 ### computed 장점
 
 Computed 속성은 두가지의 장점이 있습니다,.
+
 - 코드의 가독성을 높여줍니다.
 - Computed 속성의 대상으로 정한 data 속성이 변했을 때 이를 감지하고 자동으로 다시 연산해줍니다.
 
-### computed 주의사항 1 - computed 속성은 인자를 받지않습니다. 
+### computed 주의사항 1 - computed 속성은 인자를 받지않습니다.
 
 아래는 잘못된 코드이며 정상적으로 동작하지 않습니다.
 
@@ -268,16 +270,16 @@ watch 속성은 **특정 데이터의 변화를 감지해서 자동으로 특정
 
 ```js
 new Vue({
-    data() {
-        return {
-            message: 'Hello'
-        }
-    },
-    watch: {
-        message: function(value, oldValue) {
-            console.log(value); 
-        }
+  data() {
+    return {
+      message: 'Hello',
     }
+  },
+  watch: {
+    message: function(value, oldValue) {
+      console.log(value)
+    },
+  },
 })
 ```
 
@@ -289,19 +291,19 @@ watch 대상 속상에 함수 대신에 메소드를 연결하는 예시입니�
 
 ```js
 new Vue({
-    data() {
-        return {
-            message: 'Hello'
-        }
-    },
-    methods: {
-        logMessage() {
-            console.log(this.message);
-        }
-    },
-    watch: {
-        'message': 'logMessage' // 대상 속성과 메서드 함수를 매칭합니다.
+  data() {
+    return {
+      message: 'Hello',
     }
+  },
+  methods: {
+    logMessage() {
+      console.log(this.message)
+    },
+  },
+  watch: {
+    message: 'logMessage', // 대상 속성과 메서드 함수를 매칭합니다.
+  },
 })
 ```
 
@@ -311,19 +313,19 @@ watch 대상 속성에 아래와 같이 `handler()`와 `immediate` 속성을 정
 
 ```js
 new Vue({
-    data() {
-        return {
-            message: 'Hello'
-        }
-    },
-    watch: {
-        'message': {
-            handler(value, oldValue){
-                console.log(value);
-            },
-            immediate: true // 컴포넌트가 생성되자마자 즉시 실행됩니다.
-        }
+  data() {
+    return {
+      message: 'Hello',
     }
+  },
+  watch: {
+    message: {
+      handler(value, oldValue) {
+        console.log(value)
+      },
+      immediate: true, // 컴포넌트가 생성되자마자 즉시 실행됩니다.
+    },
+  },
 })
 ```
 
@@ -342,7 +344,7 @@ Vue는 Vue 인스턴스의 데이터 변경을 관찰하고 반응하는 `watch 
 아래는 두 속성의 차이를 보여주는 코드입니다.
 
 ```html
-<div id="demo"> {{ fullName }} </div>
+<div id="demo">{{ fullName }}</div>
 ```
 
 ```js
@@ -401,15 +403,15 @@ var vm = new Vue({
 new Vue({
   el: '#app',
   data: {
-    message: 'hello'
+    message: 'hello',
   },
   filters: {
     capitalize: function(value) {
       if (!value) return ''
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
-    }
-  }
+    },
+  },
 })
 ```
 
@@ -432,12 +434,12 @@ export function translate() {
 
 ```js
 // main.js
-import Vue from 'vue';
-import * as filters from 'filters.js';
+import Vue from 'vue'
+import * as filters from 'filters.js'
 
 Object.keys(filters).forEach(function(key) {
-  Vue.filter(key, filters[key]);
-});
+  Vue.filter(key, filters[key])
+})
 
 new Vue({
   // ..
@@ -462,11 +464,11 @@ new Vue({
 <form v-on:submit.prevent="loginUser">
   <div>
     <label for="email">Email</label>
-    <input id="email" type="text" ref="email">
+    <input id="email" type="text" ref="email" />
   </div>
   <div>
     <label for="password">Password</label>
-    <input id="password" type="password" ref="password">
+    <input id="password" type="password" ref="password" />
   </div>
   <div>
     <button type="submit">Login</button>
@@ -478,14 +480,14 @@ new Vue({
 new Vue({
   methods: {
     loginUser() {
-      var email = this.$refs.email.value;
-      var password = this.$refs.password.value;
+      var email = this.$refs.email.value
+      var password = this.$refs.password.value
       axios.post('/login', {
         email: email,
-        password: password
-      });
-    }
-  }
+        password: password,
+      })
+    },
+  },
 })
 ```
 

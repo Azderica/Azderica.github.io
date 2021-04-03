@@ -4,7 +4,7 @@ slug: 00-server-idc
 date: 2020-12-30
 published: true
 tags: ['Server', 'Idc', 'Internet']
-series: false,
+series: false
 cover_image: ./images/IdcText.png
 canonical_url: false
 description: 'IDC에 대한 개념을 정리합니다. '

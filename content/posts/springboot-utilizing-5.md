@@ -1,10 +1,10 @@
 ---
-title: "[Springboot] Springboot 운영하기"
+title: '[Springboot] Springboot 운영하기'
 slug: 05-springboot-utilizing
 date: 2020-09-05
 published: true
 tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
-series: true,
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: " 'Springboot 활용하기'의 다섯번째 게시글입니다. "
@@ -21,6 +21,7 @@ description: " 'Springboot 활용하기'의 다섯번째 게시글입니다. "
 ### 스프링부트 Actuator 소개
 
 https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints
+
 - 의존성 추가
 - spring-boot-starter-actuator
 
@@ -30,28 +31,33 @@ https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production
 - JMX 또는 HTTP를 통해 접근 가능 함.
 - shutdown을 제외한 모든 Endpoint는 기본적으로 활성화 상태.
 - 활성화 옵션 조정
+
   - management.endpoints.enabled-by-default=false
   - management.endpoint.info.enabled=true
-  
+
 ### JMX와 HTTP
 
 #### JConsole 사용하기
+
 - 프로젝트 돌린 이후에, console 창에 `jconsole`이라고 입력하면 된다.
 - https://docs.oracle.com/javase/tutorial/jmx/mbeans/
 - https://docs.oracle.com/javase/7/docs/technotes/guides/management/jconsole.html
 
 #### VisualVM 사용하기
+
 - https://visualvm.github.io/download.html
 
 #### HTTP 사용하기
+
 - /actuator
 - health와 info를 제외한 대부분의 Endpoint가 기본적으로 비공개 상태
 - 공개 옵션 조정
+
   - `management.endpoints.web.exposure.include=*`
     - 단 이는, 위험함.
     - spring securtiy를 적용하는 것도 한 방법.
   - management.endpoints.web.exposure.exclude=env,beans
-  
+
 ### 스프링 부트 어드민
 
 - 아래는 반드시 스프링 security를 해야한다. 너무 민감한 정보들이 많다.
@@ -70,7 +76,6 @@ https://github.com/codecentric/spring-boot-admin 스프링 부트 Actuator UI �
 
 - 2.0.1 에서 안되서 버전을 2.2.4로 버전업 시켰다.(client도 마찬가지로 진행하였음)
 
-
 클라이언트 설정
 
 ```xml
@@ -83,6 +88,7 @@ https://github.com/codecentric/spring-boot-admin 스프링 부트 Actuator UI �
 spring.boot.admin.client.url=http://localhost:8080
 management.endpoints.web.exposure.include=*
 ```
+
 <br/>
 
 ## 스프링 마무리
@@ -95,9 +101,11 @@ management.endpoints.web.exposure.include=*
 - JAR 패키징
 
 ### 스프링 부트 활용
+
 - 스프링 부트 핵심 기능
 - 다양한 기술 연동
 
 ### 스프링 부트 운영
+
 - Actuator
 - 스프링 부트 어드민

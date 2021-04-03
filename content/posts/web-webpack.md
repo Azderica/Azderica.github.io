@@ -4,7 +4,7 @@ slug: 00-web-webpack
 date: 2021-01-18
 published: true
 tags: ['Web', 'Webpack', 'Bundler']
-series: false,
+series: false
 cover_image: ./images/webpackLogo.png
 canonical_url: false
 description: 'Webpack에 대해 정리합니다.'

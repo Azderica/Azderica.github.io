@@ -1,13 +1,13 @@
 ---
-title: "[Java] Java Optional"
+title: '[Java] Java Optional'
 slug: 00-java-optional
 date: 2020-12-14
 published: true
 tags: ['Java', 'Optional', 'Backend']
-series: false,
+series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false
-description: "Java Optional 대해 정리합니다."
+description: 'Java Optional 대해 정리합니다.'
 ---
 
 # Java Optional
@@ -18,17 +18,17 @@ Java8에서 Optional이 적용이 되었으나 실질적으로 개발에서 잘 
 
 `Java Optional`이란 "**존재할 수도 있지만 안 할수도 있는 객체**"입니다. 이를 좀더 풀어 설명한다면 null이 될 수도 있는 객체를 감싸고 있는 일종의 `Wrapper` 클래스입니다. 따라서 Optional 인스턴스는 모든 타입의 참조 변수를 저장할 수 있습니다.
 
-> Wrapper 클래스 : 8개의 기본타입(type, short, int, ...)의 데이터를 객체로 포장해주는 클래스, 각각의 타입에 해당하는 데이터를 인수로 전달받아, 해당 값을 가지는 객체 
+> Wrapper 클래스 : 8개의 기본타입(type, short, int, ...)의 데이터를 객체로 포장해주는 클래스, 각각의 타입에 해당하는 데이터를 인수로 전달받아, 해당 값을 가지는 객체
 
 <br/>
 
 ## Java Optional의 장점
 
 여러 가지 장점이 있으나 다음과 같이 서술할 수 있습니다.
+
 - `Null Pointer Exception`을 유발할 수 있는 null 을 직접 다루지 않아도 됩니다.
 - null 체크를 따로 하지 않아도 됩니다.
 - 명시적으로 해당 변수가 null일 수도 있다는 가능성을 표현할 수 있습니다. 따라서, 방어로직을 해결하면서 코드 가독성과 유지 보수성을 높일 수 있습니다.
-
 
 <br/>
 
@@ -40,7 +40,7 @@ Optional 변수는 제네릭을 제공하므로, 변수를 선언할 때 타입 
 
 ```java
 // Customer 타입의 객체를 감쌀 수 있는 Optional 타입의 변수
-Optional<Customer> storeCustomer;   
+Optional<Customer> storeCustomer;
 
 // Member 타입의 객체를 감쌀 수 있는 Optional 타입의 변수
 Optional<Member> optMebmer;
@@ -72,6 +72,7 @@ Optional<Member> optMember = Optional.of(dataMember);
 #### 3. Optional.ofNullable(value)
 
 null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성합니다. 일종의 앞에 두개의 객체 생성법을 합친 방법이라고 이해하면 좋습니다.
+
 - `Optional.ofNullable(value)` = `Optinal.empty()` + `Optional.of(value)`
 
 null이 넘어오는 경우에는 Null Pointer Exception이 발생하지 않고, `Optional.empty()`와 마찬가지로 비어있는 Optional 객체를 가져옵니다. 일반적으로 해당 객체가 null이 아닌지 자신이 없는 상황에서 사용하는 것이 좋습니다.
@@ -150,7 +151,9 @@ System.out.println(result); // print 'good'
 자바8에서 등장한 Optional 클래스에 대해서 정리해보았습니다. 다음 글에는 자바9와 자바 10에서 추가된 Optional 메서드에 대해 작성하고 이를 이용한 코드를 좀 더 본격적으로 다루어보겠습니다.
 
 ---
+
 **출처**
+
 - http://www.tcpschool.com/java/java_api_wrapper
 - https://www.daleseo.com/java8-optional-after/
 - https://jdm.kr/blog/234
