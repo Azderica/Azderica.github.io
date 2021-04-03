@@ -55,8 +55,8 @@
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>{{ message }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   data<span class="token operator">:</span> <span class="token punctuation">{</span>
-    message<span class="token operator">:</span> <span class="token string">'Hello Vue.js'</span>
-  <span class="token punctuation">}</span>
+    message<span class="token operator">:</span> <span class="token string">'Hello Vue.js'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>해당 코드는 div 태그에 <code class="language-text">{{}}</code>(Mustache Tag)를 통해 뷰 인스턴스의 <code class="language-text">message</code>속성을 연결해서 화면에 Hello Vue.js가 출력되게 됩니다.</p>
 <p>데이터를 바꾸는 경우에는 computed를 사용하는 것이 좋습니다.</p>
@@ -65,13 +65,11 @@
 <p>디렉티브는 <strong>뷰로 화면의 요소를 더 쉽게 조작하기 위한 문법</strong>입니다. 화면 조작에서 주로 사용하는 방식들을 모아서 디렉티브 형태로 제공합니다. 예를 들어 아래와 같이 특정 속성 값에 따라 화면의 영역을 표시하거나 표시하지 않을 수 있습니다.</p>
 <h3 id="v-if-예제"><a href="#v-if-%EC%98%88%EC%A0%9C" aria-hidden="true"><span class="icon icon-link"></span></a>v-if 예제</h3>
 <p>아래의 예시는 <code class="language-text">show</code>의 속성값에 따라 Vue.js 텍스트가 출력되거나 되지 않습니다.</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
-    Hello <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Vue.js<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Hello <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Vue.js<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    data<span class="token operator">:</span> <span class="token punctuation">{</span>
-        show<span class="token operator">:</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    show<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <h3 id="v-for-예제"><a href="#v-for-%EC%98%88%EC%A0%9C" aria-hidden="true"><span class="icon icon-link"></span></a>v-for 예제</h3>
 <p>또 다른 예시는 v-for 디렉토리를 통해서 데이터 속성의 개수만큼 화면의 요소를 반복하여 출력할 수 있습니다. 목록을 표현하는 경우 유용하게 사용가능합니다.</p>
@@ -79,25 +77,25 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name"><span class="token namespace">v-for:</span>"item</span> <span class="token attr-name">in</span> <span class="token attr-name">items"</span><span class="token punctuation">></span></span>{{item}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    data<span class="token operator">:</span> <span class="token punctuation">{</span>
-        items<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'shirts'</span><span class="token punctuation">,</span> <span class="token string">'jeans'</span><span class="token punctuation">,</span> <span class="token string">'hats'</span><span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    items<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'shirts'</span><span class="token punctuation">,</span> <span class="token string">'jeans'</span><span class="token punctuation">,</span> <span class="token string">'hats'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>이와 같이 사용할 수 있습니다.</p>
 <h3 id="v-on-예제-및-methods-속성"><a href="#v-on-%EC%98%88%EC%A0%9C-%EB%B0%8F-methods-%EC%86%8D%EC%84%B1" aria-hidden="true"><span class="icon icon-link"></span></a>v-on 예제 및 methods 속성</h3>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name"><span class="token namespace">v-on:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logText<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>click me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">v-on:</span>keyup</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logText<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token comment">&lt;!-- &lt;input type="text" v-on:keyup.enter="logText">--></span>
-    <span class="token comment">&lt;!-- .enter를 붙이면 modified(엔터 친 경우) 된 경우만 적용 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span> </code></pre>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name"><span class="token namespace">v-on:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logText<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>click me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">v-on:</span>keyup</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logText<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+  <span class="token comment">&lt;!-- &lt;input type="text" v-on:keyup.enter="logText">--></span>
+  <span class="token comment">&lt;!-- .enter를 붙이면 modified(엔터 친 경우) 된 경우만 적용 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    el<span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token function-variable function">logText</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'clicked'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+  el<span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">logText</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'clicked'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>해당 예제는 "click me"를 킁ㄹ릭시 console 창에 clicked 메세지가 발생합니다. input에 <code class="language-text">v-on:keyup</code>을 줌으로써, 입력하고 키보드를 떼는 순간 이벤트가 발생합니다.
 <code class="language-text">keyup.enter</code>를 붙이게 되면 modified된 경우에만 적용하게 됩니다.</p>
@@ -128,9 +126,9 @@
 <h3 id="method-코드-형식"><a href="#method-%EC%BD%94%EB%93%9C-%ED%98%95%EC%8B%9D" aria-hidden="true"><span class="icon icon-link"></span></a>Method 코드 형식</h3>
 <p>일반적인 메서드 코드의 형식은 아래와 같습니다.</p>
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token comment">// ...</span>
-    <span class="token punctuation">}</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <h3 id="method-예시---1"><a href="#method-%EC%98%88%EC%8B%9C---1" aria-hidden="true"><span class="icon icon-link"></span></a>Method 예시 - 1</h3>
 <p>기본적인 버튼 클릭 메서드입니다.</p>
@@ -138,9 +136,9 @@
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   methods<span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">clickButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'clicked'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
+      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'clicked'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>해당 예시 코드는 click me를 클릭하면 경고창이 뜨고 알람이 발생합니다.</p>
 <h3 id="method-예시---2"><a href="#method-%EC%98%88%EC%8B%9C---2" aria-hidden="true"><span class="icon icon-link"></span></a>Method 예시 - 2</h3>
@@ -148,21 +146,24 @@
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>displayProducts<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Refresh<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   data<span class="token operator">:</span> <span class="token punctuation">{</span>
-    products<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    products<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   methods<span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">displayProducts</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
       <span class="token comment">// ..</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      axios<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/products'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">products</span> <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">alert</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
+      axios
+        <span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/products'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">products</span> <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token property-access">data</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">alert</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>해당 코드에서 <code class="language-text">Refresh</code> 버튼 클릭 시, <code class="language-text">displayProducts()</code> 메서드가 실행되고, 이 메서드가 <code class="language-text">fetchData()</code>를 호출합니다. 이런식으로 연결하게 되면, 특정 기능 별로 메서드를 분리할 수 있고 코드를 중복없이 사용할 수 있게 됩니다.</p>
 <br/>
@@ -208,51 +209,51 @@ computed<span class="token operator">:</span> <span class="token punctuation">{<
 <p>watch 속성은 <strong>특정 데이터의 변화를 감지해서 자동으로 특정 로직을 수행해주는 속성</strong>입니다.</p>
 <p>코드 구현 형식은 다음과 같습니다.</p>
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
-            message<span class="token operator">:</span> <span class="token string">'Hello'</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    watch<span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token function-variable function">message</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> oldValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-        <span class="token punctuation">}</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+      message<span class="token operator">:</span> <span class="token string">'Hello'</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">message</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> oldValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>watch의 실용 문법은 아래와 같습니다.</p>
 <h3 id="watch-사용-방식-1---watch-속성에-메서드-함수-연결"><a href="#watch-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EC%8B%9D-1---watch-%EC%86%8D%EC%84%B1%EC%97%90-%EB%A9%94%EC%84%9C%EB%93%9C-%ED%95%A8%EC%88%98-%EC%97%B0%EA%B2%B0" aria-hidden="true"><span class="icon icon-link"></span></a>watch 사용 방식 1 - watch 속성에 메서드 함수 연결</h3>
 <p>watch 대상 속상에 함수 대신에 메소드를 연결하는 예시입니다.</p>
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
-            message<span class="token operator">:</span> <span class="token string">'Hello'</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token function">logMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    watch<span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token string">'message'</span><span class="token operator">:</span> <span class="token string">'logMessage'</span> <span class="token comment">// 대상 속성과 메서드 함수를 매칭합니다.</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+      message<span class="token operator">:</span> <span class="token string">'Hello'</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">logMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+    message<span class="token operator">:</span> <span class="token string">'logMessage'</span><span class="token punctuation">,</span> <span class="token comment">// 대상 속성과 메서드 함수를 매칭합니다.</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <h3 id="watch-사용-방식-2---핸들러와-초기-실행-옵션"><a href="#watch-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EC%8B%9D-2---%ED%95%B8%EB%93%A4%EB%9F%AC%EC%99%80-%EC%B4%88%EA%B8%B0-%EC%8B%A4%ED%96%89-%EC%98%B5%EC%85%98" aria-hidden="true"><span class="icon icon-link"></span></a>watch 사용 방식 2 - 핸들러와 초기 실행 옵션</h3>
 <p>watch 대상 속성에 아래와 같이 <code class="language-text">handler()</code>와 <code class="language-text">immediate</code> 속성을 정의할 수 있습니다.</p>
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
-            message<span class="token operator">:</span> <span class="token string">'Hello'</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    watch<span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token string">'message'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-            <span class="token function">handler</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> oldValue</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span><span class="token punctuation">,</span>
-            immediate<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token comment">// 컴포넌트가 생성되자마자 즉시 실행됩니다.</span>
-        <span class="token punctuation">}</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+      message<span class="token operator">:</span> <span class="token string">'Hello'</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+    message<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function">handler</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> oldValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      immediate<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 컴포넌트가 생성되자마자 즉시 실행됩니다.</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <h3 id="실제-코드"><a href="#%EC%8B%A4%EC%A0%9C-%EC%BD%94%EB%93%9C" aria-hidden="true"><span class="icon icon-link"></span></a>실제 코드</h3>
 <ul>
@@ -265,7 +266,7 @@ computed<span class="token operator">:</span> <span class="token punctuation">{<
 </ul>
 <p>Vue는 Vue 인스턴스의 데이터 변경을 관찰하고 반응하는 <code class="language-text">watch 속성</code>을 제공합니다. 다만, 다른 데이터 기반으로 변경할 필요가 있는 데이터의 경우에는 <code class="language-text">watch 속성</code> 보다는 <code class="language-text">computed 속성</code>이 좋습니다.</p>
 <p>아래는 두 속성의 차이를 보여주는 코드입니다.</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> {{ fullName }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ fullName }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-js"><code class="language-js"><span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     el<span class="token operator">:</span> <span class="token string">'#demo'</span><span class="token punctuation">,</span>
     data<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -306,15 +307,15 @@ computed<span class="token operator">:</span> <span class="token punctuation">{<
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   el<span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
   data<span class="token operator">:</span> <span class="token punctuation">{</span>
-    message<span class="token operator">:</span> <span class="token string">'hello'</span>
+    message<span class="token operator">:</span> <span class="token string">'hello'</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   filters<span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function-variable function">capitalize</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>value<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token string">''</span>
       value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token method function property-access">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
       <span class="token keyword control-flow">return</span> value<span class="token punctuation">.</span><span class="token method function property-access">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> value<span class="token punctuation">.</span><span class="token method function property-access">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>위 코드를 실행시키면 hello가 아닌 Hello 텍스트가 화면에 나오게됩니다.</p>
 <h3 id="필터-등록-패턴"><a href="#%ED%95%84%ED%84%B0-%EB%93%B1%EB%A1%9D-%ED%8C%A8%ED%84%B4" aria-hidden="true"><span class="icon icon-link"></span></a>필터 등록 패턴</h3>
@@ -328,12 +329,12 @@ computed<span class="token operator">:</span> <span class="token punctuation">{<
   <span class="token comment">// ..</span>
 <span class="token punctuation">}</span></code></pre>
 <pre class="language-js"><code class="language-js"><span class="token comment">// main.js</span>
-<span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Vue</span></span> <span class="token keyword module">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> <span class="token imports"><span class="token operator">*</span> <span class="token keyword module">as</span> filters</span> <span class="token keyword module">from</span> <span class="token string">'filters.js'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Vue</span></span> <span class="token keyword module">from</span> <span class="token string">'vue'</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token operator">*</span> <span class="token keyword module">as</span> filters</span> <span class="token keyword module">from</span> <span class="token string">'filters.js'</span>
 
 <span class="token known-class-name class-name">Object</span><span class="token punctuation">.</span><span class="token method function property-access">keys</span><span class="token punctuation">(</span>filters<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token maybe-class-name">Vue</span><span class="token punctuation">.</span><span class="token method function property-access">filter</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> filters<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token maybe-class-name">Vue</span><span class="token punctuation">.</span><span class="token method function property-access">filter</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> filters<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token comment">// ..</span>
@@ -348,11 +349,11 @@ computed<span class="token operator">:</span> <span class="token punctuation">{<
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name"><span class="token namespace">v-on:</span>submit.prevent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loginUser<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Email<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Password<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Login<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
@@ -361,14 +362,14 @@ computed<span class="token operator">:</span> <span class="token punctuation">{<
 <pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   methods<span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">loginUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">var</span> email <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$refs</span><span class="token punctuation">.</span><span class="token property-access">email</span><span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">;</span>
-      <span class="token keyword">var</span> password <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$refs</span><span class="token punctuation">.</span><span class="token property-access">password</span><span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> email <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$refs</span><span class="token punctuation">.</span><span class="token property-access">email</span><span class="token punctuation">.</span><span class="token property-access">value</span>
+      <span class="token keyword">var</span> password <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$refs</span><span class="token punctuation">.</span><span class="token property-access">password</span><span class="token punctuation">.</span><span class="token property-access">value</span>
       axios<span class="token punctuation">.</span><span class="token method function property-access">post</span><span class="token punctuation">(</span><span class="token string">'/login'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
         email<span class="token operator">:</span> email<span class="token punctuation">,</span>
-        password<span class="token operator">:</span> password
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
+        password<span class="token operator">:</span> password<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>이에 따른 설명은 아래의 원본 링크에서 더 자세히 볼 수 있습니다.</p>
 <ul>

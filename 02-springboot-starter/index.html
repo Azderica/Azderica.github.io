@@ -53,7 +53,7 @@
 <p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-dependency-management" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-dependency-management</a></p>
 <p>의존성으로 다 정의가 되어있어서 적게 신경을 써도 된다는 것은 큰 장점입니다.</p>
 <p>또한 parent를 바꿔서 dependency를 줄 수 있습니다. 만약에 parent를 못바꾸는 상항이면 dependencyManagement에 dependency를 주는 방법이 있습니다.</p>
-<p>일반적으로는 <strong>parent를 설정</strong>하여 <strong>dependency를 주는 것이 중요</strong>합니다. </p>
+<p>일반적으로는 <strong>parent를 설정</strong>하여 <strong>dependency를 주는 것이 중요</strong>합니다.</p>
 <p>의존성 관리 기능을 최대한 사용하는 것이 좋습니다.</p>
 <br/>
 <h2 id="의존성-관리-응용"><a href="#%EC%9D%98%EC%A1%B4%EC%84%B1-%EA%B4%80%EB%A6%AC-%EC%9D%91%EC%9A%A9" aria-hidden="true"><span class="icon icon-link"></span></a>의존성 관리 응용</h2>
@@ -72,7 +72,7 @@
 version이 없으면 따로 버전을 관리해줘야합니다.(다른 버전으로 처리가 안되는 경우가 발생할 수 있음. )</p>
 <h2 id="자동-설정-이해"><a href="#%EC%9E%90%EB%8F%99-%EC%84%A4%EC%A0%95-%EC%9D%B4%ED%95%B4" aria-hidden="true"><span class="icon icon-link"></span></a>자동 설정 이해</h2>
 <ul>
-<li><code class="language-text">@EnableAutoConfiguration</code> (<code class="language-text">@SpringBootApplication</code> 안에 숨어 있음) </li>
+<li><code class="language-text">@EnableAutoConfiguration</code> (<code class="language-text">@SpringBootApplication</code> 안에 숨어 있음)</li>
 <li>
 <p>빈(Bean)은 두단계로 나눠서읽혀집니다.</p>
 <ul>
@@ -81,8 +81,7 @@ version이 없으면 따로 버전을 관리해줘야합니다.(다른 버전으
 </ul>
 </li>
 <li>
-<p><code class="language-text">@ComponentScan</code>
--<code class="language-text">@Component</code></p>
+<p><code class="language-text">@ComponentScan</code> -<code class="language-text">@Component</code></p>
 <ul>
 <li><code class="language-text">@Configuration @Repository @Service @Controller @RestController</code></li>
 </ul>
@@ -141,12 +140,12 @@ version이 없으면 따로 버전을 관리해줘야합니다.(다른 버전으
 <li><code class="language-text">command + opt + L</code> : 줄 정렬</li>
 </ul>
 <p>AutoConfigure은 흠.. 현재 Process terminated 상태. => 나중에 하기</p>
-<p>문제는  Bean을 등록할려고 하는데 두가지 페이스. component scan 이 먼저 적용됩니다.
+<p>문제는 Bean을 등록할려고 하는데 두가지 페이스. component scan 이 먼저 적용됩니다.
 두번째 페이스가 auto configuration인데 첫번째를 두번째 애가 덮어쓴거다.</p>
 <p>이거를 해결하는 방법은 아래와 같습니다.</p>
 <br/>
 <h2 id="자동-설정-만들기-configurationproperties"><a href="#%EC%9E%90%EB%8F%99-%EC%84%A4%EC%A0%95-%EB%A7%8C%EB%93%A4%EA%B8%B0-configurationproperties" aria-hidden="true"><span class="icon icon-link"></span></a>자동 설정 만들기. @ConfigurationProperties</h2>
-<p><strong>덮어쓰기 방지하기</strong> </p>
+<p><strong>덮어쓰기 방지하기</strong></p>
 <ul>
 <li>@ConditionalOnMissingBean : 이 타입의 Bean이 없는 경우만 이 Bean을 등록하는 의미입니다.</li>
 </ul>
@@ -161,7 +160,7 @@ version이 없으면 따로 버전을 관리해줘야합니다.(다른 버전으
 <li>holoman.name = {쓰고 싶은 글, ex name}</li>
 <li>holoman.how-long = {쓰고 싶은 숫자. ex 10}</li>
 </ul>
-<p>또한 src\main\java\me.whiteship\HolomanProperties.class를 만들어서 name이랑 how-long에 대해 Get 이랑 set 다 정의하고 HolomanConfiguration에서 </p>
+<p>또한 src\main\java\me.whiteship\HolomanProperties.class를 만들어서 name이랑 how-long에 대해 Get 이랑 set 다 정의하고 HolomanConfiguration에서</p>
 <p>@EnableConfigurationProperties(HolomanProperties)와 같이 선언해서 하기</p>
 <pre class="language-xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>​org.springframework.boot​<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -271,12 +270,12 @@ server.ssl.key-store-password: 123456
 server.ssl.keyStoreType: PKCS12
 server.ssl.keyAlias: tomcat</code></pre>
 <p>generate-keystore.sh</p>
-<pre class="language-bash"><code class="language-bash">keytool -genkey 
-  -alias tomcat 
-  -storetype PKCS12 
-  -keyalg RSA 
-  -keysize <span class="token number">2048</span> 
-  -keystore keystore.p12 
+<pre class="language-bash"><code class="language-bash">keytool -genkey
+  -alias tomcat
+  -storetype PKCS12
+  -keyalg RSA
+  -keysize <span class="token number">2048</span>
+  -keystore keystore.p12
   -validity <span class="token number">4000</span></code></pre>
 <ul>
 <li>
@@ -312,7 +311,7 @@ server.ssl.keyAlias: tomcat</code></pre>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-	
+
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-undertow<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
@@ -351,7 +350,7 @@ server.http2.enabled=true</code></pre>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">></span></span></code></pre>
-<p>여기에  추가적으로 Project Setting에 Project에 version과, module을 맞춰줘야한다.
+<p>여기에 추가적으로 Project Setting에 Project에 version과, module을 맞춰줘야한다.
 그렇게 진행하면. 문제없이 http2로 돌아가는 것을 확인할 수 있다.</p>
 <ul>
 <li>JDK9와 Tomcat 9+ 추천</li>
@@ -366,9 +365,9 @@ server.http2.enabled=true</code></pre>
 <h2 id="독립적으로-실행-가능한-jar"><a href="#%EB%8F%85%EB%A6%BD%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%8B%A4%ED%96%89-%EA%B0%80%EB%8A%A5%ED%95%9C-jar" aria-hidden="true"><span class="icon icon-link"></span></a>독립적으로 실행 가능한 JAR</h2>
 <ul>
 <li>
-<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html</a> </p>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html</a></p>
 <ul>
-<li>JAR 파일 하나로 실행 가능, 이걸로 앱이 돌아간다.  - mvn package를 하면 실행 가능한 JAR 파일 “하나가" 생성 됨.</li>
+<li>JAR 파일 하나로 실행 가능, 이걸로 앱이 돌아간다. - mvn package를 하면 실행 가능한 JAR 파일 “하나가" 생성 됨.</li>
 <li>spring-maven-plugin이 해주는 일 (패키징)</li>
 <li>
 <p>과거 “uber” jar 를 사용</p>

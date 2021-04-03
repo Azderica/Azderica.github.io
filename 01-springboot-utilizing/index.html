@@ -99,7 +99,7 @@
 <ul>
 <li>banner.txt | gif | jpg | png</li>
 <li>classpath 또는 spring.banner.location</li>
-<li>${spring-boot.version} 등의 변수를 사용할 수 있음.</li>
+<li>\${spring-boot.version} 등의 변수를 사용할 수 있음.</li>
 <li>Banner 클래스 구현하고 SpringApplication.setBanner()로 설정 가능.</li>
 </ul>
 <pre class="language-java"><code class="language-java"><span class="token class-name">SpringApplication</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SpringApplication</span><span class="token punctuation">(</span><span class="token class-name">SpringinitApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -110,7 +110,7 @@ app<span class="token punctuation">.</span><span class="token function">setBanne
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </li>
 <li>
-<p>배너끄는방법 </p>
+<p>배너끄는방법</p>
 <ul>
 <li>SpringApplicationBuilder로 빌더 패턴 사용 가능</li>
 </ul>
@@ -144,11 +144,11 @@ app<span class="token punctuation">.</span><span class="token function">setBanne
 <span class="token annotation punctuation">@SpringBootApplication</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
 
-			    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-				    <span class="token class-name">SpringApplication</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SpringApplication</span><span class="token punctuation">(</span><span class="token class-name">Application</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				    app<span class="token punctuation">.</span><span class="token function">addListeners</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SampleListner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				    app<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-			    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>다음과 같이 작성시. Spring 이 빌드될 때 찍히는 거 볼 수 있다.</p>
 </li>
@@ -162,7 +162,7 @@ app<span class="token punctuation">.</span><span class="token function">setBanne
 <li>
 <p>애플리케이션 아규먼트 사용하기</p>
 <ul>
-<li>ApplicationArguments를 빈으로 등록해 주니까 가져다 쓰면 됨. </li>
+<li>ApplicationArguments를 빈으로 등록해 주니까 가져다 쓰면 됨.</li>
 </ul>
 <p>argument에 생성자가 하나면 Bean을 생성할 때 자동으로 해준다.</p>
 </li>
@@ -220,7 +220,7 @@ app<span class="token punctuation">.</span><span class="token function">setBanne
 </ol>
 <p>랜덤값 설정하기</p>
 <ul>
-<li>${random.*}</li>
+<li>\${random.*}</li>
 </ul>
 <p>플레이스 홀더</p>
 <blockquote>
@@ -228,7 +228,7 @@ app<span class="token punctuation">.</span><span class="token function">setBanne
 </blockquote>
 <ul>
 <li>name = keesun</li>
-<li>fullName = ${name} baik</li>
+<li>fullName = \${name} baik</li>
 </ul>
 <h3 id="타입-세이프-프로퍼티"><a href="#%ED%83%80%EC%9E%85-%EC%84%B8%EC%9D%B4%ED%94%84-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0" aria-hidden="true"><span class="icon icon-link"></span></a>타입-세이프 프로퍼티</h3>
 <p>타입-세이프 프로퍼티 <code class="language-text">@ConfigurationProperties</code></p>
@@ -342,7 +342,7 @@ app<span class="token punctuation">.</span><span class="token function">setBanne
 <li>Environment 프로퍼티 <springProperty></li>
 </ul>
 <p>로거를 Log4j2로 변경하기</p>
-<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging</a></p>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging</a></p>
 <br/>
 <h2 id="테스트"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-hidden="true"><span class="icon icon-link"></span></a>테스트</h2>
 <p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing" target="_blank" rel="nofollow noopener noreferrer">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing</a></p>
@@ -451,7 +451,7 @@ app<span class="token punctuation">.</span><span class="token function">setBanne
 <p>글로벌 설정</p>
 <ul>
 <li>
-<p>~/.spring-boot-devtools.properties </p>
+<p>~/.spring-boot-devtools.properties</p>
 <ul>
 <li>1순위 외부 설정, 우선순위가 가장 높음</li>
 </ul>
