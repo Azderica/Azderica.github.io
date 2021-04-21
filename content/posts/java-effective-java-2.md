@@ -1,6 +1,6 @@
 ---
 title: '[Java] Effective Java, 모든 객체에 공통적인 메소드'
-slug: 01-java-effective-java
+slug: 02-java-effective-java
 date: 2021-04-12
 published: true
 tags: ['Java', 'Stater', 'Effective Java', 'Object']

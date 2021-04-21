@@ -1,6 +1,6 @@
 ---
 title: '[Java] Effective Java, 객체 생성과 삭제'
-slug: 00-java-effective-java
+slug: 01-java-effective-java
 date: 2021-04-11
 published: true
 tags: ['Java', 'Stater', 'Effective Java', 'Object']
