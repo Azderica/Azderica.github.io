@@ -12,7 +12,7 @@ description: 'Effective Java 책 중, ch2 객체 생성과 삭제에 대해 정�
 
 # 객체 생성과 삭제
 
-## 생성자 대신 정적 팩토리 메서드 고려
+## Item 1. 생성자 대신 정적 팩토리 메서드 고려
 
 ### 정적 팩토리 메서드의 장점
 
@@ -99,7 +99,7 @@ StackWalker luke = StackWalker.getInstance(options);
 
 <br/>
 
-## 생성자 매개 변수가 많은 경우, 빌더를 고려
+## Item 2. 생성자 매개 변수가 많은 경우, 빌더를 고려
 
 Static factories 와 생성자는 제한을 고유하므로, 잘 확장되지 않습니다.
 
@@ -213,7 +213,7 @@ public abstract class Pizza {
 
 <br/>
 
-## private 생성자 또는 열거형을 통해 싱글 톤 속성을 적용
+## Item 3. private 생성자 또는 열거형을 통해 싱글 톤 속성을 적용
 
 singleton은 정확하게 한번만 인스턴스화 되고, stateless 또는 unique한 시스템 컴포넌트입니다. **클래스를 싱글톤으로 만들면, 클라이언트 테스트가 어려울 수 있습니다.** 왜냐하면 해당 유형으로 사용되는 인터페이스를 구현하지 않는 이상에 싱글톤을 mock으로 구현할 수 없기 때문입니다.
 
@@ -282,7 +282,7 @@ public enum Elvis {
 
 <br/>
 
-## private 생성자를 통해 noninstantiability(비인스턴스성)을 적용합니다.
+## Item 4. private 생성자를 통해 noninstantiability(비인스턴스성)을 적용합니다.
 
 - `java.lang.Math` 나 `java.util.Arrays`, `java.util.Colletions` 와 같은 유틸리티 클래스는 인스턴스화되도록 설계되어 있지 않습니다.
 
@@ -304,7 +304,7 @@ public class UtilityClass {
 
 <br/>
 
-## Hardwiring 자원에 의존성 주입(Dependency Injection)을 선호합니다.
+## Item 5. Hardwiring 자원에 의존성 주입(Dependency Injection)을 선호합니다.
 
 많은 클래스가 하나 이상의 기본 리소스에 의존합니다.
 
@@ -350,7 +350,7 @@ Mosaic create(Supplier<? extends Tile> tileFactory)
 
 <br/>
 
-## 불필요한 객체를 생성하는 것을 줄입니다.
+## Item 6. 불필요한 객체를 생성하는 것을 줄입니다.
 
 필요할때마다 기능적으로 동등한 새 객체를 만드는 것보다 단일 객체를 재사용하는 것이 적절합니다.
 
@@ -399,7 +399,7 @@ private static long sum() {
 
 <br/>
 
-## 사용하지 않는 개체의 참조를 제거합니다.
+## Item 7. 사용하지 않는 개체의 참조를 제거합니다.
 
 흔히. 가비지컬렉터를 사용하는 언어의 경우에는 메모리 관리에 대해 생각할 필요가 없다고 생각을 하지만 그렇지 않습니다.
 
@@ -464,7 +464,7 @@ public Object pop () {
 
 <br/>
 
-## Finalizers(종료자)와 Cleaners(클리너)를 피합니다.
+## Item 8. Finalizers(종료자)와 Cleaners(클리너)를 피합니다.
 
 `Finalizers` 는 얘측할 수 없고 종종 위험하고 일반적으로 불필요합니다.
 
@@ -539,11 +539,13 @@ public class Room implements AutoCloseable {
 }
 ```
 
+[추가적인 참고자료](https://m.blog.naver.com/PostView.nhn?blogId=kbh3983&logNo=220908731253&proxyReferer=https:%2F%2Fwww.google.com%2F)
+
 다음과 같이 State 인스턴스가 Room을 참조하지 않도록 사용합니다.
 
 <br/>
 
-## TRY-WITH-RESOURCE 를 TRY-FINALLY 보다 선호합니다.
+## Item 9. TRY-WITH-RESOURCE 를 TRY-FINALLY 보다 선호합니다.
 
 Java 라이브러리에서는 close 메소드를 호출하는 경우, 많은 자원이 소모되기 때문에 다른 방법을 사용해야합니다.
 
