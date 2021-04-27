@@ -48,7 +48,7 @@
     </h1><div class="post-meta">
    Posted 11. April 2021.
    <strong>25 min read.</strong></div></div><div class="post content-box"><div class="post__header"><img alt="Cover image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 680 440' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-9716c389a175768fda62e76437e55968'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='10'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-9716c389a175768fda62e76437e55968)' width='680' height='440' xlink:href='data:image/jpeg%3bbase64%2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAApAEADASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAwECBAUGAAj/xAAtEAACAAQFAgUDBQAAAAAAAAABAgADBBEFEiExQRMiBhRRYXEyQpEVM2Jygf/EABkBAQEBAQEBAAAAAAAAAAAAAAEAAgQDBf/EABsRAAMBAAMBAAAAAAAAAAAAAAABAhESITET/9oADAMBAAIRAxEAPwDz/l944JcQUS2Jh4ljmPonK6IwGsO2iW0pSgNokYPhL4pXrTJOlyVyPMebM2RFUsxtybA2A3OkRKtK3eFycCLfxTh6YZj9XQy1dPLN0WVxYhlFjf1N9bjTXS41NaBaBE3gLLYe8JvBspbYQ3psvEIaSkXK59CIay2a0WEuUqrYgEneE8ujMAbj4hOf6dkS2lo1XgvBfOIzVdGehNu0mrQtmRlNivYbgEHkcRR9FU%2b2/vGywqi8PfoNJUYrMCVYlzn6ciYVnTe/s1GnBFj63grwZvX0Vfi%2bjmSqiu69LNmiYZSy6yaG0yi3aW1NwAuvA/2Ml5fL/KNzj9D4flYZVDDcRmVNVLnIsnO7967OxU6AHcRl1kD7iTEvCqmmV1rcWhyS7/V%2bIsukliMoiOZRRrkacGEy66LHy6e/5gq0qKuYrrxrABuIPM2jOmlKDSqdDqUFoWbKCaoLLyBCDYQjfSfiDT04LBGRXHcLxHmU5GqG49IUbR0JjjoFVJbLbWJExQFAG20Bb94f1jpuw%2bYmSnEf/9k=' /%3e%3c/svg%3e" width="680" data-src="/assets/static/JavaLogo.b760ceb.ff2f810e541c19536d64674fe5520928.jpg" data-srcset="/assets/static/JavaLogo.b760ceb.ff2f810e541c19536d64674fe5520928.jpg 680w" data-sizes="(max-width: 680px) 100vw, 680px" class="g-image g-image--lazy g-image--loading"><noscript><img src="/assets/static/JavaLogo.b760ceb.ff2f810e541c19536d64674fe5520928.jpg" class="g-image g-image--loaded" width="680" alt="Cover image"></noscript></div><div class="post__content"><h1 id="객체-생성과-삭제"><a href="#%EA%B0%9D%EC%B2%B4-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%82%AD%EC%A0%9C" aria-hidden="true"><span class="icon icon-link"></span></a>객체 생성과 삭제</h1>
-<h2 id="생성자-대신-정적-팩토리-메서드-고려"><a href="#%EC%83%9D%EC%84%B1%EC%9E%90-%EB%8C%80%EC%8B%A0-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C-%EA%B3%A0%EB%A0%A4" aria-hidden="true"><span class="icon icon-link"></span></a>생성자 대신 정적 팩토리 메서드 고려</h2>
+<h2 id="item-1-생성자-대신-정적-팩토리-메서드-고려"><a href="#item-1-%EC%83%9D%EC%84%B1%EC%9E%90-%EB%8C%80%EC%8B%A0-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C-%EA%B3%A0%EB%A0%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Item 1. 생성자 대신 정적 팩토리 메서드 고려</h2>
 <h3 id="정적-팩토리-메서드의-장점"><a href="#%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C%EC%9D%98-%EC%9E%A5%EC%A0%90" aria-hidden="true"><span class="icon icon-link"></span></a>정적 팩토리 메서드의 장점</h3>
 <p>다음과 같이 정적 팩토리 메서드를 통해 생성할 수 있습니다.</p>
 <pre class="language-java"><code class="language-java"><span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Rank</span><span class="token punctuation">></span></span> faceCards <span class="token operator">=</span> <span class="token class-name">EnumSet</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>JACK<span class="token punctuation">,</span> QUEEN<span class="token punctuation">,</span> KING<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -162,7 +162,7 @@
 </li>
 </ul>
 <br/>
-<h2 id="생성자-매개-변수가-많은-경우-빌더를-고려"><a href="#%EC%83%9D%EC%84%B1%EC%9E%90-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98%EA%B0%80-%EB%A7%8E%EC%9D%80-%EA%B2%BD%EC%9A%B0-%EB%B9%8C%EB%8D%94%EB%A5%BC-%EA%B3%A0%EB%A0%A4" aria-hidden="true"><span class="icon icon-link"></span></a>생성자 매개 변수가 많은 경우, 빌더를 고려</h2>
+<h2 id="item-2-생성자-매개-변수가-많은-경우-빌더를-고려"><a href="#item-2-%EC%83%9D%EC%84%B1%EC%9E%90-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98%EA%B0%80-%EB%A7%8E%EC%9D%80-%EA%B2%BD%EC%9A%B0-%EB%B9%8C%EB%8D%94%EB%A5%BC-%EA%B3%A0%EB%A0%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Item 2. 생성자 매개 변수가 많은 경우, 빌더를 고려</h2>
 <p>Static factories 와 생성자는 제한을 고유하므로, 잘 확장되지 않습니다.</p>
 <h3 id="telescoping-constructor-패턴"><a href="#telescoping-constructor-%ED%8C%A8%ED%84%B4" aria-hidden="true"><span class="icon icon-link"></span></a>telescoping constructor 패턴</h3>
 <ul>
@@ -267,7 +267,7 @@
 </ul>
 <p>따라서 <strong>빌더 패턴은 생성자 또는 정적 팩토리에 소수 이상의 매개 변수가 있는 클래스를 디자인할 때 장점</strong>을 가집니다.</p>
 <br/>
-<h2 id="private-생성자-또는-열거형을-통해-싱글-톤-속성을-적용"><a href="#private-%EC%83%9D%EC%84%B1%EC%9E%90-%EB%98%90%EB%8A%94-%EC%97%B4%EA%B1%B0%ED%98%95%EC%9D%84-%ED%86%B5%ED%95%B4-%EC%8B%B1%EA%B8%80-%ED%86%A4-%EC%86%8D%EC%84%B1%EC%9D%84-%EC%A0%81%EC%9A%A9" aria-hidden="true"><span class="icon icon-link"></span></a>private 생성자 또는 열거형을 통해 싱글 톤 속성을 적용</h2>
+<h2 id="item-3-private-생성자-또는-열거형을-통해-싱글-톤-속성을-적용"><a href="#item-3-private-%EC%83%9D%EC%84%B1%EC%9E%90-%EB%98%90%EB%8A%94-%EC%97%B4%EA%B1%B0%ED%98%95%EC%9D%84-%ED%86%B5%ED%95%B4-%EC%8B%B1%EA%B8%80-%ED%86%A4-%EC%86%8D%EC%84%B1%EC%9D%84-%EC%A0%81%EC%9A%A9" aria-hidden="true"><span class="icon icon-link"></span></a>Item 3. private 생성자 또는 열거형을 통해 싱글 톤 속성을 적용</h2>
 <p>singleton은 정확하게 한번만 인스턴스화 되고, stateless 또는 unique한 시스템 컴포넌트입니다. <strong>클래스를 싱글톤으로 만들면, 클라이언트 테스트가 어려울 수 있습니다.</strong> 왜냐하면 해당 유형으로 사용되는 인터페이스를 구현하지 않는 이상에 싱글톤을 mock으로 구현할 수 없기 때문입니다.</p>
 <p>일반적으로 싱글톤을 구현하는 방법에 따라 구분할 수 있습니다.</p>
 <h3 id="1-public-final-field를-통한-singleton-구현"><a href="#1-public-final-field%EB%A5%BC-%ED%86%B5%ED%95%9C-singleton-%EA%B5%AC%ED%98%84" aria-hidden="true"><span class="icon icon-link"></span></a>1. public final field를 통한 singleton 구현</h3>
@@ -327,7 +327,7 @@
 <li>종종 singleton을 구현하는 가장 좋은 방법입니다.</li>
 </ul>
 <br/>
-<h2 id="private-생성자를-통해-noninstantiability비인스턴스성을-적용합니다"><a href="#private-%EC%83%9D%EC%84%B1%EC%9E%90%EB%A5%BC-%ED%86%B5%ED%95%B4-noninstantiability%EB%B9%84%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%84%B1%EC%9D%84-%EC%A0%81%EC%9A%A9%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>private 생성자를 통해 noninstantiability(비인스턴스성)을 적용합니다.</h2>
+<h2 id="item-4-private-생성자를-통해-noninstantiability비인스턴스성을-적용합니다"><a href="#item-4-private-%EC%83%9D%EC%84%B1%EC%9E%90%EB%A5%BC-%ED%86%B5%ED%95%B4-noninstantiability%EB%B9%84%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%84%B1%EC%9D%84-%EC%A0%81%EC%9A%A9%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Item 4. private 생성자를 통해 noninstantiability(비인스턴스성)을 적용합니다.</h2>
 <ul>
 <li><code class="language-text">java.lang.Math</code> 나 <code class="language-text">java.util.Arrays</code>, <code class="language-text">java.util.Colletions</code> 와 같은 유틸리티 클래스는 인스턴스화되도록 설계되어 있지 않습니다.</li>
 <li>추상 클래스를 만들어서 noninstantiability를 적용하려는 것은 동작하지 않습니다.</li>
@@ -345,7 +345,7 @@
 <li>다만, 이러한 방법은 클래스가 하위 클래스로 분류되는 것을 방지합니다. 즉, 서브 클래스에는 호출할 액세스 가능한 super class 생성자가 없습니다.</li>
 </ul>
 <br/>
-<h2 id="hardwiring-자원에-의존성-주입dependency-injection을-선호합니다"><a href="#hardwiring-%EC%9E%90%EC%9B%90%EC%97%90-%EC%9D%98%EC%A1%B4%EC%84%B1-%EC%A3%BC%EC%9E%85dependency-injection%EC%9D%84-%EC%84%A0%ED%98%B8%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Hardwiring 자원에 의존성 주입(Dependency Injection)을 선호합니다.</h2>
+<h2 id="item-5-hardwiring-자원에-의존성-주입dependency-injection을-선호합니다"><a href="#item-5-hardwiring-%EC%9E%90%EC%9B%90%EC%97%90-%EC%9D%98%EC%A1%B4%EC%84%B1-%EC%A3%BC%EC%9E%85dependency-injection%EC%9D%84-%EC%84%A0%ED%98%B8%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Item 5. Hardwiring 자원에 의존성 주입(Dependency Injection)을 선호합니다.</h2>
 <p>많은 클래스가 하나 이상의 기본 리소스에 의존합니다.</p>
 <p>부정적인 케이스는 다음과 같습니다.</p>
 <pre class="language-java"><code class="language-java"><span class="token comment">// 유연하지 않고, 테스트할 수 없는 잘못 사용된 유틸리티</span>
@@ -382,7 +382,7 @@
 <pre class="language-java"><code class="language-java"><span class="token class-name">Mosaic</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">Supplier</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Tile</span><span class="token punctuation">></span></span> tileFactory<span class="token punctuation">)</span></code></pre>
 <p>결론적으로는 <strong>singleton 이나 static utility class를 사용하여 하나 이상의 기본 리소스에 의존하는 클래스를 구현하지 않고, 클래스가 이러한 리소스를 직접 생성하지 않도록 설정</strong>해야합니다. 대신에, Resource 또는 Factory를 통해서 생성자에 전달해야합니다. (또는 static factory 나 builder) <strong>DI를 통해서 클래스의 유연성과 재사용성, 테스트 기능을 향상</strong> 시킬 수 있습니다.</p>
 <br/>
-<h2 id="불필요한-객체를-생성하는-것을-줄입니다"><a href="#%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94-%EA%B2%83%EC%9D%84-%EC%A4%84%EC%9E%85%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>불필요한 객체를 생성하는 것을 줄입니다.</h2>
+<h2 id="item-6-불필요한-객체를-생성하는-것을-줄입니다"><a href="#item-6-%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94-%EA%B2%83%EC%9D%84-%EC%A4%84%EC%9E%85%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Item 6. 불필요한 객체를 생성하는 것을 줄입니다.</h2>
 <p>필요할때마다 기능적으로 동등한 새 객체를 만드는 것보다 단일 객체를 재사용하는 것이 적절합니다.</p>
 <ul>
 <li>나쁜 케이스 : <code class="language-text">String s = new String(&quot;clothes&quot;)</code></li>
@@ -420,7 +420,7 @@
   <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <br/>
-<h2 id="사용하지-않는-개체의-참조를-제거합니다"><a href="#%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EA%B0%9C%EC%B2%B4%EC%9D%98-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%A0%9C%EA%B1%B0%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>사용하지 않는 개체의 참조를 제거합니다.</h2>
+<h2 id="item-7-사용하지-않는-개체의-참조를-제거합니다"><a href="#item-7-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-%EA%B0%9C%EC%B2%B4%EC%9D%98-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%A0%9C%EA%B1%B0%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Item 7. 사용하지 않는 개체의 참조를 제거합니다.</h2>
 <p>흔히. 가비지컬렉터를 사용하는 언어의 경우에는 메모리 관리에 대해 생각할 필요가 없다고 생각을 하지만 그렇지 않습니다.</p>
 <h3 id="메모리-낭비의-원인-1---미-참조"><a href="#%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%82%AD%EB%B9%84%EC%9D%98-%EC%9B%90%EC%9D%B8-1---%EB%AF%B8-%EC%B0%B8%EC%A1%B0" aria-hidden="true"><span class="icon icon-link"></span></a>메모리 낭비의 원인 1 - 미 참조</h3>
 <p>다음은 간단하게 스택을 구성한 코드입니다.</p>
@@ -467,7 +467,7 @@
 <p>이러한 부분을 삭제하는 방법은 <code class="language-text">.NET Framework</code> 의 <code class="language-text">WeakHashMap</code> 과 같습니다.</p>
 <p><strong>이렇듯이 메모리 낭비는 명백한 오류로 나타나지 않기 때문에, 미리 예상하고 예방하는 방법을 배우는 것이 매우 바람직합니다.</strong></p>
 <br/>
-<h2 id="finalizers종료자와-cleaners클리너를-피합니다"><a href="#finalizers%EC%A2%85%EB%A3%8C%EC%9E%90%EC%99%80-cleaners%ED%81%B4%EB%A6%AC%EB%84%88%EB%A5%BC-%ED%94%BC%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Finalizers(종료자)와 Cleaners(클리너)를 피합니다.</h2>
+<h2 id="item-8-finalizers종료자와-cleaners클리너를-피합니다"><a href="#item-8-finalizers%EC%A2%85%EB%A3%8C%EC%9E%90%EC%99%80-cleaners%ED%81%B4%EB%A6%AC%EB%84%88%EB%A5%BC-%ED%94%BC%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Item 8. Finalizers(종료자)와 Cleaners(클리너)를 피합니다.</h2>
 <p><code class="language-text">Finalizers</code> 는 얘측할 수 없고 종종 위험하고 일반적으로 불필요합니다.</p>
 <ul>
 <li>비정상적인 동작, 성능 저하, 이식성의 문제가 발생할 수 있습니다.</li>
@@ -536,9 +536,10 @@
 		cleanable<span class="token punctuation">.</span><span class="token function">clean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
+<p><a href="https://m.blog.naver.com/PostView.nhn?blogId=kbh3983&#x26;logNo=220908731253&#x26;proxyReferer=https:%2F%2Fwww.google.com%2F" target="_blank" rel="nofollow noopener noreferrer">추가적인 참고자료</a></p>
 <p>다음과 같이 State 인스턴스가 Room을 참조하지 않도록 사용합니다.</p>
 <br/>
-<h2 id="try-with-resource-를-try-finally-보다-선호합니다"><a href="#try-with-resource-%EB%A5%BC-try-finally-%EB%B3%B4%EB%8B%A4-%EC%84%A0%ED%98%B8%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>TRY-WITH-RESOURCE 를 TRY-FINALLY 보다 선호합니다.</h2>
+<h2 id="item-9-try-with-resource-를-try-finally-보다-선호합니다"><a href="#item-9-try-with-resource-%EB%A5%BC-try-finally-%EB%B3%B4%EB%8B%A4-%EC%84%A0%ED%98%B8%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Item 9. TRY-WITH-RESOURCE 를 TRY-FINALLY 보다 선호합니다.</h2>
 <p>Java 라이브러리에서는 close 메소드를 호출하는 경우, 많은 자원이 소모되기 때문에 다른 방법을 사용해야합니다.</p>
 <p><code class="language-text">Try-finally</code> 는 2개 이상의 경우에서는 사용하기 어렵기 때문에, <code class="language-text">try-with-resource</code> 를 사용하는 것이 좋습니다.</p>
 <pre class="language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token class-name">String</span> firstLineOfFile <span class="token punctuation">(</span><span class="token class-name">String</span> path<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
