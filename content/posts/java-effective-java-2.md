@@ -10,11 +10,11 @@ canonical_url: false
 description: 'Effective Java 책 중, ch3 모든 객체에 공통적인 메소드에 대해 정리합니다.'
 ---
 
-# 모든 객체에 공통적인 메소드
+# 모든 객체의 공통적인 메소드
 
-객체는 콘크리트 클래스이지만, 주로 확장을 위해 설계됩니다. (대표적인 예시로, equals, hashCode, toString, clone, finalize 등이 override되도록 설계되어있습니다.)
+`Object`는 자바에서 모든 오브젝트의 최상위 클래스이며, 상속을 통해서 사용하도록 설계되었습니다. 따라서 `Object` 클래스에서 final이 아닌 메서드들(대표적인 예시로, equals, hashCode, toString, clone, finalize 등)이 모두 오버라이딩을 염두하고 설계되었습니다.
 
-nonfinal Object 메소드를 재정의하는 시기와 방법에 대해 설명합니다.
+아래에서는 이를 재정의하는 것에 대해서 정리합니다.
 
 ## Item 10. `Equals`를 오버라이딩 할 때, 일반적인 룰을 준수합니다.
 
@@ -155,10 +155,10 @@ public class ColorPoint {
 
 ## Item 12. `ToString`을 항상 오버라이딩합니다.
 
-- equals나 hashCode를 준수하는 것만큼의 비중은 아지만, 좋은 `toString`을 제공하면, 클래스를 더 좋게 사용할 수 있고 이후에 디버깅을 하기도 편해집니다.
+아래의 부분을 중시해야합니다.
 
+- equals나 hashCode를 준수하는 것만큼의 비중은 아니지만, 좋은 `toString`을 제공하면, 클래스를 더 좋게 사용할 수 있고 이후에 디버깅을 하기도 편해집니다.
 - 가능한 경우, `toString` 메소드는 객체에서 포함하고 있는 중요한 정보를 반환해야합니다.
-
 - 형식 지정 여부와 관계없이, 의도를 명확하게 문서화해야합니다.
 
 ```java
@@ -173,19 +173,15 @@ public class ColorPoint {
 
 - 형식을 지정했든 말든, `toString`로 반환되는 값에 포함된 정보에 대해 프로그램 액세스를 제공해야합니다.
 
+정리하자면, toString을 사용한다면 **가급적 해당 객체가 가지고 있는 모든 정보들을 노출시키는 것이 좋습니다.**
+
 <br/>
 
 ## Item 13. 신중하게 `Clone`을 오버라이딩합니다.
 
-실질적으로 스펙에서 명시되어 있지는 않지만, 실전에서는 `Cloneable`을 구현하는 클래스는 정상적으로 public clone method를 제공하는 것으로 예상됩니다.
+`Cloneable` 인터페이스는 복제가능한 클래스를 명시하는 인터페이스이지만, 그 목적을 수행하지 못합니다. 즉, 여러 객체를 복사하는 경우 잘못되는 경우가 쉽게 발생합니다.
 
-즉, 아래의 조건을 만족합니다.
-
-```java
-x.clone().getClass() == x.getClass(); // true
-```
-
-다만 몇가지 지켜야할 요소가 있습니다. `immutable class`의 경우에는 낭비적인 복사를 사용하기 때문에, `clone` 메소드를 제공하면 안됩니다.
+대표적인 예시로 `immutable class`의 경우에는 낭비적인 복사를 사용하기 때문에, `clone` 메소드를 제공하면 안됩니다.
 
 ```java
 public class Stack {
@@ -220,6 +216,8 @@ public class Stack {
 
 즉, clone 메서드는 생성자 역할을 수행하기 때문에, 원본 객체에 해를 끼치지 않고 복제본에 불변을 수행하는 지 확인해야합니다.
 
+또한 **추가적으로 생성자를 호출하지 않고, 객체를 생성할 수도 있기 때문에 이는 큰 위험을 가지고 있습니다.**
+
 따라서 다음과 같이 clone()을 사용해야합니다.
 
 ```java
@@ -251,18 +249,31 @@ Entry deepCopy() {
 그러나 이러한 방법보다, 가장 좋은 방법 중 하나는 **복사 생성자 또는 복사 팩토리를 제공하는 것**입니다.
 
 ```java
-// Copy constructor
+// 복사 생성자, Copy constructor
 public Yum(Yum yum) { ... }
 
-// Copy factory
+// 복사 팩토리, Copy factory
 public static Yum newInstance(Yum yum) { ... };
 ```
+
+이러한 방법은 클래스가 구현한 인터페이스 타입 인스턴스를 인수로 받을 수 있기 때문에, 클라이언트는 원본의 구현 타입에 얽매이지 않고 복제본의 타입을 정할 수 있습니다.
+
+결론적으로, `Cloneable`을 확장하는 것은 좋지 않으며 생성자와 팩토리를 사용하는 것이 좋습니다. 다만 배열의 경우는 clone 메서드를 사용하는 것이 좋습니다.
+
+> 추가적으로 알면 좋은 글
+
+clone() 메서드의 경우, deep copy이고 arraycopy()의 경우, shallow clone입니다.
+
+- [clone() vs arraycopy()](https://masima305.tistory.com/36)
+- [Shallow Copy vs Deep Copy](https://velog.io/@coin46/Shallow-copy-vs-Deep-copy)
+
+[추가적으로 ]
 
 <br/>
 
 ## Item 14. `Comparable`을 개발할때 고려합니다.
 
-`compareTo` 메서드는 `Comparable` 인터페이스의 유일한 방법입니다. 이는 Comparable 객체의 컬렉션 유지 관리에도 편하는 장점이 있습니다.
+`compareTo` 메서드는 `Comparable` 인터페이스의 유일한 메서드입니다. (Object 메서드가 아닙니다.) 이는 Comparable 객체의 컬렉션 유지 관리에도 편하는 장점이 있습니다.
 
 sgn에 대한 여러가지 수학적 조건이 있으나 여기서는 너무 수학적으로 설명되기에 이를 생략합니다.
 
@@ -275,32 +286,59 @@ public final class CaseInsensitiveString implements Comparable<CaseInsensitiveSt
 }
 ```
 
-`compareTo` 메소드에서 관계 연산자인 `<and>`를 사용하는 것은 오류가 발생하기 때문에 더이상 권장되지 않습니다.
+`Object`의 `equals`나 `==`와 주로 비교대상이 되며 이를 특징별로 정리하면 다음과 같습니다.
+
+- `compareTo`
+  - 기준에 따라 비교합니다. 동일성 비교에 더해 순서까지 비교할 수 있으며 제네릭합니다.
+- `equals`
+  - 두 객체의 값의 동일성 여부를 반환합니다.
+- `==`
+  - 두 객체의 동일성 여부를 반환합니다.
+
+이중에서 `compareTo`에 대해서 좀 더 알아보자면 지켜야하는 3가지의 규약이 있습니다.
+
+- 두 객체의 참조의 순서를 바꿔 비교해도 항상 예상한 결과가 같아야합니다.
+- a < b, b < c라면 a < c가 성립해야합니다.
+- 같은 객체들끼리는 어떤 객체와 비교하더라도 항상 같아야합니다.
+
+### Comparable VS Comparator
+
+`Comparable` 인터페이스의 경우 `compareTo()` 메서드를 오버라이딩 하여서 인자로 넘어온 같은 타입의 다른 객체와 대소 비교합니다.
 
 ```java
-// Comparable with comparator construction methods
-private static final Comparator<PhoneNumber> COMPARATOR =
-  comparingInt((PhoneNumber pn) -> pn.areaCode)
-  .thenComparingInt(pn -> pn.prefix)
-  .thenComparingInt(pn -> pn.lineNum);
-
-public int compareTo(PhoneNumber pn) {
-  return COMPARATOR.compare(this, pn);
-}
-
-```
-
-```java
-// static compare 메소드에 기반을 둔 Comparator
-static Comparator <Object> hashCodeOrder = new Comparator <> () {
-  public int compare(Object o1, Object o2) {
-    return Integer.compare (o1.hashCode (), o2.hashCode())
+public class Player implements Comparable<Player> {
+// Fields, Getters, Setters 생략
+  @Override
+  public int compareTo(Player o) {
+    return o.getScore() - getScore();
   }
 }
 
-// Comparator construction 메소드에 기반을 둔 Comparator
-static Comparator <Object> hashCodeOrder =
-  Comparator.comparingInt (o-> o.hashCode ());
+Collections.sort(players);
+System.out.println(players);
 ```
 
-다음과 같이 비교를 하는 것이 권장됩니다.
+`Comparator` 인터페이스의 경우, 정렬 대상 클래스를 수정할 수 없을 때 주로 사용합니다. 주로 `Arrays.sort()`, `Collections.sort()` 등을 사용하며, 이를 통해서 정렬을 합니다.
+
+```java
+Comparator<Player> comparator = new Comparator<Player>() {
+  @Override
+  public int compare(Player a, Player b) {
+    return b.getScore() - a.getScore();
+  }
+};
+
+Collections.sort(players, comparator);
+System.out.println(players);
+```
+
+다만 보통은 람다함수로 표현합니다.
+
+```java
+Collections.sort(players, (a, b) -> b.getScore() - a.getScore());
+System.out.println(players);
+```
+
+이에 대한 상세 내용은 아래르 참고하면 좋습니다.
+
+- [comparable vs comparator](https://www.daleseo.com/java-comparable-comparator/)
