@@ -5,7 +5,7 @@ date: 2021-04-21
 published: true
 tags: ['Java', 'Stater', 'Effective Java', 'Class', 'Interface']
 series: false
-cover_image: ./images/JavaLogo.jpg
+cover_image: ./images/EffectiveJava.jpeg
 canonical_url: false
 description: 'Effective Java 책 중, ch4. 클래스와 인터페이스에 대해 정리합니다.'
 ---

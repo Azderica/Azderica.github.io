@@ -5,7 +5,7 @@ date: 2021-04-26
 published: true
 tags: ['Java', 'Stater', 'Effective Java', 'Generic']
 series: false
-cover_image: ./images/JavaLogo.jpg
+cover_image: ./images/EffectiveJava.jpeg
 canonical_url: false
 description: 'Effective Java 책 중, ch5. 제네릭에 대해 정리합니다.'
 ---

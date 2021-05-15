@@ -5,7 +5,7 @@ date: 2021-04-11
 published: true
 tags: ['Java', 'Stater', 'Effective Java', 'Object']
 series: false
-cover_image: ./images/JavaLogo.jpg
+cover_image: ./images/EffectiveJava.jpeg
 canonical_url: false
 description: 'Effective Java 책 중, ch2 객체 생성과 삭제에 대해 정리합니다.'
 ---

@@ -5,7 +5,7 @@ date: 2021-05-03
 published: true
 tags: ['Java', 'Stater', 'Effective Java', 'Enum', 'Annotation']
 series: false
-cover_image: ./images/JavaLogo.jpg
+cover_image: ./images/EffectiveJava.jpeg
 canonical_url: false
 description: 'Effective Java 책 중, ch6. 열거형과 어노테이션에 대해 정리합니다.'
 ---
