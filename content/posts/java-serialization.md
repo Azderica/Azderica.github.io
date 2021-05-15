@@ -1,11 +1,11 @@
 ---
-title: '[Java] Java Serialization'
+title: '[Java] 자바 직렬화'
 slug: java-serialize
 date: 2021-05-12
 published: true
 tags: ['Java', 'Object', 'Serialize', 'Serialization', 'Deserialization']
 series: false
-cover_image: ./images/JavaLogo.jpg
+cover_image: ./images/JavaSerialize.png
 canonical_url: false
 description: 'Java 직렬화와 역직렬화에 대해 정리합니다.'
 ---
