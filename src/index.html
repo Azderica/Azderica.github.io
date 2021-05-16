@@ -2,46 +2,46 @@
 <html ${htmlAttrs}>
   <head>
     ${head}
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
-    <script data-ad-client="ca-pub-1759762070891290" async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <meta name="google-site-verification" content="MqpGCz7XVg4s3AWfrGHCt6AlXPacpV9iGvSFVD0ATHw" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <meta
+      name="google-site-verification"
+      content="MqpGCz7XVg4s3AWfrGHCt6AlXPacpV9iGvSFVD0ATHw"
+    />
   </head>
   <body ${bodyAttrs}>
     <script>
       // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
-      (function() {
-        window.__onThemeChange = function() {};
+      ;(function() {
+        window.__onThemeChange = function() {}
         function setTheme(newTheme) {
-          window.__theme = newTheme;
-          preferredTheme = newTheme;
-          document.body.setAttribute('data-theme', newTheme);
-          window.__onThemeChange(newTheme);
+          window.__theme = newTheme
+          preferredTheme = newTheme
+          document.body.setAttribute('data-theme', newTheme)
+          window.__onThemeChange(newTheme)
         }
 
-        var preferredTheme;
+        var preferredTheme
         try {
-          preferredTheme = localStorage.getItem('theme');
-        } catch (err) { }
+          preferredTheme = localStorage.getItem('theme')
+        } catch (err) {}
 
         window.__setPreferredTheme = function(newTheme) {
-          setTheme(newTheme);
+          setTheme(newTheme)
           try {
-            localStorage.setItem('theme', newTheme);
+            localStorage.setItem('theme', newTheme)
           } catch (err) {}
         }
 
-        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
         darkQuery.addListener(function(e) {
           window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-        });
+        })
 
-        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
-      })();
+        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
+      })()
     </script>
 
-    ${app}
-    ${scripts}
+    ${app} ${scripts}
   </body>
 </html>

@@ -24,6 +24,14 @@
       </div>
     </div>
 
+    <Adsense
+      class="mb-5"
+      ad-client="ca-pub-1759762070891290"
+      ad-slot="2189844016"
+      ad-style="display:block"
+      ad-format="auto"
+    ></Adsense>
+
     <div
       class="post-comments"
       ref="post-comments-dark"
@@ -43,12 +51,14 @@
 import PostMeta from '~/components/PostMeta'
 import PostTags from '~/components/PostTags'
 import Author from '~/components/Author.vue'
+import Adsense from '~/components/Adsense.vue'
 
 export default {
   components: {
     Author,
     PostMeta,
     PostTags,
+    Adsense,
   },
   data() {
     return {
