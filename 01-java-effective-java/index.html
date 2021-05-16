@@ -224,7 +224,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-<span class="token class-name">NutritionFacts</span> cocaCola <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NutritionFacts</span><span class="token punctuation">.</span><span class="token class-name">Builder</span> <span class="token punctuation">(</span><span class="token number">240</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
+<span class="token class-name">NutritionFacts</span> cocaCola <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NutritionFacts<span class="token punctuation">.</span>Builder</span> <span class="token punctuation">(</span><span class="token number">240</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span>calories <span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">.</span>sodium <span class="token punctuation">(</span><span class="token number">35</span><span class="token punctuation">)</span> <span class="token punctuation">.</span>carbohydrate <span class="token punctuation">(</span><span class="token number">27</span><span class="token punctuation">)</span> <span class="token punctuation">.</span>build <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>
@@ -526,7 +526,7 @@
 	<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">State</span> state<span class="token punctuation">;</span>
 
 	<span class="token comment">// cleanable, gc에 의해 가능할때 room이 청소됩니다.</span>
-	<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Cleaner</span><span class="token punctuation">.</span><span class="token class-name">Cleanable</span> cleanable<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Cleaner<span class="token punctuation">.</span>Cleanable</span> cleanable<span class="token punctuation">;</span>
 
 	<span class="token keyword">public</span> <span class="token class-name">Room</span><span class="token punctuation">(</span><span class="token keyword">int</span> numJunkPiles<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 		state <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">State</span><span class="token punctuation">(</span>numJunkPiles<span class="token punctuation">)</span><span class="token punctuation">;</span>
