@@ -1,6 +1,6 @@
 ---
 title: '[Java] Effective Java, Serialization'
-slug: 10-java-effective-java
+slug: 11-java-effective-java
 date: 2021-05-24
 published: true
 tags: ['Java', 'Stater', 'Effective Java', 'Serialization']
