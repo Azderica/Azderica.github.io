@@ -7,7 +7,7 @@ tags: ['Java', 'Stater', 'Effective Java', 'Concurrency']
 series: false
 cover_image: ./images/EffectiveJava.jpeg
 canonical_url: false
-description: 'Effective Java 책 중, ch11. 예외에 대해 정리합니다.'
+description: 'Effective Java 책 중, ch11. 동시성에 대해 정리합니다.'
 ---
 
 # Concurrency (동시성)

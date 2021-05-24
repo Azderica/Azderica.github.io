@@ -1,7 +1,7 @@
 ---
 title: '[Java] Effective Java, Methods'
 slug: 08-java-effective-java
-date: 2021-05-16
+date: 2021-05-24
 published: true
 tags: ['Java', 'Stater', 'Effective Java', 'General']
 series: false
