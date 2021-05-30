@@ -17,7 +17,7 @@
 
     <p class="author__links">
       <a href="//linkedin.com/in/myeonghun-park-7693a1184/">Linkedin</a>
-      <a href="//azderica.github.io/til/intro">TIL</a>
+      <a href="//azderica.github.io/til/docs/intro">TIL</a>
       <a href="//github.com/Azderica">GitHub</a>
     </p>
   </div>
