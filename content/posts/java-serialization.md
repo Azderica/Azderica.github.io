@@ -87,7 +87,9 @@ public class SerializableTest {
 
 해당 코드를 실행시키면, 이에 대한 결과를 확인할 수 있습니다.
 
-`rO0ABXNyAAxzdHVkeS5QZXJzb25ntzRTK7/dGgIAA0kAA2FnZUwAAmlkdAASTGphdmEvbGFuZy9TdHJpbmc7TAAEbmFtZXEAfgABeHAAAAAadAAHWFhYLVhYWHQACeuwleuqqOyUqA==`
+```
+rO0ABXNyAAxzdHVkeS5QZXJzb25ntzRTK7/dGgIAA0kAA2FnZUwAAmlkdAASTGphdmEvbGFuZy9TdHJpbmc7TAAEbmFtZXEAfgABeHAAAAAadAAHWFhYLVhYWHQACeuwleuqqOyUqA==
+```
 
 이는 바이트 배열 형태이기 때문에 사용자가 봤을때는 확인할 수 없습니다.
 
