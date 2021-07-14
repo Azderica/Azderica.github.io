@@ -58,6 +58,7 @@ SQL Server는 'B105'를 찾기위해서 동작하고 이 동작을 Index Seek라
 
 **출처**
 
-- http://databaser.net/moniwiki/wiki.php/Index
-- http://databaser.net/moniwiki/wiki.php/IndexSeek
-- https://psawesome.tistory.com/14
+- [Index](http://databaser.net/moniwiki/wiki.php/Index)
+- [IndexSeek](http://databaser.net/moniwiki/wiki.php/IndexSeek)
+- [Index Seek, Index Scan](https://psawesome.tistory.com/14)
+- [인덱스 SCAN과 SEEK의 차이](https://blog.naver.com/PostView.nhn?blogId=waws01&logNo=60181424769)
