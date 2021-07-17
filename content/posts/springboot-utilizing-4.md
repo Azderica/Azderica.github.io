@@ -1,16 +1,16 @@
 ---
-title: '[Springboot] Springboot 활용하기 - 4'
+title: '[SpringBoot] SpringBoot 활용하기 - 4'
 slug: 04-springboot-utilizing
 date: 2020-09-04
 published: true
-tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
+tags: ['Spring', 'SpringBoot', 'Backend', 'SpringStarter']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 'Springboot 활용하기'의 네번째 게시글입니다. "
+description: " 'SpringBoot 활용하기'의 네번째 게시글입니다. "
 ---
 
-# Springboot 활용하기4
+# SpringBoot 활용하기4
 
 <br/>
 
@@ -120,6 +120,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 - 기본으로 Reactor Netty의 HTTP 클라이언트 사용.
 - 커스터마이징
+
   - 로컬 커스터마이징
   - 글로벌 커스터마이징
 

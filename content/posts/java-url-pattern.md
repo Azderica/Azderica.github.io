@@ -3,7 +3,7 @@ title: '[Java] url-pattern이란'
 slug: 00-java-urlpattern
 date: 2020-11-03
 published: true
-tags: ['Java', 'JSP', 'Url-pattern', 'web.xml', 'Spring', 'Backend']
+tags: ['Java', 'JSP', 'Url Pattern', 'web.xml', 'Spring', 'Backend']
 series: false
 cover_image: ./images/JavaLogo.jpg
 canonical_url: false

@@ -3,7 +3,7 @@ title: '[Docker] Docker란?'
 slug: 00-docker
 date: 2020-11-19
 published: true
-tags: ['Docker', 'Containter', 'Backend']
+tags: ['Docker', 'Container', 'Backend']
 series: false
 cover_image: ./images/DockerLogo.png
 canonical_url: false

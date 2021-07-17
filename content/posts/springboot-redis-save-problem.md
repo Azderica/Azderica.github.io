@@ -1,9 +1,9 @@
 ---
-title: '[Springboot Redis] Redis에 커스텀 객체 저장 시 오류'
+title: '[SpringBoot Redis] Redis에 커스텀 객체 저장 시 오류'
 slug: 00-redis-troubleshooting
 date: 2021-06-04
 published: true
-tags: ['TroubleShooting', 'Error', 'Springboot', 'Redis', 'Serialization']
+tags: ['TroubleShooting', 'Error', 'SpringBoot', 'Redis', 'Serialization']
 series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false

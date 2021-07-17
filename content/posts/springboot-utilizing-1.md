@@ -1,16 +1,16 @@
 ---
-title: '[Springboot] Springboot 활용하기 - 1'
+title: '[SpringBoot] SpringBoot 활용하기 - 1'
 slug: 01-springboot-utilizing
 date: 2020-08-03
 published: true
-tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
+tags: ['Spring', 'SpringBoot', 'Backend', 'SpringStarter']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 'Springboot 활용하기'의 첫번째 게시글입니다. "
+description: " 'SpringBoot 활용하기'의 첫번째 게시글입니다. "
 ---
 
-# Springboot 활용하기
+# SpringBoot 활용하기
 
 | 스프링 부트 핵심 기능 | 각종 기술 연동      |
 | --------------------- | ------------------- |

@@ -1,13 +1,13 @@
 ---
-title: '[Springboot API] Springboot REST API : REST API 보안 적용'
+title: '[SpringBoot API] SpringBoot REST API : REST API 보안 적용'
 slug: 05-springboot-restapi
 date: 2020-09-21
 published: true
-tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']
+tags: ['Spring', 'SpringBoot', 'SpringBoot API', 'REST API', 'Backend']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 'Springboot REST API'의 다섯번째 게시글입니다. "
+description: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 ---
 
 # REST API 보안 적용

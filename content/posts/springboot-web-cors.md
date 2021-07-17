@@ -1,16 +1,16 @@
 ---
-title: '[Springboot] CORS 이슈 해결하기'
+title: '[SpringBoot] CORS 이슈 해결하기'
 slug: 00-springboot-cors
 date: 2020-12-27
 published: true
-tags: ['Springboot', 'Web', 'Cors', 'HTTP', 'Backend']
+tags: ['SpringBoot', 'Web', 'Cors', 'HTTP', 'Backend']
 series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: ' Springboot CORS에 대한 해결방법입니다.'
+description: ' SpringBoot CORS에 대한 해결방법입니다.'
 ---
 
-# Springboot CORS 이슈 해결하기.
+# SpringBoot CORS 이슈 해결하기.
 
 지난 게시글에서는 CORS 이슈에 대해 정리했습니다.
 

@@ -1,13 +1,13 @@
 ---
-title: '[Springboot API] Springboot REST API : 이벤트 조회 및 수정 REST API 개발'
+title: '[SpringBoot API] SpringBoot REST API : 이벤트 조회 및 수정 REST API 개발'
 slug: 04-springboot-restapi
 date: 2020-09-20
 published: true
-tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']
+tags: ['Spring', 'SpringBoot', 'Springboot API', 'REST API', 'Backend']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 'Springboot REST API'의 네번째 게시글입니다. "
+description: " 'SpringBoot REST API'의 네번째 게시글입니다. "
 ---
 
 # 이벤트 조회 및 수정 REST API 개발

@@ -1,13 +1,13 @@
 ---
-title: '[Springboot] 스프링부트 Poi 사용하기'
+title: '[SpringBoot] 스프링부트 Poi 사용하기'
 slug: 00-springboot-poi
 date: 2021-02-08
 published: true
-tags: ['Spring', 'Springboot', 'Poi', 'Backend']
+tags: ['Spring', 'SpringBoot', 'Poi', 'Backend']
 series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: ' Springboot Poi에 대한 간단한 실습입니다. '
+description: ' SpringBoot Poi에 대한 간단한 실습입니다. '
 ---
 
 # Springboot에서 POI 사용

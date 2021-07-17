@@ -3,7 +3,7 @@ title: '[ASP.NET] ASP.NET 시작하기'
 slug: 00-dotnet
 date: 2020-08-15
 published: true
-tags: ['.NET', 'Dotnet', 'ASP.NET', 'Backend']
+tags: ['.Net', 'Dotnet', 'ASP.NET', 'Backend']
 series: false
 cover_image: ./images/ASPNETLogo.jpeg
 canonical_url: false

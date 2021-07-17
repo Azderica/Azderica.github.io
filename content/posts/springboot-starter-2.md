@@ -1,16 +1,16 @@
 ---
-title: '[Springboot] Springboot 이해하기'
+title: '[SpringBoot] SpringBoot 이해하기'
 slug: 02-springboot-starter
 date: 2020-07-09
 published: true
-tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
+tags: ['Spring', 'SpringBoot', 'Backend', 'SpringStarter']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: " 'Springboot 시작하기'의 두 번째 게시글입니다. "
 ---
 
-# Springboot 이해하기
+# SpringBoot 이해하기
 
 <br/>
 

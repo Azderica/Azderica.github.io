@@ -1,9 +1,9 @@
 ---
-title: '[Database] NoSQL 데이터베이스 정리'
+title: '[DB] NoSQL 데이터베이스 정리'
 slug: 00-db-nosql
 date: 2021-04-01
 published: true
-tags: ['Database', 'NoSql']
+tags: ['Db', 'Nosql']
 series: false
 cover_image: ./images/NoSqlLogo.png
 canonical_url: false

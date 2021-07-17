@@ -3,7 +3,7 @@ title: '[CS] Load Balancer(로드밸런서)'
 slug: 00-load-balancer
 date: 2020-10-18
 published: true
-tags: ['CS', 'Virtualization', 'Load-Balancer', 'Citrix', 'F5', '로드밸런서']
+tags: ['CS', 'Virtualization', 'Load Balancer', 'Citrix', 'F5', '로드밸런서']
 series: false
 cover_image: ./images/Virtualization.jpg
 canonical_url: false

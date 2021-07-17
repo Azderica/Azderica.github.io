@@ -1,6 +1,6 @@
 ---
 title: '[DevOps] CI와 CD란?'
-slug: 00-devops-cicd
+slug: 00-devops-ci-cd
 date: 2021-01-09
 published: true
 tags: ['Devops', 'CI', 'CD']

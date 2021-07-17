@@ -1,9 +1,9 @@
 ---
-title: '[Springboot] Gradle을 좀 더 자세하게 알아보기'
+title: '[SpringBoot] Gradle을 좀 더 자세하게 알아보기'
 slug: 03-springboot-gradle
 date: 2020-10-25
 published: true
-tags: ['Springboot', 'Groovy', 'Gradle', 'Backend']
+tags: ['SpringBoot', 'Groovy', 'Gradle', 'Backend']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false

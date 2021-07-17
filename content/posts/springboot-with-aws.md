@@ -1,16 +1,16 @@
 ---
-title: '[Springboot API] Springboot with AWS : Springboot 시작하기'
+title: '[SpringBoot API] SpringBoot with AWS : SpringBoot 시작하기'
 slug: 01-springboot-aws
 date: 2020-09-28
 published: true
-tags: ['Spring', 'Springboot', 'Springboot API', 'AWS', 'Backend']
+tags: ['Spring', 'SpringBoot', 'SpringBoot API', 'AWS', 'Backend']
 series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 'Springboot AWS'의 첫번째 게시글입니다. "
+description: " 'SpringBoot AWS'의 첫번째 게시글입니다. "
 ---
 
-# Springboot 시작하기
+# SpringBoot 시작하기
 
 ## Intellij.
 

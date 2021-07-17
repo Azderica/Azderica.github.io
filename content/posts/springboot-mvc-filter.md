@@ -1,13 +1,13 @@
 ---
-title: '[Springboot] 스프링부트 MVC - Filter'
+title: '[SpringBoot] 스프링부트 MVC - Filter'
 slug: 01-springboot-mvc
 date: 2020-11-03
 published: true
-tags: ['Spring', 'Springboot', 'Filter', 'Backend']
+tags: ['Spring', 'SpringBoot', 'Filter', 'Backend']
 series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: ' Springboot MVC 중 Filter에 대한 설명입니다. '
+description: ' SpringBoot MVC 중 Filter에 대한 설명입니다. '
 ---
 
 # Spring Boot MVC - Filter

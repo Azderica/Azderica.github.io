@@ -3,7 +3,7 @@ title: '[Database] CAP 정리'
 slug: 00-db-cap
 date: 2021-02-09
 published: true
-tags: ['Database', 'CAP', 'PACELC', 'Architecture', 'Server']
+tags: ['Database', 'Cap', 'Pacelc', 'Architecture', 'Server']
 series: false
 cover_image: ./images/CapImage.png
 canonical_url: false

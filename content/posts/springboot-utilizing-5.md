@@ -1,16 +1,16 @@
 ---
-title: '[Springboot] Springboot 운영하기'
+title: '[SpringBoot] SpringBoot 운영하기'
 slug: 05-springboot-utilizing
 date: 2020-09-05
 published: true
-tags: ['Spring', 'Springboot', 'Backend', 'SpringStarter']
+tags: ['Spring', 'SpringBoot', 'Backend', 'SpringStarter']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 'Springboot 활용하기'의 다섯번째 게시글입니다. "
+description: " 'SpringBoot 활용하기'의 다섯번째 게시글입니다. "
 ---
 
-# Springboot 운영하기
+# SpringBoot 운영하기
 
 스프링 부트는 애플리케이션 운영 환경에서 유용한 기능을 제공한다. 스프링 부트가 제공하는 엔드포인트와 메트릭스 그리고 그 데이터를 활용하는 모니터링 기능에 대해 알아보기.
 

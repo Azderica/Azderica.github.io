@@ -1,9 +1,9 @@
 ---
-title: '[Springboot H2] H2 Console 접속 에러'
+title: '[SpringBoot H2] H2 Console 접속 에러'
 slug: 01-h2-console
 date: 2020-10-01
 published: true
-tags: ['History', 'Error', 'Springboot', 'h2', 'h2console']
+tags: ['History', 'Error', 'SpringBoot', 'h2', 'h2console']
 series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false

@@ -1,16 +1,16 @@
 ---
-title: '[Springboot] Springboot 테스트 코드 작성하기'
+title: '[SpringBoot] SpringBoot 테스트 코드 작성하기'
 slug: 01-springboot-test
 date: 2020-10-26
 published: true
-tags: ['Spring', 'Springboot', 'Springboot API', 'Test', 'Backend']
+tags: ['Spring', 'SpringBoot', 'SpringBoot API', 'Test', 'Backend']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: ' Springboot Test에 대한 코드입니다. '
+description: ' SpringBoot Test에 대한 코드입니다. '
 ---
 
-# Springboot 테스트 코드
+# SpringBoot 테스트 코드
 
 대학교 시절, 프론트 위주 개발을 하다가 스프링 개발을 하다보니 가장 어려웠던 점은 테스트 코드를 작성하는 부분이였다.
 

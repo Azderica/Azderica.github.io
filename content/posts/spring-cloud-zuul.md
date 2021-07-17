@@ -3,7 +3,7 @@ title: '[Spring] Spring Cloud Zuul 공부'
 slug: 00-spring-zuul
 date: 2021-02-06
 published: true
-tags: ['Spring', 'Springboot', 'Cloud', 'Zuul', 'Netflix', 'Backend']
+tags: ['Spring', 'SpringBoot', 'Cloud', 'Zuul', 'Netflix', 'Backend']
 series: false
 cover_image: ./images/SpringCloudLogo.png
 canonical_url: false

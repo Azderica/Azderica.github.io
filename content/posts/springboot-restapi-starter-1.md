@@ -1,16 +1,16 @@
 ---
-title: '[Springboot API] Springboot REST API : 시작하기'
+title: '[SpringBoot API] Springboot REST API : 시작하기'
 slug: 01-springboot-restapi
 date: 2020-09-07
 published: true
-tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']
+tags: ['Spring', 'SpringBoot', 'Springboot API', 'REST API', 'Backend']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 'Springboot REST API'의 첫번째 게시글입니다. "
+description: " 'SpringBoot REST API'의 첫번째 게시글입니다. "
 ---
 
-# Springboot API 시작하기.
+# SpringBoot API 시작하기.
 
 [강의 자료](https://drive.google.com/file/d/0B-4fgYvMaU-zYVlVUzB2ZnpuRU8ySFVpV2h3ZjRmd096azFN/view)
 
@@ -179,6 +179,7 @@ Uniform Interface(일관된 인터페이스)란, Resource(URI)에 대한 요청�
 #### 이벤트 목록 조회 REST API (로그인 한 상태)
 
 - 응답에 보여줘야 할 데이터
+
   - 이벤트 목록
   - 링크
     - self

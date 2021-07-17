@@ -3,7 +3,7 @@ title: '[Hadoop] Hadoop이란?'
 slug: 00-hadoop
 date: 2020-12-08
 published: true
-tags: ['Hadoop', 'BigData', 'Distributed', 'Backend']
+tags: ['Hadoop', 'Big Data', 'Distributed', 'Backend']
 series: false
 cover_image: ./images/HadoopLogo.png
 canonical_url: false

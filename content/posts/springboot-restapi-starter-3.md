@@ -1,13 +1,13 @@
 ---
-title: '[Springboot API] Springboot REST API : HATEOAS와 Self-Describtive Message 적용'
+title: '[SpringBoot API] SpringBoot REST API : HATEOAS와 Self-Describtive Message 적용'
 slug: 03-springboot-restapi
 date: 2020-09-14
 published: true
-tags: ['Spring', 'Springboot', 'Springboot API', 'REST API', 'Backend']
+tags: ['Spring', 'SpringBoot', 'SpringBoot API', 'REST API', 'Backend']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 'Springboot REST API'의 세번째 게시글입니다. "
+description: " 'SpringBoot REST API'의 세번째 게시글입니다. "
 ---
 
 # HATEOAS와 Self-Describtive Message

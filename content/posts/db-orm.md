@@ -1,9 +1,9 @@
 ---
-title: '[Database] ORM에 대해 정리하기'
+title: '[DB] ORM에 대해 정리하기'
 slug: 00-db-orm
 date: 2021-04-03
 published: true
-tags: ['ORM', 'DB', 'Hibernate']
+tags: ['Orm', 'Db', 'Hibernate']
 series: false
 cover_image: ./images/OrmText.png
 canonical_url: false
