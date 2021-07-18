@@ -1,10 +1,10 @@
 ---
 title: '[Spring] Autowired 와 private final의 차이'
-slug: 00-spring-autowired
+slug: 00-spring-injection
 date: 2021-07-17
 published: true
 tags: ['Spring', 'SpringBoot', 'DI', 'Backend']
-series: false
+series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
 description: '의존성 주입을 사용하기 위해 Autowired 어노테이션과, private final 사용의 차이점에 대해 정리합니다.'
