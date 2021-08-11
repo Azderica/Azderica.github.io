@@ -3,7 +3,7 @@ title: '[SpringBoot] SpringBoot 테스트 코드 작성하기'
 slug: 01-springboot-test
 date: 2020-10-26
 published: true
-tags: ['Spring', 'SpringBoot', 'SpringBoot API', 'Test', 'Backend']
+tags: ['Spring', 'SpringBoot', 'SpringBoot API', 'Test', 'JUnit', 'Backend']
 series: true
 cover_image: ./images/SpringLogo.png
 canonical_url: false
