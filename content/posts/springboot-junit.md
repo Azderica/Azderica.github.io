@@ -199,7 +199,7 @@ public void UtilsTest {
 
 
   @Test
-  @DisplayName("실해한 테스트")
+  @DisplayName("실패한 테스트")
   public void isFailResult() {
     Throwable e = null;
     try {
