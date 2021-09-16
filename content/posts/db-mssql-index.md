@@ -3,7 +3,7 @@ title: '[DB] INDEX SEEK 정리'
 slug: 00-db-index-seek
 date: 2021-07-14
 published: true
-tags: ['Db', 'Index', 'Seek', 'Scan']
+tags: ['Database', 'Index', 'Seek', 'Scan']
 series: false
 cover_image: ./images/IndexSeekImage.jpeg
 canonical_url: false

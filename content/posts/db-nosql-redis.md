@@ -3,7 +3,7 @@ title: '[DB] NoSQL 데이터베이스 아키텍쳐 구조'
 slug: 01-db-nosql-redis
 date: 2021-09-15
 published: true
-tags: ['Db', 'Nosql', 'Redis', 'Architecture', 'Cluster']
+tags: ['Database', 'Nosql', 'Redis', 'Architecture', 'Cluster']
 series: false
 cover_image: ./images/RedisLogo.png
 canonical_url: false
