@@ -71,6 +71,13 @@ public class PackageExample {
 
 즉, String의 클래스 패키지는 `java.lang`이고 FQCN은 `java.lang`이며 FQCN은 `java.lang.String`이 됩니다.
 
+> JAR
+
+- Java ARchive의 약자입니다.
+- 클래스 파일을 하나로 묶기위해 필요한 명령이입니다.
+- JAR을 만드는 클래스 파일을 효과적으로 배포하기위해 여러 클래스 파일들을 하나로 묶어 단일 파일로 만드는 확장자(.jar)이자 이를 가능하게하는 명령어(jar.exe)입니다.
+- 여러 옵션을 사용할 수 있습니다.
+
 <br/>
 
 ## Import란.
