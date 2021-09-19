@@ -65,6 +65,12 @@ public class PackageExample {
   - `org` : 오픈소스 패키지
   - `com` : 회사 패키지
 
+> FQCN
+
+**FQCN**이란, Fully Qualified Class Name의 약자입니다.
+
+즉, String의 클래스 패키지는 `java.lang`이고 FQCN은 `java.lang`이며 FQCN은 `java.lang.String`이 됩니다.
+
 <br/>
 
 ## Import란.
