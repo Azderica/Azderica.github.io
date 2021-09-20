@@ -40,7 +40,25 @@ description: 'Nosql 중 Couchbase에 대해 좀 더 자세하게 알아봅니다
 
 ### 뷰(View)
 
-카우치 베이스의 강력한 능력이며, 이 뷰를 통해서 `Indexing, grouping, sorting` 등이 가능합니다.
+- 카우치 베이스의 강력한 능력이며, 이 뷰를 통해서 `Indexing, grouping, sorting` 등이 가능합니다.
+- 뷰는 데이터베이스 뷰와 유사한 개념을 가지며 카우치베이스의 뷰는 incremental view라는 컨셉을 가집니다.
+
+다음의 예시를 보면 뷰의 기능의 동작을 예상할 수 있습니다. Json document 안에 주민번호있고, 80년생 이하만 저장하는 뷰를 만든다고 가정하면 데이터가 버킷에 저장될 때마다 생성된 뷰에 같이 저장됩니다.
+
+![couchbase-view-sample](https://user-images.githubusercontent.com/42582516/133991552-ccead205-7fc2-4ed3-bc6a-7832eee5e241.png)
+
+이와 같은 결과로 데이터를 저장하거나 업데이트시 뷰 코드가 매번 수행되고, 뷰코드에 저장된 알고리즘에 따라 뷰에 데이터를 업데이트합니다.
+
+이를 더 자세하게 보면 다음과 같습니다.
+
+![Map & Reduce](https://user-images.githubusercontent.com/42582516/133992279-e17df7a9-9369-459f-9b27-9a840b9edb14.png)
+
+[출처](https://bcho.tistory.com/928?category=534534)
+
+`Map Function(Map & Reduce)` 함수를 통해서 View를 만듭니다.
+
+- 맵함수는 두 개의 인자를 전달받으며 index(id, key, value)를 만들고 리듀스를 통해서 grouping이나 여러 처리를 할 수 있습니다.
+- 즉, **뷰에는 각 버킷내의 개별 데이터를 반환하는 맵함수와 변환된 개별 데이터를 그룹별로 모아서 처리할 수 있는 리듀스 함수를 가집니다.**
 
 <br/>
 
@@ -76,6 +94,12 @@ description: 'Nosql 중 Couchbase에 대해 좀 더 자세하게 알아봅니다
 
 - 카우치베이스는 웹 기반의 GUI 관리 도구를 기본으로 제공합니다.
 
+> Couchbase Web Console
+
+![couchbase-web-console](https://user-images.githubusercontent.com/42582516/133992009-871775fb-ac8f-4453-ad35-5ba7ba349d31.png)
+
+[출처](https://soccerda.tistory.com/124)
+
 ### Memcached 프로토콜 지원
 
 - 캐쉬 솔루션으로 유명한 Memcached 르포토콜을 지원하기 때문에 Memcached 인프라를 사용할 수 있습니다.
@@ -83,7 +107,7 @@ description: 'Nosql 중 Couchbase에 대해 좀 더 자세하게 알아봅니다
 ### 스키마가 없는 유연한 저장 구조(Scheme-less)
 
 - 스키마가 없으므로 하나의 테이블에 컬럼 형식이 다른 데이터를 넣을 수 있습니다.
-- 하나의 데이터 버켐ㅅ에 데이타 구조가 다른 JSON 문서들을 넣을 수 있습니다.
+- 하나의 데이터 버킷에 데이타 구조가 다른 JSON 문서들을 넣을 수 있습니다.
 - 데이터 타입이 다름에도 불구하고 공통되는 필드에 대해 Indexing, grouping 등을 제공할 수 있으며 JSON 도큐먼트에 country 라는 앨리먼트가 있는 도큐먼트등을 대상으로 grouping등을 할수 있습니다.
 
 <br/>
