@@ -2,7 +2,7 @@
 title: '[DB] Couchbase의 개념과 특징, 아키텍처'
 slug: 02-db-nosql-couchbase
 date: 2021-09-20
-published: true
+published: false
 tags: ['Database', 'Nosql', 'Redis', 'Architecture', 'Sentinel', 'Cluster']
 series: false
 cover_image: ./images/CouchbaseLogo.png
@@ -43,19 +43,43 @@ description: 'Nosql 중 Couchbase에 대해 좀 더 자세하게 알아봅니다
 
 ### Memcached 기반의 Level 2 캐쉬를 내장하여 빠릅니다.
 
+- memcached를 자체적으로 Level 2 캐쉬로 사용합니다.
+- 자체적으로 메모리 캐쉬 기능을 가지고 있기 때문에 성능이 빠릅니다.
+
+(다만, 키의 유연성이나 클러스터에서 단점을 가집니다.)
+
 ### 모바일 디바이스와 Sync
+
+- 카우치디비 계열 DB들은 모바일 디바이스에 탑재할 수 있으며, 서버에 설치된 카우치베이스 계열과 Sync가 됩니다.
 
 ### 데이터 센터간 복제 기간
 
+- XDCR(Cross Data Center Replication)의 기능을 이용해서 물리적으로 떨어진 데이터 센터간에 복제가 가능합니다.
+- [XDCR의 상세 내용](https://azderica.github.io/00-db-couchbase-xdcr/)
+
 ### Indexing, Grouping, Ordering, Join 가능
+
+- 대부분의 NoSQL은 Key/Value Store 형식으로, 개별 필드에 대한 Indexing이나 필드별로 group by를 통한 sum,count 등의 기능, 특정 필드별로의 Sorting이 불가능합니다.
+- Indexing을 지원하는 경우도 있기는 하지만, 내부적으로 성능상 문제가 있는 경우가 많으나 카우치베이스는 그러한 문제가 없습니다.
 
 ### 확장이 쉬움
 
+- 분산 구조의 NoSQL의 경우 노드확장이 어렵거나 장애처리가 어려운 경우가 많으나 카우치베이스는 손쉽게 확장을 하고 장애 처리를 합니다.
+- 이러한 장점은 운영에서 큰 이점이 됩니다.
+
 ### Built in 관리 도구 제공
+
+- 카우치베이스는 웹 기반의 GUI 관리 도구를 기본으로 제공합니다.
 
 ### Memcached 프로토콜 지원
 
+- 캐쉬 솔루션으로 유명한 Memcached 르포토콜을 지원하기 때문에 Memcached 인프라를 사용할 수 있습니다.
+
 ### 스키마가 없는 유연한 저장 구조(Scheme-less)
+
+- 스키마가 없으므로 하나의 테이블에 컬럼 형식이 다른 데이터를 넣을 수 있습니다.
+- 하나의 데이터 버켐ㅅ에 데이타 구조가 다른 JSON 문서들을 넣을 수 있습니다.
+- 데이터 타입이 다름에도 불구하고 공통되는 필드에 대해 Indexing, grouping 등을 제공할 수 있으며 JSON 도큐먼트에 country 라는 앨리먼트가 있는 도큐먼트등을 대상으로 grouping등을 할수 있습니다.
 
 <br/>
 
@@ -71,9 +95,12 @@ description: 'Nosql 중 Couchbase에 대해 좀 더 자세하게 알아봅니다
 
 ---
 
+- [couchbase 소개](https://bcho.tistory.com/924)
 - [couchbase 개념](https://bcho.tistory.com/925)
-- [couchbase view](https://bcho.tistory.com/928?category=534534)
+- [couchbase view](https://bcho.tistory.com/928)
 - [couchbase architecture](https://bcho.tistory.com/934)
 - [couchbase architecture detail](https://docs.couchbase.com/server/5.0/architecture/architecture-intro.html)
 - [couchbase cluster](https://docs.couchbase.com/server/current/learn/clusters-and-availability/clusters-and-availability.html)
 - [couchbase vs mongodb](https://dzone.com/articles/introduction-to-couchbase-for-mongodb-developers-a-1)
+- [왜 Couchbase을 선택하게 되었는가 - 1](https://zepinos.tistory.com/60?category=797689)
+- [왜 Couchbase을 선택하게 되었는가 - 2](https://zepinos.tistory.com/61)
