@@ -2,7 +2,7 @@
 title: '[DB] Couchbase의 개념과 특징, 아키텍처'
 slug: 02-db-nosql-couchbase
 date: 2021-09-20
-published: false
+published: true
 tags: ['Database', 'Nosql', 'Redis', 'Architecture', 'Sentinel', 'Cluster']
 series: false
 cover_image: ./images/CouchbaseLogo.png
@@ -53,7 +53,7 @@ description: 'Nosql 중 Couchbase에 대해 좀 더 자세하게 알아봅니다
 
 ![Map & Reduce](https://user-images.githubusercontent.com/42582516/133992279-e17df7a9-9369-459f-9b27-9a840b9edb14.png)
 
-[출처](https://bcho.tistory.com/928?category=534534)
+[출처 및 뷰에 대한 상세 개념](https://bcho.tistory.com/928?category=534534)
 
 `Map Function(Map & Reduce)` 함수를 통해서 View를 만듭니다.
 
@@ -114,13 +114,84 @@ description: 'Nosql 중 Couchbase에 대해 좀 더 자세하게 알아봅니다
 
 ## Couchbase Architecture
 
+Couchbase Server는 모든 노드에 설치된 단일 패키지로 구성됩니다.
+
+### 노드와 클러스터(Node & Cluster)
+
+- 노드는 물리적인 서버에서 기동하는 하나의 카우치베이스 인스턴스
+- 카우치베이스는 여러 개의 노드로 이루어진 클러스터로 구성됩니다.
+
+### 클라이언트 SDK(Client SDK)
+
+- 프로그래밍 언어별로 카우치베이스에 접근하기 위한 API(SDK)를 제공합니다.
+- SDK를 사용해서 선택한 언어(Java, node.js, .NET 등)으로 애플리케이션을 작성할 수 있습니다.
+
+### vBucket
+
+- 카우치베이스는 실제 데이터와 물리서버간의 맵핑을 `vBucket`을 통해 관리합니다.
+- 카우치베이스는 키-밸류 스토어이며, 각 키가 어디있는지는 vBucket이라는 단위로 관리하고, 키에 대한 해쉬값을 계산한 후에 각 해쉬값에 따라서 저장되는 vBucket을 맵핑한다음 각 vBucket을 노드에 맵핑합니다.
+- **Rebalancing** : 노드가 추가되거나 삭제되었을 때, 물리적으로 데이터가 다른 노드로 다시 분산배치되고 새롭게 배치된 데이터에 따라 vBucket이 노드간에 데이터 맵핑 정보도 업데이트됩니다.
+
+![vBucket](https://user-images.githubusercontent.com/42582516/133996020-9ffb4d3d-9091-4e47-bb22-fdcf93baf961.png)
+
+### 노드의 구조
+
+![couchbase-node-detail](https://user-images.githubusercontent.com/42582516/133996334-1d0c59e5-c7d7-48d9-a8a8-ea87bc0fed64.png)
+
+- Couchbase의 노드는 Data Manage과 Cluster Manager로 나눠집니다.
+
+#### Data Manager
+
+- 직접 데이터에 접근하는 부분이며, set/get 메서드를 통한 데이터 저장이나 뷰에 대한 쿼리를 수행할 때 접근합니다.
+- `Multi Thread Persistence Engine` : 디스크에 데이터를 저장하거나 읽을 때 사용하는 컴포넌트입니다.
+
+#### Cluster Manager
+
+- 노드에 대한 상태와 클러스터에 대한 상태, 설정 등을 관리하는 부분이며 `Erlang/OTP`로 구성되어 있습니다.
+- 카우치베이스 클라이언트 SDK는 8091포트의 REST API를 통해서 vBucket 정보를 가져옵니다.
+- 다수의 포트 등을 사용합니다. (사용전에 열어야하는 포트들이 있습니다.)
+
+### 데이터 쓰기와 복제
+
+![couchbase-data-read/write](https://user-images.githubusercontent.com/42582516/133997054-0f325983-d6b6-4a10-b1e7-634de4a7e50b.png)
+
+- 클라이언트에서 Client SDK를 통해서 쓰기 요청을 하면, Client SDK는 해쉬 알고리즘에 따라 데이터의 키 값에 맵핑되는 vBucket을 찾아내고 그 해당하는 노드를 찾아 쓰기 요청을 합니다.
+- 쓰기 요청은 해당 노드의 Listener로 전달되고, 이 Listener는 들어온 데이터를 로컬의 캐쉬에 쓰고 클러스터의 다른 노드로 복제 요청을 보냅니다. 그리고 데이터는 노드의 디스크에 저장됩니다.
+
 <br/>
 
 ## Couchbase Cluster
 
+- Couchbase 클러스터는 각각 독립 노드에서 실행되는 하나 이상의 Couchbase Server 인스턴스로 구성됩니다.
+- Couchbase Server를 실행하는 각 노드, 클러스터에 여러 노드가 있는 경우 Couchbase 클러스터 관리자는 각 노드에서 실행됩니다.
+- 클러스터의 전체 또는 일부 노드에서 실행되도록 서비스를 구성할 수 있습니다.
+
+### 유혀성
+
+- 데이터는 Couchbase Server에 의해 클러스터 전체에 자동으로 배포됩니다.
+- Couchbase Server는 노드 추가 및 제거, 노드 장애를 자동으로 처리합니다.
+
 <br/>
 
 ## Couchbase VS MongoDB
+
+공통점은 다음과 같습니다.
+
+- Document 기반의 NoSQL입니다.
+
+그러나 차이점이 있습니다.
+
+| 이름                   | Couchbase                                                                     | MongoDB                                                                                              |
+| ---------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 설명                   | Memcached 호환 인터페이스를 사용하여 CouchDB에서 파생된 JSON 기반 문서 저장소 | 완전 관리형 클라우드 서비스와 자체 관리형, 인프라에 배포할 수 있는 가장 인기있는 문서 저장소 입니다. |
+| 기본 데이터베이스 모델 | 문서 저장소                                                                   | 문서 저장소                                                                                          |
+| 보조 데이터베이스 모델 | 키-값 저장 공간 DBMS                                                          | 공간 DBMS                                                                                            |
+| 스키마                 | X                                                                             | X                                                                                                    |
+| 파티셔닝               | 샤딩                                                                          | 샤딩                                                                                                 |
+
+좀 더 자세한 차이를 알기 위해서는 다음 링크를 참고합니다.
+
+[Couchbase VS MongoDB](https://db-engines.com/en/system/Couchbase%3BMongoDB)
 
 ---
 
@@ -133,3 +204,4 @@ description: 'Nosql 중 Couchbase에 대해 좀 더 자세하게 알아봅니다
 - [couchbase vs mongodb](https://dzone.com/articles/introduction-to-couchbase-for-mongodb-developers-a-1)
 - [왜 Couchbase을 선택하게 되었는가 - 1](https://zepinos.tistory.com/60?category=797689)
 - [왜 Couchbase을 선택하게 되었는가 - 2](https://zepinos.tistory.com/61)
+- [Couchbase Docs](https://docs.couchbase.com/couchbase-manual-2.5/cb-admin/#faqs)
