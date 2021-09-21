@@ -195,6 +195,8 @@ Couchbase Server는 모든 노드에 설치된 단일 패키지로 구성됩니�
 
 ---
 
+**출처**
+
 - [couchbase 소개](https://bcho.tistory.com/924)
 - [couchbase 개념](https://bcho.tistory.com/925)
 - [couchbase view](https://bcho.tistory.com/928)
