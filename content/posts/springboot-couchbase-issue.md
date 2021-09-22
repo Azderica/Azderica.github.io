@@ -114,6 +114,8 @@ public interface CrudRepository<T, ID> extends Repository<T, ID> {
 }
 ```
 
+다음의 이슈에서 파생 쿼리 등을 사용하기 위해서는 아래 내용을 참고하면 좋을 것 같습니다.
+
 ### 좀 더 자세하게 보기
 
 - [쿼리 방법 정의](https://docs.spring.io/spring-data/couchbase/docs/current/reference/html/#repositories.query-methods.details)
