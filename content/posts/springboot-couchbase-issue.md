@@ -1,5 +1,5 @@
 ---
-title: '[SpringBoot] 스프링부트 Couchbase Repository'
+title: '[SpringBoot] 스프링부트 Couchbase Repository 이슈'
 slug: 00-springboot-couchbase-issue
 date: 2021-09-22
 published: true
@@ -7,7 +7,7 @@ tags: ['Spring', 'SpringBoot', 'Couchbase', 'Repository', 'Backend']
 series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: 'Couchbase Repository 이슈와 해결'
+description: 'Couchbase Repository 이슈와 해결, 파생 쿼리 이슈'
 ---
 
 # Springboot Couchbase Repository 이슈
