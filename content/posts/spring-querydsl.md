@@ -60,6 +60,18 @@ public class UserRepository extends JpaRepository<User, Long> {
 
 ![image](https://user-images.githubusercontent.com/42582516/134428743-a9727ffa-3cf1-47ad-bc6d-55e42338ca1d.png)
 
+- 기본적으로 CRUD를 구현하지 않아도 되며, 인터페이스를 호출해서 쓸 수 있습니다.
+- 스프링 로딩 시점에 UserRepository의 구현체를 만듭니다.
+
+### 공통 인터페이스
+
+![image](https://user-images.githubusercontent.com/42582516/134432531-aa5f47ea-355a-4205-902c-18d272b99e98.png)
+
+- JpaRepository 인터페이스는 공통 CRUD을 제공합니다.
+- 제네릭은 <Entity, 식별자>로 설정합니다.
+- 스프링에 스프링 데이터 프로젝트와 스프링 데이터 JPA 프로젝트가 따로 존재합니다.
+- 스프링 데이터에서 공통적인 기능을 가지고 있고, JPA 기능은 스프링 데이터 JPA 프로젝트에서 가지고 있습니다.
+
 <br/>
 
 ## QueryDSL
