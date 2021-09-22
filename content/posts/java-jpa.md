@@ -28,7 +28,9 @@ ORM이란 Object Relational Mapping, 객체-관계 매핑의 줄임말입니다.
 
 ![image](https://user-images.githubusercontent.com/42582516/111995242-0ca00d80-8b5c-11eb-9662-7f60f1dfc0c7.png)
 
-좀 더 자세한 ORM은 다른 글에서 따로 정리하겠습니다.
+좀 더 자세한 ORM은 아래 글을 참조해주세요.
+
+- [ORM](https://azderica.github.io/00-db-orm/)
 
 ### 그래서 JPA를 좀 더 설명하자면.
 
