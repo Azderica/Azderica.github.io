@@ -65,7 +65,7 @@ public class UserRepository extends JpaRepository<User, Long> {
 
 ### 공통 인터페이스
 
-![image](https://user-images.githubusercontent.com/42582516/134432531-aa5f47ea-355a-4205-902c-18d272b99e98.png)
+![image](https://user-images.githubusercontent.com/42582516/134432747-fdf6a1a2-ab04-4190-971e-25dfee64a4d4.png)
 
 - JpaRepository 인터페이스는 공통 CRUD을 제공합니다.
 - 제네릭은 <Entity, 식별자>로 설정합니다.
