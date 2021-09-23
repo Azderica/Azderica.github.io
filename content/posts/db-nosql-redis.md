@@ -3,11 +3,11 @@ title: '[DB] Redis의 개념과 특징, 아키텍처'
 slug: 01-db-nosql-redis
 date: 2021-09-17
 published: true
-tags: ['Database', 'Nosql', 'Redis', 'Architecture', 'Sentinel', 'Cluster']
+tags: ['Database', 'NoSQL', 'Redis', 'Architecture', 'Sentinel', 'Cluster']
 series: false
 cover_image: ./images/RedisLogo.png
 canonical_url: false
-description: 'Nosql 중 Redis에 대해 좀 더 자세하게 알아봅니다.'
+description: 'NoSQL 중 Redis에 대해 좀 더 자세하게 알아봅니다.'
 ---
 
 # Redis를 좀 더 자세하게.

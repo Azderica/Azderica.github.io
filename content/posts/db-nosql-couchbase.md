@@ -3,7 +3,7 @@ title: '[DB] Couchbase의 개념과 특징, 아키텍처'
 slug: 02-db-nosql-couchbase
 date: 2021-09-20
 published: true
-tags: ['Database', 'Nosql', 'Redis', 'Architecture', 'Sentinel', 'Cluster']
+tags: ['Database', 'NoSQL', 'Redis', 'Architecture', 'Sentinel', 'Cluster']
 series: false
 cover_image: ./images/CouchbaseLogo.png
 canonical_url: false

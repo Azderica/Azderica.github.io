@@ -2,7 +2,7 @@
 title: '[Spring] Spring Data JPA와 QueryDSL'
 slug: 01-spring-jpa
 date: 2021-09-23
-published: true
+published: false
 tags: ['Spring', 'SpringBoot', 'JPA', 'Spring Data', 'QueryDSL', 'Backend']
 series: true
 cover_image: ./images/SpringLogo.png
@@ -51,7 +51,7 @@ public class UserRepository {
 
 ```java
 // after JPA
-public class UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
   public User findByUsername(String userName);
 }
 ```
@@ -71,6 +71,109 @@ public class UserRepository extends JpaRepository<User, Long> {
 - 제네릭은 <Entity, 식별자>로 설정합니다.
 - 스프링에 스프링 데이터 프로젝트와 스프링 데이터 JPA 프로젝트가 따로 존재합니다.
 - 스프링 데이터에서 공통적인 기능을 가지고 있고, JPA 기능은 스프링 데이터 JPA 프로젝트에서 가지고 있습니다.
+
+### 쿼리 메서드
+
+- 메서드 이름으로 쿼리를 생성합니다. `@Query` 어노테이션으로 쿼리를 직접 정의할 수도 있습니다.
+- 메서드 이름만으로 JPQL 쿼리를 생성합니다.
+- 선언된 메서드에 대해서는 로딩 시점에 쿼리를 만들기 때문에 에러를 미리 잡을 수 있습니다.
+
+### 예시
+
+```java
+public class User {
+  private Long id;
+  private int age;
+  private String name;
+}
+```
+
+- 이름으로 검색
+
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+  public List<User> findByName(String name);
+}
+
+List<User> userResult = userRepository.findByName('hello');
+```
+
+```sql
+# 실행된 SQL
+SELECT * FROM MEMBER M WHERE M.NAME = 'hello'
+```
+
+- 이름으로 검색 및 정렬
+
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+  public List<User> findByName(String name, Sort sort);
+}
+
+// ...
+// sort is order by age.
+List<User> userResult = userRepository.findByName('hello', sort);
+```
+
+```sql
+# 실행된 SQL
+SELECT * FROM MEMBER M WHERE M.NAME = 'hello' ORDER BY AGE DESC
+```
+
+- 이름으로 검색, 정렬, 페이징
+
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+  public List<User> findByName(String name, Pageable pageable);
+}
+
+Pageable page = new PageRequest(1, 10, new Sort...);
+List<User> userResult = userRepository.findByName('hello', page);
+```
+
+```sql
+# 실행된 SQL
+SELECT *
+FROM
+    ( SELECT ROW_.*, ROWNUM ROWNUM_
+      FROM
+          ( SELECT M.*
+            FROM MEMBER M WHERE M.NAME = 'hello'
+            OEDER BY M.NAME
+          ) ROW_
+     WHERE ROWNUM <= ?
+    )
+WHERE ROWNUM_>?
+```
+
+### `@Query`, JPQL 정의
+
+- `@Query` 어노테이션을 사용해서 직접 JPQL을 지정할 수 있습니다.
+- 이도 로딩 시점에 파싱을 함으로 런타임 에러를 내지 않을 수 있습니다.
+
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+  @Query("select u from User u where m.name = ?1")
+  List<User> findByName(String name, Pageable pageable);
+}
+```
+
+### Web 페이징과 정렬 기능
+
+- 컨트롤러에서 페이징 처리 객체를 바로 인젝션 받을 수도 있습니다.
+
+| parameter | description                    |
+| --------- | ------------------------------ |
+| page      | 현재 페이지                    |
+| size      | 한 페이지에 노출할 데이터 건수 |
+| sort      | 정렬 조건                      |
+
+- ex) `/user?page=0&size=20&sort=name,dsec`
+
+```java
+@RequestMapping(value = "/users", method = RequestMethod.GET)
+List<User> list(Pageable pageable, User user){}
+```
 
 <br/>
 

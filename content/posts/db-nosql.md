@@ -3,11 +3,11 @@ title: '[DB] NoSQL 데이터베이스 정리'
 slug: 00-db-nosql
 date: 2021-04-01
 published: true
-tags: ['Database', 'Nosql']
+tags: ['Database', 'NoSQL']
 series: false
 cover_image: ./images/NoSqlLogo.png
 canonical_url: false
-description: 'Nosql에 대해 소개하고 특징에 대해 정리합니다.'
+description: 'NoSQL에 대해 소개하고 특징에 대해 정리합니다.'
 ---
 
 # NoSQL
