@@ -304,3 +304,12 @@ private BooleanExpression isServiceable(){
     .and(marketing.viewCount.lt(markting.maxCount));
 }
 ```
+
+<br/>
+
+---
+
+**출처**
+
+- [Spring Data JPA와 QueryDSL](https://ict-nroo.tistory.com/117)
+- [QueryDSL과 JOOQ 비교](https://mycup.tistory.com/333)
