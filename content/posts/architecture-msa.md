@@ -12,7 +12,9 @@ description: ' 마이크로 서비스 아키텍처에 대한 개념을 정리합
 
 # Microservice Architecture
 
-크게 아키텍처는 Monolithic Architecture과 Microservice Architecture 등으로 구성됩니다. 그러나 많은 회사들이 Monolithic 아키텍처의 단점으로 인해 MSA 아키텍처로 넘어가기 위해 노력하려고 합니다. 오늘은 그 차이에 대해 정리하고, 그 개념에 대해 정리해볼려고 합니다.
+크게 아키텍처는 Monolithic Architecture과 Microservice Architecture 등으로 구성됩니다.
+
+그러나 많은 회사들이 Monolithic 아키텍처의 단점으로 인해 MSA 아키텍처로 넘어가기 위해 노력하려고 합니다. 오늘은 그 차이에 대해 정리하고, 그 개념에 대해 정리해볼려고 합니다.
 
 <br/>
 
@@ -66,45 +68,39 @@ soa를 추가해서 좀 더 자세하게 보자면.
 #### 1. 배포
 
 - 서비스 별 개별 배포가 가능합니다. (배포 시 전체 서비스의 중단이 없습니다.)
-
 - 요구사항을 반영하여 빠르게 배포 가능합니다.
 
 #### 2. 확장
 
 - 특정 서비스에 대한 확장성이 유리합니다. (scale-out)
-
 - 클라우드 사용 시 적합합니다.
 
 #### 3. 장애 해결(Error Handling)
 
 - 일부 장애가 전체 서비스로 확장될 가능성이 적습니다.
-
 - 부분적으로 발생하는 장애에 대해 격리가 수월합니다.
 
 #### 4. 그 외
 
 - 새로운 기술을 적용하기 유연합니다.
-
 - 서비스를 polyglot(여러 언어를 사용하여)하게 개발 및 운영할 수 있습니다.
 
 ### MSA의 단점
 
 #### 1. 성능 이슈
 
-- 서비스 간 호출 시 API를 사용하므로, 통신 비용이나 Latency에 대해 이슈가 존재합니다. 다만 일반적으로 Monolithic에서 MSA로 넘어오는 이유가 Monolithic으로 더이상 성능적인 한계에 봉착했을 때 넘어오는 느낌이 있습니다...
-
+- 서비스 간 호출 시 API를 사용하므로, 통신 비용이나 Latency에 대해 이슈가 존재합니다.
+- 다만 일반적으로 Monolithic에서 MSA로 넘어오는 이유가 Monolithic으로 더이상 성능적인 한계에 봉착했을 때 넘어오는 느낌이 있습니다...
 - 최근 우아한 테크 컨퍼런스에서는 이벤트 발행을 통해서 해당 부분을 해결했다고 했는데 이부분은 한번 참고해서 보면 좋을 듯 합니다.
 
 #### 2. 테스트 / 트랜잭션
 
 - 서비스가 분리되어 있어 테스트와 트랜잭션의 복잡도가 증가합니다.
-
 - 많은 자원이 필요합니다.
 
 #### 3. 데이터 관리
 
 - 데이터가 여러서비스에 분산되어 조회하기 어렵습니다.
-
 - 데이터를 관리하기 어렵습니다.
 
 <br/>
@@ -117,5 +113,5 @@ soa를 추가해서 좀 더 자세하게 보자면.
 
 **출처**
 
-- https://velog.io/@tedigom/MSA-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-1-MSA%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-3sk28yrv0e
-- https://www.samsungsds.com/kr/insights/msa.html
+- [MSA 기본 개념](https://velog.io/@tedigom/MSA-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-1-MSA%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-3sk28yrv0e)
+- [마이크로서비스 아키텍처가 꼭 필요한가?](https://www.samsungsds.com/kr/insights/msa.html)
