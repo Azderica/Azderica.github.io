@@ -78,7 +78,7 @@ VM과 같이, 추가적인 OS를 설치하여 가상화하는 것은 성능상�
 
 이미지의 예시로는 다음과 같습니다.
 
-- ubuntu image, db image, nginx 등등이 존재합ㄴ니다.
+- ubuntu image, db image, nginx 등등이 존재합니다.
 - 좀 더 자세하게 보고 싶다면 아래의 링크를 추천드립니다.
   - [Docker Hub](https://hub.docker.com/)
   - [Docker Repository](https://docs.docker.com/registry/)

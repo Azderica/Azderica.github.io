@@ -65,7 +65,7 @@ try {
 
 > [Exception에 대한 글](https://madplay.github.io/post/java-checked-unchecked-exceptions)
 
-즉, 복구 가능한 조건에 대해서는 `checked exception`를 써야하고, 프로그래밍 오류에 대해서는 `runtime exception`를 던져야합ㄴ니다. 확실하지 않는 경우에서는 `unchecked exceptions`를 throw 합니다. `checked exception`이나 `runtime exception`가 아닌 경우, `throwable`을 정의하면 안됩니다.
+즉, 복구 가능한 조건에 대해서는 `checked exception`를 써야하고, 프로그래밍 오류에 대해서는 `runtime exception`를 던져야합니다. 확실하지 않는 경우에서는 `unchecked exceptions`를 throw 합니다. `checked exception`이나 `runtime exception`가 아닌 경우, `throwable`을 정의하면 안됩니다.
 
 <br/>
 

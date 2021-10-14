@@ -100,7 +100,7 @@ new Vue({
 })
 ```
 
-해당 예제는 "click me"를 킁ㄹ릭시 console 창에 clicked 메세지가 발생합니다. input에 `v-on:keyup`을 줌으로써, 입력하고 키보드를 떼는 순간 이벤트가 발생합니다.
+해당 예제는 "click me"를 클릭시 console 창에 clicked 메세지가 발생합니다. input에 `v-on:keyup`을 줌으로써, 입력하고 키보드를 떼는 순간 이벤트가 발생합니다.
 `keyup.enter`를 붙이게 되면 modified된 경우에만 적용하게 됩니다.
 
 이예 대한 실제 코드는 아래에 적어놓았습니다.

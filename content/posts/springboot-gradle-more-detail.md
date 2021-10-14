@@ -177,7 +177,7 @@ mavenCentral()와 jcenter()는 Gradle 메소드이며 이러한 repositories 안
   - **테스트 컴파일시 의존 라이브러리**
 - `calsspath '... 라이브러리 ...'
   - 지정된 라이브러리를 클래스 경로에 추가할 수 있다
-  - 컴파일ㅅ에서 실행시까지 의존하는 라이브러리 지정에 사용한다.
+  - 컴파일에서 실행시까지 의존하는 라이브러리 지정에 사용한다.
 
 #### implementation과 compile의 차이
 
