@@ -96,6 +96,14 @@ CREATE INDEX IDX_MULTI (C1, C2);
 - 커버드 쿼리라고도 합니다.
 - 퀴리가 인덱스 접근으로 인해 테이블 접근이 필요하지 않는 경우 사용됩니다.
 
+```sql
+CREATE INDEX IDX_MULTI (C1, C2);
+```
+
+```sql
+SELECT C1, C2 FROM IDX_MULTI WHERE C1 = 'value1' and C2 = 'value2';
+```
+
 ### Column store Index (열 저장 인덱스)
 
 - 열 저장소 인덱스는 방대한 데이터 웨어하우징 진리표를 삭제하고 질문하는 것과 관련하여 표준 유형의 인덱스가 있는 SQL 서버의 인덱스 유형 중 하나입니다.
