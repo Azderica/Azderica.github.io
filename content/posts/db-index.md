@@ -138,8 +138,6 @@ SELECT C1, C2 FROM IDX_MULTI WHERE C1 = 'value1' and C2 = 'value2';
 
 - 개발 디비에 따라 조금씩 다를 수 있으니 공식 document를 참고하는 것이 좋을 것 같습니다.
 
-<br/>
-
 ---
 
 **출처**
