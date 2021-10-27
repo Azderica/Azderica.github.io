@@ -450,7 +450,7 @@ synchronous <span class="token punctuation">(</span>m<span class="token punctuat
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>여기서 lock 멤버를 final로 선언한 이유 중 하나는 우연히 락 객체가 교체되는 상황을 방지합니다. 일반적인 락이나 <code class="language-text">java.util.concurrent.locks</code> 패키지에서 가져온 락이 동일합니다. 이와 같이 구성하면서 하위 클래스에서 동끼화 로직을 깨는 것을 예방할 수 있습니다.</p>
-<p>모든 클래스는 신중하게 표현된 설명이나 스레ㄷ 안전성 어노테이션을 통해서 스레드의 안전성을 명확하게 문서화해야합니다. 조건부 스레드나, 스레드에 안전한 케이스 모두 lock을 문서화해야하고, <code class="language-text">private final lock</code>을 사용하는 것이 좋습니다.</p>
+<p>모든 클래스는 신중하게 표현된 설명이나 스레드 안전성 어노테이션을 통해서 스레드의 안전성을 명확하게 문서화해야합니다. 조건부 스레드나, 스레드에 안전한 케이스 모두 lock을 문서화해야하고, <code class="language-text">private final lock</code>을 사용하는 것이 좋습니다.</p>
 <br/>
 <h2 id="item-83-지연-초기화는-신중히-사용합니다"><a href="#item-83-%EC%A7%80%EC%97%B0-%EC%B4%88%EA%B8%B0%ED%99%94%EB%8A%94-%EC%8B%A0%EC%A4%91%ED%9E%88-%EC%82%AC%EC%9A%A9%ED%95%A9%EB%8B%88%EB%8B%A4" aria-hidden="true"><span class="icon icon-link"></span></a>Item 83. 지연 초기화는 신중히 사용합니다.</h2>
 <p><code class="language-text">Lazy initialization(지연 초기화)</code>는 값이 필요할 때까지 필드 초기화를 지연하는 행동입니다. 지연 초기화는 주로 최적화이지만, 클래스 및 인스턴스 초기화에서 유해한 순환성을 깨는데 사용할 수도 있습니다.</p>
