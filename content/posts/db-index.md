@@ -5,7 +5,7 @@ date: 2021-10-27
 published: true
 tags: ['Database', 'Index', 'Scan', 'Cluster']
 series: false
-cover_image: ./images/
+cover_image: ./images/IndexText.png
 canonical_url: false
 description: 'DB의 INDEX에 대해 정리합니다.'
 ---
@@ -117,7 +117,13 @@ SELECT C1, C2 FROM IDX_MULTI WHERE C1 = 'value1' and C2 = 'value2';
 
 ### Hash Index (해시 인덱스)
 
+- 해시 인덱스는 포인터 또는 N 버킷의 배열과 각 슬롯 또는 버킷의 행을 포함하는 슬록에 있는 SQL 서버의 인덱스 유형 중 하나입니다.
+- N은 여러 버킷이고 K는 임계값인 해시 함수 F(K, N)을 사용합니다.
+- 용량은 해시 인덱스의 버킷과 관련된 키를 나타내며 해시 인덱스의 모든 버킷은 8ㅂ이트로 구성되며 기본 섹션의 연결된 런다운 메모리 주소를 저장하는데 사용합니다.
+
 ### Unique Index (고유 인덱스)
+
+- SQL 서버의 고유 인덱스는 인덱스 키에 복사 의존이 포함되어 있지 않는지 확인하고 보장하며 이러한 행을 따라 클라이언트가 테이블의 각 행이 어느쪽이든 예외적인지 검사할 수 있도록 합니다.
 
 <br/>
 
@@ -127,6 +133,10 @@ SELECT C1, C2 FROM IDX_MULTI WHERE C1 = 'value1' and C2 = 'value2';
 
 - 유일 인덱스는 테이블 정의시 primary key와 unique key 제약 조건을 정의할 때 자동으로 생성됩니다.
 - 사용자는 행에 대한 액세스 시간을 향상 시키기 위해 열에서 유일하지 않은 인덱스를 생성할 수 있습니다.
+
+### 상세 생성 방법
+
+- 개발 디비에 따라 조금씩 다를 수 있으니 공식 document를 참고하는 것이 좋을 것 같습니다.
 
 <br/>
 
