@@ -298,7 +298,7 @@ public IndexOutOfBoundsException(int lowerBound, int upperBound, int index) {
 
 ### 메서드를 `failure atomicity`로 만드는 방법
 
-#### 불변 객체로 설계앟ㅂ니다.
+#### 불변 객체로 설계합니다.
 
 - 불변 객체는 생성 시점에 고정되어 절대 변하지 않기 때문에 기존 객체가 불안정한 상태가 될 일은 없습니다.
 
