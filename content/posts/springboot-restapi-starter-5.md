@@ -21,7 +21,7 @@ description: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 - id
 - email
 - password
-- roels
+- roles
 
 ### AccountRoles
 
