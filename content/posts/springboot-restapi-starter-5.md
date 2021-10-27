@@ -62,11 +62,11 @@ description: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 ### 의존성 추가
 
 ```xml
-        <dependency>
-            <groupId>org.springframework.security.oauth.boot</groupId>
-            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-            <version>2.1.0.RELEASE</version>
-        </dependency>
+<dependency>
+  <groupId>org.springframework.security.oauth.boot</groupId>
+  <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+  <version>2.1.0.RELEASE</version>
+</dependency>
 ```
 
 - 테스트 다 깨짐 (401 Unauthorized)
@@ -151,7 +151,6 @@ description: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
                 .mvcMatchers(HttpMethod.GET, "/api/**").authenticated()
                 .anyRequest().authenticated();
     }
-
 ```
 
 - 익명 사용자 사용 활성화
@@ -166,12 +165,12 @@ description: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 ## 스프링 시큐리티 OAuth 2 설정 : 인증 서버 설정
 
 ```xml
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <version>${spring-security.version}</version>
-            <scope>test</scope>
-        </dependency>
+<dependency>
+  <groupId>org.springframework.security</groupId>
+  <artifactId>spring-security-test</artifactId>
+  <version>${spring-security.version}</version>
+  <scope>test</scope>
+</dependency>
 ```
 
 ### 토큰 발행 테스트
