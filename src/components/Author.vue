@@ -19,6 +19,7 @@
       <a href="//linkedin.com/in/myeonghun-park-7693a1184/">📘 Linkedin</a>
       <a href="//azderica.github.io/til/docs/intro">📚 TIL</a>
       <a href="//github.com/Azderica">💻 GitHub</a>
+      <a href="//azderica.github.io/Portfolio">✨ Portfolio</a>
     </p>
   </div>
 </template>
@@ -33,8 +34,8 @@ query {
 
 <script>
 export default {
-  props: ["showTitle"],
-};
+  props: ['showTitle'],
+}
 </script>
 
 <style lang="scss">
