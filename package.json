@@ -15,12 +15,14 @@
     "@gridsome/remark-prismjs": "^0.2.0",
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.6.4",
-    "@kfonts/nanum-myeongjo": "^0.1.2",
+    "@kfonts/nanum-myeongjo": "^0.1.3",
     "elliptic": "^6.5.4",
     "glob-parent": ">=5.1.2",
     "gridsome": "^0.7.23",
     "gridsome-plugin-gitalk": "^0.2.0",
     "gridsome-plugin-gtag": "^0.1.10",
+    "gh-pages": "^3.1.0",
+    "gh-pages-deploy": "^0.5.1",
     "hexo-generator-cname": "^0.3.0",
     "ini": "^2.0.0",
     "is-svg": "^4.3.1",
@@ -31,9 +33,7 @@
     "trim-newlines": ">=3.0.1"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0",
     "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.0",
-    "sanitize-html": ">=2.3.2"
+    "sass-loader": "^8.0.0"
   }
 }
