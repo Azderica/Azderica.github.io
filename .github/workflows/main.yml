@@ -26,9 +26,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ secrets.SECRET_KEY  }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ secrets.SECRET_KEY  }}-node-
       - name: Install and Build
         run: |
           npm ci
