@@ -1,56 +1,29 @@
-name: documentation
+name: Deploy Project
 
 on:
   push:
     branches: master
 
 jobs:
-  checks:
-    if: github.event_name != 'push'
+  update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: Test Build
-        run: |
-          if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
-          npm ci
-          else
-          npm i
-          fi
-          npm run build
-  gh-release:
-    if: github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
         with:
           ssh-key: ${{ secrets.SECRET_KEY }}
-      - uses: actions/setup-node@v1
+      - name: Setup Node
+        uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Installing packages
-        run: npm install
-      - name: Build Gridsome site
-        run: yarn build
-      - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_KEY }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: dist
+      - name: Install and Build
         run: |
-          git config --global user.email "mh97888@gmail.com"
-          git config --global user.name "Azderica"
-          if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
           npm ci
-          else
-          npm i
-          fi
-          npm run deploy
+          npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v1
+        with:
+          github_token: ${{ secrets.SECRET_KEY }}
+          branch: gh-pages # The branch the action should deploy to.
+          publish_branch: gh-pages
+          publish_dir: build # The folder the action should deploy.
