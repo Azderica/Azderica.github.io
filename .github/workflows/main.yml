@@ -5,7 +5,7 @@ on:
     branches: master
 
 jobs:
-  update:
+  gh-release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,6 +31,8 @@ jobs:
             ${{ secrets.SECRET_KEY  }}-node-
       - name: Install and Build
         run: |
+          git config --global user.email "mh97888@gmail.com"
+          git config --global user.name "Azderica"
           npm ci
           npm run build
       - name: Deploy
