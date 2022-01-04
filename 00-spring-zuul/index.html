@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>[Spring] Spring Cloud Zuul 공부 - Azderica</title><meta name="gridsome:hash" content="314c4422387ef2cae421ff768d6b6746d38a40d1"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="부족하지만 꿈많은 웹 개발자의 발전 기록입니다."><meta data-vue-tag="ssr" name="description" content="Spring cloud zuul을 적용하기 위해 공부하는 내용입니다."><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.d0be325ebfe2762f973f3e0685345394.png"><link rel="preload" href="/assets/css/0.styles.7a8bb02e.css" as="style"><link rel="preload" href="/assets/js/app.c516415e.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--post-vue.5a18a2eb.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.e05d67c3.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.d32f3f8d.js"><link rel="prefetch" href="/assets/js/page--src--templates--tag-vue.01058a00.js"><link rel="stylesheet" href="/assets/css/0.styles.7a8bb02e.css"><script data-vue-tag="ssr" type="text/javascript" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <meta
+      name="google-site-verification"
+      content="MqpGCz7XVg4s3AWfrGHCt6AlXPacpV9iGvSFVD0ATHw"
+    />
+  </head>
+  <body >
+    <script>
+      // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
+      ;(function() {
+        window.__onThemeChange = function() {}
+        function setTheme(newTheme) {
+          window.__theme = newTheme
+          preferredTheme = newTheme
+          document.body.setAttribute('data-theme', newTheme)
+          window.__onThemeChange(newTheme)
+        }
+
+        var preferredTheme
+        try {
+          preferredTheme = localStorage.getItem('theme')
+        } catch (err) {}
+
+        window.__setPreferredTheme = function(newTheme) {
+          setTheme(newTheme)
+          try {
+            localStorage.setItem('theme', newTheme)
+          } catch (err) {}
+        }
+
+        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
+        darkQuery.addListener(function(e) {
+          window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+        })
+
+        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
+      })()
+    </script>
+
+    <div id="app" data-server-rendered="true"><header class="header"><div class="header__left"><a href="/" class="logo active"><span class="logo__text">
+    ← Azderica
+  </span></a></div><div class="header__right"><button role="button" aria-label="Toggle dark/light" class="toggle-theme"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></div></header><main class="main"><div class="post-title"><h1 class="post-title__text">
+      [Spring] Spring Cloud Zuul 공부
+    </h1><div class="post-meta">
+   Posted 6. February 2021.
+   <strong>9 min read.</strong></div></div><div class="post content-box"><div class="post__header"><img alt="Cover image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 860 251' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-40075cd3d396f35c1ebf0db874239afa'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='10'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-40075cd3d396f35c1ebf0db874239afa)' width='860' height='251' xlink:href='data:image/png%3bbase64%2ciVBORw0KGgoAAAANSUhEUgAAAEAAAAATCAYAAAAgcwuHAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEZklEQVRYw%2b2XbUyVZRjHn/t5niOoJM4FWIaAaVj0AucgJC8H8IC9kGGIEuLbqVQQiDcparjaWq4XG6ak1ZQ2rel8CyGtzNJyqZ%2bas2bfanOrL22tLy1XH07/6%2bF/2s2zw%2bHYWFuOa/vtOffrc/3v%2b7ru5z6GMWET9o9ZHuU8M0uT1WNb77NW9vns%2bl25ntper13RnmnacaaReOtkdUOK98RbzvOBrjvNgnVzIopc9kq2NT%2bQoqalxDvt6kZZCmUNK3lkS5YZrmsaKC5qHvT3gFebj/vXNx4tukUfM3m6J9JUMt7ic9TXkZhc43yWNn%2bsZsb8Hl9Nqgq%2bl%2b8o2nSsOAWiB1o/Lg11fFYW6ji9KNR%2bqiyEul%2bwEJ1Nx/3lS1%2b611RwacbsKcrlbCShplY2XQ7qTpquxRlrEU3Xe/SxVhS/Rlp5W%2baIF0Ho4c1nAiL4TxBq%2bagk1HqyNNT9dYXUnUVkFCIaZklf77JUZU0ydWfmgeV8GqM4cbMEUJR2vRwHqsEivmM%2bmBKjOPFhekyLsOTFLBO72wCBJ8H34Dfu%2bq/gZ3AZdEtfiJ%2bJKLlNfte8nm1rk88F20EheFSOFZAK7mF7AkgBFWA2yzkgnu13gzSOMyj0NDgEvpC9AYfZR8Zks99N7CtMBeKT%2bDcAFkeIiJG2uPMuBXHHur4MOKEuIS%2bCEeqVEJrRcKQo2bc83RFZt8Pneer9hVPRvm3Th8VZUrdwTUZ48iTQCzbQkWLwAmgFlaAFrJP1lsADz0vGgTXgQfbrYV%2bDbSc0V6eBg6CUi3IGtINnZS/kjAad4GUwCK7Qh%2bgLIAeciIeoaxLykuuN3GHd1u7Ni8OilDFNvpMoweIkOalQnRp%2bgeye9NkJasH9rH8ObOYuiaMr2C671Qa2sF8%2bQ97gwpzj7xkM/z1gByPNYPsejpF5%2bxk1Yvu4sGMswKD/AHf9Dz4PSD12OhyaxoaDBQmo70BE3M4x33afd86EHm0qCesuUMVdqaKwRjoXpJAlTJFqlqX%2bYVDPcUs5n00RIugieBK8xRQ6Aj5hxKwCX4FTjKI3wFHwDdNxzAXY3/m5I/xa26dO3l8ItyHM01BeC95pGvDnMGIqm4f84VTZK3WPv%2bkN5206CPC3REKD3KtYTqQjCRoWo0LyeiPYBha4XMzT5pilpVuB1sfLM0jmnMQ50rXzRUVLgRU89f9qGXJS4Cd%2b/z8A%2b0Brw6GixMDT8xRSoArlqy1DJSGOWS9zrH43z4rwkiSKNmL4HifzpM%2bJcl8wI8ylYrxLRDcI6ZNv/jPnykXUjxIFDPGr4BL4Afwu7V1nA2HxJ%2bp359rOFtWlKdfFRf%2b0Wi5H1HV87/X7gnuO0e4UyjUmNsPuPgRRvaCf7GIESCTs1%2bqEJ4L9%2bY6wmtey1Tjd%2bK7f6fGwwuAcVbJx7r%2b61ePqrIb/R/z3fo%2br3VGSrGq3ey3887NX9uXadTt9Nr75w7/xlHL97gX2qreHQZ1VEMxwxMs/xAmbsP%2bv/Q2mB2CjBfda0gAAAABJRU5ErkJggg==' /%3e%3c/svg%3e" width="860" data-src="/assets/static/SpringCloudLogo.07cc2b7.72e26aa14b322613b9afab29e3faf2ad.png" data-srcset="/assets/static/SpringCloudLogo.a67b0b2.72e26aa14b322613b9afab29e3faf2ad.png 480w, /assets/static/SpringCloudLogo.07cc2b7.72e26aa14b322613b9afab29e3faf2ad.png 860w" data-sizes="(max-width: 860px) 100vw, 860px" class="g-image g-image--lazy g-image--loading"><noscript><img src="/assets/static/SpringCloudLogo.07cc2b7.72e26aa14b322613b9afab29e3faf2ad.png" class="g-image g-image--loaded" width="860" alt="Cover image"></noscript></div><div class="post__content"><h1 id="spring-cloud-zuul"><a href="#spring-cloud-zuul" aria-hidden="true"><span class="icon icon-link"></span></a>Spring Cloud Zuul</h1>
+<p>기존 회사 프로젝트에서 사용하는 도메인에 대해 API Gateway 생성에 대한 필요성이 대두되었다. 그래서 그 프로젝트를 진행하기 전에 한번 공부해볼려고 한다.</p>
+<br/>
+<h2 id="먼저-api-gateway에-대해"><a href="#%EB%A8%BC%EC%A0%80-api-gateway%EC%97%90-%EB%8C%80%ED%95%B4" aria-hidden="true"><span class="icon icon-link"></span></a>먼저 API Gateway에 대해</h2>
+<p>Microservice Architecture(MSA)에서 언급되는 컴포넌트 중 하나이며, 모든 클라이언트 요청에 대한 end point를 통합하는 서버입니다. 일종의 프록시 서버처럼 동작하며 인증 및 권한, 모니터링, 로깅 등의 추가적인 기능이 있습니다.</p>
+<p>MSA는 도메인별 데이터를 저장하고 도메인별로 하나 이상의 서버가 따로 존재합니다. 한 서비스에 한개 이상의 서버가 존재하기 때문에 해당 서버를 사용하는 클라이언트 입장에서는 다수의 end point가 생기므로, 이 end point를 변경했을 때 관리하기가 힘듭니다.그래서 MSA 환경에서 서비스에 대한 도메인인 하나로 통합할 수 있는 API Gateway가 필요합니다.</p>
+<p><strong>API Gateway를 사용하면 통합적으로 end point와 Rest api를 관리할 수 있으며, 모든 클라이언트는 각 서비스의 end point 대신 API Gateway로 요청을 전달</strong>합니다. 이후 API Gateway는 사용자가 설정한 라우팅 설정에 따라 각 end point로 클라이언트를 대리하여 요청하고 응답을 받으면 클라이언트에게 전달하는 프록시 역할을 수행합니다.</p>
+<br/>
+<h2 id="netflix-zuul을-선택한-이유"><a href="#netflix-zuul%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%9C-%EC%9D%B4%EC%9C%A0" aria-hidden="true"><span class="icon icon-link"></span></a>Netflix Zuul을 선택한 이유.</h2>
+<p><img src="https://user-images.githubusercontent.com/42582516/107103975-2236cd80-6863-11eb-9494-07470230b9c0.png" alt="Netflix-zuul-usage"></p>
+<p>앞서 API Gateway에 대해 개념을 인지하고, 이를 사용하기 제일 좋은 오픈소스 프로젝트는 Netflix zuul로 볼 수 있습니다.</p>
+<pre class="language-text"><code class="language-text">Zuul is the front door for all requests from devices and web sites to the backend of the Netflix streaming application. As an edge service application, Zuul is built to enable dynamic routing, monitoring, resiliency and security. It also has the ability to route requests to multiple Amazon Auto Scaling Groups as appropriate.</code></pre>
+<ul>
+<li><a href="https://github.com/Netflix/zuul/wiki" target="_blank" rel="nofollow noopener noreferrer">출처 : Netflix zuul wiki</a></li>
+</ul>
+<p>Zuul에 대한 공식 설명글입니다. 목적을 보면, 라우팅과 모니터링, 복원 및 보안을 지원하도록 설계되어 있습니다.</p>
+<br/>
+<h2 id="netflix-zuul에-대해-좀-더-자세하게"><a href="#netflix-zuul%EC%97%90-%EB%8C%80%ED%95%B4-%EC%A2%80-%EB%8D%94-%EC%9E%90%EC%84%B8%ED%95%98%EA%B2%8C" aria-hidden="true"><span class="icon icon-link"></span></a>Netflix Zuul에 대해 좀 더 자세하게.</h2>
+<p>클라이언트 요청은 많은 트래픽과 다양한 요청이 들어오기 때문에 운영에서 다양한 이슈와 문제가 발생합니다. zuul은 이러한 상황에 신속하게 대응합니다. groovy 언어로 작성된 다양한 형태의 Filter를 제공하고, Filter에 기능을 정의해이슈 발생시 적절한 Filter을 추가함으로서 이슈를 해결할 수 있습니다.</p>
+<h3 id="netflix-filter-기능"><a href="#netflix-filter-%EA%B8%B0%EB%8A%A5" aria-hidden="true"><span class="icon icon-link"></span></a>Netflix Filter 기능</h3>
+<ul>
+<li>
+<p>Authentication and Security</p>
+<ul>
+<li>클라이언트 요청 시, 각 리소스에 대한 인증 확인하고 만족시키지 않으면 거부합니다,</li>
+</ul>
+</li>
+<li>
+<p>Insights and Monitoring</p>
+<ul>
+<li>의미있는 데이터 및 통계를 제공합니다.</li>
+</ul>
+</li>
+<li>
+<p>Dynamic Routing</p>
+<ul>
+<li>필요에 따라 요청을 다른 클러스터로 동적 라우팅합니다.</li>
+</ul>
+</li>
+<li>
+<p>Stress Testing</p>
+<ul>
+<li>성능 측정을 위해 점차적으로 클러스터 트래픽을 증가시킵니다.</li>
+</ul>
+</li>
+<li>
+<p>Load Shedding</p>
+<ul>
+<li>각 유형의 요청에 대해 용량을 할당하고, 초과 요청을 제한합니다.</li>
+</ul>
+</li>
+<li>Static Response handling -클러스테엇 오는 응답을 대신하여 API Gateway에서 응답을 처리합니다.</li>
+</ul>
+<h3 id="netflix-core-architecture"><a href="#netflix-core-architecture" aria-hidden="true"><span class="icon icon-link"></span></a>Netflix Core Architecture</h3>
+<p><img src="https://user-images.githubusercontent.com/42582516/107103592-940e1780-6861-11eb-9a76-6f86651c1a47.png" alt="Zuul-Core-Architecture"></p>
+<p>요청은 크게 4가지의 필터로 구성됩니다.</p>
+<ul>
+<li>
+<p>Pre filter</p>
+<ul>
+<li>Origin으로 라우팅되기전에 실행됩니다.</li>
+<li>요청 인증, Origin 서버 선택, 디버그 정보 로깅 등이 있습니다.</li>
+</ul>
+</li>
+<li>
+<p>Routing filter</p>
+<ul>
+<li>요청을 Origin으로 Routing하는 작업을 수행합니다.</li>
+<li>Apache HttpClient나 Netflix Ribbon을 사용해서 HTTP 요청을 작성하고 전송합니다.</li>
+</ul>
+</li>
+<li>
+<p>Post filter</p>
+<ul>
+<li>요청이 Origin으로 라우팅된 후 실행됩니다.</li>
+<li>응답에 표준 HTTP 헤더를 추가하고 통계 및 메트릭을 수집합니다.</li>
+</ul>
+</li>
+<li>
+<p>Error filter</p>
+<ul>
+<li>다른 단계에서 오류 발생시 실행됩니다.</li>
+</ul>
+</li>
+</ul>
+<p>이를 그림으로 나타내면 다음과 같습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/42582516/107104961-61671d80-6867-11eb-8eb0-f1e2ae87cf14.png" alt="zuul-filter"></p>
+<h3 id="zuul-components"><a href="#zuul-components" aria-hidden="true"><span class="icon icon-link"></span></a>Zuul Components</h3>
+<p>zuul은 다음과 같은 component로 구성됩니다.</p>
+<p>Zuul 1.x 컴포넌트는 크게 4가지의 components로 구성됩니다.</p>
+<ul>
+<li>
+<p><code class="language-text">zuul-core</code></p>
+<ul>
+<li>필터를 컴파일하고 실행하는 핵심 기능을 가진 라이브러리</li>
+</ul>
+</li>
+<li>
+<p><code class="language-text">zuul-simple-webapp</code></p>
+<ul>
+<li><code class="language-text">zuul-core</code>로 애플리케이션 구축한 예제.</li>
+</ul>
+</li>
+<li>
+<p><code class="language-text">zuul-netflix</code></p>
+<ul>
+<li>다른 Netflix OSS 구성 요소를 Zuul에 추가합니다.</li>
+<li>Ex) Ribbon</li>
+</ul>
+</li>
+<li>
+<p><code class="language-text">zuul-netflix-webapp</code></p>
+<ul>
+<li><code class="language-text">zuul-core</code>와 <code class="language-text">zuul-netflix</code>를 함계 사용하기 쉬운 패키지로 만드는 웹</li>
+</ul>
+</li>
+</ul>
+<p>Zuul 2.x 컴포넌트는 zuul-core와 zuul-sample로만 구성됩니다.</p>
+<ul>
+<li><code class="language-text">zuul-core</code> : zuul 2.0의 기능</li>
+<li><code class="language-text">zuul-sample</code> : zuul 2.0용 샘플 driver application</li>
+</ul>
+<br/>
+<h2 id="spring-cloud-zuul-1"><a href="#spring-cloud-zuul-1" aria-hidden="true"><span class="icon icon-link"></span></a>Spring Cloud Zuul</h2>
+<p>Spring boot에 Netflix OSS를 통합적으로 제공합니다. annotation과 yml 설정으로 쉽게 시작할 수 있습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/42582516/107106129-64fda300-686d-11eb-8afd-d3b618d314eb.png" alt="spring-cloud-zuul"></p>
+<ul>
+<li>
+<p><code class="language-text">RouteLocator</code></p>
+<ul>
+<li>url path에 대한 라우팅을 지정</li>
+<li>요청이 들어오면 어떻게 라우팅할 것인지를 정의합니다.</li>
+</ul>
+</li>
+<li>
+<p><code class="language-text">ZuulHandlerMapping</code></p>
+<ul>
+<li>RouteLocator에 정의된 url path에 zuulController를 매핑합니다.</li>
+</ul>
+</li>
+<li>
+<p><code class="language-text">ZuulController</code></p>
+<ul>
+<li>ZuulServlet을 주입합니다.</li>
+<li>들어오는 모든 요청을 ZuulServlet으로 처리합니다.</li>
+</ul>
+</li>
+<li>
+<p><code class="language-text">ZuulFilterInitializer</code></p>
+<ul>
+<li>filter Map에 정의된 filter를 FilterRegistry에 등록하고 FilterLoader로 로딩합니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="시작하기"><a href="#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0" aria-hidden="true"><span class="icon icon-link"></span></a>시작하기.</h3>
+<p>먼저 아래와 같이 <code class="language-text">build.gradle</code>에 의존성을 추가합니다.</p>
+<pre class="language-gradle"><code class="language-gradle">implementation("org.springframework.cloud:spring-cloud-starter-netflix-zuul:2.1.2.RELEASE")</code></pre>
+<p>application.yml 파일에 zuul 설정을 추가합니다.</p>
+<pre class="language-yml"><code class="language-yml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> api<span class="token punctuation">-</span>gateway<span class="token punctuation">-</span>way
+
+<span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+
+<span class="token key atrule">ribbon</span><span class="token punctuation">:</span>
+  <span class="token key atrule">eureka</span><span class="token punctuation">:</span>
+    <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+
+<span class="token key atrule">zuul</span><span class="token punctuation">:</span>
+  <span class="token key atrule">sensitive-headers</span><span class="token punctuation">:</span>
+  <span class="token key atrule">host</span><span class="token punctuation">:</span>
+    <span class="token key atrule">connect-timeout-millis</span><span class="token punctuation">:</span> <span class="token number">600000</span>
+    <span class="token key atrule">socket-timeout-millis</span><span class="token punctuation">:</span> <span class="token number">600000</span>
+  <span class="token key atrule">routes</span><span class="token punctuation">:</span>
+    <span class="token key atrule">foo-api</span><span class="token punctuation">:</span>
+      <span class="token key atrule">path</span><span class="token punctuation">:</span> /foos/<span class="token important">**</span>
+      <span class="token key atrule">url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span><span class="token number">8081</span>
+      <span class="token key atrule">stripPrefix</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">bar-api</span><span class="token punctuation">:</span>
+      <span class="token key atrule">path</span><span class="token punctuation">:</span> /bars/<span class="token important">**</span>
+      <span class="token key atrule">url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span><span class="token number">8082</span>
+      <span class="token key atrule">stripPrefix</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre>
+<p>그리고 Zuul을 사용하기 위해 다음과 같이 Annotation을 사용합니다.</p>
+<pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@EnableZuulProxy</span>
+<span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ZuulApplication</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">ZuulApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Spring Cloud Zuul은 <code class="language-text">@EnableZuulProxy</code>와 <code class="language-text">@EnableZuulServer</code> 두 종류의 annotation으로 zuul을 구동시킵니다. 다만<code class="language-text">@EnableZuulProxy</code>은 <code class="language-text">@EnableZuulServer</code>에서 <code class="language-text">PreDecorationFilter, RibbonRoutingFilter, SimpleHostRoutingFilter</code>을 추가 시킨 개념입니다.</p>
+<h3 id="custom-filter-적용"><a href="#custom-filter-%EC%A0%81%EC%9A%A9" aria-hidden="true"><span class="icon icon-link"></span></a>Custom Filter 적용</h3>
+<p>다음은 ZuulFilter를 상속받아 Filter를 추가합니다..</p>
+<pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RouteFilter</span> <span class="token keyword">extends</span> <span class="token class-name">ZuulFilter</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">filterType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"route"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">filterOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">shouldFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Inside Route Filter"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li><code class="language-text">filterType()</code> : filter의 type으로 "pre", "route", "post", "error", "static"을 용도에 따라 return합니다.</li>
+<li><code class="language-text">filterOrder()</code> : type안에서 해당 필터가 실행되는 순서입니다.</li>
+<li><code class="language-text">shouldFilter()</code> : run method를 실행시 true 실행하지 않아도 되면 false를 반환합니다.</li>
+<li><code class="language-text">run()</code> : 실제 filter의 로직을 담당합니다.</li>
+</ul>
+<h3 id="예외-처리"><a href="#%EC%98%88%EC%99%B8-%EC%B2%98%EB%A6%AC" aria-hidden="true"><span class="icon icon-link"></span></a>예외 처리</h3>
+<p><code class="language-text">Netflix Zuul</code>의 프록시는 Filter 레벨에서 실행됩니다. 필터는 서블릿의 영역으로 Spring MVC의 영역의 여러 레벨에서 발생하는 예외를 처리할 수 있는 <code class="language-text">@ControllerAdvice</code>를 사용할 수 없습니다.</p>
+<p>따라서 <code class="language-text">Whitelabel Error Page</code> 페이지 생성 로직에서 처리할 수 있습니다</p>
+<pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ErrorHandlerController</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorController</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> ERROR_MAPPING <span class="token operator">=</span> <span class="token string">"/error"</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> ERROR_MAPPING<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token class-name">RequestContext</span> ctx <span class="token operator">=</span> <span class="token class-name">RequestContext</span><span class="token punctuation">.</span><span class="token function">getCurrentContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Object</span> error <span class="token operator">=</span> <span class="token class-name">ExceptionUtils</span><span class="token punctuation">.</span><span class="token function">getRootCause</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">Exception</span><span class="token punctuation">)</span> ctx<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"throwable"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// zuul.routes.{proxy}.path 에 정의되지 않은 요청일 경우 응답 처리</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"NOT_FOUND"</span><span class="token punctuation">,</span> <span class="token class-name">HttpStatus</span><span class="token punctuation">.</span>NOT_FOUND<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token keyword">instanceof</span> <span class="token class-name">Exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"SERVICE_UNAVAILABLE"</span><span class="token punctuation">,</span> <span class="token class-name">HttpStatus</span><span class="token punctuation">.</span>SERVICE_UNAVAILABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// 예상되지 않은 오류일 경우 응답 처리</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"INTERNAL_SERVER_ERROR"</span><span class="token punctuation">,</span> <span class="token class-name">HttpStatus</span><span class="token punctuation">.</span>INTERNAL_SERVER_ERROR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getErrorPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">return</span> ERROR_MAPPING<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>라우팅할 프록시가 존재하지 않는 경우 ErrorController로 요청을 처리합니다.</li>
+<li>라우팅할 프록시가 존재하고, 애플리케이션 오류(라우팅 타임아웃 등) 발생 시 <code class="language-text">pre filter &gt; ErrorController &gt; post filter</code> 순서로 요청을 처리합니다.</li>
+<li>라우팅할 프록시가 존재하고, 라우팅이 성공할 시 <code class="language-text">pre filter -&gt; post filter</code> 순으로 요청을 처리합니다.</li>
+</ul>
+<br/>
+<h2 id="마무리"><a href="#%EB%A7%88%EB%AC%B4%EB%A6%AC" aria-hidden="true"><span class="icon icon-link"></span></a>마무리</h2>
+<p>간단하게나마 spring cloud zuul에 대해 정리했습니다.</p>
+<hr>
+<p><strong>출처</strong></p>
+<ul>
+<li><a href="https://netflixtechblog.com/announcing-zuul-edge-service-in-the-cloud-ab3af5be08ee" target="_blank" rel="nofollow noopener noreferrer">https://netflixtechblog.com/announcing-zuul-edge-service-in-the-cloud-ab3af5be08ee</a></li>
+<li><a href="https://github.com/Netflix/zuul/wiki" target="_blank" rel="nofollow noopener noreferrer">https://github.com/Netflix/zuul/wiki</a></li>
+<li><a href="https://jsonobject.tistory.com/464" target="_blank" rel="nofollow noopener noreferrer">https://jsonobject.tistory.com/464</a></li>
+<li><a href="https://sabarada.tistory.com/56" target="_blank" rel="nofollow noopener noreferrer">https://sabarada.tistory.com/56</a></li>
+<li><a href="https://lion-king.tistory.com/entry/Spring-Boot-Spring-Cloud-MSA-4-Zuul%EC%9D%B4%EB%9E%80-%EC%A0%81%EC%9A%A9%EB%B0%A9%EB%B2%95" target="_blank" rel="nofollow noopener noreferrer">https://lion-king.tistory.com/entry/Spring-Boot-Spring-Cloud-MSA-4-Zuul%EC%9D%B4%EB%9E%80-%EC%A0%81%EC%9A%A9%EB%B0%A9%EB%B2%95</a></li>
+<li><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html" target="_blank" rel="nofollow noopener noreferrer">https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html</a></li>
+<li><a href="https://blog.neonkid.xyz/208" target="_blank" rel="nofollow noopener noreferrer">https://blog.neonkid.xyz/208</a></li>
+</ul>
+</div><div class="post__footer"><div class="post-tags"><a href="/tag/Spring/" class="post-tags__link"><span>#</span> Spring
+		</a><a href="/tag/SpringBoot/" class="post-tags__link"><span>#</span> SpringBoot
+		</a><a href="/tag/Cloud/" class="post-tags__link"><span>#</span> Cloud
+		</a><a href="/tag/Zuul/" class="post-tags__link"><span>#</span> Zuul
+		</a><a href="/tag/Netflix/" class="post-tags__link"><span>#</span> Netflix
+		</a><a href="/tag/Backend/" class="post-tags__link"><span>#</span> Backend
+		</a></div></div></div><ins data-ad-client="ca-pub-1759762070891290" data-ad-slot="2189844016" data-ad-format="auto" class="adsbygoogle mb-5" style="display:block;"></ins><div class="post-comments" style="display:none;"></div><div class="post-comments"></div><div class="author post-author"><img alt="Author image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='5'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f)' width='180' height='180' xlink:href='data:image/jpeg%3bbase64%2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABAAEADASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABgEDBAcIBQIA/8QAMBAAAQMDAgQFAwQDAQAAAAAAAQIDBAAFERIhBhMxUQciQWFxFJGhFiMygRVCsdH/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/EACARAAICAgICAwAAAAAAAAAAAAECABEDEiExBCITQUL/2gAMAwEAAhEDEQA/ALKr4mmyo5pdVPJXFNIakR4ynUlaspbAznHX4qp/EzxOTw9LctVnQ07cEpBW%2b4QW2sjYY9VfOMe9LuLqNowFyzx0pDWTX%2bM%2bIZMovOcQT9ZUFYbdKQD8DbHxWg/Cy7XriC0xZl%2bTEYiyBy4i06ua%2bpOcqV/qAcHHqaBcDuMqMxoQtNeTUiayGVJKM6TsQeqVDqKjUVYMLEzKVNGeiupMCOZTnZtP8jTcSGp/C3Mpa/JqJfLythf0VrbQp0DzFX8UDuankyfle4%2bLFfs/AnL4x42t9puRgPsZitMuPPSCSSjSkkBCR1Vt%2bM1Stv8ADfibjGQ5f5S4Mf6xfNCJWvUpJ6FSUjbbHrmrNn8PNTo036xXOkymy2VgYCQrY4HxtRBw5DegyHhHhpiAq0lZeLnNGNlHI2PpjeoHbH33Oz0zGh0JRvF/hfxBbYvPiRbc4003%2b43BdcKlnfK9Lm5PsD0HSjjwB46uHEN/uFivKkGN9Ml2KylGAyWyElI7DGDjvRRf1SHJMlEh66ocLepK2NJYwTgJ0k5J37dM71WEaR%2bkfEW0Xvkqw4tUeWllJ8yVDBUB3Gx/qtvtw0Pw6cpNFXZCkMuDqcZz8Vy0kFIPcV3w7HutuS7GcS4hadSVJ6GhoL5bqmVbLRtg0%2bA0SJDyFNAx%2b/XUsIDMfd1Ww/8Aa4DCNIJJJKjlSj1Ue9DDvHvDqOfImXNlK9ZSkDKjgdgM1HV4l8MJjB4zHic45YYUV/bpj%2b6piUKLPcjmcsaHUN0Hzox1yK6z85wJy0yXloQf2kKAVn060B/rOxC1xLg7cEMsSgS0Fg6zg4PlGTsaM7KLbxxZ2btZ5KCtOWXkLRgpUOpwfQ7GtlTeiJTxMioSH6ntcpSLQtU1gIcGdshRx6Zx61XCoKLnci88hTSUkltWN09Onuf%2bVYlybs/DlsU2FtyX86iEKyhJ7k%2bp9qDVXBMyQ64CnmZBWkHdORtkfGKgMPNMZ0t5OtsghxwI%2bhhKoKAEtgakJAwB3p/iqERiUyPOnc49aGLDK5FxYWFY82D8GrGdQmRG3wQRRcatxJo26%2b0wVpK0kDb4pWm3HGwlIyoq0bd6QOBCCTXbtLIMaK6oDSnU8fk9KuBc4pDlQzGmuac%2bVsKH23/Io/8ADriViySXY90b5lskJAdSUatB9FY6/b27UKzG%2bdIQsbamSPuRXp0aClY9Nj8U2sIYjmWNfeIOHks86LeA7g4RFRGWgJHck7mq2uV0luXQ3GO%2b8zLkrAy2op0J7bewFNTUnWgBX8t6bbwJaUkbcsn8ikCAG5R8zMoX6EIovGd8YkM65ijo3xoTggeh23PvWrrFLTMtzLqCClxtK0/BGaxo6%2bhSlKO2lRT8d60t4MXX/IcFW4knWyDHUD1Gk4H4xSZR0Y%2bA8kT/2Q==' /%3e%3c/svg%3e" width="180" data-src="/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" data-srcset="/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg 180w" data-sizes="(max-width: 180px) 100vw, 180px" class="author__image g-image g-image--lazy g-image--loading"><noscript><img src="/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" class="author__image g-image g-image--loaded" width="180" alt="Author image"></noscript><!----><p class="author__intro">To be a Pro in Web developer</p><p class="author__links"><a href="//linkedin.com/in/myeonghun-park-7693a1184/">📘 Linkedin</a><a href="//azderica.github.io/til/docs/intro">📚 TIL</a><a href="//github.com/Azderica">💻 GitHub</a><a href="//azderica.github.io/Portfolio/" target="_blank">✨ Portfolio</a></p></div></main><footer class="footer"><span class="footer__copyright">Copyright © 2022.
+    </span><span class="footer__links">Powered by <a href="//gridsome.org"> Gridsome </a></span></footer></div> <script src="/assets/js/app.c516415e.js" defer></script><script src="/assets/js/page--src--templates--post-vue.5a18a2eb.js" defer></script>
+  </body>
+</html>

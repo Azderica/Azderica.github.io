@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>[Java] Java Stream - Azderica</title><meta name="gridsome:hash" content="314c4422387ef2cae421ff768d6b6746d38a40d1"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="부족하지만 꿈많은 웹 개발자의 발전 기록입니다."><meta data-vue-tag="ssr" name="description" content="Java Stream에 대해 정리합니다."><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.d0be325ebfe2762f973f3e0685345394.png"><link rel="preload" href="/assets/css/0.styles.7a8bb02e.css" as="style"><link rel="preload" href="/assets/js/app.c516415e.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--post-vue.5a18a2eb.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.e05d67c3.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.d32f3f8d.js"><link rel="prefetch" href="/assets/js/page--src--templates--tag-vue.01058a00.js"><link rel="stylesheet" href="/assets/css/0.styles.7a8bb02e.css"><script data-vue-tag="ssr" type="text/javascript" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <meta
+      name="google-site-verification"
+      content="MqpGCz7XVg4s3AWfrGHCt6AlXPacpV9iGvSFVD0ATHw"
+    />
+  </head>
+  <body >
+    <script>
+      // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
+      ;(function() {
+        window.__onThemeChange = function() {}
+        function setTheme(newTheme) {
+          window.__theme = newTheme
+          preferredTheme = newTheme
+          document.body.setAttribute('data-theme', newTheme)
+          window.__onThemeChange(newTheme)
+        }
+
+        var preferredTheme
+        try {
+          preferredTheme = localStorage.getItem('theme')
+        } catch (err) {}
+
+        window.__setPreferredTheme = function(newTheme) {
+          setTheme(newTheme)
+          try {
+            localStorage.setItem('theme', newTheme)
+          } catch (err) {}
+        }
+
+        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
+        darkQuery.addListener(function(e) {
+          window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+        })
+
+        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
+      })()
+    </script>
+
+    <div id="app" data-server-rendered="true"><header class="header"><div class="header__left"><a href="/" class="logo active"><span class="logo__text">
+    ← Azderica
+  </span></a></div><div class="header__right"><button role="button" aria-label="Toggle dark/light" class="toggle-theme"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></div></header><main class="main"><div class="post-title"><h1 class="post-title__text">
+      [Java] Java Stream
+    </h1><div class="post-meta">
+   Posted 16. December 2020.
+   <strong>4 min read.</strong></div></div><div class="post content-box"><div class="post__header"><!----></div><div class="post__content"><h1 id="java-stream"><a href="#java-stream" aria-hidden="true"><span class="icon icon-link"></span></a>Java Stream</h1>
+<p>지난번에 이야기한 Java8의 핵심 기능, <a href="https://Azderica.github.io/00-java-lambda/" target="_blank" rel="nofollow noopener noreferrer">자바 Optional</a>에 이어서, 오늘은 Stream에 대해서 정리합니다.</p>
+<br/>
+<h2 id="java-stream-정의"><a href="#java-stream-%EC%A0%95%EC%9D%98" aria-hidden="true"><span class="icon icon-link"></span></a>Java Stream 정의</h2>
+<p>Java Stream은 <strong>배열이나 컬렉션의 저장 요소를 하나씩 참조해서 람다식으로 처리할 수 있게 해주는 반복자</strong>입니다. 이전에는 Java Stream이 없었을 때는 Iterator이라는 반복자를 사용하였습니다.</p>
+<ul>
+<li>Java Iterator</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> it <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">while</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> num <span class="token operator">=</span> it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>num <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// output : 1, 2, 3</span></code></pre>
+<ul>
+<li>Java Stream</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Stream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> stream <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+stream<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>num <span class="token operator">-></span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>num <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// output : 1, 2, 3</span></code></pre>
+<br/>
+<h2 id="java-stream-특징"><a href="#java-stream-%ED%8A%B9%EC%A7%95" aria-hidden="true"><span class="icon icon-link"></span></a>Java Stream 특징</h2>
+<ul>
+<li>배열 또는 컬렉션 인스턴스에 함수 여러 개를 조합해서 원하는 결과를 필터링할 수 있으며 가공된 결과를 얻을 수 있습니다.</li>
+<li>람다를 통해 코드를 간결하게 표현할 수 있습니다.</li>
+<li>배열과 컬렉션을 통해 함수형으로 처리할 수 있습니다.</li>
+<li>병렬처리가 가능합니다.</li>
+</ul>
+<br/>
+<h2 id="java-stream-구조-및-사용법"><a href="#java-stream-%EA%B5%AC%EC%A1%B0-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EB%B2%95" aria-hidden="true"><span class="icon icon-link"></span></a>Java Stream 구조 및 사용법</h2>
+<p>스트림은 다음과 같은 절차로 사용할 수 있습니다.</p>
+<ul>
+<li>스트림 생성 : 스트림 인스턴스 생성</li>
+<li>중개 연산 : 필터링(filtering) 및 맵핑(mapping) 등으로 원하는 결과를 만들어가는 중간 과정</li>
+<li>최종 연산 : 최종적으로 결과를 만드는 작업</li>
+</ul>
+<h3 id="스트림-생성"><a href="#%EC%8A%A4%ED%8A%B8%EB%A6%BC-%EC%83%9D%EC%84%B1" aria-hidden="true"><span class="icon icon-link"></span></a>스트림 생성</h3>
+<ul>
+<li><strong>배열 스트림</strong> : <code class="language-text">Arrays.stream()</code> 을 사용합니다.</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token class-name">IntStream</span> intStream <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li><strong>컬렉션 스트림</strong> : 인터페이스의 default method를 사용합니다.</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Stream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> stream <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">streams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Stream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> parallelStream <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">parallelStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="중개-연산"><a href="#%EC%A4%91%EA%B0%9C-%EC%97%B0%EC%82%B0" aria-hidden="true"><span class="icon icon-link"></span></a>중개 연산</h3>
+<ul>
+<li>Filter: 스트림 내 요소 중 조건에 맞는 것을 고릅니다.</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> arrary <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"banana"</span><span class="token punctuation">,</span> <span class="token string">"melon"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Stream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> stream <span class="token operator">=</span> arrary<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>x <span class="token operator">-></span> x<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// output : ['apple', 'banana']</span></code></pre>
+<ul>
+<li>Map : 스트림 내 요소들이 특정 로직 수행 후 새로운 스트림을 반환합니다.</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Stream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> stream <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>x <span class="token operator">-></span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// output : [2, 3, 4]</span></code></pre>
+<ul>
+<li>flatMap : 여러 스트림을 하나의 스트림으로 합칩니다.</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"a1"</span><span class="token punctuation">,</span> <span class="token string">"a2"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"b1"</span><span class="token punctuation">,</span> <span class="token string">"b2"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"c1"</span><span class="token punctuation">,</span> <span class="token string">"c2"</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token class-name">Stream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> stream <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span>s <span class="token operator">-></span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// output : ["a1", "a2", "b1", "b2", "c1", "c2"]</span></code></pre>
+<ul>
+<li>sorted : 정렬합니다.</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> sortedList <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 오름차순</span>
+<span class="token comment">// output : [1, 3, 4]</span>
+
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> sortedList <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token class-name">Comparator</span><span class="token punctuation">.</span><span class="token function">reverseOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 내림차순</span>
+<span class="token comment">// output : [4, 3, 1]</span></code></pre>
+<h3 id="최종-연산"><a href="#%EC%B5%9C%EC%A2%85-%EC%97%B0%EC%82%B0" aria-hidden="true"><span class="icon icon-link"></span></a>최종 연산</h3>
+<ul>
+<li>count, min, max, sum : 갯수, 최소, 최대, 합</li>
+<li>forEach : 요소를 돌면서 실행합니다.</li>
+<li>collect : 스트림의 값들을 모을 수 있습니다. ex) <code class="language-text">toMap()</code>, <code class="language-text">toSet()</code>, <code class="language-text">toList()</code></li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> arr <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> set <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+set<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>x <span class="token operator">-></span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token string">" "</span> <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// output : 1 2 3 4 5</span></code></pre>
+<ul>
+<li>reduce : 누적된 값을 계산합니다.</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token class-name">OptionalInt</span> reduced <span class="token operator">=</span>
+    <span class="token class-name">IntStream</span><span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment">// [1, 2, 3]</span>
+    <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// output : 6 (1 + 2 + 3)</span>
+
+    <span class="token keyword">int</span> reducedTwoParams <span class="token operator">=</span>
+    <span class="token class-name">IntStream</span><span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment">// [1, 2, 3]</span>
+    <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token operator">::</span><span class="token function">sum</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// output : 16 (10 + 1 + 2 + 3)</span>
+<span class="token punctuation">}</span></code></pre>
+<br/>
+<h2 id="마무리"><a href="#%EB%A7%88%EB%AC%B4%EB%A6%AC" aria-hidden="true"><span class="icon icon-link"></span></a>마무리.</h2>
+<p>오늘은 간단하게 stream에 대해 알아보고 이를 사용한 예시를 사용하였습니다. 현업에서 stream과 optional, lambda식을 잘 쓰는 것은 클린 코드를 만드는데 좋은 스킬 중 하나임을 개발하면서 자주 느낍니다. 오늘 사용한 예제말고도 다른 예제는 찾아보면서 좋은 개발할 수 있으면 좋겠습니다.</p>
+<p>감사합니다.</p>
+<hr>
+<p><strong>출처</strong></p>
+<ul>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html" target="_blank" rel="nofollow noopener noreferrer">https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html</a></li>
+<li><a href="https://www.baeldung.com/java-8-streams-introduction" target="_blank" rel="nofollow noopener noreferrer">https://www.baeldung.com/java-8-streams-introduction</a></li>
+<li><a href="https://futurecreator.github.io/2018/08/26/java-8-streams/" target="_blank" rel="nofollow noopener noreferrer">https://futurecreator.github.io/2018/08/26/java-8-streams/</a></li>
+</ul>
+</div><div class="post__footer"><div class="post-tags"><a href="/tag/Java/" class="post-tags__link"><span>#</span> Java
+		</a><a href="/tag/Java8/" class="post-tags__link"><span>#</span> Java8
+		</a><a href="/tag/Stream/" class="post-tags__link"><span>#</span> Stream
+		</a><a href="/tag/Backend/" class="post-tags__link"><span>#</span> Backend
+		</a></div></div></div><ins data-ad-client="ca-pub-1759762070891290" data-ad-slot="2189844016" data-ad-format="auto" class="adsbygoogle mb-5" style="display:block;"></ins><div class="post-comments" style="display:none;"></div><div class="post-comments"></div><div class="author post-author"><img alt="Author image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='5'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f)' width='180' height='180' xlink:href='data:image/jpeg%3bbase64%2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABAAEADASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABgEDBAcIBQIA/8QAMBAAAQMDAgQFAwQDAQAAAAAAAQIDBAAFERIhBhMxUQciQWFxFJGhFiMygRVCsdH/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/EACARAAICAgICAwAAAAAAAAAAAAECABEDEiExBCITQUL/2gAMAwEAAhEDEQA/ALKr4mmyo5pdVPJXFNIakR4ynUlaspbAznHX4qp/EzxOTw9LctVnQ07cEpBW%2b4QW2sjYY9VfOMe9LuLqNowFyzx0pDWTX%2bM%2bIZMovOcQT9ZUFYbdKQD8DbHxWg/Cy7XriC0xZl%2bTEYiyBy4i06ua%2bpOcqV/qAcHHqaBcDuMqMxoQtNeTUiayGVJKM6TsQeqVDqKjUVYMLEzKVNGeiupMCOZTnZtP8jTcSGp/C3Mpa/JqJfLythf0VrbQp0DzFX8UDuankyfle4%2bLFfs/AnL4x42t9puRgPsZitMuPPSCSSjSkkBCR1Vt%2bM1Stv8ADfibjGQ5f5S4Mf6xfNCJWvUpJ6FSUjbbHrmrNn8PNTo036xXOkymy2VgYCQrY4HxtRBw5DegyHhHhpiAq0lZeLnNGNlHI2PpjeoHbH33Oz0zGh0JRvF/hfxBbYvPiRbc4003%2b43BdcKlnfK9Lm5PsD0HSjjwB46uHEN/uFivKkGN9Ml2KylGAyWyElI7DGDjvRRf1SHJMlEh66ocLepK2NJYwTgJ0k5J37dM71WEaR%2bkfEW0Xvkqw4tUeWllJ8yVDBUB3Gx/qtvtw0Pw6cpNFXZCkMuDqcZz8Vy0kFIPcV3w7HutuS7GcS4hadSVJ6GhoL5bqmVbLRtg0%2bA0SJDyFNAx%2b/XUsIDMfd1Ww/8Aa4DCNIJJJKjlSj1Ue9DDvHvDqOfImXNlK9ZSkDKjgdgM1HV4l8MJjB4zHic45YYUV/bpj%2b6piUKLPcjmcsaHUN0Hzox1yK6z85wJy0yXloQf2kKAVn060B/rOxC1xLg7cEMsSgS0Fg6zg4PlGTsaM7KLbxxZ2btZ5KCtOWXkLRgpUOpwfQ7GtlTeiJTxMioSH6ntcpSLQtU1gIcGdshRx6Zx61XCoKLnci88hTSUkltWN09Onuf%2bVYlybs/DlsU2FtyX86iEKyhJ7k%2bp9qDVXBMyQ64CnmZBWkHdORtkfGKgMPNMZ0t5OtsghxwI%2bhhKoKAEtgakJAwB3p/iqERiUyPOnc49aGLDK5FxYWFY82D8GrGdQmRG3wQRRcatxJo26%2b0wVpK0kDb4pWm3HGwlIyoq0bd6QOBCCTXbtLIMaK6oDSnU8fk9KuBc4pDlQzGmuac%2bVsKH23/Io/8ADriViySXY90b5lskJAdSUatB9FY6/b27UKzG%2bdIQsbamSPuRXp0aClY9Nj8U2sIYjmWNfeIOHks86LeA7g4RFRGWgJHck7mq2uV0luXQ3GO%2b8zLkrAy2op0J7bewFNTUnWgBX8t6bbwJaUkbcsn8ikCAG5R8zMoX6EIovGd8YkM65ijo3xoTggeh23PvWrrFLTMtzLqCClxtK0/BGaxo6%2bhSlKO2lRT8d60t4MXX/IcFW4knWyDHUD1Gk4H4xSZR0Y%2bA8kT/2Q==' /%3e%3c/svg%3e" width="180" data-src="/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" data-srcset="/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg 180w" data-sizes="(max-width: 180px) 100vw, 180px" class="author__image g-image g-image--lazy g-image--loading"><noscript><img src="/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" class="author__image g-image g-image--loaded" width="180" alt="Author image"></noscript><!----><p class="author__intro">To be a Pro in Web developer</p><p class="author__links"><a href="//linkedin.com/in/myeonghun-park-7693a1184/">📘 Linkedin</a><a href="//azderica.github.io/til/docs/intro">📚 TIL</a><a href="//github.com/Azderica">💻 GitHub</a><a href="//azderica.github.io/Portfolio/" target="_blank">✨ Portfolio</a></p></div></main><footer class="footer"><span class="footer__copyright">Copyright © 2022.
+    </span><span class="footer__links">Powered by <a href="//gridsome.org"> Gridsome </a></span></footer></div> <script src="/assets/js/app.c516415e.js" defer></script><script src="/assets/js/page--src--templates--post-vue.5a18a2eb.js" defer></script>
+  </body>
+</html>
