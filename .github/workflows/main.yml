@@ -36,4 +36,4 @@ jobs:
           github_token: ${{ secrets.ACCESS_TOKEN }}
           # branch: master # The branch the action should deploy to.
           publish_branch: gh-pages
-          publish_dir: build # The folder the action should deploy.
+          publish_dir: dist # The folder the action should deploy.
