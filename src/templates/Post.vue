@@ -23,15 +23,6 @@
         <PostTags :post="$page.post" />
       </div>
     </div>
-
-    <Adsense
-      class="mb-5"
-      ad-client="ca-pub-1759762070891290"
-      ad-slot="2189844016"
-      ad-style="display:block"
-      ad-format="auto"
-    ></Adsense>
-
     <div
       class="post-comments"
       ref="post-comments-dark"
@@ -48,10 +39,10 @@
 </template>
 
 <script>
-import PostMeta from '~/components/PostMeta'
-import PostTags from '~/components/PostTags'
-import Author from '~/components/Author.vue'
-import Adsense from '~/components/Adsense.vue'
+import PostMeta from "~/components/PostMeta";
+import PostTags from "~/components/PostTags";
+import Author from "~/components/Author.vue";
+import Adsense from "~/components/Adsense.vue";
 
 export default {
   components: {
@@ -63,35 +54,35 @@ export default {
   data() {
     return {
       isDarkTheme: false,
-    }
+    };
   },
   mounted() {
-    if (window.__theme == 'dark') this.isDarkTheme = true
-    this.$refs['post-comments-dark'].appendChild(
-      this.createUtterancesNode('dark')
-    )
-    this.$refs['post-comments-light'].appendChild(
-      this.createUtterancesNode('light')
-    )
+    if (window.__theme == "dark") this.isDarkTheme = true;
+    this.$refs["post-comments-dark"].appendChild(
+      this.createUtterancesNode("dark")
+    );
+    this.$refs["post-comments-light"].appendChild(
+      this.createUtterancesNode("light")
+    );
   },
   methods: {
     updateThemeEvent(theme) {
-      this.isDarkTheme = theme
+      this.isDarkTheme = theme;
     },
     createUtterancesNode(theme) {
-      const script = window.document.createElement('script')
+      const script = window.document.createElement("script");
       const attributes = {
-        src: 'https://utteranc.es/client.js',
-        repo: 'Azderica/azderica.github.io',
-        'issue-term': 'pathname',
-        theme: theme === 'light' ? 'github-light' : 'github-dark',
-        crossorigin: 'anonymous',
+        src: "https://utteranc.es/client.js",
+        repo: "Azderica/azderica.github.io",
+        "issue-term": "pathname",
+        theme: theme === "light" ? "github-light" : "github-dark",
+        crossorigin: "anonymous",
         sync: true,
-      }
+      };
       Object.entries(attributes).forEach(([key, value]) => {
-        script.setAttribute(key, value)
-      })
-      return script
+        script.setAttribute(key, value);
+      });
+      return script;
     },
   },
   metaInfo() {
@@ -99,13 +90,13 @@ export default {
       title: this.$page.post.title,
       meta: [
         {
-          name: 'description',
+          name: "description",
           content: this.$page.post.description,
         },
       ],
-    }
+    };
   },
-}
+};
 </script>
 
 <page-query>
