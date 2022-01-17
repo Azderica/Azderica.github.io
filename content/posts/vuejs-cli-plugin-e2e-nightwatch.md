@@ -1,5 +1,5 @@
 ---
-title: '[VueJS] Vuejs 시'
+title: '[VueJS] @vue/cli-plugin-e2e-nightwatch 에러 해결 '
 slug: 00-vue-cli-plugin-e2e-nightwatch
 date: 2022-01-18
 published: true
