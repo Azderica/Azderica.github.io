@@ -1,7 +1,7 @@
 ---
 title: '[VueJS] Vuejs 시'
 slug: 00-vue-cli-plugin-e2e-nightwatch
-date: 2021-01-18
+date: 2022-01-18
 published: true
 tags: ['VueJS', 'Vue', 'Frontend', 'Jest', 'e2e', 'e2e-nightwatch']
 series: true
