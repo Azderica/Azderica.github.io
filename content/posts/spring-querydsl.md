@@ -2,7 +2,7 @@
 title: '[Spring] Spring Data JPA와 QueryDSL'
 slug: 01-spring-jpa
 date: 2021-09-23
-published: false
+published: true
 tags: ['Spring', 'SpringBoot', 'JPA', 'Spring Data', 'QueryDSL', 'Backend']
 series: true
 cover_image: ./images/SpringLogo.png
