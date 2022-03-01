@@ -148,8 +148,7 @@ query Post ($id: ID!) {
     }
 
     p:first-of-type {
-      font-size: 1.2em;
-      color: var(--title-color);
+      font-size: 1em;
     }
 
     img {
