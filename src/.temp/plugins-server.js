@@ -1,5 +1,5 @@
-import plugin_gridsome_plugin_google_analytics_6 from "/Users/mh97888/Downloads/git/Azderica.github.io/node_modules/@gridsome/plugin-google-analytics/gridsome.client.js"
-import plugin_gridsome_plugin_gtag_7 from "/Users/mh97888/Downloads/git/Azderica.github.io/node_modules/gridsome-plugin-gtag/gridsome.client.js"
+import plugin_gridsome_plugin_google_analytics_6 from "/Users/myepark/Downloads/myGit/Azderica.github.io/node_modules/@gridsome/plugin-google-analytics/gridsome.client.js"
+import plugin_gridsome_plugin_gtag_7 from "/Users/myepark/Downloads/myGit/Azderica.github.io/node_modules/gridsome-plugin-gtag/gridsome.client.js"
 
 export default [
   {
