@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Hello, world! - Azderica</title><meta name="gridsome:hash" content="c2dcd6346273a26a908e8ae3dd5d59774a4a3863"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="부족하지만 꿈많은 웹 개발자의 발전 기록입니다."><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.d0be325ebfe2762f973f3e0685345394.png"><link rel="preload" href="/assets/css/0.styles.aba15cd2.css" as="style"><link rel="preload" href="/assets/js/app.8989048c.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--tag-vue.0bd644be.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.16bd0c36.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.0e66b8fd.js"><link rel="prefetch" href="/assets/js/page--src--templates--post-vue.db0b3320.js"><link rel="stylesheet" href="/assets/css/0.styles.aba15cd2.css"><script data-vue-tag="ssr" type="text/javascript" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+    <script
+      data-ad-client="ca-pub-1759762070891290"
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ></script>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <meta
+      name="google-site-verification"
+      content="MqpGCz7XVg4s3AWfrGHCt6AlXPacpV9iGvSFVD0ATHw"
+    />
+  </head>
+  <body >
+    <script>
+      // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
+      ;(function() {
+        window.__onThemeChange = function() {}
+        function setTheme(newTheme) {
+          window.__theme = newTheme
+          preferredTheme = newTheme
+          document.body.setAttribute('data-theme', newTheme)
+          window.__onThemeChange(newTheme)
+        }
+
+        var preferredTheme
+        try {
+          preferredTheme = localStorage.getItem('theme')
+        } catch (err) {}
+
+        window.__setPreferredTheme = function(newTheme) {
+          setTheme(newTheme)
+          try {
+            localStorage.setItem('theme', newTheme)
+          } catch (err) {}
+        }
+
+        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
+        darkQuery.addListener(function(e) {
+          window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+        })
+
+        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
+      })()
+    </script>
+
+    <div id="app" data-server-rendered="true"><header class="header"><div class="header__left"><a href="/" class="logo active"><span class="logo__text">
+    ← Azderica
+  </span></a></div><div class="header__right"><button role="button" aria-label="Toggle dark/light" class="toggle-theme"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></div></header><main class="main"><h1 class="tag-title text-center space-bottom">
+    # RabbitMQ
+  </h1><div class="posts"><div class="post-card content-box"><div class="post-card__header"><!----></div><div class="post-card__content"><h2 class="post-card__title">[RabbitMQ] What is RabbitMQ</h2><p class="post-card__description"> RabbitMQ에 대한 기본적인 내용을 정리하고, Kafka와의 차이에 대해 서술합니다.</p><div class="post-meta post-card__meta">
+   Posted 9. March 2022.
+   <strong>4 min read.</strong></div><div class="post-tags post-card__tags"></div><a href="/00-rabbitmq/" class="post-card__link">Link</a></div></div></div></main><footer class="footer"><span class="footer__copyright">Copyright © 2022.
+    </span><span class="footer__links">Powered by <a href="//gridsome.org"> Gridsome </a></span></footer></div> <script>window.__INITIAL_STATE__={"data":{"tag":{"title":"RabbitMQ","belongsTo":{"edges":[{"node":{"title":"[RabbitMQ] What is RabbitMQ","path":"\u002F00-rabbitmq\u002F","date":"9. March 2022","timeToRead":4,"description":" RabbitMQ에 대한 기본적인 내용을 정리하고, Kafka와의 차이에 대해 서술합니다.","content":"\u003Ch1 id=\"what-is-rabbitmq\"\u003E\u003Ca href=\"#what-is-rabbitmq\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EWhat is RabbitMQ.\u003C\u002Fh1\u003E\n\u003Cp\u003E과거 오래전에 Kafka에 대한 개념을 정리했습니다. (그 후로 따로 업무에서 사용해본적은 없지만...) 그럼에도 불구하고 백엔드 개발자라면 이후 필요시 사용할 수 있다고 생각하기 때문에 오늘은 rabbitmq에 대해 정리합니다. 마찬가지로 쓴 적은 없지만, NAS 서버의 앞단에 rabbitmq가 설치된 것은 봤습니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fazderica.github.io\u002F00-kafka\u002F\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003E카프카 공부\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"메시지-큐\"\u003E\u003Ca href=\"#%EB%A9%94%EC%8B%9C%EC%A7%80-%ED%81%90\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E메시지 큐\u003C\u002Fh2\u003E\n\u003Cp\u003E들어가기 앞서, 메시지 큐에 대한 내용부터 잡습니다. 메시지 큐(message queue)는 \u003Cstrong\u003E서버리스 및 마이크로서비스 아키텍처에서 사용되는 비동기 서비스 간 통신의 한 형태\u003C\u002Fstrong\u003E입니다.\u003C\u002Fp\u003E\n\u003Cp\u003E\u003Cimg src=\"https:\u002F\u002Fuser-images.githubusercontent.com\u002F42582516\u002F157424872-337442d7-0166-4f18-b6bb-82ff29a6db6a.png\" alt=\"message queue\"\u003E\u003C\u002Fp\u003E\n\u003Cp\u003E메시지 큐를 통해 시스템의 서로 다른 부분이 통신하고 비동기식으로 작업을 처리할 수 있습니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E메시지 큐는 메시지를 임시로 저장하는 간단한 버퍼를 제공합니다.\u003C\u002Fli\u003E\n\u003Cli\u003E메시지 전송 및 수신을 위해 허용하는 엔드포인트를 제공합니다.\u003C\u002Fli\u003E\n\u003Cli\u003E생산자라 부르는 구성 요소가 메시지를 대기열에 추가하고, 소비자라 부르는 구성요소가 메시지를 검색하고 이를 사용해 어떤 작업을 수행할 때까지 대기열 에 저장됩니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"메시지-큐의-장점\"\u003E\u003Ca href=\"#%EB%A9%94%EC%8B%9C%EC%A7%80-%ED%81%90%EC%9D%98-%EC%9E%A5%EC%A0%90\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E메시지 큐의 장점\u003C\u002Fh3\u003E\n\u003Cp\u003E메시지 큐는 다음의 장점을 가집니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003EAsynchronous(비동기) : Queue에 넣음을 통해서 나중에 처리 가능합니다.\u003C\u002Fli\u003E\n\u003Cli\u003EDecoupling(비동조) : Application과 분리할 수 있습니다.\u003C\u002Fli\u003E\n\u003Cli\u003EResilience(탄력성) : 일부가 실패해도 전체에 영향을 받지 않습니다.\u003C\u002Fli\u003E\n\u003Cli\u003ERedundancy(과잉) : 실패시 재실행이 가능합니다.\u003C\u002Fli\u003E\n\u003Cli\u003EGuarantees(보증) : 작업 처리에 대해 확인이 가능합니다.\u003C\u002Fli\u003E\n\u003Cli\u003EScalable(확장성) : 다수의 프로세스뜰이 큐에 메시지를 보낼 수 있습니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cp\u003E위의 장점들을 살리기 위해 일반적으로 \u003Cstrong\u003E메시지 큐\u003C\u002Fstrong\u003E를 사용합니다.\u003C\u002Fp\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"rabbitmq는-그래서-뭐야\"\u003E\u003Ca href=\"#rabbitmq%EB%8A%94-%EA%B7%B8%EB%9E%98%EC%84%9C-%EB%AD%90%EC%95%BC\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003ERabbitMQ는 그래서 뭐야?\u003C\u002Fh2\u003E\n\u003Cblockquote\u003E\n\u003Cp\u003ERabbitMQ is the most widely deployed open source message broker (공식 홈페이지)\u003C\u002Fp\u003E\n\u003Cp\u003ERabbitMQ는 가장 널리 퍼져있는 오픈소스 메세지브로커입니다.\u003C\u002Fp\u003E\n\u003C\u002Fblockquote\u003E\n\u003Cp\u003ERabbitMQ는 다음을 지원합니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003EAMQP 프로토콜을 구현해 놓은 프로그램입니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E*AMQP : Advanced Message Queuing Protocol의 약자이며 IP 네트워크를 통한 프로세스 간 통신에 중점을 둔 애플리케이션 계층 프로토콜입니다.\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fwww.cloudamqp.com\u002Fblog\u002Fwhat-is-amqp-and-why-is-it-used-in-rabbitmq.html\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003EAMQP에 대한 상세 설명\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E신뢰성, 안전성, 성능을 충족할 수 있도록 다양한 기능을 제공합니다.\u003C\u002Fli\u003E\n\u003Cli\u003E유연한 라우팅: Message Queue가 도착하기 전에 라우팅되며 플러그인을 통해 더 복잡한 라우팅도 가능합니다.\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E클러스터링을 제공합니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E*클러스터링 : 로컬네트워크에 있는 여러 RabbitMQ 서버를 논리적으로 클러스트링할 수 있고 논리적인 브로커도 가능합니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E관리 UI가 있어 편하게 관리 가능합니다.\u003C\u002Fli\u003E\n\u003Cli\u003E거의 모든 언어와 운영체제를 지원합니다.\u003C\u002Fli\u003E\n\u003Cli\u003E오픈소스로 상업적 지원이 가능합니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Chr\u003E\n\u003Cp\u003E\u003Cstrong\u003E출처\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Faws.amazon.com\u002Fko\u002Fmessage-queue\u002F\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003EAWS - Message Queue\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fcoding-nyan.tistory.com\u002F129\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003EKafka vs RabbitMQ\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002F12bme.tistory.com\u002F176\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003E메시지큐(Message Queue) 알아보기\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fwww.cloudamqp.com\u002Fblog\u002Fwhat-is-amqp-and-why-is-it-used-in-rabbitmq.html\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003EWhat is AMQP and why is it used in RabbitMQ?\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fvelog.io\u002F@cckn\u002F%EB%B2%88%EC%97%AD%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-RabbitMQ%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003E(번역)마이크로서비스 - RabbitMQ를 사용하는 이유\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fkamang-it.tistory.com\u002Fentry\u002FAMQPRabbitMQRabbitMQ%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0%EC%99%80-%EC%84%A4%EC%B9%98%EB%B0%A9%EB%B2%95-1\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003E[AMQP][RabbitMQ]RabbitMQ를 사용하는 이유와 설치방법\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n"}}]}}},"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.8989048c.js" defer></script><script src="/assets/js/page--src--templates--tag-vue.0bd644be.js" defer></script>
+  </body>
+</html>
