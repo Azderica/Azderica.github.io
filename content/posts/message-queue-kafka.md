@@ -3,7 +3,7 @@ title: '[Kafka] Kafka란'
 slug: 00-kafka
 date: 2020-10-29
 published: true
-tags: ['Kafka', 'Platform', 'Streaming', 'Backend']
+tags: ['Kafka', 'Platform', 'Streaming', 'Message Queue', 'Backend']
 series: false
 cover_image: ./images/KafkaLogo.png
 canonical_url: false
