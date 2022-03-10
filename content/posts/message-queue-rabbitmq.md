@@ -43,6 +43,14 @@ description: " RabbitMQ에 대한 기본적인 내용을 정리하고, Kafka와�
 
 위의 장점들을 살리기 위해 일반적으로 **메시지 큐**를 사용합니다.
 
+### 이때 메시지 큐가 적합합니다.
+
+- 다른 곳의 API로부터 데이터 송수신이 가능합니다.
+- 다양한 애플리케이션에서 비동기 통신을 할 수 있습니다.
+- 이메일 발송 및 문서 업로드가 가능합니다.
+- 많은 양의 프로세스들을 처리할 수 있습니다.
+
+
 <br/>
 
 ## RabbitMQ는 그래서 뭐야?
@@ -63,6 +71,51 @@ RabbitMQ는 다음을 지원합니다.
 - 관리 UI가 있어 편하게 관리 가능합니다.
 - 거의 모든 언어와 운영체제를 지원합니다.
 - 오픈소스로 상업적 지원이 가능합니다.
+
+<br/>
+
+## RabbitMQ 외의 서비스
+
+
+<br/>
+
+## 그외 용어에 대한 설명
+
+### JMS란.
+
+- JMS는 MOM(Message-Oriented Middleware, 메시지 지향 미들웨어)을 자바에서 지원하는 표준 API
+- Java EE에 기반한 애플리케이션 구성요소에서 메시지를 작성, 전송, 수신하고 읽을 수 있도록 하는 API
+- JMS는 서버 구성을 통해 큐와 같은 기타 자원을 관리할 수 있습니다.
+- JMS는 다른 자바 애플리케이션들끼리 통신이 가능하지만 다른 MOM의 통신이 어렵습니다. (ex. AMQL, SMTP)
+- JMS 라이브러리는 AMQP를 지원하지 않습니다.
+
+다음의 필수요소를 지원합니다.
+
+- 메시지 경로를 지정하고 전달하는 메시징 공급자 개념
+- 별개의 메시징 패턴 또는 도메인
+- 동기식 및 비동기식 메시지 수신 기능
+- 안정적인 메시지 전달 지원
+- 공통 메시지 형식
+
+조금 더 상세한 정보를 보고 싶다면 아래를 공유합니다.
+
+- [JMS 상세 내용](https://www.ibm.com/docs/ko/cics-ts/5.6?topic=server-java-message-service-jms)]
+- [MOM 표준으로서의 JMS](https://docs.oracle.com/cd/E19148-01/820-0532/gbpdg/index.html)
+
+### AMQP에 대해 상세하게 보기
+
+![AMQP 명세](https://user-images.githubusercontent.com/42582516/157615147-53398e01-737a-40b7-8550-8ed9034947e6.png)
+
+
+- AMQP는 ISO 응용 계층의 MOM 표준입니다.
+- AMQP는 IP 네트워크 간의 프로세스 간 통신에 초점을 맞춘 응용 프로그램 계층 프로토콜
+- AMQP의 목표는 TCP/IP 연결을 통해 메시지를 브로커 서비스를 통해 전달할 수 있도록 하는 것입니다.
+- AMQP는 프로토콜만 맞다면 다른 AMQP를 사용한 애플리케이션끼리 통신이 가능합니다.
+- AMQP는 이진 프로토콜입니다.
+
+상세한 내용은 아래와 같습니다.
+
+- [What is AMQP ...](https://www.cloudamqp.com/blog/what-is-amqp-and-why-is-it-used-in-rabbitmq.html)
 
 --- 
 
