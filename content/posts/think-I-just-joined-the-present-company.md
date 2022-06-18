@@ -2,10 +2,10 @@
 title: '[Think] 나는 다시 내 회사에 입사했다.'
 slug: think-I-just-joined-the-present-company
 date: 2022-06-01
-published: false
+published: true
 tags: ['Think', 'Developer']
 series: false
-cover_image: ./images/Think220601.jpg
+cover_image: ./images/Think220601.png
 canonical_url: false
 description: '2021년 회고 및 2022년 목표'
 ---
@@ -20,7 +20,7 @@ description: '2021년 회고 및 2022년 목표'
 
 어느 직업이나 마찬가지겠지만, 개발자라는 직업은 꾸준히 공부와 성장을 해야 하는 직업이라고 생각합니다. 그러나 과거보다 현재, 일함에 있어서 게을러졌다는 생각에 많은 반성을 하고 있었습니다.
 
-<img width="515" alt="image" src="https://user-images.githubusercontent.com/42582516/172510626-a98de7f0-18b7-4c1e-b21a-41ecf2b602f3.png">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/42582516/172510626-a98de7f0-18b7-4c1e-b21a-41ecf2b602f3.png">
 
 >> 여전히 부족하기 때문에 꾸준히 공부 중.
 
@@ -32,7 +32,7 @@ description: '2021년 회고 및 2022년 목표'
 
 20년도 6월, 25살, 대학교 기말고사 치기도 전, 지금 회사에 들어와 재택근무로 일을 시작했습니다. 그 무렵 8월부터는 재택 100%로 전환이 되었고, 올해도 꾸준하게 재택이 진행되고 있습니다. 물론 출근을 어느 정도 해서 지금은 다른 이야기입니다.
 
-<img width="300" alt="image" src="https://user-images.githubusercontent.com/42582516/174429503-79135793-9a45-4bb6-aaf9-9d801ebb5849.jpeg">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/42582516/174442888-d6ba1042-4fea-475d-b77c-31af0062c4c9.png">
 
 >> 풋풋한 개발자 (2년 전).
 
@@ -82,7 +82,8 @@ description: '2021년 회고 및 2022년 목표'
 
 과거, 이직에 대해 고민을 하며 이직한다면 어떤 회사로 가고 싶을까 하는 우선순위를 세웠습니다. 가장 최우선 순위는 외국에 있는 기술 성장을 할 수 있는 기술 회사이고, 그다음이 국내 IT 기업, 그다음이 스타트업이였습니다.
 
-![image](https://user-images.githubusercontent.com/42582516/174429635-dbd1a30e-7067-4668-b923-20a580a4feb3.png)
+
+<img width="30%" alt="image" src="https://user-images.githubusercontent.com/42582516/174429635-dbd1a30e-7067-4668-b923-20a580a4feb3.png">
 
 >> 물론 위에 회사면 절하면서 갑니다.
 
