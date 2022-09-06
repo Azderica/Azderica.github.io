@@ -7,7 +7,7 @@ tags: ['Spring', 'Springoot', 'Springboot Feign Client', 'Feign Client', 'Backen
 series: false
 cover_image: ./images/SpringLogo.png
 canonical_url: false
-description: " 'SpringBoot Feign Client에 대한 설명과 간단한 사용합니다. "
+description: " 'SpringBoot Feign Client에 대한 설명과 간단한 사용 방법입니다."
 ---
 
 # SpringBoot Feign Client
