@@ -53,13 +53,119 @@
       [Java Time] Java Tiem에 대해 정리
     </h1><div class="post-meta">
    Posted 8. October 2022.
-   <!----></div></div><div class="post content-box"><div class="post__header"><img alt="Cover image" src="./images/." class="g-image"></div><div class="post__content">
+   <strong>3 min read.</strong></div></div><div class="post content-box"><div class="post__header"><img alt="Cover image" src="./images/." class="g-image"></div><div class="post__content"><h1 id="java의-날짜-시간에-대한-기본적인-정책"><a href="#java%EC%9D%98-%EB%82%A0%EC%A7%9C-%EC%8B%9C%EA%B0%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EC%A0%95%EC%B1%85" aria-hidden="true"><span class="icon icon-link"></span></a>Java의 날짜, 시간에 대한 기본적인 정책</h1>
+<h2 id="기존-java의-날짜-api의-문제"><a href="#%EA%B8%B0%EC%A1%B4-java%EC%9D%98-%EB%82%A0%EC%A7%9C-api%EC%9D%98-%EB%AC%B8%EC%A0%9C" aria-hidden="true"><span class="icon icon-link"></span></a>기존 Java의 날짜 API의 문제.</h2>
+<p>Java 8 이전에 사용하던 Date 관련 클래스는 Date, Calander, SimpleDateFormat 등이 있었으나, 많은 문제가 있어 자바 8 버전 이후 부터는 새로운 날짜 관련 API를 제공합니다.</p>
+<p>기존 클래스들의 문제는 다음과 같습니다.</p>
+<ul>
+<li>
+<p>부적절한 클래스, 메소드 이름</p>
+<ul>
+<li>Date 클래스의 경우, TimeStamp 방식으로 동작하고 시간을 내재하고 있으나, ClassName은 Date입니다.</li>
+</ul>
+</li>
+<li>
+<p>Thread saftety 하지 않음</p>
+<ul>
+<li>Date 클래스의 경우 mutable 하기 때문에 다른 Thread에서 값을 참조하고 변경할 수 있습니다. -> 즉, thread safe 하지 않습니다.</li>
+</ul>
+</li>
+<li>
+<p>버그가 발생할 여지가 많음</p>
+<ul>
+<li>Calander 클래스의 경우 입력값의 month가 0이 1월로 처리됩니다. 그래서 Calander.SETEMBER 같은 상수를 사용해야하며, DB 데이터랑 연결하면서 서로 다르게 해석됩니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="joda-time"><a href="#joda-time" aria-hidden="true"><span class="icon icon-link"></span></a>Joda Time</h3>
+<p>위의 여러한 문제 들이 있어 Java8 이전에서는 Joda-Time이라는 라이브러리를 사용했습니다. 그러나, Java 8 부터는 Joda-Time이 자바 표준 라이브러리로 들어왔습니다.</p>
+<br/>
+<h2 id="현재의-java의-날짜시간-정책"><a href="#%ED%98%84%EC%9E%AC%EC%9D%98-java%EC%9D%98-%EB%82%A0%EC%A7%9C%EC%8B%9C%EA%B0%84-%EC%A0%95%EC%B1%85" aria-hidden="true"><span class="icon icon-link"></span></a>현재의 Java의 날짜/시간 정책.</h2>
+<h3 id="instant"><a href="#instant" aria-hidden="true"><span class="icon icon-link"></span></a>Instant</h3>
+<ul>
+<li>1970년 1월 1일 UTC의 첫 번째 순간 이후의 현재 시간까지의 나노초를 나타낸 값입니다.</li>
+<li>현재 시간을 UTC 기준으로 반환합니다.</li>
+<li>대부분의 비즈니스 로직, 데이터 저장 및 데이터 변경은 UTC로 이루어져야하므로 자주 사용하기에 편리한 클래스입니다.</li>
+</ul>
+<h3 id="localdate-localtime-localdatetime"><a href="#localdate-localtime-localdatetime" aria-hidden="true"><span class="icon icon-link"></span></a>LocalDate, LocalTime, LocalDateTime</h3>
+<ul>
+<li>Java Time에서 <code class="language-text">Local</code> 이 들어가는 것은 시간대(Zone Offset/Zone Region)에 대한 정보가 없다는 것을 의미합니다.</li>
+</ul>
+<h3 id="offsetdatetime"><a href="#offsetdatetime" aria-hidden="true"><span class="icon icon-link"></span></a>OffsetDateTime</h3>
+<ul>
+<li>LocalDateTime + ZoneOffset 의 개념입니다.</li>
+</ul>
+<h3 id="zoneddatetime"><a href="#zoneddatetime" aria-hidden="true"><span class="icon icon-link"></span></a>ZonedDateTime</h3>
+<ul>
+<li>OffsetDateTime + ZoneRegion 의 개념입니다.</li>
+<li>OffsetDateTime 과의 차이점은 DST(Daylight Saving Time)와 같은 Time Transition Rule을 포함하는 ZoneRegion의 유무차이 입니다.</li>
+</ul>
+<br/>
+<h2 id="jdbc에서-변경되는-형태"><a href="#jdbc%EC%97%90%EC%84%9C-%EB%B3%80%EA%B2%BD%EB%90%98%EB%8A%94-%ED%98%95%ED%83%9C" aria-hidden="true"><span class="icon icon-link"></span></a>JDBC에서 변경되는 형태</h2>
+<ul>
+<li>JDBC는 Java와 Database Scheme 사이의 컨버팅을 다음과 같이 자동으로 변경이 됩니다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Date-time types in Java &#x26; SQL</th>
+<th>Legacy class</th>
+<th>Modern class</th>
+<th>SQL standard data type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moment</td>
+<td>Java.util.Date<br/>Java.sql.Timestamp</td>
+<td>Java.time.Instant</td>
+<td>TIMESTAMP WITH TIME ZONE</td>
+</tr>
+<tr>
+<td>Moment with offset-from-UTC</td>
+<td>(lacking)</td>
+<td>java.time.OffsetDateTime</td>
+<td>TIMESTAMP WITH TIME ZONE</td>
+</tr>
+<tr>
+<td>Moment with time zone</td>
+<td>java.util.GregorianCalendar<br/>javax.xml.datatype.XMLGregorianCalendar</td>
+<td>java.time.ZonedDateTime</td>
+<td>TIMESTAMP WITH TIME ZONE</td>
+</tr>
+<tr>
+<td>Date &#x26; Time-of-day</td>
+<td>(lacking)</td>
+<td>java.time.LocalDateTime</td>
+<td>TIMESTAMP WITHOUT TIME ZONE</td>
+</tr>
+<tr>
+<td>Date only</td>
+<td>java.sql.Date</td>
+<td>java.time.LocalDate</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>Time-of-day only</td>
+<td>java.sql.Time</td>
+<td>java.time.LocalTime</td>
+<td>TIMESTAMP WITHOUT TIME ZONE</td>
+</tr>
+<tr>
+<td>Time-of-day with offset</td>
+<td>(lacking)</td>
+<td>java.time.OffsetTime</td>
+<td>TIME WITH TIME ZONE</td>
+</tr>
+</tbody>
+</table>
+<h3 id="이-글을-쓰게된-계기"><a href="#%EC%9D%B4-%EA%B8%80%EC%9D%84-%EC%93%B0%EA%B2%8C%EB%90%9C-%EA%B3%84%EA%B8%B0" aria-hidden="true"><span class="icon icon-link"></span></a>이 글을 쓰게된 계기.</h3>
 </div><div class="post__footer"><div class="post-tags"><a href="/tag/Spring/" class="post-tags__link"><span>#</span> Spring
 		</a><a href="/tag/JPA/" class="post-tags__link"><span>#</span> JPA
 		</a><a href="/tag/Time/" class="post-tags__link"><span>#</span> Time
 		</a><a href="/tag/Instant/" class="post-tags__link"><span>#</span> Instant
 		</a><a href="/tag/JodaTime/" class="post-tags__link"><span>#</span> JodaTime
 		</a></div></div></div><div class="post-comments" style="display:none;"></div><div class="post-comments"></div><div class="author post-author"><img alt="Author image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='5'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-bfb91fc8d3516221a47de6ec13d7cf4f)' width='180' height='180' xlink:href='data:image/jpeg%3bbase64%2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABAAEADASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABgEDBAcIBQIA/8QAMBAAAQMDAgQFAwQDAQAAAAAAAQIDBAAFERIhBhMxUQciQWFxFJGhFiMygRVCsdH/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/EACARAAICAgICAwAAAAAAAAAAAAECABEDEiExBCITQUL/2gAMAwEAAhEDEQA/ALKr4mmyo5pdVPJXFNIakR4ynUlaspbAznHX4qp/EzxOTw9LctVnQ07cEpBW%2b4QW2sjYY9VfOMe9LuLqNowFyzx0pDWTX%2bM%2bIZMovOcQT9ZUFYbdKQD8DbHxWg/Cy7XriC0xZl%2bTEYiyBy4i06ua%2bpOcqV/qAcHHqaBcDuMqMxoQtNeTUiayGVJKM6TsQeqVDqKjUVYMLEzKVNGeiupMCOZTnZtP8jTcSGp/C3Mpa/JqJfLythf0VrbQp0DzFX8UDuankyfle4%2bLFfs/AnL4x42t9puRgPsZitMuPPSCSSjSkkBCR1Vt%2bM1Stv8ADfibjGQ5f5S4Mf6xfNCJWvUpJ6FSUjbbHrmrNn8PNTo036xXOkymy2VgYCQrY4HxtRBw5DegyHhHhpiAq0lZeLnNGNlHI2PpjeoHbH33Oz0zGh0JRvF/hfxBbYvPiRbc4003%2b43BdcKlnfK9Lm5PsD0HSjjwB46uHEN/uFivKkGN9Ml2KylGAyWyElI7DGDjvRRf1SHJMlEh66ocLepK2NJYwTgJ0k5J37dM71WEaR%2bkfEW0Xvkqw4tUeWllJ8yVDBUB3Gx/qtvtw0Pw6cpNFXZCkMuDqcZz8Vy0kFIPcV3w7HutuS7GcS4hadSVJ6GhoL5bqmVbLRtg0%2bA0SJDyFNAx%2b/XUsIDMfd1Ww/8Aa4DCNIJJJKjlSj1Ue9DDvHvDqOfImXNlK9ZSkDKjgdgM1HV4l8MJjB4zHic45YYUV/bpj%2b6piUKLPcjmcsaHUN0Hzox1yK6z85wJy0yXloQf2kKAVn060B/rOxC1xLg7cEMsSgS0Fg6zg4PlGTsaM7KLbxxZ2btZ5KCtOWXkLRgpUOpwfQ7GtlTeiJTxMioSH6ntcpSLQtU1gIcGdshRx6Zx61XCoKLnci88hTSUkltWN09Onuf%2bVYlybs/DlsU2FtyX86iEKyhJ7k%2bp9qDVXBMyQ64CnmZBWkHdORtkfGKgMPNMZ0t5OtsghxwI%2bhhKoKAEtgakJAwB3p/iqERiUyPOnc49aGLDK5FxYWFY82D8GrGdQmRG3wQRRcatxJo26%2b0wVpK0kDb4pWm3HGwlIyoq0bd6QOBCCTXbtLIMaK6oDSnU8fk9KuBc4pDlQzGmuac%2bVsKH23/Io/8ADriViySXY90b5lskJAdSUatB9FY6/b27UKzG%2bdIQsbamSPuRXp0aClY9Nj8U2sIYjmWNfeIOHks86LeA7g4RFRGWgJHck7mq2uV0luXQ3GO%2b8zLkrAy2op0J7bewFNTUnWgBX8t6bbwJaUkbcsn8ikCAG5R8zMoX6EIovGd8YkM65ijo3xoTggeh23PvWrrFLTMtzLqCClxtK0/BGaxo6%2bhSlKO2lRT8d60t4MXX/IcFW4knWyDHUD1Gk4H4xSZR0Y%2bA8kT/2Q==' /%3e%3c/svg%3e" width="180" data-src="/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" data-srcset="/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg 180w" data-sizes="(max-width: 180px) 100vw, 180px" class="author__image g-image g-image--lazy g-image--loading"><noscript><img src="/assets/static/author.e6b6009.98a7113f4952b5eaa532b5d16696f13d.jpg" class="author__image g-image g-image--loaded" width="180" alt="Author image"></noscript><!----><p class="author__intro">To be a Pro in Web developer</p><p class="author__links"><a href="//linkedin.com/in/myeonghun-park-7693a1184/">📘 Linkedin</a><a href="//azderica.github.io/til/docs/intro">📚 TIL</a><a href="//github.com/Azderica">💻 GitHub</a><a href="//azderica.github.io/Portfolio/" target="_blank">✨ Portfolio</a></p></div></main><footer class="footer"><span class="footer__copyright">Copyright © 2022.
-    </span><span class="footer__links">Powered by <a href="//gridsome.org"> Gridsome </a></span></footer></div> <script>window.__INITIAL_STATE__={"data":{"post":{"title":"[Java Time] Java Tiem에 대해 정리","path":"\u002F00-java-time\u002F","date":"8. October 2022","timeToRead":0,"tags":[{"id":"Spring","title":"Spring","path":"\u002Ftag\u002FSpring\u002F"},{"id":"JPA","title":"JPA","path":"\u002Ftag\u002FJPA\u002F"},{"id":"Time","title":"Time","path":"\u002Ftag\u002FTime\u002F"},{"id":"Instant","title":"Instant","path":"\u002Ftag\u002FInstant\u002F"},{"id":"JodaTime","title":"JodaTime","path":"\u002Ftag\u002FJodaTime\u002F"}],"description":"Java Time 에 대해 정리합니다.","content":"\n","cover_image":".\u002Fimages\u002F."}},"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.e68d9618.js" defer></script><script src="/assets/js/page--src--templates--post-vue.e5244b0f.js" defer></script>
+    </span><span class="footer__links">Powered by <a href="//gridsome.org"> Gridsome </a></span></footer></div> <script>window.__INITIAL_STATE__={"data":{"post":{"title":"[Java Time] Java Tiem에 대해 정리","path":"\u002F00-java-time\u002F","date":"8. October 2022","timeToRead":3,"tags":[{"id":"Spring","title":"Spring","path":"\u002Ftag\u002FSpring\u002F"},{"id":"JPA","title":"JPA","path":"\u002Ftag\u002FJPA\u002F"},{"id":"Time","title":"Time","path":"\u002Ftag\u002FTime\u002F"},{"id":"Instant","title":"Instant","path":"\u002Ftag\u002FInstant\u002F"},{"id":"JodaTime","title":"JodaTime","path":"\u002Ftag\u002FJodaTime\u002F"}],"description":"Java Time 에 대해 정리합니다.","content":"\u003Ch1 id=\"java의-날짜-시간에-대한-기본적인-정책\"\u003E\u003Ca href=\"#java%EC%9D%98-%EB%82%A0%EC%A7%9C-%EC%8B%9C%EA%B0%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EC%A0%95%EC%B1%85\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EJava의 날짜, 시간에 대한 기본적인 정책\u003C\u002Fh1\u003E\n\u003Ch2 id=\"기존-java의-날짜-api의-문제\"\u003E\u003Ca href=\"#%EA%B8%B0%EC%A1%B4-java%EC%9D%98-%EB%82%A0%EC%A7%9C-api%EC%9D%98-%EB%AC%B8%EC%A0%9C\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E기존 Java의 날짜 API의 문제.\u003C\u002Fh2\u003E\n\u003Cp\u003EJava 8 이전에 사용하던 Date 관련 클래스는 Date, Calander, SimpleDateFormat 등이 있었으나, 많은 문제가 있어 자바 8 버전 이후 부터는 새로운 날짜 관련 API를 제공합니다.\u003C\u002Fp\u003E\n\u003Cp\u003E기존 클래스들의 문제는 다음과 같습니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\n\u003Cp\u003E부적절한 클래스, 메소드 이름\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003EDate 클래스의 경우, TimeStamp 방식으로 동작하고 시간을 내재하고 있으나, ClassName은 Date입니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003EThread saftety 하지 않음\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003EDate 클래스의 경우 mutable 하기 때문에 다른 Thread에서 값을 참조하고 변경할 수 있습니다. -\u003E 즉, thread safe 하지 않습니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003Cli\u003E\n\u003Cp\u003E버그가 발생할 여지가 많음\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003ECalander 클래스의 경우 입력값의 month가 0이 1월로 처리됩니다. 그래서 Calander.SETEMBER 같은 상수를 사용해야하며, DB 데이터랑 연결하면서 서로 다르게 해석됩니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"joda-time\"\u003E\u003Ca href=\"#joda-time\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EJoda Time\u003C\u002Fh3\u003E\n\u003Cp\u003E위의 여러한 문제 들이 있어 Java8 이전에서는 Joda-Time이라는 라이브러리를 사용했습니다. 그러나, Java 8 부터는 Joda-Time이 자바 표준 라이브러리로 들어왔습니다.\u003C\u002Fp\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"현재의-java의-날짜시간-정책\"\u003E\u003Ca href=\"#%ED%98%84%EC%9E%AC%EC%9D%98-java%EC%9D%98-%EB%82%A0%EC%A7%9C%EC%8B%9C%EA%B0%84-%EC%A0%95%EC%B1%85\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E현재의 Java의 날짜\u002F시간 정책.\u003C\u002Fh2\u003E\n\u003Ch3 id=\"instant\"\u003E\u003Ca href=\"#instant\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EInstant\u003C\u002Fh3\u003E\n\u003Cul\u003E\n\u003Cli\u003E1970년 1월 1일 UTC의 첫 번째 순간 이후의 현재 시간까지의 나노초를 나타낸 값입니다.\u003C\u002Fli\u003E\n\u003Cli\u003E현재 시간을 UTC 기준으로 반환합니다.\u003C\u002Fli\u003E\n\u003Cli\u003E대부분의 비즈니스 로직, 데이터 저장 및 데이터 변경은 UTC로 이루어져야하므로 자주 사용하기에 편리한 클래스입니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"localdate-localtime-localdatetime\"\u003E\u003Ca href=\"#localdate-localtime-localdatetime\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003ELocalDate, LocalTime, LocalDateTime\u003C\u002Fh3\u003E\n\u003Cul\u003E\n\u003Cli\u003EJava Time에서 \u003Ccode class=\"language-text\"\u003ELocal\u003C\u002Fcode\u003E 이 들어가는 것은 시간대(Zone Offset\u002FZone Region)에 대한 정보가 없다는 것을 의미합니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"offsetdatetime\"\u003E\u003Ca href=\"#offsetdatetime\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EOffsetDateTime\u003C\u002Fh3\u003E\n\u003Cul\u003E\n\u003Cli\u003ELocalDateTime + ZoneOffset 의 개념입니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ch3 id=\"zoneddatetime\"\u003E\u003Ca href=\"#zoneddatetime\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EZonedDateTime\u003C\u002Fh3\u003E\n\u003Cul\u003E\n\u003Cli\u003EOffsetDateTime + ZoneRegion 의 개념입니다.\u003C\u002Fli\u003E\n\u003Cli\u003EOffsetDateTime 과의 차이점은 DST(Daylight Saving Time)와 같은 Time Transition Rule을 포함하는 ZoneRegion의 유무차이 입니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"jdbc에서-변경되는-형태\"\u003E\u003Ca href=\"#jdbc%EC%97%90%EC%84%9C-%EB%B3%80%EA%B2%BD%EB%90%98%EB%8A%94-%ED%98%95%ED%83%9C\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EJDBC에서 변경되는 형태\u003C\u002Fh2\u003E\n\u003Cul\u003E\n\u003Cli\u003EJDBC는 Java와 Database Scheme 사이의 컨버팅을 다음과 같이 자동으로 변경이 됩니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Ctable\u003E\n\u003Cthead\u003E\n\u003Ctr\u003E\n\u003Cth\u003EDate-time types in Java &#x26; SQL\u003C\u002Fth\u003E\n\u003Cth\u003ELegacy class\u003C\u002Fth\u003E\n\u003Cth\u003EModern class\u003C\u002Fth\u003E\n\u003Cth\u003ESQL standard data type\u003C\u002Fth\u003E\n\u003C\u002Ftr\u003E\n\u003C\u002Fthead\u003E\n\u003Ctbody\u003E\n\u003Ctr\u003E\n\u003Ctd\u003EMoment\u003C\u002Ftd\u003E\n\u003Ctd\u003EJava.util.Date\u003Cbr\u002F\u003EJava.sql.Timestamp\u003C\u002Ftd\u003E\n\u003Ctd\u003EJava.time.Instant\u003C\u002Ftd\u003E\n\u003Ctd\u003ETIMESTAMP WITH TIME ZONE\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003EMoment with offset-from-UTC\u003C\u002Ftd\u003E\n\u003Ctd\u003E(lacking)\u003C\u002Ftd\u003E\n\u003Ctd\u003Ejava.time.OffsetDateTime\u003C\u002Ftd\u003E\n\u003Ctd\u003ETIMESTAMP WITH TIME ZONE\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003EMoment with time zone\u003C\u002Ftd\u003E\n\u003Ctd\u003Ejava.util.GregorianCalendar\u003Cbr\u002F\u003Ejavax.xml.datatype.XMLGregorianCalendar\u003C\u002Ftd\u003E\n\u003Ctd\u003Ejava.time.ZonedDateTime\u003C\u002Ftd\u003E\n\u003Ctd\u003ETIMESTAMP WITH TIME ZONE\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003EDate &#x26; Time-of-day\u003C\u002Ftd\u003E\n\u003Ctd\u003E(lacking)\u003C\u002Ftd\u003E\n\u003Ctd\u003Ejava.time.LocalDateTime\u003C\u002Ftd\u003E\n\u003Ctd\u003ETIMESTAMP WITHOUT TIME ZONE\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003EDate only\u003C\u002Ftd\u003E\n\u003Ctd\u003Ejava.sql.Date\u003C\u002Ftd\u003E\n\u003Ctd\u003Ejava.time.LocalDate\u003C\u002Ftd\u003E\n\u003Ctd\u003EDATE\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003ETime-of-day only\u003C\u002Ftd\u003E\n\u003Ctd\u003Ejava.sql.Time\u003C\u002Ftd\u003E\n\u003Ctd\u003Ejava.time.LocalTime\u003C\u002Ftd\u003E\n\u003Ctd\u003ETIMESTAMP WITHOUT TIME ZONE\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003Ctr\u003E\n\u003Ctd\u003ETime-of-day with offset\u003C\u002Ftd\u003E\n\u003Ctd\u003E(lacking)\u003C\u002Ftd\u003E\n\u003Ctd\u003Ejava.time.OffsetTime\u003C\u002Ftd\u003E\n\u003Ctd\u003ETIME WITH TIME ZONE\u003C\u002Ftd\u003E\n\u003C\u002Ftr\u003E\n\u003C\u002Ftbody\u003E\n\u003C\u002Ftable\u003E\n\u003Ch3 id=\"이-글을-쓰게된-계기\"\u003E\u003Ca href=\"#%EC%9D%B4-%EA%B8%80%EC%9D%84-%EC%93%B0%EA%B2%8C%EB%90%9C-%EA%B3%84%EA%B8%B0\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E이 글을 쓰게된 계기.\u003C\u002Fh3\u003E\n","cover_image":".\u002Fimages\u002F."}},"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.e68d9618.js" defer></script><script src="/assets/js/page--src--templates--post-vue.e5244b0f.js" defer></script>
   </body>
 </html>
