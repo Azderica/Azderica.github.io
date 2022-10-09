@@ -51,29 +51,95 @@ Date & Time API의 목표를 읽어보면 다음과 같습니다.
 
 ### Instant
 
-- 1970년 1월 1일 UTC의 첫 번째 순간 이후의 현재 시간까지의 나노초를 나타낸 값입니다.
-- 현재 시간을 UTC 기준으로 반환합니다.
-- 대부분의 비즈니스 로직, 데이터 저장 및 데이터 변경은 UTC로 이루어져야하므로 자주 사용하기에 편리한 클래스입니다.
+![Instant Image](https://user-images.githubusercontent.com/42582516/194757246-bf361279-1d9f-49e6-b9a4-8dcc23983f2e.png)
+
+1970년 1월 1일 UTC의 첫 번째 순간 이후의 현재 시간까지의 나노초를 나타낸 값입니다. 라이브러리를 더 상세하게 보면, epochSecond와 nanos 로 나눠집니다.
+
+일반적으로 순간을 표현할 때 사용하며, Unix Timestamp를 구할 때 사용할 수 있습니다. Unix Timestamp를 사용하는 이유는 숫자 자료형을 가지고 연산을 하기 때문에 `Local/Offset/ZonedDateTime`과 비교했을 때 연산 속도가 훨씬 빠릅니다. 
+
+대부분의 비즈니스 로직, 데이터 저장 및 데이터 저장 및 데이터 변경은 UTC로 이루어져야하므로 자주 사용하기에 편리한 클래스입니다.
+
+```java
+Instant cur = Instant.now();
+System.out.println(cur);    // 2022-10-09T12:45:11.825755Z
+System.out.println(cur.getEpochSecond());   // 1665319511
+System.out.println(cur.getNano());  // 825755000
+```
+
+Instant의 now에서는 UTC 표준 시간대를 사용합니다.  (`Clock.systemUTC().instant()`)
 
 ### LocalDate, LocalTime, LocalDateTime
 
-- Java Time에서 `Local` 이 들어가는 것은 시간대(Zone Offset/Zone Region)에 대한 정보가 없다는 것을 의미합니다.
+![LocalDate](https://user-images.githubusercontent.com/42582516/194757952-64597f21-4343-44ef-91d2-5d3d1c1eb728.png)
+![LocalTime](https://user-images.githubusercontent.com/42582516/194757965-437143c5-3218-4907-8525-2885741f2382.png)
+![LocalDateTime](https://user-images.githubusercontent.com/42582516/194757977-2a98fa74-3ab6-4d7b-ae35-bce256acc625.png)
+
+Java Time에서 `Local` 이 들어가는 것은 시간대(Zone Offset/Zone Region)에 대한 정보가 없다는 것을 의미합니다. 
+
+일반적으로 이런날을 사용하는 것은 그날이 의미하는 것은 즉, 생일이나 기념일이 많이 사용합니다.
+
+```java
+LocalDate localDate = LocalDate.now();
+System.out.println(localDate);  // 2022-10-09
+
+LocalTime localTime = LocalTime.now();
+System.out.println(localTime);  // 21:49:19.858512
+
+LocalDateTime localDateTime = LocalDateTime.now();
+System.out.println(localDateTime);  // 2022-10-09T21:49:19.858589
+```
+
+위의 라이브러리를 간략하게 이야기하면 `LocalDateTime`은 `LocalDate`와 `LocalTime`으로 구성되어 있고, `LocalDate`는 `year, month, day`로 구성되어 있고 이를 맞춰주기 위한 보정값을 사용하고 있고 `LocalTime`은 `hour, minute, second, nano` 의 값으로 이루어져 있습니다.
+
+LocalDateTime의 now는 default time-zone 의 정보를 사용합니다. 내부적으로는 Instant형으로 바꾼 후, ZoneOffset으로 한번 바꾼뒤 EpochSecond로 바꾼 이후에야 LocalDateTime으로 출력합니다.
 
 ### OffsetDateTime
 
-- LocalDateTime + ZoneOffset 의 개념입니다.
+![OffsetDateTime](https://user-images.githubusercontent.com/42582516/194758471-9ed85cc8-6687-4b15-bf1b-422355f8a0f4.png)
+
+`LocalDateTime + ZoneOffset` 의 개념입니다. `OffsetDateTime`는 UTC보다 몇 시간/분/초 앞 또는 뒤의 컨텍스트를 사용하여 순간을 날짜 및 시간으로 나타냅니다.
+
+```java
+System.out.println(OffsetDateTime.of(2000, 1, 1, 11, 11, 11, 0, ZoneOffset.UTC);     
+// 2000-01-01T11:11:11Z
+System.out.println(OffsetDateTime.of(2000, 1, 1, 11, 11, 11, 0, ZoneOffset.of("+9"));    
+// 2000-01-01T11:11:11+09:00
+// 위 두 값은 다릅니다.
+```
 
 ### ZonedDateTime
 
-- OffsetDateTime + ZoneRegion 의 개념입니다.
-- OffsetDateTime 과의 차이점은 DST(Daylight Saving Time)와 같은 Time Transition Rule을 포함하는 ZoneRegion의 유무차이 입니다.
+![ZonedDateTime](https://user-images.githubusercontent.com/42582516/194759752-1ecd1bc2-ba39-43c2-801c-174f1723a988.png)
 
+`OffsetDateTime + ZoneRegion` 의 개념입니다. OffsetDateTime 과의 차이점은 DST(Daylight Saving Time)와 같은 Time Transition Rule을 포함하는 ZoneRegion의 유무차이 입니다.
+
+몇개의 나라의 경우, 서머타임을 적용하기 때문에 때로는 겨울, 여름을 다르게 써야하는데, 이를 자바에서는 하나의 Time Zone으로 통일하고, Time Transition Rule을 가지는 ZoneRules을 통해 알아서 내부적으로 계산해줍니다.
+
+```java
+ZoneId seoulZoneId = ZoneId.of("Asia/Seoul");
+System.out.println(seoulZoneId.getRules()); 
+// ZoneRules[currentStandardOffset=+09:00]
+System.out.println(seoulZoneId.getId()); 
+// Asia/Seoul
+
+System.out.println(ZonedDateTime.of(LocalDateTime.of(2020, 1, 1, 11, 11, 11, 0), ZoneId.of("Asia/Seoul"))); 
+// 2020-01-01T11:11:11+09:00[Asia/Seoul]
+System.out.println(ZonedDateTime.of(LocalDateTime.of(2020, 1, 1, 11, 11, 11, 0), ZoneId.of("Asia/Tokyo"))); 
+// 2020-01-01T11:11:11+09:00[Asia/Tokyo]
+// 위 두값은 다른 region이라 다릅니다.
+
+// cet 는 유럽 시간
+System.out.println(ZonedDateTime.of(2020, 1, 1, 11, 11, 11, 0, ZoneId.of("CET"))); 
+// 2020-01-01T11:11:11+01:00[CET]
+System.out.println(ZonedDateTime.of(2020, 6, 1, 11, 11, 11, 0, ZoneId.of("CET")));
+// 2020-06-01T11:11:11+02:00[CET]
+```
 
 <br/>
 
 ## JDBC에서 변경되는 형태
 
-- JDBC는 Java와 Database Scheme 사이의 컨버팅을 다음과 같이 자동으로 변경이 됩니다.
+JDBC는 Java와 Database Scheme 사이의 컨버팅을 다음과 같이 자동으로 변경이 됩니다.
 
 |Date-time types in Java & SQL|Legacy class|Modern class|SQL standard data type|
 |-|-|-|-|
@@ -90,4 +156,8 @@ Date & Time API의 목표를 읽어보면 다음과 같습니다.
 
 **출처**
 
+- [2038년 문제](https://en.wikipedia.org/wiki/Year_2038_problem)
 - [OpenJDK](https://openjdk.org/jeps/150)
+- [different between Instant and LocalDateTime](https://stackoverflow.com/questions/32437550/whats-the-difference-between-instant-and-localdatetime)
+- [날짜와 시간 API](https://perfectacle.github.io/2018/09/26/java8-date-time/)
+- [Java 8 - 새로운 Date & Time 정리](https://jaehoney.tistory.com/136)
