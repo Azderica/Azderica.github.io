@@ -1,13 +1,13 @@
 ---
-title: '[Java Time] Java Tiem에 대해 정리'
+title: '[Java Time] Java Date & Time API 정리'
 slug: 00-java-time
 date: 2022-10-08
 published: true
-tags: ['Spring', 'JPA', 'Time', 'Instant', 'JodaTime']
+tags: ['Spring', 'Java', 'Date', 'Time', 'Instant', 'JodaTime']
 series: false
-cover_image: ./images/.
+cover_image: ./images/JavaDateTimeApi.jpg
 canonical_url: false
-description: 'Java Time 에 대해 정리합니다.'
+description: 'Java Date & Time API에 대해 정리합니다.'
 ---
 
 # Java의 날짜, 시간에 대한 기본적인 정책
