@@ -33,6 +33,22 @@ Java 8 이전에 사용하던 Date 관련 클래스는 Date, Calander, SimpleDat
 
 ## 현재의 Java의 날짜/시간 정책.
 
+Java SE8 버전부터 JEP(JDK Enhancement Proposal, JDK 개선 제안) 150, JSR-310(Java Specificiation Requests)의 310번째 Requests인 `Date & Time API` 으로 들어왔습니다.
+
+Date & Time API의 목표를 읽어보면 다음과 같습니다.
+
+- date, time, instant, time-zone을 포함하는 공식 시간 개념 지원
+- immutable 구현
+- 개발자의 사용성에 중점을 둔 JDK에 적절하고 효과적인 API 제공
+- 기존의 JDK API와의 통합
+- 제한된 calendar 시스템 세트를 제공하고 다른 것들로 확장 가능
+- ISO-8601, CLDR 및 BCP47을 포함한 관련 표준 사용
+- UTC에 연결하여 명시적 시간 척도를 기반
+
+현재 이 API는 표준이 되었으며, 위의 나온 Joda-Time의 창시자 분 또한 API를 만드는 데 동참했습니다.
+
+위의 문제점인 부적절한 클래스나 메서드 명들도 정리가 되었고, Thread safe하며, 여러 편의기능이 많고, Zoned 관련된 기능도 있어 여러 글로벌 서비스에서 적합합니다.
+
 ### Instant
 
 - 1970년 1월 1일 UTC의 첫 번째 순간 이후의 현재 시간까지의 나노초를 나타낸 값입니다.
@@ -69,5 +85,9 @@ Java 8 이전에 사용하던 Date 관련 클래스는 Date, Calander, SimpleDat
 |Time-of-day only|java.sql.Time|java.time.LocalTime|TIMESTAMP WITHOUT TIME ZONE|
 |Time-of-day with offset|(lacking)|java.time.OffsetTime|TIME WITH TIME ZONE|
 
-### 이 글을 쓰게된 계기.
 
+---
+
+**출처**
+
+- [OpenJDK](https://openjdk.org/jeps/150)
