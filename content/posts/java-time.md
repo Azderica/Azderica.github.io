@@ -12,9 +12,10 @@ description: 'Java Date & Time API에 대해 정리합니다.'
 
 # Java의 날짜, 시간에 대한 기본적인 정책
 
+
 ## 기존 Java의 날짜 API의 문제.
 
-Java 8 이전에 사용하던 Date 관련 클래스는 Date, Calander, SimpleDateFormat 등이 있었으나, 많은 문제가 있어 자바 8 버전 이후 부터는 새로운 날짜 관련 API를 제공합니다.
+Java 8 이전에 사용하던 Date 관련 클래스는 Date, Calendar, SimpleDateFormat 등이 있었으나, 많은 문제가 있어 자바 8 버전 이후 부터는 새로운 날짜 관련 API를 제공합니다.
 
 기존 클래스들의 문제는 다음과 같습니다.
 
@@ -23,7 +24,7 @@ Java 8 이전에 사용하던 Date 관련 클래스는 Date, Calander, SimpleDat
 - Thread saftety 하지 않음
   - Date 클래스의 경우 mutable 하기 때문에 다른 Thread에서 값을 참조하고 변경할 수 있습니다. -> 즉, thread safe 하지 않습니다.
 - 버그가 발생할 여지가 많음
-  - Calander 클래스의 경우 입력값의 month가 0이 1월로 처리됩니다. 그래서 Calander.SETEMBER 같은 상수를 사용해야하며, DB 데이터랑 연결하면서 서로 다르게 해석됩니다.
+  - Calendar 클래스의 경우 입력값의 month가 0이 1월로 처리됩니다. 그래서 Calendar.SEPTEMBER 같은 상수를 사용해야하며, DB 데이터랑 연결하면서 서로 다르게 해석됩니다.
 
 ### Joda Time
 
@@ -76,7 +77,7 @@ Instant의 now에서는 UTC 표준 시간대를 사용합니다.  (`Clock.system
 
 Java Time에서 `Local` 이 들어가는 것은 시간대(Zone Offset/Zone Region)에 대한 정보가 없다는 것을 의미합니다. 
 
-일반적으로 이런날을 사용하는 것은 그날이 의미하는 것은 즉, 생일이나 기념일이 많이 사용합니다.
+일반적으로 Local 클래스는 생일이나 기념일 등에 주로 사용됩니다.
 
 ```java
 LocalDate localDate = LocalDate.now();
