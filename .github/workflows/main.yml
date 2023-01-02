@@ -36,8 +36,5 @@ jobs:
           user_email: 'mh97888@gmail.com'
           user_name: 'Azderica'
           github_token: ${{ secrets.ACCESS_TOKEN }}
-          deploy_key: ${{ secrets.ACCESS_TOKEN }}
-          personal_token: ${{ secrets.ACCESS_TOKEN }}
-          # branch: master # The branch the action should deploy to.
           publish_branch: gh-pages
           publish_dir: dist # The folder the action should deploy.
