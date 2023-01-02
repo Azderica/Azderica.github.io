@@ -23,6 +23,7 @@ jobs:
           hugo-version: '0.85.0'
       - name: Install and Build
         run: |
+          git config --global --add url."git@github.com:".insteadOf "https://github.com/"
           git config --global user.email "mh97888@gmail.com"
           git config --global user.name "Azderica"
           # npm ci
