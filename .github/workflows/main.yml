@@ -35,6 +35,7 @@ jobs:
         with:
           user_email: 'mh97888@gmail.com'
           user_name: 'Azderica'
-          github_token: ${{ secrets.ACCESS_TOKEN }}
+          # github_token: ${{ secrets.ACCESS_TOKEN }}
+          deploy_key: ${{ secrets.GMARKET_KEY }}
           publish_branch: gh-pages
           publish_dir: dist # The folder the action should deploy.
