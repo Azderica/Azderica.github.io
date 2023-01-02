@@ -17,7 +17,7 @@ jobs:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
       - name: Setup Node
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - name: Setup Hugo
@@ -37,8 +37,7 @@ jobs:
         with:
           # user_email: 'mh97888@gmail.com'
           # user_name: 'Azderica'
-          # github_token: ${{ secrets.ACCESS_TOKEN }}
-          deploy_key: ${{ secrets.GMARKET_KEY }}
+          github_token: ${{ secrets.ACCESS_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./dist # The folder the action should deploy.
           cname: github.com
