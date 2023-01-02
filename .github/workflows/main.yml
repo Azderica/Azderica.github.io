@@ -34,8 +34,8 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # user_email: 'mh97888@gmail.com'
-          # user_name: 'Azderica'
+          user_email: 'mh97888@gmail.com'
+          user_name: 'Azderica'
           github_token: ${{ secrets.ACCESS_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./dist # The folder the action should deploy.
