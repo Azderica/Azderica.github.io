@@ -1,5 +1,5 @@
 ---
-title: 'Coucbhase를 MongoDB와 MSDB로...'
+title: 'Couchbase야 안녕.'
 slug: nosql-couchbase-to-mongodb
 date: 2023-03-16
 published: false
