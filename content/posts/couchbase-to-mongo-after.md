@@ -83,6 +83,12 @@ couchbase에서 mongodb로 전환했을 때 바로 성능이 따라오냐는 다
 
 데이터 양을 비교하는 것도 고민을 해야합니다. couchbase와 mongodb의 document 수가 같은지, 다르다면 어디서 차이가 나는지 걱정을 해야합니다.
 
+mongodb의 퍼포먼스를 올릴 수 있는 코드를 찾고 있고, 그 코드를 체크할 부분을 찾아야합니다.
+
+대표적인 예시로 find 가 아닌 findTop 으로 전환을 생각중에 있고, 빠른 처리를 고민하고 있습니다.
+
+primary index와 secondary index의 차이가 있는지도 체크가 필요합니다.
+
 
 <br/>
 
