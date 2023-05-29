@@ -79,7 +79,9 @@ couchbase에서 mongodb로 전환했을 때 바로 성능이 따라오냐는 다
 
 추측은 다음과 같습니다.
 
-- id로 접근을 masterId로 접근을 해서 (다만, indexing 처리를 했습니다.)
+- id로 접근을 특정 value로 접근을 해서 (다만, value로 indexing 처리를 했습니다.)
+- mongodb보다 couchbase가 더 빨라서.
+- 최적화가 되지 않아서.
 
 <br/>
 
