@@ -97,7 +97,14 @@ primary index와 secondary index의 차이가 있는지도 체크가 필요합�
 
 ### 1. MongoDB Converter 사용
 
-코드 예시 추가 예정
+`"."` 을 어떤걸로 전환을 할까 했는데, 결국은 아스키로 저장을 했습니다. `"&#46;"` 으로 변경해서 저장을 했고, 그 외에 어떤 특수문자를 할까 고민을 했는데 괜찮은 게 없었다.
+
+```java
+@Bean
+public void setUpMongoEscapeCharacterConversion() {
+    mongoConverter.setMapKeyDotReplacement("&#46;");
+}
+```
 
 <br/>
 
