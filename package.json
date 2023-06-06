@@ -25,7 +25,7 @@
     "gridsome-plugin-gtag": "^0.1.10",
     "hexo-generator-cname": "^0.3.0",
     "ini": "^2.0.0",
-    "is-svg": "^4.3.1",
+    "is-svg": "^4.4.0",
     "normalize-url": ">=4.5.1",
     "set-value": ">=4.0.1",
     "ssri": "^8.0.1",
