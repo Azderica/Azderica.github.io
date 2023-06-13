@@ -1,52 +1,57 @@
 <!DOCTYPE html>
 <html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
-  <head>
-    <title>Azderica - Azderica</title><meta name="gridsome:hash" content="a494b8b1778660c606708ae3dd5d59774a4a3863"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="부족하지만 꿈많은 웹 개발자의 발전 기록입니다."><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.d0be325ebfe2762f973f3e0685345394.png"><link rel="preload" href="/assets/css/0.styles.359a0b77.css" as="style"><link rel="preload" href="/assets/js/app.e68d9618.js" as="script"><link rel="preload" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.cf9c1447.js" as="script"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.5770a427.js"><link rel="prefetch" href="/assets/js/page--src--templates--post-vue.e5244b0f.js"><link rel="prefetch" href="/assets/js/page--src--templates--tag-vue.5957f7f4.js"><link rel="stylesheet" href="/assets/css/0.styles.359a0b77.css"><script data-vue-tag="ssr" type="text/javascript" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
-    <script
-      data-ad-client="ca-pub-1759762070891290"
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-    ></script>
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="shortcut icon" type="image/png" href="favicon.png" />
-    <meta
-      name="google-site-verification"
-      content="MqpGCz7XVg4s3AWfrGHCt6AlXPacpV9iGvSFVD0ATHw"
-    />
-  </head>
-  <body >
-    <script>
-      // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
-      ;(function() {
-        window.__onThemeChange = function() {}
-        function setTheme(newTheme) {
-          window.__theme = newTheme
-          preferredTheme = newTheme
-          document.body.setAttribute('data-theme', newTheme)
-          window.__onThemeChange(newTheme)
-        }
 
-        var preferredTheme
+<head>
+  <title>Azderica - Azderica</title><meta name="gridsome:hash" content="a494b8b1778660c606708ae3dd5d59774a4a3863"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="부족하지만 꿈많은 웹 개발자의 발전 기록입니다."><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.d0be325ebfe2762f973f3e0685345394.png"><link rel="preload" href="/assets/css/0.styles.359a0b77.css" as="style"><link rel="preload" href="/assets/js/app.e68d9618.js" as="script"><link rel="preload" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.cf9c1447.js" as="script"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.5770a427.js"><link rel="prefetch" href="/assets/js/page--src--templates--post-vue.e5244b0f.js"><link rel="prefetch" href="/assets/js/page--src--templates--tag-vue.5957f7f4.js"><link rel="stylesheet" href="/assets/css/0.styles.359a0b77.css"><script data-vue-tag="ssr" type="text/javascript" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  <script data-ad-client="ca-pub-1759762070891290" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCHHPLPKYW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FCHHPLPKYW');
+  </script>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
+  <meta name="google-site-verification" content="MqpGCz7XVg4s3AWfrGHCt6AlXPacpV9iGvSFVD0ATHw" />
+</head>
+
+<body >
+  <script>
+    // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
+    ; (function () {
+      window.__onThemeChange = function () { }
+      function setTheme(newTheme) {
+        window.__theme = newTheme
+        preferredTheme = newTheme
+        document.body.setAttribute('data-theme', newTheme)
+        window.__onThemeChange(newTheme)
+      }
+
+      var preferredTheme
+      try {
+        preferredTheme = localStorage.getItem('theme')
+      } catch (err) { }
+
+      window.__setPreferredTheme = function (newTheme) {
+        setTheme(newTheme)
         try {
-          preferredTheme = localStorage.getItem('theme')
-        } catch (err) {}
+          localStorage.setItem('theme', newTheme)
+        } catch (err) { }
+      }
 
-        window.__setPreferredTheme = function(newTheme) {
-          setTheme(newTheme)
-          try {
-            localStorage.setItem('theme', newTheme)
-          } catch (err) {}
-        }
+      var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
+      darkQuery.addListener(function (e) {
+        window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+      })
 
-        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
-        darkQuery.addListener(function(e) {
-          window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-        })
+      setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
+    })()
+  </script>
 
-        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
-      })()
-    </script>
+  <h1 data-server-rendered="true" id="app">404 - not found</h1> <script>window.__INITIAL_STATE__={"data":null,"context":{"__notFound":true}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.e68d9618.js" defer></script><script src="/assets/js/page--node-modules--gridsome--app--pages--404-vue.cf9c1447.js" defer></script>
+</body>
 
-    <h1 data-server-rendered="true" id="app">404 - not found</h1> <script>window.__INITIAL_STATE__={"data":null,"context":{"__notFound":true}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.e68d9618.js" defer></script><script src="/assets/js/page--node-modules--gridsome--app--pages--404-vue.cf9c1447.js" defer></script>
-  </body>
 </html>

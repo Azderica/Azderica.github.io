@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
-  <head>
-    <title>Hello, world! - Azderica</title><meta name="gridsome:hash" content="a494b8b1778660c606708ae3dd5d59774a4a3863"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="부족하지만 꿈많은 웹 개발자의 발전 기록입니다."><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.d0be325ebfe2762f973f3e0685345394.png"><link rel="preload" href="/assets/css/0.styles.359a0b77.css" as="style"><link rel="preload" href="/assets/js/app.e68d9618.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--tag-vue.5957f7f4.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.cf9c1447.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.5770a427.js"><link rel="prefetch" href="/assets/js/page--src--templates--post-vue.e5244b0f.js"><link rel="stylesheet" href="/assets/css/0.styles.359a0b77.css"><script data-vue-tag="ssr" type="text/javascript" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
-    <script
-      data-ad-client="ca-pub-1759762070891290"
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-    ></script>
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="shortcut icon" type="image/png" href="favicon.png" />
-    <meta
-      name="google-site-verification"
-      content="MqpGCz7XVg4s3AWfrGHCt6AlXPacpV9iGvSFVD0ATHw"
-    />
-  </head>
-  <body >
-    <script>
-      // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
-      ;(function() {
-        window.__onThemeChange = function() {}
-        function setTheme(newTheme) {
-          window.__theme = newTheme
-          preferredTheme = newTheme
-          document.body.setAttribute('data-theme', newTheme)
-          window.__onThemeChange(newTheme)
-        }
 
-        var preferredTheme
+<head>
+  <title>Hello, world! - Azderica</title><meta name="gridsome:hash" content="a494b8b1778660c606708ae3dd5d59774a4a3863"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" data-key="description" name="description" content="부족하지만 꿈많은 웹 개발자의 발전 기록입니다."><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.d0be325ebfe2762f973f3e0685345394.png"><link rel="preload" href="/assets/css/0.styles.359a0b77.css" as="style"><link rel="preload" href="/assets/js/app.e68d9618.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--tag-vue.5957f7f4.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.cf9c1447.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.5770a427.js"><link rel="prefetch" href="/assets/js/page--src--templates--post-vue.e5244b0f.js"><link rel="stylesheet" href="/assets/css/0.styles.359a0b77.css"><script data-vue-tag="ssr" type="text/javascript" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  <script data-ad-client="ca-pub-1759762070891290" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCHHPLPKYW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FCHHPLPKYW');
+  </script>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
+  <meta name="google-site-verification" content="MqpGCz7XVg4s3AWfrGHCt6AlXPacpV9iGvSFVD0ATHw" />
+</head>
+
+<body >
+  <script>
+    // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
+    ; (function () {
+      window.__onThemeChange = function () { }
+      function setTheme(newTheme) {
+        window.__theme = newTheme
+        preferredTheme = newTheme
+        document.body.setAttribute('data-theme', newTheme)
+        window.__onThemeChange(newTheme)
+      }
+
+      var preferredTheme
+      try {
+        preferredTheme = localStorage.getItem('theme')
+      } catch (err) { }
+
+      window.__setPreferredTheme = function (newTheme) {
+        setTheme(newTheme)
         try {
-          preferredTheme = localStorage.getItem('theme')
-        } catch (err) {}
+          localStorage.setItem('theme', newTheme)
+        } catch (err) { }
+      }
 
-        window.__setPreferredTheme = function(newTheme) {
-          setTheme(newTheme)
-          try {
-            localStorage.setItem('theme', newTheme)
-          } catch (err) {}
-        }
+      var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
+      darkQuery.addListener(function (e) {
+        window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+      })
 
-        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)')
-        darkQuery.addListener(function(e) {
-          window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-        })
+      setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
+    })()
+  </script>
 
-        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
-      })()
-    </script>
-
-    <div id="app" data-server-rendered="true"><header class="header"><div class="header__left"><a href="/" class="logo active"><span class="logo__text">
+  <div id="app" data-server-rendered="true"><header class="header"><div class="header__left"><a href="/" class="logo active"><span class="logo__text">
     ← Azderica
   </span></a></div><div class="header__right"><button role="button" aria-label="Toggle dark/light" class="toggle-theme"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></div></header><main class="main"><h1 class="tag-title text-center space-bottom">
     # Webpack
@@ -55,5 +59,6 @@
    Posted 18. January 2021.
    <strong>5 min read.</strong></div><div class="post-tags post-card__tags"></div><a href="/00-web-webpack/" class="post-card__link">Link</a></div></div></div></main><footer class="footer"><span class="footer__copyright">Copyright © 2023.
     </span><span class="footer__links">Powered by <a href="//gridsome.org"> Gridsome </a></span></footer></div> <script>window.__INITIAL_STATE__={"data":{"tag":{"title":"Webpack","belongsTo":{"edges":[{"node":{"title":"[WEB] Webpack이란","path":"\u002F00-web-webpack\u002F","date":"18. January 2021","timeToRead":5,"description":"Webpack에 대해 정리합니다.","content":"\u003Ch1 id=\"webpack\"\u003E\u003Ca href=\"#webpack\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EWebpack\u003C\u002Fh1\u003E\n\u003Cp\u003EFE(Front-End)에 대해서 공부를 하다보면 한번쯤은 Webpack에 대한 개념을 듣게 되는데 이에 대해 알아보겠습니다.\u003C\u002Fp\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"webpack의-정의\"\u003E\u003Ca href=\"#webpack%EC%9D%98-%EC%A0%95%EC%9D%98\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EWebpack의 정의\u003C\u002Fh2\u003E\n\u003Cp\u003E웹팩이란 \u003Cstrong\u003E오픈 소스 자바스크립트 모듈 번들러\u003C\u002Fstrong\u003E입니다. 주로 JS를 위한 모듈 번들러지만 호환 플러그인을 포함하는 경우 HTML, CSS, 이미지 등의 자산들을 변환할 수 있으며 의존성이 있는 모듈들을 취하여 해당 모듈을 대표하는 정적 자산을 만들어 냅니다.\u003C\u002Fp\u003E\n\u003Cp\u003E웹팩은 의존성을 취한 다음 의존성 그래프를 만듦으로서 웹 개발자들이 웹 어플리케이션 개발 목적을 위해 모듈 방식의 접근을 사용할 수 있게 도와줍니다. 명령 중을 통해서 사용할 수 있으며 \u003Ccode class=\"language-text\"\u003Ewebpack.config.js\u003C\u002Fcode\u003E 이라는 이름의 구성 파일을 사용해서 구성할 수 있습니다. 이 파일을 사용하여 프로젝트를 위해 로더나 플러그인 등을 정리할 수 있습니다. \u003Ccode class=\"language-text\"\u003Ecreateapp.dev\u003C\u002Fcode\u003E라는 이름의 도구는 구성 파일의 생성과정을 단순하게 만들어 줍니다.\u003C\u002Fp\u003E\n\u003Cp\u003E웹 팩의 설치에는 Node.js가 요구됩니다.\u003C\u002Fp\u003E\n\u003Cblockquote\u003E\n\u003Cp\u003EBundler란?\u003C\u002Fp\u003E\n\u003C\u002Fblockquote\u003E\n\u003Cul\u003E\n\u003Cli\u003E소프트웨어 및 일부의 하드웨어와 함께 \u003Cstrong\u003E작동하는데 필요한 모든 것을 포함하는 Package\u003C\u002Fstrong\u003E입니다.\u003C\u002Fli\u003E\n\u003Cli\u003E각각의 모듈에 대해 의존성 관계를 파악하여 하나 또는 여러개의 그룹으로 볼 수 있습니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"webpack의-필요성\"\u003E\u003Ca href=\"#webpack%EC%9D%98-%ED%95%84%EC%9A%94%EC%84%B1\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EWebpack의 필요성\u003C\u002Fh2\u003E\n\u003Cp\u003E현재의 웹 개발은 복잡한 자바스크립트와 대규모 의존성 트리를 가지고 있는 다양한 기능을 갖춘 웹 애플리케이션으로 발전했으며, 이러한 복잡성은 꾸준하게 커져갔습니다.\u003C\u002Fp\u003E\n\u003Cp\u003E이러한 복잡성을 대응하기 위해서 Webpack이 등장하였습니다. 규모가 있는 System에서 많은 자바스크립트 파일이 존재하고 이러한 자바스크립트 파일 하나로 관리하기 위해서 Webpack을 사용합니다.\u003C\u002Fp\u003E\n\u003Cp\u003E만약 자바스크립트를 여러개로 호출하게 되면 여러개의 파일을 브라우저에 로딩하므로 네트워크 비용이 커져서 반응속도가 느려지고 각 파일의 충돌의 위험성도 존재합니다.\u003C\u002Fp\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"webpack과-다른-도구들의-차이\"\u003E\u003Ca href=\"#webpack%EA%B3%BC-%EB%8B%A4%EB%A5%B8-%EB%8F%84%EA%B5%AC%EB%93%A4%EC%9D%98-%EC%B0%A8%EC%9D%B4\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EWebpack과 다른 도구들의 차이\u003C\u002Fh2\u003E\n\u003Cp\u003E다른 도구들로 Browsify, Grunt, Gulp 등의 도구들이 있지만 이는 Webpack과 시스템적으로나 성능적으로 차이가 납니다.\u003C\u002Fp\u003E\n\u003Ch3 id=\"grunt-gulp\"\u003E\u003Ca href=\"#grunt-gulp\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EGrunt, Gulp\u003C\u002Fh3\u003E\n\u003Cp\u003E\u003Cimg src=\"https:\u002F\u002Fuser-images.githubusercontent.com\u002F42582516\u002F104858365-e4304300-5961-11eb-917f-87ec9d8f523d.png\" alt=\"grunt-gulp-build\"\u003E\u003C\u002Fp\u003E\n\u003Cp\u003EGrunt나 Gulp 등의 빌드 툴은 정의한 경로에서 구성과 일치한 파일을 찾습니다. 따라서 구성파일에서 이러한 파일들을 변환하고 조합 및 축소하는 단계를 지정해야합니다.\u003C\u002Fp\u003E\n\u003Ch3 id=\"webpack의-빌드-방법\"\u003E\u003Ca href=\"#webpack%EC%9D%98-%EB%B9%8C%EB%93%9C-%EB%B0%A9%EB%B2%95\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003EWebpack의 빌드 방법\u003C\u002Fh3\u003E\n\u003Cp\u003E\u003Cimg src=\"https:\u002F\u002Fuser-images.githubusercontent.com\u002F42582516\u002F104858360-d4186380-5961-11eb-91cd-c59c9b856589.png\" alt=\"webpack-build\"\u003E\u003C\u002Fp\u003E\n\u003Cp\u003E그러나 Webpack은 \u003Cstrong\u003E프로젝트 전체를 한단위로 분석\u003C\u002Fstrong\u003E합니다. 지정한 메인 파일에서 시작해서 자바스크립트의 \u003Ccode class=\"language-text\"\u003Erequire(webpack commonJS 모듈 지원)\u003C\u002Fcode\u003E과 \u003Ccode class=\"language-text\"\u003Eimport(ES6)\u003C\u002Fcode\u003E문을 참고해서 \u003Cstrong\u003E프로젝트의 모든 의존성을 조사하고 로더를 이용해 처리한 후 번들로 묶은 자바스크립트 파일을 생성\u003C\u002Fstrong\u003E합니다.\u003C\u002Fp\u003E\n\u003Cp\u003EWebpack는 다른 도구에 비해 아래의 장점이 있습니다.\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E크고 복잡한 다양한 리소스가 존재하는 프로젝트에서 유리합니다,\u003C\u002Fli\u003E\n\u003Cli\u003EGrunt, Gulp는 오로지 리소스들에 대한 툴로 사용되며 dependency graph의 개념이 없습니다.\u003C\u002Fli\u003E\n\u003Cli\u003EBrowsify는 비슷한 도구이지만 속도면에서 webpack이 좋습니다.\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n\u003Cbr\u002F\u003E\n\u003Ch2 id=\"마무리\"\u003E\u003Ca href=\"#%EB%A7%88%EB%AC%B4%EB%A6%AC\" aria-hidden=\"true\"\u003E\u003Cspan class=\"icon icon-link\"\u003E\u003C\u002Fspan\u003E\u003C\u002Fa\u003E마무리.\u003C\u002Fh2\u003E\n\u003Cp\u003EWebpack을 좀 더 공부하기 위해서는 \u003Ccode class=\"language-text\"\u003ENode.js\u003C\u002Fcode\u003E을 통해 공부해야하는데, Node.js에 대해 글을 작성하게 되면 너무 길어질 듯하여 간단하게 내용만 정리했습니다.\u003C\u002Fp\u003E\n\u003Cp\u003E좀 더 상세한 내용은 다른 게시글을 통해 정리하겠습니다.\u003C\u002Fp\u003E\n\u003Chr\u003E\n\u003Cp\u003E\u003Cstrong\u003E출처\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\n\u003Cul\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fnesoy.github.io\u002Farticles\u002F2019-02\u002FWebpack\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fnesoy.github.io\u002Farticles\u002F2019-02\u002FWebpack\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fjusungpark.tistory.com\u002F52\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fjusungpark.tistory.com\u002F52\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003Cli\u003E\u003Ca href=\"https:\u002F\u002Fko.wikipedia.org\u002Fwiki\u002F%EC%9B%B9%ED%8C%A9\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"\u003Ehttps:\u002F\u002Fko.wikipedia.org\u002Fwiki\u002F%EC%9B%B9%ED%8C%A9\u003C\u002Fa\u003E\u003C\u002Fli\u003E\n\u003C\u002Ful\u003E\n"}}]}}},"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.e68d9618.js" defer></script><script src="/assets/js/page--src--templates--tag-vue.5957f7f4.js" defer></script>
-  </body>
+</body>
+
 </html>
