@@ -5,7 +5,7 @@ date: 2021-01-01
 published: true
 tags: ['Soa', 'Sao pattern', 'Architecture', 'Pattern']
 series: true
-cover_image: ./images/SoaText.png
+cover_image: ../images/SoaText.png
 canonical_url: false
 description: ' SOA 패턴에 대해 정리합니다.'
 ---

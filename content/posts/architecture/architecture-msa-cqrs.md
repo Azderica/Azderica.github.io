@@ -13,7 +13,7 @@ tags:
     'Pattern',
   ]
 series: true
-cover_image: ./images/CqrsLogo.png
+cover_image: ../images/CqrsLogo.png
 canonical_url: false
 description: ' CQRS 패턴에 대해 정리합니다.'
 ---

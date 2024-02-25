@@ -13,7 +13,7 @@ tags:
     'Pattern',
   ]
 series: true
-cover_image: ./images/SagaLogo.png
+cover_image: ../images/SagaLogo.png
 canonical_url: false
 description: ' SAGA 패턴에 대해 정리합니다.'
 ---
