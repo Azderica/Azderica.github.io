@@ -24,6 +24,7 @@
     "gridsome": "^0.7.23",
     "gridsome-plugin-gitalk": "^0.2.0",
     "gridsome-plugin-gtag": "^0.1.10",
+    "gridsome-plugin-remark-shiki": "^0.6.0",
     "hexo-generator-cname": "^0.3.0",
     "ini": "^2.0.0",
     "is-svg": "^4.3.1",
